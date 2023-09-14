@@ -6,7 +6,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import axios from '@/plugins/Axios'
 import App from './App.vue'
-import router from './router'
+import { router } from './router'
+import VueApexCharts from 'vue3-apexcharts'
 
 //PLUGINS
 import vuetify from './plugins/Vuetify'
@@ -25,6 +26,7 @@ app.config.globalProperties.mode = 'prod'
 app.use(globalComponents)
 app.use(vuetify)
 app.use(i18n)
+app.use(VueApexCharts)
 
 //PROJECT BASE
 app.use(pinia)

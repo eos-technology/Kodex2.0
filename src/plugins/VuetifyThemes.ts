@@ -4,8 +4,8 @@ export const light: ThemeDefinition = {
   dark: false,
   colors: {
     background: '#F9FAFB',
-    surface: '#223B67',
-    primary: '#223B67',
+    surface: '#fff',
+    primary: '#0A1E8C',
     'primary-darken-1': '#3700B3',
     secondary: '#397EA6',
     'secondary-darken-1': '#018786',
