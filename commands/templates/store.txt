@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { makeRequest } from '../helpers'
+import makeRequest from '@/helpers/makeRequest'
 import type { loginRequest, loginResponseType } from '../types/storeTypes'
 // project imports
 

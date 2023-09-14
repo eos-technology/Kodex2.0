@@ -2,9 +2,11 @@
  * axios setup to use mock service
  */
 
-import axios from 'axios'
+import Axios from 'axios'
 import { useErrorsStore } from '@/stores/errors'
-import router from '@/router'
+import { router } from '@/router'
+
+const axios = Axios.create()
 
 let bearer = localStorage.getItem('auth')
 if (bearer) {
@@ -23,7 +25,7 @@ axios.interceptors.response.use(
     const errorsStore = useErrorsStore()
 
     if (error.request.status == 401) {
-      router.push({ name: 'Login' })
+      router.push({ name: 'login' })
     }
 
     let errorsArray = []

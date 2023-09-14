@@ -78,12 +78,12 @@ function createModule(moduleName, pages) {
   fs.mkdirSync(typesFolderPath)
 
   // Read the services template file
-  const servicesTemplatePath = path.join(__dirname, 'templates', 'services.txt')
-  const servicesTemplateContent = fs.readFileSync(servicesTemplatePath, 'utf8')
+  /* const servicesTemplatePath = path.join(__dirname, 'templates', 'services.txt')
+  const servicesTemplateContent = fs.readFileSync(servicesTemplatePath, 'utf8') */
 
   // Create the api.ts file inside the services folder
-  const apiPath = path.join(servicesFolderPath, 'api.ts')
-  fs.writeFileSync(apiPath, servicesTemplateContent)
+  /* const apiPath = path.join(servicesFolderPath, 'api.ts')
+  fs.writeFileSync(apiPath, servicesTemplateContent) */
 
   // Read the types template file
   const typesTemplatePath = path.join(__dirname, 'templates', 'types.txt')
@@ -94,18 +94,18 @@ function createModule(moduleName, pages) {
   fs.writeFileSync(serviceTypesPath, typesTemplateContent)
 
   // Read the helpers template files
-  const helpersIndexTemplatePath = path.join(__dirname, 'templates', 'helperIndex.txt')
+  /* const helpersIndexTemplatePath = path.join(__dirname, 'templates', 'helperIndex.txt')
   const makeRequestTemplatePath = path.join(__dirname, 'templates', 'makeRequest.txt')
   const helpersIndexTemplateContent = fs.readFileSync(helpersIndexTemplatePath, 'utf8')
-  const makeRequestTemplateContent = fs.readFileSync(makeRequestTemplatePath, 'utf8')
+  const makeRequestTemplateContent = fs.readFileSync(makeRequestTemplatePath, 'utf8') */
 
   // Create the index.ts file inside the helpers folder
-  const indexHelpersPath = path.join(helpersFolderPath, 'index.ts')
-  fs.writeFileSync(indexHelpersPath, helpersIndexTemplateContent)
+  /* const indexHelpersPath = path.join(helpersFolderPath, 'index.ts')
+  fs.writeFileSync(indexHelpersPath, helpersIndexTemplateContent) */
 
   // Create the makeRequest.ts file inside the helpers folder
-  const makeRequestPath = path.join(helpersFolderPath, 'makeRequest.ts')
-  fs.writeFileSync(makeRequestPath, makeRequestTemplateContent)
+  /* const makeRequestPath = path.join(helpersFolderPath, 'makeRequest.ts')
+  fs.writeFileSync(makeRequestPath, makeRequestTemplateContent) */
 
   // Read the store template file
   const storeTemplatePath = path.join(__dirname, 'templates', 'store.txt')
