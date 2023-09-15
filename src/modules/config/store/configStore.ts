@@ -3,8 +3,8 @@ import makeRequest from '@/helpers/makeRequest'
 import type { loginRequest, loginResponseType } from '../types/storeTypes'
 // project imports
 
-export const useauthStore = defineStore({
-  id: 'auth',
+export const useconfigStore = defineStore({
+  id: 'config',
   state: (): any => ({
     bearer: null
   }),
