@@ -11,8 +11,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import MenuProjects from '../components/MenuProjects.vue'
 
-const menu = ref()
+const menu = ref(true)
 
 function handleMenuClicked(isMenuOpen: boolean) {
   menu.value = !isMenuOpen
@@ -22,10 +23,10 @@ function handleMenuClicked(isMenuOpen: boolean) {
 <style lang="scss" scoped>
 .project {
   padding: 0;
-  width: calc(100% - 7.2rem);
+  width: calc(100% - 72px);
   background: #e9ebef;
   display: grid;
-  grid-template-columns: 26.4rem 100%;
+  grid-template-columns: 264px 1fr;
   transition: all ease-in-out 300ms;
   @media (max-width: 768px) {
     width: 100%;
@@ -36,10 +37,10 @@ function handleMenuClicked(isMenuOpen: boolean) {
   }
 
   &__content {
-    width: calc(100% - 26.4rem);
+    width: calc(100% - 264px);
     background-color: #f8f8f8;
-    padding: 2.4rem;
-    border-top-left-radius: 3.2rem;
+    padding: 24px;
+    border-top-left-radius: 32px;
     position: unset;
     @media (max-width: 768px) {
       width: 100%;
@@ -49,20 +50,20 @@ function handleMenuClicked(isMenuOpen: boolean) {
 
 .project-min {
   padding: 0;
-  width: calc(100% - 7.2rem);
+  width: calc(100% - 72px);
   background: #e9ebef;
   display: grid;
-  grid-template-columns: 7rem 100%;
+  grid-template-columns: 72px 1fr;
   transition: all ease-in-out 300ms;
   @media (max-width: 768px) {
     width: 100%;
     display: unset;
   }
   .project__content {
-    width: calc(100% - 7rem);
+    width: calc(100% - 72px);
     background-color: #f8f8f8;
-    padding: 2.4rem;
-    border-top-left-radius: 3.2rem;
+    padding: 24px;
+    border-top-left-radius: 32px;
     position: unset;
     @media (max-width: 768px) {
       border-top-left-radius: 0;

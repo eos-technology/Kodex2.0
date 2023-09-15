@@ -6,21 +6,25 @@
         <p class="menu__text b-semibold text-success">Nombre del proyecto</p>
       </div>
       <div class="menu__arrow" @click="handleMenuClick">
-        <img class="menu__arrow-icon" src="../assets/icons/arrow-right.svg" alt="" />
+        <img src="../assets/icons/arrow-right.svg" alt="" />
+        <!-- <img
+          class="menu__arrow-icon"
+          :src="getFile('icons', 'arrow-right')"
+          alt=""
+        /> -->
       </div>
     </div>
     <div class="line"></div>
-    <router-link class="menu__route" v-for="(item, index) in routes" :key="index" to="/"
-      ><i :class="`icon-${item.icon} menu__icon`"></i>
-      <p class="menu__name">{{ item.name }}</p></router-link
-    >
     <!-- :to="{ name: `${item.route}` }" -->
-    <!-- v-tooltip="item.name" -->
+    <router-link class="menu__route" v-for="(item, index) in routes" :key="index" to="/">
+      <i :class="`icon-${item.icon} menu__icon`"></i>
+      <p class="menu__name">{{ item.name }}</p>
+    </router-link>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
 
 const menu = ref(false)
 
@@ -44,14 +48,14 @@ const routes = [
 
 <style lang="scss" scoped>
 .menu {
-  padding: 2.4rem;
+  padding: 24px;
   min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 16px;
   position: fixed;
-  width: 26.4rem;
+  width: 264px;
   transition: all ease-in-out 200ms;
 
   &__header {
@@ -63,8 +67,8 @@ const routes = [
   &__arrow {
     display: grid;
     place-content: center;
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 32px;
+    width: 32px;
     padding: 4px;
     background: #fafafa;
     border-radius: 12px;
@@ -73,7 +77,7 @@ const routes = [
     transform: rotate(180deg);
   }
   &__logo {
-    margin-bottom: 1.6rem;
+    margin-bottom: 16px;
   }
   a {
     text-decoration: none;
@@ -81,7 +85,7 @@ const routes = [
   &__route {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 12px;
     font-size: 14px;
     font-weight: 300;
     line-height: 20px;
@@ -102,7 +106,7 @@ const routes = [
   }
   &__icon {
     padding: 8px;
-    font-size: 1.6rem;
+    font-size: 16px;
     color: #001e62;
   }
   &__line {
@@ -116,12 +120,12 @@ const routes = [
 }
 
 .menu-min {
-  padding: 3.1rem 1.9rem;
+  padding: 31px 19px;
   min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 16px;
   position: fixed;
   @media (max-width: 768px) {
     display: none;

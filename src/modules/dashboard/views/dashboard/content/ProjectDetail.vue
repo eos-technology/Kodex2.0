@@ -1,6 +1,6 @@
 <template>
-  <div class="card-big">
-    <b-card>
+  <v-card class="pa-4 pa-md-6 rounded-lg">
+    <div class="project-detail">
       <!-- Poject Detail -->
       <div class="card-header">
         <h4 class="h4-semibold">{{ $t('dashboard.detailProject') }}</h4>
@@ -63,7 +63,7 @@
           <!-- <img :src="getFile('icons', `${item.icon}`, 'png')" alt="" /> -->
           <div>
             <p class="l-medium">{{ item.coin }}</p>
-            <p class="s-light text-nowrap">{{ $t(item.value) }}</p>
+            <p class="s-light text-no-wrap">{{ $t(item.value) }}</p>
           </div>
         </div>
 
@@ -80,18 +80,21 @@
           <p class="l-medium">{{ item.ammountValue }}</p>
         </div>
       </div>
-    </b-card>
-  </div>
+
+      <v-pagination v-model="page" :length="5" rounded="circle"></v-pagination>
+    </div>
+  </v-card>
 </template>
 
 <script setup lang="ts">
-// import ChartProject from '../charts/ChartProject.vue'
-
+import { ref } from 'vue'
+import ChartProject from '../charts/ChartProject.vue'
+const page = ref(3)
 const coins = [
   {
     icon: 'tether',
     coin: 'Tether',
-    value: 'USDT(ERC20)',
+    value: 'dashboard.usdt',
     transactions: 'dashboard.totalTransactions',
     valueTran: '0',
     dollars: 'dashboard.dollarAmount',
@@ -102,7 +105,7 @@ const coins = [
   {
     icon: 'btc',
     coin: 'Bitcoin',
-    value: 'BTC',
+    value: 'dashboard.btc',
     transactions: 'dashboard.totalTransactions',
     valueTran: '0',
     dollars: 'dashboard.dollarAmount',
@@ -113,7 +116,7 @@ const coins = [
   {
     icon: 'bnb',
     coin: 'Binance',
-    value: 'BNB',
+    value: 'dashboard.bnb',
     transactions: 'dashboard.totalTransactions',
     valueTran: '0',
     dollars: 'dashboard.dollarAmount',
@@ -187,6 +190,11 @@ const coins = [
 }
 
 .project {
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
   &-chart {
     height: 416px;
   }

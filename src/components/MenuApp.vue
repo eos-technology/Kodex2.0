@@ -10,12 +10,12 @@
       <v-tooltip activator="parent" location="end">Notifications</v-tooltip>
     </button>
     <div class="menu__line line"></div>
-    <!-- :to="{ name: `${item.route}` }" -->
+
     <router-link
       class="menu__route menu__route--text l-semibold"
       v-for="(item, index) in projects"
       :key="index"
-      to="/"
+      :to="{ name: `${item.route}` }"
       >{{ item.icon }}
       <v-tooltip activator="parent" location="end">Nombre proyecto</v-tooltip>
     </router-link>

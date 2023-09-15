@@ -74,7 +74,6 @@ import ProjectDetail from './content/ProjectDetail.vue'
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem;
   overflow: hidden;
   &__swiper {
     width: 100%;

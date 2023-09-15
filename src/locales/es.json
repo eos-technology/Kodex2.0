@@ -78,7 +78,10 @@
     "charged": "Total facturado",
     "approvedTx": "Tx aprobadas",
     "txPending": "Tx pendientes",
-    "login-recents": "Inicios de sesión recientes"
+    "login-recents": "Inicios de sesión recientes",
+    "bnb": "BNB",
+    "btc": "BTC",
+    "usdt": "USDT(ERC20)"
   },
   "paymentsLink": {
     "header": "Enlaces de pago",

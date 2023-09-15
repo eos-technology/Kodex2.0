@@ -77,7 +77,10 @@
     "charged": "Total charged",
     "approvedTx": "Approved tx",
     "txPending": "Tx pendings",
-    "login-recents": "Recent logins"
+    "login-recents": "Recent logins",
+    "bnb": "BNB",
+    "btc": "BTC",
+    "usdt": "USDT(ERC20)"
   },
   "paymentsLink": {
     "header": "payment links",

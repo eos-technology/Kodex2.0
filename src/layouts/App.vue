@@ -2,7 +2,11 @@
   <div class="app">
     <MenuApp class="app__menu" />
     <!-- <MenuAppMobile class="app__menu-mobile" /> -->
-    <RouterView class="app__content"></RouterView>
+    <div class="app__content">
+      <div class="app__content-int">
+        <RouterView></RouterView>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +30,7 @@ import MenuApp from '@/components/MenuApp.vue'
     height: 100%;
     min-height: 100vh;
     position: fixed;
+
     @media (max-width: 768px) {
       display: none;
     }
@@ -36,16 +41,32 @@ import MenuApp from '@/components/MenuApp.vue'
     }
   }
   &__content {
-    // min-width: 100vw;
     width: 100%;
     margin-left: 72px;
     background-color: #f8f8f8;
-    border-top-left-radius: 2rem;
+    border-top-left-radius: 32px;
+    overflow: hidden;
+
     @media (max-width: 768px) {
       margin-top: 65px;
       border-top-left-radius: 0;
       margin-left: 0;
       width: 100%;
+      max-width: unset;
+    }
+    &-int {
+      position: fixed;
+      max-height: 100%;
+      overflow-y: auto;
+      margin: 1.5rem;
+      width: 100%;
+      max-width: calc(100vw - 120px);
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #888;
+      }
     }
   }
 }
