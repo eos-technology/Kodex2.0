@@ -61,18 +61,22 @@ defineProps({
   }
   &-icon {
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 16px;
     background-color: #ebf3ff;
     font-size: 24px;
     color: #001e62;
     margin-right: 10px;
+    
   }
+}
+
+p{
+  color: #0A1E8C;
 }
 
 
 :deep(.v-card){
-  border-radius: 16px;
+  border-radius: 16px !important;
   border: 1px solid #DDE4ED;
-  border-radius: 16px;
 }
 </style>

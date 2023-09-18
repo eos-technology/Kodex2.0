@@ -77,4 +77,18 @@ const cards = [
     margin-right: -86px;
   }
 }
+
+</style>
+
+<style>
+h3{
+  color: #0A1E8C;
+}
+
+h4{
+  color: #0A1E8C;
+}
+h5{
+  color: #0A1E8C;
+}
 </style>

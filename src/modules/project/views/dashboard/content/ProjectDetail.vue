@@ -65,7 +65,7 @@
           <div class="payments__coin">
             <img :src="getFile({ route: 'icons', url: `${item.icon}`, extension: 'png' })" alt="" />
             <div>
-              <p class="l-medium">{{ item.coin }}</p>
+              <p class="l-medium">{{ item.coin }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
               <p class="s-light text-nowrap">{{ $t(item.value) }}</p>
             </div>
           </div>
@@ -85,7 +85,8 @@
         </div>
         <v-pagination
           v-model="currentPage"
-          :total-rows="rows"
+          :length="rows"
+          :total-visible="7"
           align="center"
         ></v-pagination>
       </div>
@@ -99,6 +100,8 @@ import ChartProject from "./charts/ChartProject.vue";
 import getFile from "@/helpers/getFile";
 const rows = ref(100);
 const currentPage = ref(3);
+
+
 const coins = [
   {
     icon: "tether",
@@ -195,6 +198,10 @@ const coins = [
   }
   &__box {
     flex: 1;
+  }
+  p{
+    color: #0A1E8C;
+    width: 100%;
   }
 }
 
@@ -308,6 +315,25 @@ const coins = [
   padding: 24px;
   border-radius: 16px;
   border: 1px solid #DDE4ED;
+}
+
+:deep(.v-btn){
+  border-radius: 12px;
+  border: 1px solid #F4F5F8;
+  color: #001E62;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:deep(.v-pagination__item.v-pagination__item--is-active .v-btn){
+  background: #051255 !important;
+  color: #FFF;
 }
 
 :global(.v-card--variant-elevated){
