@@ -11,9 +11,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import MenuProjects from '../components/MenuProjects.vue'
 
-const menu = ref(true)
+const menu = ref(false)
 
 function handleMenuClicked(isMenuOpen: boolean) {
   menu.value = !isMenuOpen

@@ -1,5 +1,4 @@
 <template>
-//HTML CONTENT
+  <section class="pay-link">Enlaces de pago</section>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

@@ -1,6 +1,6 @@
 const projectRoutes = {
   path: '/project',
-  component: () => import('@/layouts/Project.vue'),
+  component: () => import('@/layouts/App.vue'),
   meta: {
     requiresAuth: false
   },

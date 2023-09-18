@@ -3,7 +3,8 @@
     <MenuApp class="app__menu" />
     <!-- <MenuAppMobile class="app__menu-mobile" /> -->
     <div class="app__content">
-      <div class="app__content-int">
+      <MenuProjects v-if="$route.name != 'dashboard'" />
+      <div class="app__content-int" :class="$route.name != 'dashboard' ? 'menu-hide' : 'menu-show'">
         <RouterView></RouterView>
       </div>
     </div>
@@ -11,7 +12,16 @@
 </template>
 
 <script setup lang="ts">
+// import { ref } from 'vue'
 import MenuApp from '@/components/MenuApp.vue'
+import MenuProjects from '@/components/MenuProjects.vue'
+
+// const menu = ref(false)
+
+// function handleMenuClicked(isMenuOpen: boolean) {
+//   menu.value = !isMenuOpen
+// }
+
 // import MenuAppMobile from '@/components/MenuAppMobile.vue'
 </script>
 
@@ -43,10 +53,11 @@ import MenuApp from '@/components/MenuApp.vue'
   &__content {
     width: 100%;
     margin-left: 72px;
-    background-color: #f8f8f8;
+    background-color: #e9ebef;
     border-top-left-radius: 32px;
     overflow: hidden;
-
+    min-height: 100vh;
+    height: 100%;
     @media (max-width: 768px) {
       margin-top: 65px;
       border-top-left-radius: 0;
@@ -55,12 +66,17 @@ import MenuApp from '@/components/MenuApp.vue'
       max-width: unset;
     }
     &-int {
+      border-top-left-radius: 32px;
       position: fixed;
       max-height: 100%;
       overflow-y: auto;
-      margin: 1.5rem;
+      background-color: #f8f8f8;
+      padding: 1.5rem;
+      margin-left: 72px;
+
       width: 100%;
-      max-width: calc(100vw - 120px);
+      min-height: 100vh;
+      height: 100%;
       &::-webkit-scrollbar {
         width: 0px;
       }
@@ -69,5 +85,13 @@ import MenuApp from '@/components/MenuApp.vue'
       }
     }
   }
+}
+
+.menu-hide {
+  max-width: calc(100vw - 144px);
+}
+.menu-show {
+  max-width: calc(100vw - 72px);
+  margin-left: 0;
 }
 </style>

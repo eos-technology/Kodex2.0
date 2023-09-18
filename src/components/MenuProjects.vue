@@ -16,7 +16,12 @@
     </div>
     <div class="line"></div>
     <!-- :to="{ name: `${item.route}` }" -->
-    <router-link class="menu__route" v-for="(item, index) in routes" :key="index" to="/">
+    <router-link
+      class="menu__route"
+      v-for="(item, index) in routes"
+      :key="index"
+      :to="{ name: `${item.route}` }"
+    >
       <i :class="`icon-${item.icon} menu__icon`"></i>
       <p class="menu__name">{{ item.name }}</p>
     </router-link>
@@ -37,12 +42,12 @@ const emit = defineEmits(['menu-clicked'])
 
 const routes = [
   { icon: 'dash', name: 'Dashboard', route: 'project' },
-  { icon: 'link', name: 'Enlaces de pago', route: 'payments' },
-  { icon: 'transaction', name: 'Transaction', route: 'transaction' },
-  { icon: 'clock', name: 'Reports', route: 'reports' },
-  { icon: 'bank', name: 'Métodos de pago', route: 'paymentMethod' },
-  { icon: 'user', name: 'Usuarios', route: 'users' },
-  { icon: 'setting', name: 'Configuración', route: 'setting' }
+  { icon: 'link', name: 'Enlaces de pago', route: 'payment_links' },
+  { icon: 'transaction', name: 'Transaction', route: '' },
+  { icon: 'clock', name: 'Reports', route: '' },
+  { icon: 'bank', name: 'Métodos de pago', route: '' },
+  { icon: 'user', name: 'Usuarios', route: '' },
+  { icon: 'setting', name: 'Configuración', route: '' }
 ]
 </script>
 
