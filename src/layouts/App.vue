@@ -3,8 +3,8 @@
     <MenuApp class="app__menu" />
     <!-- <MenuAppMobile class="app__menu-mobile" /> -->
     <div class="app__content">
-      <MenuProjects v-if="$route.name != 'dashboard'" />
-      <div class="app__content-int" :class="$route.name != 'dashboard' ? 'menu-hide' : 'menu-show'">
+      <MenuProjects v-if="$route.name != 'dashboard'" @menu-clicked="handleMenuClicked" />
+      <div class="app__content-int" :class="contentClass">
         <RouterView></RouterView>
       </div>
     </div>
@@ -12,15 +12,29 @@
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import MenuApp from '@/components/MenuApp.vue'
 import MenuProjects from '@/components/MenuProjects.vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
-// const menu = ref(false)
+const isMenuOpen = ref(false)
 
-// function handleMenuClicked(isMenuOpen: boolean) {
-//   menu.value = !isMenuOpen
-// }
+function handleMenuClicked(isOpen: boolean) {
+  isMenuOpen.value = isOpen
+}
+
+const contentClass = computed(() => {
+  if (isMenuOpen.value) {
+    return 'menu-show__text'
+  } else {
+    if (route.name === 'dashboard') {
+      return 'menu-show'
+    } else {
+      return 'menu-hide'
+    }
+  }
+})
 
 // import MenuAppMobile from '@/components/MenuAppMobile.vue'
 </script>
@@ -89,6 +103,10 @@ import MenuProjects from '@/components/MenuProjects.vue'
 
 .menu-hide {
   max-width: calc(100vw - 144px);
+}
+.menu-show__text {
+  max-width: calc(100vw - 264px);
+  margin-left: 264px;
 }
 .menu-show {
   max-width: calc(100vw - 72px);
