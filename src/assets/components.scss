@@ -1,56 +1,93 @@
 .table-custom {
-    // overflow-x: scroll;
-    overflow: hidden;
-    border: 1px solid #dde4ed;
-    border-radius: 16px;
-    table {
-      width: 100%;
-    }
+  // overflow-x: scroll;
+  overflow: hidden;
+  border: 1px solid #dde4ed;
+  border-radius: 16px;
+  table {
+    width: 100%;
+  }
+  th,
+  td {
+    padding: 16px;
+  }
+  th {
+    text-align: start;
+    background-color: #f9fbfc;
+    color: #0a1e8c;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 17px;
+  }
+  &__flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
     th,
     td {
-      padding: 16px; 
+      padding: 16px 0.2rem;
     }
-    th {
-      text-align: start;
-      background-color: #f9fbfc;
-      color: #0a1e8c;
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 17px;
-    }
-    &__flex {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    &__center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    @media (max-width: 767px) {
-      th,
-      td {
-        padding: 16px 0.2rem; 
+
+    tr {
+      th:first-child,
+      td:first-child {
+        padding-left: 16px;
       }
-  
-      tr {
-        th:first-child,
-        td:first-child {
-          padding-left: 16px; 
-        }
-        th:last-child,
-        td:last-child {
-          padding-right: 16px; 
-        }
+      th:last-child,
+      td:last-child {
+        padding-right: 16px;
+      }
+    }
+  }
+}
+
+.dot {
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+}
+
+//CARDS
+
+.card-big {
+    .card {
+      --bs-card-border-radius: 16px; /* Cambio de 1.6rem a 16px */
+      --bs-card-spacer-y: 24px; /* Cambio de 2.4rem a 24px */
+      --bs-card-spacer-x: 24px; /* Cambio de 2.4rem a 24px */
+      --bs-card-border-color: #dde4ed;
+      
+      &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px; /* Cambio de 2.4rem a 24px */
+        background-color: transparent;
+        padding: 0;
+        border: none;
+      }
+      
+      &-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      &-body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px; /* Cambio de 2.4rem a 24px */
       }
     }
   }
   
-  .dot {
-    height: 16px; 
-    width: 16px; 
-    border-radius: 100%;
-  }
+
+
+

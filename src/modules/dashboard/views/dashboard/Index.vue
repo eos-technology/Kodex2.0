@@ -3,12 +3,12 @@
     <h3 class="h3-bold">{{ $t('dashboard.panelTitle') }}</h3>
     <!-- Banner -->
     <div class="dashboard__swiper">
-      <!-- <swiper :pagination="true" :modules="modules" class="swiper">
-        <swiper-slide><img :src="getFile('images', 'banner', 'webp')" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile('images', 'banner', 'webp')" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile('images', 'banner', 'webp')" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile('images', 'banner', 'webp')" alt="" /></swiper-slide>
-      </swiper> -->
+      <swiper :pagination="true" :modules="modules" class="swiper">
+        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
+        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
+        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
+        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
+      </swiper>
     </div>
 
     <!-- Cards -->
@@ -43,7 +43,7 @@
     <!-- Project Detaail and Payments Methods -->
     <ProjectDetail class="project" />
     <!-- Sesion -->
-    <!-- <SesionsView /> -->
+    <SesionsView /> 
   </section>
 </template>
 
@@ -52,13 +52,14 @@ import Cards from '@/components/Cards.vue'
 import ChartAccount from './charts/ChartAccount.vue'
 import StepperView from './content/StepperView.vue'
 import ProjectDetail from './content/ProjectDetail.vue'
-// import SesionsView from './SesionsView.vue'
-// import { Swiper, SwiperSlide } from 'swiper/vue'
-// import 'swiper/scss'
-// import 'swiper/scss/pagination'
-// import { Pagination } from 'swiper'
+import { getFile } from '@/helpers/Index'
+import SesionsView from './content/SesionsView.vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/scss'
+import 'swiper/scss/pagination'
+import { Pagination } from 'swiper/modules';
 
-// const modules = [Pagination]
+const modules = [Pagination]
 
 // const cards = [
 //   { icon: 'coins', title: 'dashboard.projects', value: '1' },
