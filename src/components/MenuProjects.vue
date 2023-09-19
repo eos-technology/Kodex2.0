@@ -43,7 +43,7 @@ const emit = defineEmits(['menu-clicked'])
 const routes = [
   { icon: 'dash', name: 'Dashboard', route: 'project' },
   { icon: 'link', name: 'Enlaces de pago', route: 'payment_links' },
-  { icon: 'transaction', name: 'Transaction', route: '' },
+  { icon: 'transaction', name: 'Transaction', route: 'transactions' },
   { icon: 'clock', name: 'Reports', route: '' },
   { icon: 'bank', name: 'Métodos de pago', route: '' },
   { icon: 'user', name: 'Usuarios', route: '' },
