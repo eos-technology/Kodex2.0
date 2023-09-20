@@ -7,15 +7,9 @@
       </div>
       <div class="menu__arrow" @click="handleMenuClick">
         <img src="../assets/icons/arrow-right.svg" alt="" />
-        <!-- <img
-          class="menu__arrow-icon"
-          :src="getFile('icons', 'arrow-right')"
-          alt=""
-        /> -->
       </div>
     </div>
     <div class="line"></div>
-    <!-- :to="{ name: `${item.route}` }" -->
     <router-link
       class="menu__route"
       v-for="(item, index) in routes"
@@ -24,6 +18,7 @@
     >
       <i :class="`icon-${item.icon} menu__icon`"></i>
       <p class="menu__name">{{ item.name }}</p>
+      <v-tooltip activator="parent" location="end">{{ item.name }}</v-tooltip>
     </router-link>
   </div>
 </template>
@@ -62,7 +57,9 @@ const routes = [
   position: fixed;
   width: 264px;
   transition: all ease-in-out 200ms;
-
+  &__name {
+    color: #061461;
+  }
   &__header {
     display: flex;
     gap: 8px;
