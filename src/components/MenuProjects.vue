@@ -44,7 +44,7 @@ const routes = [
   { icon: 'dash', name: 'Dashboard', route: 'project' },
   { icon: 'link', name: 'Enlaces de pago', route: 'payment_links' },
   { icon: 'transaction', name: 'Transaction', route: 'transactions' },
-  { icon: 'clock', name: 'Reports', route: '' },
+  { icon: 'clock', name: 'Reports', route: 'reports' },
   { icon: 'bank', name: 'Métodos de pago', route: '' },
   { icon: 'user', name: 'Usuarios', route: '' },
   { icon: 'setting', name: 'Configuración', route: '' }
