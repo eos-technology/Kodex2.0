@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <MenuApp class="app__menu" />
+    <MenuApp class="app__menu" @click="isMenuOpen = false" />
     <!-- <MenuAppMobile class="app__menu-mobile" /> -->
     <div class="app__content">
       <MenuProjects v-if="$route.name != 'dashboard'" @menu-clicked="handleMenuClicked" />

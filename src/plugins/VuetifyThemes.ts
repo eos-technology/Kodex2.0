@@ -6,7 +6,7 @@ export const light: ThemeDefinition = {
     background: '#F9FAFB',
     surface: '#fff',
     primary: '#0A1E8C',
-    'primary-darken-1': '#3700B3',
+    'primary-darken-1': '#001E62',
     secondary: '#397EA6',
     'secondary-darken-1': '#018786',
     error: '#B42318',

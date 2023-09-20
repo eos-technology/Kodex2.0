@@ -27,7 +27,8 @@ export const router = createRouter({
     authRoutes,
     dashboardRoutes,
     authRoutes
-  ]
+  ],
+  linkExactActiveClass: 'active'
 })
 
 /* router.beforeEach((to, from, next) => {

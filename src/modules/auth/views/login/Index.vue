@@ -1,5 +1,2 @@
-<template>
-//HTML CONTENT
-</template>
-<script setup lang="ts">
-</script>
+<template>//HTML CONTENT</template>
+<script setup lang="ts"></script>
