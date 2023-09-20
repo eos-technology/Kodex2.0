@@ -15,7 +15,7 @@
                 </v-text-field>
                 <div class="filter d-flex align-center">
                     <FilterBtn />
-                    <v-btn class="text-none ml-4 rounded-lg font-weight-bold" variant="outlined">{{ $t('transactions.button') }}</v-btn>
+                    <v-btn class="text-none ml-4 rounded-lg font-weight-bold primary outlined" variant="outlined">{{ $t('transactions.button') }}</v-btn>
                 </div>
             </div>
 
@@ -497,5 +497,17 @@ const data = [
     max-width: 250px;
     width: 100%;
 
+}
+
+
+.primary {
+    height: 48px;
+    border-radius: 16px;
+}
+
+.outlined {
+    border: 1px solid var(--border-border-input, #F4F5F8);
+    background: var(--fondos-blanco, #FFF);
+    color: #001E62;
 }
 </style>

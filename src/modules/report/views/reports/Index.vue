@@ -3,7 +3,7 @@
     <div class="d-flex align-center justify-space-between">
         <h3 class="h3-bold">{{ $t('reports.header') }}</h3>
         <router-link :to="{ name: 'generate' }">
-            <v-btn color="#091D8B" class="text-none text-white rounded-lg">{{ $t('reports.btnReports') }}</v-btn>
+            <v-btn color="#091D8B" class="text-none text-white primary">{{ $t('reports.btnReports') }}</v-btn>
         </router-link>
     </div>
      <!-- Cards -->
@@ -23,4 +23,10 @@ import ChartTransactions from '../content/ChartTransactions.vue'
 .report{
     gap: 24px;
 }
+.primary {
+    height: 48px;
+    border-radius: 16px;
+}
+
+
 </style>

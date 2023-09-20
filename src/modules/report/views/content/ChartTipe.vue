@@ -13,7 +13,7 @@
           <template v-slot:prepend-inner>
             <div class="d-flex align-center">
               <img class="img-select mr-2" src="@/assets/icons/tether.png" v-if="selectedItem === null">
-              <p class="b-medium" style="width: 200px;" v-if="selectedItem === null">
+              <p class="b-medium" style="width: 100px;" v-if="selectedItem === null">
                 Tether USDT
               </p>
             </div>
