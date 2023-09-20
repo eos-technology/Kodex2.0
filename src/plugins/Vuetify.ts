@@ -3,6 +3,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { dark, light } from './VuetifyThemes'
+import '@mdi/font/css/materialdesignicons.css'
 
 let defaultTheme = 'light'
 
@@ -26,7 +27,10 @@ const vuetify = createVuetify({
       light,
       dark
     }
-  }
+  },
+  icons: {
+    defaultSet: 'mdi',
+  },
 })
 
 export default vuetify
