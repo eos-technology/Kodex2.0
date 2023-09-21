@@ -1,8 +1,6 @@
 <template>
   <article class="back" @click="$router.back()">
-    <div>
-      <img src="@/assets/icons/form/back.svg" alt="" />
-    </div>
+    <img src="@/assets/icons/form/back.svg" alt="" />
     <p class="b-regular">{{ $t('globals.back') }}</p>
   </article>
 </template>
@@ -36,5 +34,7 @@ export default {
       display: unset;
     }
   }
+
+
 }
 </style>

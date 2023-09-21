@@ -96,7 +96,9 @@
     "share": "Compartir",
     "save": "Guardar",
     "email": "Correo",
-    "account-type": "Tipo de banco"
+    "account-type": "Tipo de banco",
+    "shareByEmail":"Compartir vía email",
+    "copyShare":"Copia y comparte su Link"
   },
   "filter": {
     "filter": "Filtro"
@@ -192,7 +194,15 @@
     "add-products": "Añadir producto o servicio",
     "text5": "Describe sus datos lo más claro posible para que no haya errores en la digitación",
     "total-products": "Cantidad total de artículos",
-    "download-qr": "Descargar QR"
+    "download-qr": "Descargar QR",
+    "minimum":"Mínimo",
+    "maximum":"Máximo",
+    "range":"Rango",
+    "from":"Desde",
+    "to":"Hasta",
+    "dateIn":"Fecha de inicio",
+    "dateOut":"Fecha de finalización",
+    "date":"Fecha"
   },
   "users": {
     "headerTitle": "Usuarios",
@@ -397,5 +407,6 @@
   "send": "Enviar",
   "download-qr": "Descargar QR",
   "continue": "Continuar",
-  "add": "Añadir"
+  "add": "Añadir",
+  "search":"Buscar"
 }

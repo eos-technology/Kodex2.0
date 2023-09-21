@@ -6,8 +6,10 @@
         <div class="card-content">
 
           <div class="card-header">
-            <BaseInput placeholder="Search" class="search" type="search" />
-            <FilterBtn />
+            <SearchField/>
+            <FilterBtn /> 
+            <!-- <BaseInput placeholder="Search" class="search" type="search" />
+            <FilterBtn /> -->
           </div>
   
           <!-- view desktop (table) -->
@@ -141,26 +143,28 @@
             <img :src="getFile({route:'icons/form', url:'close', extension:'svg'})" alt="" />
           </button>
         </div>
+
+
         <div class="tabs__modal">
           <v-tabs
             v-model="tab"
-            align-tabs="center"
+            
           >
-            <v-tab value="one">QR</v-tab>
-            <v-tab value="two">{{ $t('paymentsLink.email') }}</v-tab>
+            <v-tab value="one"><span class="t-btn">QR</span></v-tab>
+            <v-tab value="two"><span class="t-btn">{{ $t('paymentsLink.email') }} </span></v-tab>
           </v-tabs>
 
           <v-window v-model="tab">
             <v-window-item value="one">
               <img :src="getFile({route: 'images', url: 'qr', extension:'svg'})" alt="" />
-              <label for="email">Copia y comparte su Link</label><br>
+              <label for="email">{{ $t('paymentsLink.copyShare') }}</label><br>
               <input type="text" class="modal__input" placeholder="www.YourLink.com/User">
               <!-- <BaseInput label="Copia y comparte su Link" class="modal__input" placeholder="www.YourLink.com/User" /> -->
               <v-btn color="primary" class="w-100 mt-5 py-3 px-4">{{ $t('download-qr') }}</v-btn>
             </v-window-item>
 
             <v-window-item value="two">
-              <label for="email">Compartir vía email</label><br>
+              <label for="email">{{ $t('paymentsLink.shareByEmail')  }}</label><br>
               <input type="text" class="modal__input" placeholder="Example@email.com">
               <!-- <BaseInput label="Compartir vía email" class="modal__input" placeholder="Example@email.com" /> -->
               <v-btn color="primary" class="w-100 mt-5 py-3 px-4" @click="step = 2">{{ $t('send') }}</v-btn>
@@ -204,9 +208,24 @@ const data = [
     status: "Block",
   },
 ];
+
+const switchTab = (content: string) => {
+  const slider = document.querySelector('.v-tab__slider') as HTMLElement;
+
+  slider.style.setProperty('--content-after', `'${content}'`);
+}
 </script>
 
 <style lang="scss" scoped>
+.card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+
+}
+
 .table-custom {
   @media (max-width: 767px) {
     display: none;
@@ -238,6 +257,33 @@ const data = [
       display: block;
       margin: 0 auto 32px;
     }
+
+    :deep(.v-btn){
+      flex: 1;
+      border: none;
+      font-weight: 300;
+      color: #FFF;
+      font-size: 14px;
+
+
+      &::after{
+        display: none;
+      }
+
+    }
+
+    :deep(.v-btn.v-slide-group-item--active.v-tab--selected ){
+      background-color: #FFF;
+      border-radius: 100px;
+      box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.10), 0px 4px 6px -4px rgba(16, 24, 40, 0.10);
+      font-weight: 500;
+
+    }
+  }
+  
+  .t-btn{
+    color:#0A1E8C;
+
   }
 
   &__input {
@@ -312,13 +358,17 @@ const data = [
 
     .card {
       overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid #DDE4ED;
     }
-
+    
     &__header {
+      padding: 10px 20px;
+      padding-top: 15px;
       background-color: #F9FBFC;
-      outline-color: #F9FBFC;
-      outline-width: 24px;
-      outline-style: solid;
+      // outline-color: #F9FBFC;
+      // outline-width: 24px;
+      // outline-style: solid;
 
       display: flex;
       flex-direction: row;
@@ -343,7 +393,24 @@ const data = [
       display: flex;
       flex-direction: column;
       gap: 5px;
-      padding-top: 16px;
+      padding: 10px 20px;
+      padding-bottom: 15px;
+
+      :deep(.v-input){
+        flex: none;
+      }
+
+      :deep(.v-selection-control__input){
+        height: fit-content;
+      }
+
+      :deep(.v-switch.v-switch--inset .v-selection-control__wrapper){
+        height: fit-content;
+      }
+
+      :deep(.v-switch .v-selection-control){
+        min-height: auto;
+      }
     }
 
     &__item {
@@ -413,6 +480,8 @@ const data = [
   background-color: #E01E5A;
 }
 
+
+
 :deep(.v-card){
   padding: 24px;
   border-radius: 16px;
@@ -435,6 +504,17 @@ const data = [
   text-transform: none;
 }
 
+:deep(.v-tab--selected .v-tab__slider){
+  display: none;
+
+}
+
+:deep(.v-slide-group__content){
+  background: #F6F8FA;
+  border-radius: 100px;
+  padding: 4px;
+  overflow: hidden;
+}
 
 :deep(.v-pagination__item.v-pagination__item--is-active .v-btn){
   background: #051255 !important;
@@ -456,6 +536,10 @@ const data = [
 
 :deep(.v-selection-control.v-selection-control--dirty.v-selection-control--density-default .v-switch__track){
   background-color: #091D8B;
+}
+
+:deep(.v-window){
+  margin-top: 32px;
 }
 
 
