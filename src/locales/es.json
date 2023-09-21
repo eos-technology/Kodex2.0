@@ -224,7 +224,7 @@
     "status": "ESTADO",
     "email": "CORREO",
     "options": "Opciones",
-    "edit-permissions": "Editar permisos",
+    "edit-permissions": "Permisos de usuario",
     "payment-method": "Métodos de pago",
     "delete": "Eliminar",
     "cancel": "Cancelar",
@@ -265,7 +265,7 @@
     "dateRange": "Rango de fecha",
     "startDate": "Fecha de inicio",
     "endDate": "Fecha de finalización",
-    "generate": "Generar",
+    "generate": "Guardar",
     "btnCancel": "Cancelar",
     "search": "Buscar",
     "sendReport": "Enviar reporte",
@@ -278,7 +278,9 @@
     "send": "Enviar",
     "allDone": "Todo listo",
     "sendEmail": "Se ha enviado una copia al correo",
-    "goBack": "Regresar"
+    "goBack": "Regresar",
+    "permission": "Se guardado los permisos del usuario",
+    "permission2": "del proyecto"
   },
   "setting": {
     "title": "Configuración",
