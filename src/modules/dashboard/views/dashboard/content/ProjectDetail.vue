@@ -34,7 +34,7 @@
             <tr>
               <td>
                 <div class="table-custom__flex">
-                  <div class="dot bg-warning"></div>
+                  <div class="dot bg-yellow"></div>
                   {{ $t('dashboard.pending') }}
                 </div>
               </td>
@@ -44,7 +44,7 @@
             <tr>
               <td>
                 <div class="table-custom__flex">
-                  <div class="dot bg-danger"></div>
+                  <div class="dot bg-red"></div>
                   {{ $t('dashboard.cancel') }}
                 </div>
               </td>
@@ -60,7 +60,7 @@
 
       <div v-for="(item, index) in coins" :key="index" class="payments">
         <div class="payments__coin">
-          <!-- <img :src="getFile('icons', `${item.icon}`, 'png')" alt="" /> -->
+          <img :src="getFile({route: 'icons', url: `${item.icon}`, extension: 'png'})" alt="" />
           <div>
             <p class="l-medium">{{ item.coin }}</p>
             <p class="s-light text-no-wrap">{{ $t(item.value) }}</p>
@@ -89,6 +89,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ChartProject from '../charts/ChartProject.vue'
+import { getFile } from '@/helpers/Index'
 const page = ref(3)
 const coins = [
   {
@@ -165,8 +166,8 @@ const coins = [
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  padding: 1.6rem;
-  gap: 1.6rem;
+  padding: 16px; /* Cambio de 1.6rem a 16px */
+  gap: 16px; /* Cambio de 1.6rem a 16px */
   background: #fafafa;
   border: 1px solid #dde4ed;
   border-radius: 12px;
@@ -178,7 +179,7 @@ const coins = [
   }
   &__coin {
     display: flex;
-    gap: 1.6rem;
+    gap: 16px; /* Cambio de 1.6rem a 16px */
     align-items: center;
     width: 32px;
     height: 32px;
@@ -193,10 +194,14 @@ const coins = [
   &-detail {
     display: flex;
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 24px; 
   }
   &-chart {
     height: 416px;
   }
 }
+
+
+
 </style>
+
