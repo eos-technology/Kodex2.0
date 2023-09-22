@@ -1,24 +1,29 @@
 const userRoutes = {
     path: '/user',
-    name: 'user',
+    component: () => import('@/layouts/App.vue'),
     meta: {
         requiresAuth: false
     },
     children: [
 {
-    path: 'list',
-    name: 'list',
+    path: '',
+    name: 'user',
     component: () => import ('@/modules/user/views/list/Index.vue')
 },
 {
     path: 'create',
-    name: 'create',
-    component: () => import ('@/modules/user/views/create/Index.vue')
+    name: 'create-user',
+    component: () => import ('@/modules/user/views/create_user/Index.vue')
 },
 {
     path: 'permissions',
     name: 'permissions',
     component: () => import ('@/modules/user/views/permissions/Index.vue')
+},
+{
+    path: 'payment-method',
+    name: 'payment-method',
+    component: () => import ('@/modules/user/views/payment_method/Index.vue')
 },
 {
     path: 'invite',

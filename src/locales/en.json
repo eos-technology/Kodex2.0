@@ -229,7 +229,7 @@
     "status": "STATE",
     "email": "EMAIL",
     "options": "Options",
-    "edit-permissions": "Edit permissions",
+    "edit-permissions": "User permits",
     "payment-method": "Payment methods",
     "delete": "Delete",
     "cancel": "Cancel",
@@ -268,7 +268,7 @@
     "quarterly": "Quarterly",
     "dateRange": "Date range",
     "startDate": "Start date",
-    "generate": "Trigger",
+    "generate": "Keep",
     "btnCancel": "Cancel",
     "endDate": "Finish date",
     "biannual": "Biannual",
@@ -283,7 +283,9 @@
     "send": "Send",
     "allDone": "All ready",
     "sendEmail": "A copy has been emailed",
-    "goBack": "Go back"
+    "goBack": "Go back",
+    "permission": "User permissions are saved",
+    "permission2": "of the project"
   },
   "setting": {
     "title": "Setting",
