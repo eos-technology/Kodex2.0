@@ -12,7 +12,7 @@ const payment_linkRoutes = {
     },
     {
       path: 'config',
-      name: 'config',
+      name: 'config-payments',
       component: () => import('@/modules/payment_link/views/config/Index.vue')
     },
     {

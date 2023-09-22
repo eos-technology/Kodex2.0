@@ -1,8 +1,6 @@
 <template>
   <article class="back">
-    <div>
-      <img src="@/assets/icons/form/back.svg" alt="" />
-    </div>
+    <img src="@/assets/icons/form/back.svg" alt="" />
     <p class="b-regular back__text">{{ $t('globals.back') }}</p>
   </article>
 </template>

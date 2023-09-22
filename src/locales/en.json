@@ -95,7 +95,9 @@
     "share": "Share",
     "save": "Save",
     "email": "Email",
-    "account-type": "Bank type"
+    "account-type": "Bank type",
+    "shareByEmail":"Share via email",
+    "copyShare":"Copy and share your link"
   },
   "transactions": {
     "headerTitle": "Transactions",
@@ -187,7 +189,15 @@
     "add-products": "Add product or service",
     "text5": "Describe your data as clearly as possible to avoid errors in typing",
     "total-products": "Total quantity of items",
-    "download-qr": "Download QR"
+    "download-qr": "Download QR",
+    "minimum":"Minimum",
+    "maximum":"Maximum",
+    "range":"Range",
+    "from":"From",
+    "to":"To",
+    "dateIn":"Start date",
+    "dateOut":"Finish date",
+    "date":"Date"
   },
   "users": {
     "headerTitle": "users",
@@ -391,5 +401,9 @@
   "send": "Send",
   "download-qr": "Download QR",
   "continue": "Continue",
-  "add": "Add"
+  "add": "Add",
+  "search":"Search",
+  "filter":{
+    "filter":"Filter"
+  }
 }
