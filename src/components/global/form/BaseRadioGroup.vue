@@ -5,42 +5,40 @@
       :key="option.value"
       :is="vertical ? 'div' : 'span'"
       :class="{
-        vertical: vertical
-      }"
-    >
-      <Radio
+        vertical: vertical,
+      }">
+      <BaseRadio
         :label="option.label"
         :value="option.value"
         :modelValue="modelValue"
         :name="name"
-        @update:modelValue="$emit('update:modelValue', $event)"
-      />
+        @update:modelValue="$emit('update:modelValue', $event)" />
     </component>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 defineProps({
   options: {
-    type: Object,
-    required: true
+    type: Array,
+    required: true,
   },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   modelValue: {
     type: [String, Number],
-    required: true
+    required: true,
   },
   vertical: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .vertical {
   display: grid;
   justify-items: center;
@@ -50,5 +48,4 @@ defineProps({
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
 </style>

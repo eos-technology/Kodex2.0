@@ -6,12 +6,19 @@
         <span v-if="isOptional" class="drop__top b-light">(optional)</span>
       </p>
     </div>
-    <div class="drop__drag-area" @dragover.prevent="onDragOver" @dragleave.prevent="onDragleave" @drop.prevent="onDrop">
-      <img :src="getFile({route:'icons', url:'cloud',extension:'svg'})" alt="" />
+    <div
+      class="drop__drag-area"
+      @dragover.prevent="onDragOver"
+      @dragleave.prevent="onDragleave"
+      @drop.prevent="onDrop"
+    >
+      <img :src="getFile('icons', 'cloud')" alt="" />
       <span v-if="!isDragging">
         <p class="b-light">
           Drag and drop file, or
-          <span class="drop__select b-semibold" role="button" @click="selectFiles">Browse computer</span>
+          <span class="drop__select b-semibold" role="button" @click="selectFiles"
+            >Browse computer</span
+          >
         </p>
         <p class="s-light text-center">Upload files up to 8gb</p>
       </span>
@@ -30,14 +37,12 @@
 </template>
 
 <script>
-import getFile from '@/helpers/getFile';
-export default (await import("vue")).defineComponent({
+export default (await import('vue')).defineComponent({
   data() {
     return {
       images: [],
-      isDragging: false,
-      getFile
-    };
+      isDragging: false
+    }
   },
   props: {
     message: {
@@ -51,52 +56,51 @@ export default (await import("vue")).defineComponent({
   },
   methods: {
     selectFiles() {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput.click()
     },
     onFileSelect(event) {
-      const files = event.target.files;
-      if (files.length === 0) return;
+      const files = event.target.files
+      if (files.length === 0) return
       for (let i = 0; i < files.length; i++) {
-        if (files[i].type.split("/")[0] != "image") continue;
+        if (files[i].type.split('/')[0] != 'image') continue
         if (!this.images.some((e) => e.name === files[i].name)) {
           this.images.push({
             name: files[i].name,
-            url: URL.createObjectURL(files[i]),
-          });
+            url: URL.createObjectURL(files[i])
+          })
         }
       }
-      console.log(this.images);
+      console.log(this.images)
     },
     deleteImage(index) {
-      this.images.splice(index, 1);
+      this.images.splice(index, 1)
     },
     onDragOver(event) {
-      event.preventDefault();
-      this.isDragging = true;
-      event.dataTransfer.dropEffect = "copy";
+      event.preventDefault()
+      this.isDragging = true
+      event.dataTransfer.dropEffect = 'copy'
     },
     onDragleave(event) {
-      event.preventDefault();
-      this.isDragging = false;
+      event.preventDefault()
+      this.isDragging = false
     },
     onDrop(event) {
-      event.preventDefault();
-      this.isDragging = false;
-      const files = event.dataTransfer.files;
+      event.preventDefault()
+      this.isDragging = false
+      const files = event.dataTransfer.files
       for (let i = 0; i < files.length; i++) {
-        if (files[i].type.split("/")[0] != "image") continue;
+        if (files[i].type.split('/')[0] != 'image') continue
         if (!this.images.some((e) => e.name === files[i].name)) {
           this.images.push({
             name: files[i].name,
-            url: URL.createObjectURL(files[i]),
-          });
+            url: URL.createObjectURL(files[i])
+          })
         }
       }
-    },
-  },
-});
+    }
+  }
+})
 </script>
-
 
 <style lang="scss" scoped>
 .drop {
@@ -104,11 +108,9 @@ export default (await import("vue")).defineComponent({
   display: grid;
   gap: 4px;
   overflow: hidden;
-
   &__top {
     color: #525e7b;
   }
-
   &__button {
     outline: 0;
     border: 0;
@@ -119,10 +121,8 @@ export default (await import("vue")).defineComponent({
     width: 100%;
     background-color: #091d8b;
   }
-
   &__drag-area {
-    padding: 38px 26px;
-    /* Convertido de 2.4rem a 38px y 1.6rem a 26px */
+    padding: 2.4rem 1.6rem;
     height: 13.5rem;
     border-radius: 8px;
     border: 1px dashed #091d8b;
@@ -132,21 +132,17 @@ export default (await import("vue")).defineComponent({
     justify-items: center;
     user-select: center;
     -webkit-user-select: none;
-
     &.visible {
       font-size: 18px;
     }
   }
-
   &__select {
     cursor: pointer;
     transition: 0.4s;
-
     &:hover {
       opacity: 0.6;
     }
   }
-
   &__container {
     width: 100%;
     height: auto;
@@ -154,21 +150,17 @@ export default (await import("vue")).defineComponent({
     align-items: center;
     flex-wrap: wrap;
     position: relative;
-    gap: 26px;
-    /* Convertido de 1.6rem a 26px */
+    gap: 1.6rem;
   }
-
   &__image {
     width: 7.5rem;
     height: 7.5rem;
     position: relative;
-
     img {
       width: 100%;
       height: 100%;
       border-radius: 5px;
     }
-
     span {
       position: absolute;
       top: -2px;
@@ -178,7 +170,6 @@ export default (await import("vue")).defineComponent({
     }
   }
 }
-
 .drop input,
 .drop__drag-area .on-drop,
 .drop__drag-area.dragover .visible {

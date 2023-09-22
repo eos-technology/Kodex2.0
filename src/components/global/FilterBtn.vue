@@ -12,9 +12,7 @@
           <h3 class="h3-bold">{{ $t('filter.filter') }}</h3>
           <div class="filter__accordion">
             <v-expansion-panels variant="accordion">
-              <v-expansion-panel
-                title="Estado"
-              >
+              <v-expansion-panel title="Estado">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
                     <div class="expansion-item">
@@ -37,10 +35,7 @@
                 </v-expansion-panel-text>
               </v-expansion-panel>
 
-
-              <v-expansion-panel
-                :title="$t('payments.amount')"
-              >
+              <v-expansion-panel :title="$t('payments.amount')">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
                     <div class="expansion-item">
@@ -66,10 +61,7 @@
                 </v-expansion-panel-text>
               </v-expansion-panel>
 
-
-              <v-expansion-panel
-                :title="$t('payments.date')"
-              >
+              <v-expansion-panel :title="$t('payments.date')">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
                     <div class="expansion-item">
@@ -120,15 +112,13 @@ const filter = reactive({
   amountHight: null,
   dateFrom: null,
   dateTo: null
-
 })
 </script>
 
 <style lang="scss" scoped>
 .filter {
-  
-  :global( .v-menu > .v-overlay__content > .v-list ){
-    box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.10), 0px 4px 6px -4px rgba(16, 24, 40, 0.10);
+  :global(.v-menu > .v-overlay__content > .v-list) {
+    box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
   }
 
   :deep(.v-btn) {
@@ -138,23 +128,23 @@ const filter = reactive({
     flex-direction: row;
     gap: 8px;
   }
-  
-  &__btn-box{
+
+  &__btn-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
-    :deep(.v-btn){
+
+    :deep(.v-btn) {
       border-radius: 16px;
       text-transform: none;
     }
   }
 
-  &__accordion{
+  &__accordion {
     max-width: 358px;
-    :deep(.v-expansion-panel-title){
-      color: #091D8B;
+    :deep(.v-expansion-panel-title) {
+      color: #091d8b;
       font-size: 24px;
       font-style: normal;
       font-weight: 600;
@@ -169,64 +159,64 @@ const filter = reactive({
   }
 }
 
-.expansion-content{
+.expansion-content {
   height: fit-content;
 
-  .expansion-item{
+  .expansion-item {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
-    :deep(.v-input__details){
+    :deep(.v-input__details) {
       display: none;
     }
 
-    :deep(.v-input){
+    :deep(.v-input) {
       flex: none;
     }
 
-    :deep(.v-checkbox .v-selection-control){
+    :deep(.v-checkbox .v-selection-control) {
       min-height: auto;
     }
-
-    
   }
 }
 
-.b-regular{
-  color: #001E62;
+.b-regular {
+  color: #001e62;
 }
 
-:deep(.v-expansion-panel-text__wrapper){
+:deep(.v-expansion-panel-text__wrapper) {
   padding-left: 0;
   padding-right: 0;
 }
 
-:deep(.v-expansion-panel-title--active > .v-expansion-panel-title__overlay){
+:deep(.v-expansion-panel-title--active > .v-expansion-panel-title__overlay) {
   opacity: 0;
 }
 
 // switch
-:deep(.v-switch__track){
-  background-color: #E9ECF1;
+:deep(.v-switch__track) {
+  background-color: #e9ecf1;
   opacity: 1;
 }
 
-:deep(.v-selection-control--dirty .v-switch__thumb){
-  color: #FFF;
+:deep(.v-selection-control--dirty .v-switch__thumb) {
+  color: #fff;
 }
 
-:deep(.v-selection-control.v-selection-control--dirty.v-selection-control--density-default .v-switch__track){
-  background-color: #091D8B;
+:deep(
+    .v-selection-control.v-selection-control--dirty.v-selection-control--density-default
+      .v-switch__track
+  ) {
+  background-color: #091d8b;
 }
 
-:deep(.v-input__details){
+:deep(.v-input__details) {
   display: none;
 }
 
-:global(.v-menu > .v-overlay__content){
+:global(.v-menu > .v-overlay__content) {
   border-radius: 16px !important;
 }
-
 </style>

@@ -24,7 +24,6 @@ export const router = createRouter({
     transactionRoutes,
     configRoutes,
     projectRoutes,
-    authRoutes,
     dashboardRoutes,
     authRoutes
   ],

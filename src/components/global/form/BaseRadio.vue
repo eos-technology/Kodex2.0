@@ -13,21 +13,23 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-defineProps({
-  label: {
-    type: String,
-    default: ''
+<script>
+export default {
+  props: {
+    label: {
+      type: String,
+      default: "",
+    },
+    modelValue: {
+      type: [String, Number],
+      default: "",
+    },
+    value: {
+      type: [String, Number],
+      required: true,
+    },
   },
-  modelValue: {
-    type: [String, Number],
-    default: ''
-  },
-  value: {
-    type: [String, Number],
-    required: true
-  }
-})
+};
 </script>
 
 <style lang="scss" scoped>
@@ -39,8 +41,8 @@ defineProps({
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 1.8rem;
+    height: 1.8rem;
     border-radius: 50%;
     border: 1px solid #F4F5F8;
     &:checked{
@@ -48,5 +50,4 @@ defineProps({
     }
   }
 }
-
 </style>

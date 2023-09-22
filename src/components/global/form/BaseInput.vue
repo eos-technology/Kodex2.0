@@ -1,47 +1,47 @@
 <template>
   <div class="input">
     <label v-show="label" :for="uuid"><span v-show="required">*</span> {{ label }}</label>
-    <input v-bind="$attrs" :placeholder="placeholder" :id="uuid" :value="modelValue"
-      @input="$emit('update:modelValue', modelValue)" />
+    <input
+      v-bind="$attrs"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
   </div>
 </template>
 
-<script lang="ts" setup>
-import {uniqueID} from "@/helpers/Index";
-const uuid = uniqueID().getID().toString();
+<script setup>
 defineProps({
   label: {
     type: [String, Boolean],
-    default: false,
+    default: false
   },
   placeholder: {
-    type: [String],
-    default: "text",
+    type: [String, Number],
+    default: 'text'
   },
   modelValue: {
     type: [String, Number],
-    default: "",
+    default: ''
   },
   required: {
     type: Boolean,
-    default: false,
-  },
-});
+    default: false
+  }
+})
 </script>
 
 <style lang="scss" scoped>
-// @import "@/assets/sass/_colors.scss";
+@import '@/assets/sass/_colors.scss';
 
-// $border-input: #f4f5f8;
-// $bg-input: #f6f7f9;
-// $text-input: #1f2d4d;
-
+$border-input: #f4f5f8;
+$bg-input: #f6f7f9;
+$text-input: #1f2d4d;
 .input {
   display: grid;
   gap: 4px;
-
   label {
-    color: #1f2d4d;
+    color: $text-input;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -49,26 +49,23 @@ defineProps({
     text-align: left;
 
     span {
-      color: var(danger);
+      color: $danger;
       font-weight: 700;
       margin-right: 4px;
     }
   }
-
   input {
     padding: 12px 16px;
-    background-color: #f6f7f9;
-    border: 1px solid #f4f5f8;
+    background-color: $bg-input;
+    border: 1px solid $border-input;
     border-radius: 12px;
     font-size: 14px;
     font-weight: 300;
     line-height: 20px;
     color: #394357;
-
     &:focus {
       outline: none;
     }
-
   }
 }
 
@@ -76,28 +73,25 @@ defineProps({
   display: flex;
   gap: 4px;
   align-items: center;
-
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     appearance: none;
     width: 16px;
     height: 16px;
     border-radius: 6px;
-    background: #f6f7f9;
-    border: #f4f5f8;
+    background: $bg-input;
+    border: $border-input;
     cursor: pointer;
-
     &:checked {
-      background-color: var(primary);
-      background-image: url("@/assets/icons/form/check.svg");
+      background-color: $primary;
+      background-image: url('@/assets/icons/form/check.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
     }
   }
-
   label {
     font-weight: 400;
-    color: #1f2d4d;
+    color: $text-input;
     font-size: 1.7rem;
     font-weight: 2.4rem;
     cursor: pointer;
@@ -106,19 +100,17 @@ defineProps({
 
 .search {
   width: 33rem;
-
   background: {
-    image: url("@/assets/icons/form/search.svg");
+    image: url('@/assets/icons/form/search.svg');
     repeat: no-repeat;
     position: 12px;
     size: 1.6rem;
   }
-
   input {
     padding-left: 3.6rem;
   }
-
   @media (max-width: 400px) {
     width: 100%;
   }
-}</style>
+}
+</style>
