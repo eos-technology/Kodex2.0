@@ -5,7 +5,7 @@
     </div>
 
     <div class="auth__slider">
-      <!-- <swiper :pagination="true" :modules="modules" class="myswiper">
+      <swiper :pagination="true" :modules="modules" class="myswiper">
         <swiper-slide
           ><p class="myswiper__text">
             {{ $t('login.swiper') }}
@@ -21,18 +21,18 @@
             {{ $t('login.swiper') }}
           </p></swiper-slide
         >
-      </swiper> -->
+      </swiper>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-// import { Swiper, SwiperSlide } from 'swiper/vue'
-// import 'swiper/scss'
-// import 'swiper/scss/pagination'
-// import { Pagination } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/scss'
+import 'swiper/scss/pagination'
+import { Pagination } from 'swiper/modules'
 
-// const modules = [Pagination]
+const modules = [Pagination]
 </script>
 
 <style lang="scss" scoped>
