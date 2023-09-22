@@ -1,12 +1,12 @@
 const transactionRoutes = {
     path: '/transaction',
-    name: 'transaction',
+    component: () => import('@/layouts/App.vue'),
     meta: {
         requiresAuth: false
     },
     children: [
 {
-    path: 'transactions',
+    path: '',
     name: 'transactions',
     component: () => import ('@/modules/transaction/views/transactions/Index.vue')
 },
