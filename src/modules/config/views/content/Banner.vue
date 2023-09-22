@@ -37,8 +37,7 @@
 
 </template> 
 
-<script setup lang="ts"> 
-const emit = defineEmits(['uploadImage'])
+<script setup lang="ts">
 import { getFile } from '@/helpers/Index'
 </script> 
 

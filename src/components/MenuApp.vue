@@ -21,7 +21,7 @@
     </router-link>
     <div class="menu__line line"></div>
 
-    <button class="menu__plus">
+    <button class="menu__plus" @click="$router.push({name:'new_project'})">
       <img src="../assets/icons/plus.svg" alt="" />
       <v-tooltip activator="parent" location="end">Crear nuevo proyecto</v-tooltip>
     </button>

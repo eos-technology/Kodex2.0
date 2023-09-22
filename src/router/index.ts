@@ -24,10 +24,10 @@ export const router = createRouter({
     transactionRoutes,
     configRoutes,
     projectRoutes,
-    authRoutes,
     dashboardRoutes,
     authRoutes
-  ]
+  ],
+  linkExactActiveClass: 'active'
 })
 
 /* router.beforeEach((to, from, next) => {

@@ -81,7 +81,19 @@
     "login-recents": "Inicios de sesión recientes",
     "bnb": "BNB",
     "btc": "BTC",
-    "usdt": "USDT(ERC20)"
+    "usdt": "USDT(ERC20)",
+    "proyects":"Proyectos",
+    "new":"Crea un nuevo proyecto",
+    "desc1":"Describe sus datos lo más claro posible para que no haya errores en la digitación",
+    "nameProyect":"Nombre del proyecto",
+    "yourProyect":"Tu proyecto",
+    "new-btn":"Crear Nuevo Proyecto",
+    "cancel-btn":"Cancelar",
+    "allReady":"Todo listo",
+    "text-1":"Proyecto",
+    "text-2":"ha sido creado.",
+    "configure":"Configurar",
+    "omit":"Omitir configuración"
   },
   "paymentsLink": {
     "header": "Enlaces de pago",
@@ -96,7 +108,9 @@
     "share": "Compartir",
     "save": "Guardar",
     "email": "Correo",
-    "account-type": "Tipo de banco"
+    "account-type": "Tipo de banco",
+    "shareByEmail":"Compartir vía email",
+    "copyShare":"Copia y comparte su Link"
   },
   "filter": {
     "filter": "Filtro"
@@ -116,7 +130,7 @@
     "status": "ESTADO",
     "detail": "DETALLE ASOCIO",
     "button": "Descargar",
-    "approved": "Aprovado",
+    "approved": "Aprobado",
     "pending": "Pendiente",
     "cancel": "Cancelar",
     "search": "Buscar",
@@ -192,7 +206,15 @@
     "add-products": "Añadir producto o servicio",
     "text5": "Describe sus datos lo más claro posible para que no haya errores en la digitación",
     "total-products": "Cantidad total de artículos",
-    "download-qr": "Descargar QR"
+    "download-qr": "Descargar QR",
+    "minimum":"Mínimo",
+    "maximum":"Máximo",
+    "range":"Rango",
+    "from":"Desde",
+    "to":"Hasta",
+    "dateIn":"Fecha de inicio",
+    "dateOut":"Fecha de finalización",
+    "date":"Fecha"
   },
   "users": {
     "headerTitle": "Usuarios",
@@ -224,7 +246,7 @@
     "status": "ESTADO",
     "email": "CORREO",
     "options": "Opciones",
-    "edit-permissions": "Editar permisos",
+    "edit-permissions": "Permisos de usuario",
     "payment-method": "Métodos de pago",
     "delete": "Eliminar",
     "cancel": "Cancelar",
@@ -265,7 +287,7 @@
     "dateRange": "Rango de fecha",
     "startDate": "Fecha de inicio",
     "endDate": "Fecha de finalización",
-    "generate": "Generar",
+    "generate": "Guardar",
     "btnCancel": "Cancelar",
     "search": "Buscar",
     "sendReport": "Enviar reporte",
@@ -278,7 +300,9 @@
     "send": "Enviar",
     "allDone": "Todo listo",
     "sendEmail": "Se ha enviado una copia al correo",
-    "goBack": "Regresar"
+    "goBack": "Regresar",
+    "permission": "Se guardado los permisos del usuario",
+    "permission2": "del proyecto"
   },
   "setting": {
     "title": "Configuración",
@@ -397,5 +421,6 @@
   "send": "Enviar",
   "download-qr": "Descargar QR",
   "continue": "Continuar",
-  "add": "Añadir"
+  "add": "Añadir",
+  "search":"Buscar"
 }

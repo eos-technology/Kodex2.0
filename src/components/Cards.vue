@@ -52,20 +52,31 @@ defineProps({
 <style lang="scss" scoped>
 @import '@/assets/mixins';
 .cards {
-  @include grid(4, 2.4rem);
+  @include grid(4, 24px);
   @media (max-width: 1080px) {
-    @include grid(2, 2.4rem);
+    @include grid(2, 24px);
   }
   @media (max-width: 600px) {
-    @include grid(1, 2.4rem);
+    @include grid(1, 24px);
   }
   &-icon {
     padding: 12px;
-    border-radius: 1rem;
+    border-radius: 16px;
     background-color: #ebf3ff;
-    font-size: 2.4rem;
+    font-size: 24px;
     color: #001e62;
-    margin-right: 1rem;
+    margin-right: 10px;
+    
   }
+}
+
+p{
+  color: #0A1E8C;
+}
+
+
+:deep(.v-card){
+  border-radius: 16px !important;
+  border: 1px solid #DDE4ED;
 }
 </style>
