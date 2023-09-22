@@ -47,7 +47,7 @@ const routes = [
   { icon: 'clock', name: 'Reports', route: '' },
   { icon: 'bank', name: 'Métodos de pago', route: '' },
   { icon: 'user', name: 'Usuarios', route: '' },
-  { icon: 'setting', name: 'Configuración', route: '' }
+  { icon: 'setting', name: 'Configuración', route: 'config' }
 ]
 </script>
 
