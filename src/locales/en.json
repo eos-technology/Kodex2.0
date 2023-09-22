@@ -80,7 +80,19 @@
     "login-recents": "Recent logins",
     "bnb": "BNB",
     "btc": "BTC",
-    "usdt": "USDT(ERC20)"
+    "usdt": "USDT(ERC20)",
+    "proyects":"Projects",
+    "new":"Create a new project",
+    "desc1":"Describe your data as clearly as possible to avoid typing errors",
+    "nameProyect":"Project Name",
+    "yourProyect":"Your proyect",
+    "new-btn":"Create New Proyect",
+    "cancel-btn":"Cancel",
+    "allReady":"All ready",
+    "text-1":"Project",
+    "text-2":"has been created.",
+    "configure":"Configure",
+    "omit":"Skip"
   },
   "paymentsLink": {
     "header": "payment links",
