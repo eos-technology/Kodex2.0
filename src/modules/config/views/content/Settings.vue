@@ -195,6 +195,7 @@
 import { ref } from 'vue'
 import VerifyApi from './VerifyApi.vue'
 import ApprovedApi from './ApprovedApi.vue';
+import DropZone from '@/components/global/ui/DropZone.vue'
 
 const selected = ref(1)
 

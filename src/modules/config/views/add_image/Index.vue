@@ -27,6 +27,7 @@
 </template> 
 
 <script setup lang="ts">
+import DropZone from '@/components/global/ui/DropZone.vue'
 
 </script> 
 
