@@ -1,12 +1,12 @@
 const reportRoutes = {
     path: '/report',
-    name: 'report',
+    component: () => import('@/layouts/App.vue'),
     meta: {
         requiresAuth: false
     },
     children: [
 {
-    path: 'reports',
+    path: '',
     name: 'reports',
     component: () => import ('@/modules/report/views/reports/Index.vue')
 },
@@ -19,6 +19,11 @@ const reportRoutes = {
     path: 'download',
     name: 'download',
     component: () => import ('@/modules/report/views/download/Index.vue')
+},
+{
+    path: 'send_report',
+    name: 'send_report',
+    component: () => import ('@/modules/report/views/send_report/Index.vue')
 },
 {
     path: 'details',
