@@ -81,7 +81,19 @@
     "login-recents": "Inicios de sesión recientes",
     "bnb": "BNB",
     "btc": "BTC",
-    "usdt": "USDT(ERC20)"
+    "usdt": "USDT(ERC20)",
+    "proyects":"Proyectos",
+    "new":"Crea un nuevo proyecto",
+    "desc1":"Describe sus datos lo más claro posible para que no haya errores en la digitación",
+    "nameProyect":"Nombre del proyecto",
+    "yourProyect":"Tu proyecto",
+    "new-btn":"Crear Nuevo Proyecto",
+    "cancel-btn":"Cancelar",
+    "allReady":"Todo listo",
+    "text-1":"Proyecto",
+    "text-2":"ha sido creado.",
+    "configure":"Configurar",
+    "omit":"Omitir configuración"
   },
   "paymentsLink": {
     "header": "Enlaces de pago",
