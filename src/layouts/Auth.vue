@@ -70,6 +70,9 @@ const modules = [Pagination]
   &__slider {
     display: none;
     height: 100%;
+    overflow: hidden;
+    border-radius: 32px;
+
     @media (min-width: 900px) {
       display: unset;
       min-width: 50%;
@@ -107,7 +110,6 @@ const modules = [Pagination]
       background-repeat: no-repeat;
       text-align: center;
       font-size: 18px;
-      border-radius: 32px;
       /* Center slide text vertically */
       display: flex;
       justify-content: center;
