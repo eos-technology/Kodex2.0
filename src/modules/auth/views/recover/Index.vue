@@ -39,7 +39,7 @@
         >{{ $t('login.resetPass') }}</v-btn
       >
       <div class="login__links">
-        <router-link to="" class="link-auth">{{ $t('login.account') }}</router-link>
+        <router-link to="register" class="link-auth">{{ $t('login.account') }}</router-link>
         <router-link :to="{ name: 'register' }" class="link-aux">{{
           $t('login.newAccount')
         }}</router-link>
@@ -104,7 +104,7 @@
         >{{ $t('login.resetPass') }}</v-btn
       >
       <div class="login__links">
-        <router-link to="" class="link-auth">{{ $t('login.account') }}</router-link>
+        <router-link to="register" class="link-auth">{{ $t('login.account') }}</router-link>
         <router-link :to="{ name: 'register' }" class="link-aux">{{
           $t('login.newAccount')
         }}</router-link>
@@ -162,9 +162,9 @@ const form = ref({
 <style lang="scss" scoped>
 .btn-outline-secondary {
   background: #fafafa;
-  border-radius: 12px; /* 1.2rem = 12px */
+  border-radius: 12px;
   width: 100%;
   border: 1px solid #dde4ed;
-  padding: 12px 16px; /* 1.2rem = 12px, 1.6rem = 16px */
+  padding: 12px 16px;
 }
 </style>

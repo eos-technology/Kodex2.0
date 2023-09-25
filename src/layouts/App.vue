@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <MenuApp class="app__menu" @click="isMenuOpen = false" />
-    <!-- <MenuAppMobile class="app__menu-mobile" /> -->
+    <MenuAppMobile class="app__menu-mobile" />
     <div class="app__content">
       <MenuProjects v-if="$route.name != 'dashboard'" @menu-clicked="handleMenuClicked" />
       <div class="app__content-int" :class="contentClass">
@@ -16,6 +16,7 @@ import { ref, computed } from 'vue'
 import MenuApp from '@/components/MenuApp.vue'
 import MenuProjects from '@/components/MenuProjects.vue'
 import { useRoute } from 'vue-router'
+import MenuAppMobile from '@/components/MenuAppMobile.vue'
 const route = useRoute()
 
 const isMenuOpen = ref(false)
@@ -35,8 +36,6 @@ const contentClass = computed(() => {
     }
   }
 })
-
-// import MenuAppMobile from '@/components/MenuAppMobile.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +53,6 @@ const contentClass = computed(() => {
     height: 100%;
     min-height: 100vh;
     position: fixed;
-
     @media (max-width: 768px) {
       display: none;
     }
@@ -73,9 +71,8 @@ const contentClass = computed(() => {
     min-height: 100vh;
     height: 100%;
     @media (max-width: 768px) {
-      margin-top: 65px;
+      margin: 75px 0 0;
       border-top-left-radius: 0;
-      margin-left: 0;
       width: 100%;
       max-width: unset;
     }
@@ -87,7 +84,6 @@ const contentClass = computed(() => {
       background-color: #f8f8f8;
       padding: 1.5rem;
       margin-left: 72px;
-
       width: 100%;
       min-height: 100vh;
       height: 100%;
@@ -97,19 +93,40 @@ const contentClass = computed(() => {
       &::-webkit-scrollbar-thumb {
         background-color: #888;
       }
+
+      @media (max-width: 768px) {
+        width: 100%;
+        max-width: unset;
+        margin-left: 0;
+        border-top-left-radius: 0px;
+        max-height: 100vh;
+        position: unset;
+        overflow-y: unset;
+      }
     }
   }
 }
 
 .menu-hide {
   max-width: calc(100vw - 144px);
+  @media (max-width: 768px) {
+    max-width: unset;
+  }
 }
 .menu-show__text {
-  max-width: calc(100vw - 264px);
+  max-width: calc(100vw - 336px);
   margin-left: 264px;
+  @media (max-width: 768px) {
+    max-width: unset;
+    margin-left: 0;
+  }
 }
 .menu-show {
   max-width: calc(100vw - 72px);
   margin-left: 0;
+  @media (max-width: 768px) {
+    max-width: unset;
+    margin-left: 0;
+  }
 }
 </style>

@@ -50,7 +50,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/mixins';
+@import '@/assets/sass/mixins';
 .cards {
   @include grid(4, 24px);
   @media (max-width: 1080px) {
@@ -66,17 +66,15 @@ defineProps({
     font-size: 24px;
     color: #001e62;
     margin-right: 10px;
-    
   }
 }
 
-p{
-  color: #0A1E8C;
+p {
+  color: #0a1e8c;
 }
 
-
-:deep(.v-card){
+:deep(.v-card) {
   border-radius: 16px !important;
-  border: 1px solid #DDE4ED;
+  border: 1px solid #dde4ed;
 }
 </style>

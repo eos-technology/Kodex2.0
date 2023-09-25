@@ -4,10 +4,18 @@
     <!-- Banner -->
     <div class="dashboard__swiper">
       <swiper :pagination="true" :modules="modules" class="swiper">
-        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
-        <swiper-slide><img :src="getFile({route: 'images', url: 'banner', extension: 'webp'})" alt="" /></swiper-slide>
+        <swiper-slide
+          ><img :src="getFile({ route: 'images', url: 'banner', extension: 'webp' })" alt=""
+        /></swiper-slide>
+        <swiper-slide
+          ><img :src="getFile({ route: 'images', url: 'banner', extension: 'webp' })" alt=""
+        /></swiper-slide>
+        <swiper-slide
+          ><img :src="getFile({ route: 'images', url: 'banner', extension: 'webp' })" alt=""
+        /></swiper-slide>
+        <swiper-slide
+          ><img :src="getFile({ route: 'images', url: 'banner', extension: 'webp' })" alt=""
+        /></swiper-slide>
       </swiper>
     </div>
 
@@ -43,7 +51,7 @@
     <!-- Project Detaail and Payments Methods -->
     <ProjectDetail class="project" />
     <!-- Sesion -->
-    <SesionsView /> 
+    <SesionsView />
   </section>
 </template>
 
@@ -57,7 +65,7 @@ import SesionsView from './content/SesionsView.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/scss'
 import 'swiper/scss/pagination'
-import { Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules'
 
 const modules = [Pagination]
 
@@ -70,12 +78,12 @@ const modules = [Pagination]
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/mixins';
+@import '@/assets/sass/mixins';
 .dashboard {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  overflow: hidden;
+
   &__swiper {
     width: 100%;
     height: 12.5rem;

@@ -170,8 +170,8 @@
       >
 
       <div class="login__links">
-        <router-link to="" class="link-auth">{{ $t('login.forget') }}</router-link>
-        <router-link to="" class="link-aux">{{ $t('login.sesion') }}</router-link>
+        <router-link to="recover" class="link-auth">{{ $t('login.forget') }}</router-link>
+        <router-link to="login" class="link-aux">{{ $t('login.sesion') }}</router-link>
       </div>
     </div>
   </section>
@@ -199,8 +199,8 @@
         >
 
         <div class="login__links">
-          <router-link to="" class="link-auth">{{ $t('login.account') }}</router-link>
-          <router-link :to="{ name: 'register' }" class="link-aux">{{
+          <router-link to="register" class="link-auth">{{ $t('login.account') }}</router-link>
+          <router-link :to="{ name: 'login' }" class="link-aux">{{
             $t('login.sesion')
           }}</router-link>
         </div>

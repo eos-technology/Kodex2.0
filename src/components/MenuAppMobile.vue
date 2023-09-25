@@ -67,12 +67,12 @@ const openProject = ref(false)
 
 const routes = [
   { icon: 'dash', name: 'Dashboard', route: 'project' },
-  { icon: 'link', name: 'Enlaces de pago', route: 'payments' },
-  { icon: 'transaction', name: 'Transaction', route: 'transaction' },
+  { icon: 'link', name: 'Enlaces de pago', route: 'payment_links' },
+  { icon: 'transaction', name: 'Transaction', route: 'transactions' },
   { icon: 'clock', name: 'Reports', route: 'reports' },
-  { icon: 'bank', name: 'Métodos de pago', route: 'paymentMethod' },
-  { icon: 'user', name: 'Usuarios', route: 'users' },
-  { icon: 'setting', name: 'Configuración', route: 'setting' }
+  { icon: 'bank', name: 'Métodos de pago', route: 'payment_method' },
+  { icon: 'user', name: 'Usuarios', route: 'user' },
+  { icon: 'setting', name: 'Configuración', route: 'config' }
 ]
 </script>
 

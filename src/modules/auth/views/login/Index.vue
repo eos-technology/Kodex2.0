@@ -77,7 +77,9 @@
         <router-link :to="{ name: 'recover' }" class="link-auth">{{
           $t('login.forget')
         }}</router-link>
-        <router-link :to="{ name: '' }" class="link-aux">{{ $t('login.newAccount') }}</router-link>
+        <router-link :to="{ name: 'register' }" class="link-aux text-secondary-darken-1">{{
+          $t('login.newAccount')
+        }}</router-link>
       </div>
     </div>
   </form>
@@ -105,8 +107,10 @@
         {{ $t('login.code') }}
       </v-btn>
       <div class="login__links">
-        <router-link to="" class="link-auth">{{ $t('login.account') }}</router-link>
-        <router-link :to="{ name: '' }" class="link-aux">{{ $t('login.newAccount') }}</router-link>
+        <router-link to="recover" class="link-auth">{{ $t('login.account') }}</router-link>
+        <router-link :to="{ name: 'register' }" class="link-aux">{{
+          $t('login.newAccount')
+        }}</router-link>
       </div>
     </div>
   </section>

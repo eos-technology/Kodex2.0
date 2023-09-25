@@ -88,7 +88,7 @@ const modules = [Pagination]
   --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.3);
   --swiper-pagination-color: #ffffff;
   --swiper-pagination-bullet-width: 160px;
-  --swiper-pagination-bullet-height: 16px;
+  --swiper-pagination-bullet-height: 10px;
   --swiper-pagination-bullet-border-radius: 5px;
   --swiper-pagination-bottom: 56px;
   --swiper-pagination-bullet-horizontal-gap: 8px;
@@ -100,7 +100,7 @@ const modules = [Pagination]
     letter-spacing: 0em;
     text-align: center;
     color: #fff;
-    padding: 0 18%;
+    padding: 120px 15%;
   }
   .swiper {
     &-slide {
@@ -114,7 +114,6 @@ const modules = [Pagination]
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      padding-bottom: 114px;
     }
   }
 }
