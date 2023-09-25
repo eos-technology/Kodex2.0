@@ -88,6 +88,30 @@
     }
   }
   
+  .dot {
+    height: 8px; 
+    width: 8px; 
+    border-radius: 100%;
+  }
+
+  .dot-status {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    border-radius: 100%;
+  }
+  
+  .dot-status--enable{
+    background-color: #00B183;
+  }
+  
+  .dot-status--in-process{
+    background-color: #F2C744;
+  }
+  
+  .dot-status--disable{
+    background-color: #040919;
+  }
 
 
 
