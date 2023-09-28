@@ -81,18 +81,18 @@
     "bnb": "BNB",
     "btc": "BTC",
     "usdt": "USDT(ERC20)",
-    "proyects":"Projects",
-    "new":"Create a new project",
-    "desc1":"Describe your data as clearly as possible to avoid typing errors",
-    "nameProyect":"Project Name",
-    "yourProyect":"Your proyect",
-    "new-btn":"Create New Proyect",
-    "cancel-btn":"Cancel",
-    "allReady":"All ready",
-    "text-1":"Project",
-    "text-2":"has been created.",
-    "configure":"Configure",
-    "omit":"Skip"
+    "proyects": "Projects",
+    "new": "Create a new project",
+    "desc1": "Describe your data as clearly as possible to avoid typing errors",
+    "nameProyect": "Project Name",
+    "yourProyect": "Your proyect",
+    "new-btn": "Create New Proyect",
+    "cancel-btn": "Cancel",
+    "allReady": "All ready",
+    "text-1": "Project",
+    "text-2": "has been created.",
+    "configure": "Configure",
+    "omit": "Skip"
   },
   "paymentsLink": {
     "header": "payment links",
@@ -108,8 +108,8 @@
     "save": "Save",
     "email": "Email",
     "account-type": "Bank type",
-    "shareByEmail":"Share via email",
-    "copyShare":"Copy and share your link"
+    "shareByEmail": "Share via email",
+    "copyShare": "Copy and share your link"
   },
   "transactions": {
     "headerTitle": "Transactions",
@@ -202,14 +202,14 @@
     "text5": "Describe your data as clearly as possible to avoid errors in typing",
     "total-products": "Total quantity of items",
     "download-qr": "Download QR",
-    "minimum":"Minimum",
-    "maximum":"Maximum",
-    "range":"Range",
-    "from":"From",
-    "to":"To",
-    "dateIn":"Start date",
-    "dateOut":"Finish date",
-    "date":"Date"
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    "range": "Range",
+    "from": "From",
+    "to": "To",
+    "dateIn": "From",
+    "dateOut": "Until",
+    "date": "Date"
   },
   "users": {
     "headerTitle": "users",
@@ -416,8 +416,8 @@
   "download-qr": "Download QR",
   "continue": "Continue",
   "add": "Add",
-  "search":"Search",
-  "filter":{
-    "filter":"Filter"
+  "search": "Search",
+  "filter": {
+    "filter": "Filter"
   }
 }

@@ -82,18 +82,18 @@
     "bnb": "BNB",
     "btc": "BTC",
     "usdt": "USDT(ERC20)",
-    "proyects":"Proyectos",
-    "new":"Crea un nuevo proyecto",
-    "desc1":"Describe sus datos lo más claro posible para que no haya errores en la digitación",
-    "nameProyect":"Nombre del proyecto",
-    "yourProyect":"Tu proyecto",
-    "new-btn":"Crear Nuevo Proyecto",
-    "cancel-btn":"Cancelar",
-    "allReady":"Todo listo",
-    "text-1":"Proyecto",
-    "text-2":"ha sido creado.",
-    "configure":"Configurar",
-    "omit":"Omitir configuración"
+    "proyects": "Proyectos",
+    "new": "Crea un nuevo proyecto",
+    "desc1": "Describe sus datos lo más claro posible para que no haya errores en la digitación",
+    "nameProyect": "Nombre del proyecto",
+    "yourProyect": "Tu proyecto",
+    "new-btn": "Crear Nuevo Proyecto",
+    "cancel-btn": "Cancelar",
+    "allReady": "Todo listo",
+    "text-1": "Proyecto",
+    "text-2": "ha sido creado.",
+    "configure": "Configurar",
+    "omit": "Omitir configuración"
   },
   "paymentsLink": {
     "header": "Enlaces de pago",
@@ -109,8 +109,8 @@
     "save": "Guardar",
     "email": "Correo",
     "account-type": "Tipo de banco",
-    "shareByEmail":"Compartir vía email",
-    "copyShare":"Copia y comparte su Link"
+    "shareByEmail": "Compartir vía email",
+    "copyShare": "Copia y comparte su Link"
   },
   "filter": {
     "filter": "Filtro"
@@ -207,14 +207,14 @@
     "text5": "Describe sus datos lo más claro posible para que no haya errores en la digitación",
     "total-products": "Cantidad total de artículos",
     "download-qr": "Descargar QR",
-    "minimum":"Mínimo",
-    "maximum":"Máximo",
-    "range":"Rango",
-    "from":"Desde",
-    "to":"Hasta",
-    "dateIn":"Fecha de inicio",
-    "dateOut":"Fecha de finalización",
-    "date":"Fecha"
+    "minimum": "Mínimo",
+    "maximum": "Máximo",
+    "range": "Rango",
+    "from": "Desde",
+    "to": "Hasta",
+    "dateIn": "Desde",
+    "dateOut": "Hasta",
+    "date": "Fecha"
   },
   "users": {
     "headerTitle": "Usuarios",
@@ -422,5 +422,5 @@
   "download-qr": "Descargar QR",
   "continue": "Continuar",
   "add": "Añadir",
-  "search":"Buscar"
+  "search": "Buscar"
 }

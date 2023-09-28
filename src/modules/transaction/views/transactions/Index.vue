@@ -2,39 +2,44 @@
   <section class="transactions">
     <h3 class="h3-bold mb-6">{{ $t('transactions.headerTitle') }}</h3>
     <!-- Cards -->
-    <Cards
-      icon="coins"
-      :title="$t('transactions.availableBalance')"
-      value="1"
-      icon1="payment"
-      :title1="$t('transactions.totalTx')"
-      value1="0"
-      icon2="money"
-      :title2="$t('transactions.txApproved')"
-      value2="$0.00"
-      icon3="bank-clock"
-      :title3="$t('transactions.txEarrings')"
-      value3="0"
-    />
+    <div class="cards">
+      <Cards
+        class="cards__item"
+        icon="coins"
+        :title="$t('transactions.availableBalance')"
+        value="1"
+      />
+      <Cards class="cards__item" icon="payment" :title="$t('transactions.totalTx')" value="0" />
+      <Cards
+        class="cards__item"
+        icon="money"
+        :title="$t('transactions.txApproved')"
+        value="$0.00"
+      />
+      <Cards
+        class="cards__item"
+        icon="bank-clock"
+        :title="$t('transactions.txEarrings')"
+        value="0"
+      />
+    </div>
 
-    <v-card class="pa-8 rounded-lg mt-8">
-      <div class="d-flex align-center justify-space-between">
-        <v-text-field class="search" :placeholder="$t('transactions.search')" variant="solo">
+    <v-card class="card-table pa-4 pa-md-6 rounded-lg">
+      <div class="transactions__header">
+        <v-text-field :placeholder="$t('transactions.search')" variant="solo" hide-details="auto">
           <template v-slot:prepend-inner>
             <i class="icon-search"></i>
           </template>
         </v-text-field>
-        <div class="filter d-flex align-center">
+        <div class="transactions__box">
           <FilterBtn />
-          <v-btn
-            class="text-none ml-4 rounded-lg font-weight-bold primary outlined"
-            variant="outlined"
-            >{{ $t('transactions.button') }}</v-btn
-          >
+          <v-btn class="outline-btn text-none rounded-lg" variant="outlined">{{
+            $t('transactions.button')
+          }}</v-btn>
         </div>
       </div>
 
-      <!-- Cards 600px-->
+      <!-- Cards 37.5rem-->
       <div class="table-custom container" v-for="(item, index) in data" :key="index">
         <div class="container__header">
           <div>
@@ -146,7 +151,7 @@
                       $t(item.status) === $t('transactions.approved')
                         ? 'bg-success'
                         : $t(item.status) === $t('transactions.pending')
-                        ? 'bg-yellow' 
+                        ? 'bg-yellow'
                         : 'bg-red'
                     "
                   ></div>
@@ -165,7 +170,10 @@
                         <i class="icon-bell"></i>
                       </button>
                     </router-link>
-                    <p class="transaction__table-link-text">{{ $t(item.notification) }}</p>
+                    <v-tooltip activator="parent" location="bottom">{{
+                      $t(item.notification)
+                    }}</v-tooltip>
+                    <!-- <p class="transaction__table-link-text">{{ $t(item.notification) }}</p> -->
                   </div>
                   <div class="transaction__table-link">
                     <router-link
@@ -177,13 +185,17 @@
                         <i class="icon-bank-send"></i>
                       </button>
                     </router-link>
-                    <p class="transaction__table-link-text">{{ $t(item.send) }}</p>
+                    <v-tooltip activator="parent" location="bottom">{{ $t(item.send) }}</v-tooltip>
+                    <!-- <p class="transaction__table-link-text">{{ $t(item.send) }}</p> -->
                   </div>
                   <div class="transaction__table-link">
                     <button class="transaction__table-link-btn">
                       <i class="icon-bank-warning"></i>
                     </button>
-                    <p class="transaction__table-link-text">{{ $t(item.validate) }}</p>
+                    <v-tooltip activator="parent" location="bottom">{{
+                      $t(item.validate)
+                    }}</v-tooltip>
+                    <!-- <p class="transaction__table-link-text">{{ $t(item.validate) }}</p> -->
                   </div>
                 </div>
               </td>
@@ -259,77 +271,115 @@ const data = [
 ]
 </script>
 <style lang="scss" scoped>
+.transactions {
+  display: grid;
+  gap: 24px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    height: 44px;
+    :deep(.v-field--variant-solo) {
+      border-radius: 0.75rem;
+      border: 0.0625rem solid #f4f5f8;
+      background: #f6f7f9;
+      box-shadow: none;
+      color: #394357;
+      max-width: 250px;
+      min-width: 200px;
+      width: 100%;
+      padding: 12px 16px;
+    }
+    :deep(.v-field__input) {
+      padding: 0;
+      margin: 0;
+      min-height: unset;
+      align-items: center;
+    }
+    :deep(.v-text-field input) {
+      margin: 0;
+      margin-left: 8px;
+      height: 20px;
+    }
+  }
+  &__box {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+}
 .transaction {
   display: flex;
   flex-direction: column;
 
   overflow: hidden;
 
-  @media (max-width: 600px) {
+  @media (max-width: 37.5rem) {
     height: 100vh;
     overflow-y: scroll;
   }
 
   &__header {
-    @media (max-width: 600px) {
+    @media (max-width: 37.5rem) {
       flex-direction: column;
       flex-direction: column-reverse;
     }
 
     &-search {
-      @media (max-width: 600px) {
+      @media (max-width: 37.5rem) {
         width: 100%;
       }
     }
 
     &-input {
-      @media (max-width: 600px) {
+      @media (max-width: 37.5rem) {
         width: 100%;
       }
     }
   }
 
   &__table {
-    @media (max-width: 600px) {
+    @media (max-width: 37.5rem) {
       display: none;
     }
 
     &-links {
       display: flex;
       align-items: center;
-      gap: 20px;
-      /* Convertido de 24rem a 240px */
+      gap: 1.25rem;
+      /* Convertido de 384px a 15rem */
     }
 
     &-box {
       display: flex;
       align-items: center;
-      gap: 8px;
-      /* Convertido de 8rem a 80px */
+      gap: 0.5rem;
+      /* Convertido de 128px a 5rem */
 
       &-dots {
         display: flex;
-        padding: 8px;
-        /* Convertido de 8rem a 80px */
+        padding: 0.5rem;
+        /* Convertido de 128px a 5rem */
         align-items: center;
-        border-radius: 12px;
-        /* Convertido de 12rem a 120px */
-        border: 1px solid #f4f5f8;
-        /* Convertido de 1rem a 10px */
+        border-radius: 0.75rem;
+        /* Convertido de 192px a 7.5rem */
+        border: 0.0625rem solid #f4f5f8;
+        /* Convertido de 16px a .625rem */
         background: #f6f8fa;
       }
 
       &-btn {
         display: flex;
-        padding: 120px 120px;
-        /* Convertido de 12rem a 120px */
+        padding: 7.5rem 7.5rem;
+        /* Convertido de 192px a 7.5rem */
         align-items: center;
-        gap: 100px;
-        /* Convertido de 10rem a 100px */
-        border-radius: 12px;
-        /* Convertido de 10rem a 100px */
-        border: 10px solid #f4f5f8;
-        /* Convertido de 1rem a 10px */
+        gap: 6.25rem;
+        /* Convertido de 160px a 6.25rem */
+        border-radius: 0.75rem;
+        /* Convertido de 160px a 6.25rem */
+        border: 1px solid #f4f5f8;
+        /* Convertido de 16px a .625rem */
       }
     }
 
@@ -338,18 +388,18 @@ const data = [
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      /* Convertido de 4rem a 40px */
+      gap: 0.625rem;
+      /* Convertido de 64px a 2.5rem */
 
       &-btn {
         display: flex;
-        padding: 10px;
-        /* Convertido de 6rem a 60px */
+        padding: 0.625rem;
+        /* Convertido de 96px a 3.75rem */
         align-items: center;
-        gap: 100px;
-        /* Convertido de 10rem a 100px */
-        border-radius: 14px;
-        /* Convertido de 10rem a 100px */
+        gap: 6.25rem;
+        /* Convertido de 160px a 6.25rem */
+        border-radius: 0.875rem;
+        /* Convertido de 160px a 6.25rem */
         border: none;
         background: #ebf3ff;
       }
@@ -361,22 +411,12 @@ const data = [
     }
   }
 
-  .filter {
-    display: flex;
-    gap: 40px;
-    /* Convertido de 16rem a 160px */
-
-    @media (max-width: 600px) {
-      width: 100%;
-    }
-  }
-
   .table {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 160px;
-    /* Convertido de 16rem a 160px */
+    gap: 10rem;
+    /* Convertido de 256px a 10rem */
 
     &__box {
       display: flex;
@@ -387,18 +427,18 @@ const data = [
       &-copy {
         display: flex;
         align-items: center;
-        gap: 160px;
-        /* Convertido de 16rem a 160px */
+        gap: 10rem;
+        /* Convertido de 256px a 10rem */
 
-        @media (max-width: 600px) {
+        @media (max-width: 37.5rem) {
           flex-direction: column;
           flex-direction: column-reverse;
           align-items: end;
         }
 
         &-value {
-          @media (max-width: 600px) {
-            max-width: 130px;
+          @media (max-width: 37.5rem) {
+            max-width: 8.125rem;
           }
         }
       }
@@ -407,17 +447,17 @@ const data = [
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 80px;
-        /* Convertido de 8rem a 80px */
+        gap: 5rem;
+        /* Convertido de 128px a 5rem */
       }
     }
   }
 
   .card-transaction {
     margin: auto;
-    width: 450px;
+    width: 28.125rem;
 
-    @media (max-width: 500px) {
+    @media (max-width: 31.25rem) {
       width: 100%;
     }
   }
@@ -425,10 +465,10 @@ const data = [
   .detalle {
     display: flex;
     align-items: flex-start;
-    gap: 240px;
-    /* Convertido de 24rem a 240px */
+    gap: 15rem;
+    /* Convertido de 384px a 15rem */
 
-    @media (max-width: 600px) {
+    @media (max-width: 37.5rem) {
       flex-direction: column;
     }
 
@@ -437,8 +477,8 @@ const data = [
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 80px;
-      /* Convertido de 8rem a 80px */
+      gap: 5rem;
+      /* Convertido de 128px a 5rem */
     }
   }
 
@@ -454,7 +494,7 @@ const data = [
   flex-direction: column;
   padding: 0;
 
-  @media (max-width: 600px) {
+  @media (max-width: 37.5rem) {
     display: flex;
   }
 
@@ -464,78 +504,68 @@ const data = [
 
   &__header {
     display: flex;
-    padding: 160px;
-    /* Convertido de 16rem a 160px */
+    padding: 10rem;
+    /* Convertido de 256px a 10rem */
     justify-content: space-between;
     align-items: center;
-    gap: 80px;
-    /* Convertido de 8rem a 80px */
-    border-bottom: 10px solid #f4f5f8;
-    /* Convertido de 1rem a 10px */
+    gap: 5rem;
+    /* Convertido de 128px a 5rem */
+    border-bottom: 0.625rem solid #f4f5f8;
+    /* Convertido de 16px a .625rem */
     background: #f9fbfc;
   }
 
   &__body {
     display: flex;
-    padding: 160px;
-    /* Convertido de 16rem a 160px */
+    padding: 10rem;
+    /* Convertido de 256px a 10rem */
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 160px;
-    /* Convertido de 16rem a 160px */
+    gap: 10rem;
+    /* Convertido de 256px a 10rem */
 
     &-info {
       display: flex;
       flex-direction: column;
-      gap: 80px;
-      /* Convertido de 8rem a 80px */
+      gap: 5rem;
+      /* Convertido de 128px a 5rem */
       width: 100%;
     }
 
     &-rows {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
     &-links {
       width: 100%;
       display: flex;
-      padding-top: 16px;
+      padding-top: 1rem;
       justify-content: space-around;
       align-items: center;
-      gap: 8px;
-      border-top: 1px solid #f4f5f8;
+      gap: 0.5rem;
+      border-top: 0.0625rem solid #f4f5f8;
     }
   }
 }
 
+.card-table {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .dot-status {
-  width: 8px;
-  height: 8px;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 100%;
 }
 
-:deep(.v-field--variant-solo) {
-  border-radius: 12px;
-  border: 1px solid var(--border-border-input, #f4f5f8);
-  background: var(--inputs-fondo-2, #f6f7f9);
-  box-shadow: none;
-  color: #394357;
-  max-width: 250px;
-  width: 100%;
-}
-
 .primary {
-  height: 48px;
-  border-radius: 16px;
-}
-
-.outlined {
-  border: 1px solid var(--border-border-input, #f4f5f8);
-  background: var(--fondos-blanco, #fff);
-  color: #001e62;
+  height: 3rem;
+  border-radius: 1rem;
 }
 
 .table-custom.transaction__table {
@@ -554,5 +584,21 @@ const data = [
     justify-content: center;
     align-items: center;
   }
+}
+
+.outline-btn {
+  border-radius: 12px;
+  border: 1px solid #f4f5f8;
+  color: #051255;
+  width: fit-content;
+  height: 44px;
+  padding: 10px 16px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
 }
 </style>

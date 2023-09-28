@@ -2,14 +2,14 @@
   <div class="filter">
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" variant="outlined" v-bind="props"
+        <v-btn variant="outlined" v-bind="props"
           ><i class="icon-filter"></i> {{ $t('filter.filter') }}
         </v-btn>
       </template>
 
-      <v-list>
-        <v-list-item>
-          <h3 class="h3-bold">{{ $t('filter.filter') }}</h3>
+      <v-list class="pa-0">
+        <v-list-item class="pa-0">
+          <h3 class="h4-bold pa-4 text-primary">{{ $t('filter.filter') }}</h3>
           <div class="filter__accordion">
             <v-expansion-panels variant="accordion">
               <v-expansion-panel title="Estado">
@@ -38,25 +38,40 @@
               <v-expansion-panel :title="$t('payments.amount')">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
-                    <div class="expansion-item">
-                      <p class="b-regular">{{ $t('payments.range') }}</p>
-                      <v-switch v-model="disableAmount" inset></v-switch>
+                    <div class="filter__inputs">
+                      <div class="expansion-item">
+                        <p class="b-regular">{{ $t('payments.range') }}</p>
+                        <v-switch v-model="disableAmount" inset></v-switch>
+                      </div>
+                      <label for="minimum">
+                        <p class="b-regular mb-1">{{ $t('payments.minimum') }}</p>
+                        <v-text-field
+                          placeholder="$0.00"
+                          type="number"
+                          v-model="filter.amountLow"
+                          :disabled="!disableAmount"
+                          variant="outlined"
+                          density="compact"
+                          rounded="lg"
+                          id="minimum"
+                          flat
+                        ></v-text-field>
+                      </label>
+                      <label for="high">
+                        <p class="b-regular mb-1">{{ $t('payments.maximum') }}</p>
+                        <v-text-field
+                          placeholder="$0.00"
+                          type="number"
+                          v-model="filter.amountHight"
+                          :disabled="!disableAmount"
+                          variant="outlined"
+                          density="compact"
+                          rounded="lg"
+                          id="high"
+                          flat
+                        ></v-text-field>
+                      </label>
                     </div>
-
-                    <TextField
-                      :label="$t('payments.minimum')"
-                      placeholder="$0.00"
-                      type="number"
-                      v-model="filter.amountLow"
-                      :disabled="disableAmount"
-                    />
-                    <TextField
-                      :label="$t('payments.maximum')"
-                      placeholder="$0.00"
-                      type="number"
-                      v-model="filter.amountHight"
-                      :disabled="disableAmount"
-                    />
                   </div>
                 </v-expansion-panel-text>
               </v-expansion-panel>
@@ -69,30 +84,44 @@
                       <v-switch v-model="disableDate" inset></v-switch>
                     </div>
 
-                    <TextField
-                      :label="$t('payments.dateIn')"
-                      placeholder="$0.00"
-                      type="date"
-                      v-model="filter.dateFrom"
-                      :disabled="disableDate"
-                    />
-                    <TextField
-                      :label="$t('payments.dateOut')"
-                      placeholder="$0.00"
-                      type="date"
-                      v-model="filter.dateTo"
-                      :disabled="disableDate"
-                    />
+                    <div class="filter__inputs">
+                      <label for="dateIn">
+                        <p class="b-regular mb-1">{{ $t('payments.dateIn') }}</p>
+                        <v-text-field
+                          type="date"
+                          v-model="filter.dateFrom"
+                          :disabled="!disableDate"
+                          variant="outlined"
+                          density="compact"
+                          rounded="lg"
+                          id="dateIn"
+                          flat
+                        ></v-text-field>
+                      </label>
+                      <label for="dateOut">
+                        <p class="b-regular mb-1">{{ $t('payments.dateOut') }}</p>
+                        <v-text-field
+                          type="date"
+                          v-model="filter.dateTo"
+                          :disabled="!disableDate"
+                          variant="outlined"
+                          density="compact"
+                          rounded="lg"
+                          id="dateOut"
+                          flat
+                        ></v-text-field>
+                      </label>
+                    </div>
                   </div>
                 </v-expansion-panel-text>
               </v-expansion-panel>
             </v-expansion-panels>
           </div>
         </v-list-item>
-        <v-list-item>
+        <v-list-item class="pa-4 filter__footer">
           <div class="filter__btn-box">
-            <v-btn color="primary" variant="outlined">Clear</v-btn>
-            <v-btn color="primary">Save</v-btn>
+            <v-btn size="large" color="primary" variant="outlined">Clear</v-btn>
+            <v-btn size="large" color="primary">Save</v-btn>
           </div>
         </v-list-item>
       </v-list>
@@ -117,16 +146,31 @@ const filter = reactive({
 
 <style lang="scss" scoped>
 .filter {
+  &__inputs {
+    display: grid;
+    gap: 1rem;
+  }
+  &__footer {
+    border-top: 1px solid #dde4ed;
+  }
   :global(.v-menu > .v-overlay__content > .v-list) {
     box-shadow: 0px 10px 15px -3px rgba(16, 24, 40, 0.1), 0px 4px 6px -4px rgba(16, 24, 40, 0.1);
   }
 
   :deep(.v-btn) {
-    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid #f4f5f8;
+    color: #051255;
     width: fit-content;
+    height: 44px;
+    padding: 10px 16px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
     display: flex;
-    flex-direction: row;
-    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
   }
 
   &__btn-box {
@@ -142,15 +186,14 @@ const filter = reactive({
   }
 
   &__accordion {
-    max-width: 358px;
+    max-width: 300px;
     :deep(.v-expansion-panel-title) {
       color: #091d8b;
-      font-size: 24px;
+      font-size: 18px;
       font-style: normal;
       font-weight: 600;
       line-height: 140%;
-      padding: 0;
-      min-width: 358px;
+      padding: 12px 24px;
     }
   }
 
@@ -167,6 +210,7 @@ const filter = reactive({
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    height: 28px;
 
     :deep(.v-input__details) {
       display: none;
@@ -187,8 +231,7 @@ const filter = reactive({
 }
 
 :deep(.v-expansion-panel-text__wrapper) {
-  padding-left: 0;
-  padding-right: 0;
+  padding: 16px 24px;
 }
 
 :deep(.v-expansion-panel-title--active > .v-expansion-panel-title__overlay) {

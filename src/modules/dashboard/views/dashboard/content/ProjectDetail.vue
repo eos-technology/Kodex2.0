@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-4 pa-md-6 rounded-lg">
+  <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
     <div class="project-detail">
       <!-- Poject Detail -->
       <div class="card-header">
@@ -60,7 +60,7 @@
 
       <div v-for="(item, index) in coins" :key="index" class="payments">
         <div class="payments__coin">
-          <img :src="getFile({route: 'icons', url: `${item.icon}`, extension: 'png'})" alt="" />
+          <img :src="getFile({ route: 'icons', url: `${item.icon}`, extension: 'png' })" alt="" />
           <div>
             <p class="l-medium">{{ item.coin }}</p>
             <p class="s-light text-no-wrap">{{ $t(item.value) }}</p>
@@ -80,8 +80,12 @@
           <p class="l-medium">{{ item.ammountValue }}</p>
         </div>
       </div>
-
-      <v-pagination v-model="page" :length="5" rounded="circle"></v-pagination>
+      <v-pagination
+        v-model="currentPage"
+        :length="rows"
+        :total-visible="7"
+        align="center"
+      ></v-pagination>
     </div>
   </v-card>
 </template>
@@ -90,7 +94,8 @@
 import { ref } from 'vue'
 import ChartProject from '../charts/ChartProject.vue'
 import { getFile } from '@/helpers/Index'
-const page = ref(3)
+const rows = ref(100)
+const currentPage = ref(3)
 const coins = [
   {
     icon: 'tether',
@@ -194,14 +199,27 @@ const coins = [
   &-detail {
     display: flex;
     flex-direction: column;
-    gap: 24px; 
+    gap: 24px;
   }
   &-chart {
     height: 416px;
   }
+  :deep(.v-btn) {
+    border-radius: 12px;
+    border: 1px solid #f4f5f8;
+    color: #001e62;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  :deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
+    background: #051255 !important;
+    color: #fff;
+  }
 }
-
-
-
 </style>
-

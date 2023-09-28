@@ -1,12 +1,16 @@
 <template>
   <div class="card-big">
-    <v-card class="pa-4 pa-md-6 rounded-lg">
+    <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
       <div class="card-header main-header mb-6">
         <h4 class="h4-semibold">{{ $t('dashboard.login-recents') }}</h4>
         <router-link to="#" class="link-auth">{{ $t('view-all') }}</router-link>
       </div>
       <div class="sesion">
-        <v-card v-for="(item, index) in data" :key="index" class="rounded-lg pa-4 pa-md-6">
+        <v-card
+          v-for="(item, index) in data"
+          :key="index"
+          class="rounded-lg pa-4 pa-md-6 elevation-0 border"
+        >
           <div class="card-header mb-6">
             <div class="card-box">
               <i :class="`icon-${item.iconCard} sesion__icon`"></i>

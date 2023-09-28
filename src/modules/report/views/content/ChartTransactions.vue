@@ -1,10 +1,10 @@
 <template>
-  <v-card class="pa-6">
-    <div class="d-flex justify-space-between">
+  <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
+    <div class="chart">
       <div class="d-flex card__buttons">
         <v-btn variant="outlined" class="card__buttons-approved rounded-lg">
           <div class="dot bg-success mr-2"></div>
-          <p class="l-regular text-none"> {{ $t('reports.approved') }}</p>
+          <p class="l-regular text-none">{{ $t('reports.approved') }}</p>
         </v-btn>
         <v-btn variant="outlined" class="card__buttons-pending rounded-lg">
           <div class="dot bg-yellow mr-2"></div>
@@ -15,12 +15,12 @@
           <p class="l-regular text-none">{{ $t('reports.cancel') }}</p>
         </v-btn>
       </div>
-      <div class="ml-4">
-        <v-btn variant="outlined" class="card-btn">1M</v-btn>
-        <v-btn variant="outlined" class="card-btn">3M</v-btn>
-        <v-btn variant="outlined" class="card-btn">6M</v-btn>
-        <v-btn variant="outlined" class="card-btn">1Y</v-btn>
-        <v-btn variant="outlined" class="card-btn">All</v-btn>
+      <div class="chart__btns">
+        <v-btn size="46" variant="outlined" class="chart__btn">1M</v-btn>
+        <v-btn size="46" variant="outlined" class="chart__btn">3M</v-btn>
+        <v-btn size="46" variant="outlined" class="chart__btn">6M</v-btn>
+        <v-btn size="46" variant="outlined" class="chart__btn">1Y</v-btn>
+        <v-btn size="46" variant="outlined" class="chart__btn">All</v-btn>
       </div>
     </div>
     <div id="chart">
@@ -73,51 +73,45 @@
 </template>
 
 <script setup lang="ts">
-
-
 const chartOptions = {
   chart: {
-    id: "area-chart",
-    height: "100%",
+    id: 'area-chart',
+    height: '100%',
     toolbar: {
-      show: false,
+      show: false
     },
-    stacked: false,
+    stacked: false
   },
   markers: {
-    size: 7,
+    size: 7
   },
   legend: {
     show: false
   },
   xaxis: {
-    categories: ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGT", "SEP", "OCT", "NOV", "DIC"],
+    categories: ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGT', 'SEP', 'OCT', 'NOV', 'DIC']
   },
-  colors: ["#E01E5A", "#007A5A", "#F2C744"],
+  colors: ['#E01E5A', '#007A5A', '#F2C744'],
   stroke: {
     curve: 'smooth',
-    width: 3,
-  },
-
+    width: 3
+  }
 }
 
 const series = [
   {
-    name: "Serie 1",
-    data: [0, 2000, 1800, 5000, 0, 3000, 5000, 1000, 4800, 0, 1800, 0],
+    name: 'Serie 1',
+    data: [0, 2000, 1800, 5000, 0, 3000, 5000, 1000, 4800, 0, 1800, 0]
   },
   {
-    name: "Serie 2",
-    data: [0, 1700, 3800, 3800, 1000, 2300, 5800, 3800, 2500, 100, 2000, 0],
+    name: 'Serie 2',
+    data: [0, 1700, 3800, 3800, 1000, 2300, 5800, 3800, 2500, 100, 2000, 0]
   },
   {
-    name: "Serie 3",
-    data: [0, 100, 2000, 3800, 4500, 3900, 6100, 5800, 500, 1000, 1300, 0],
+    name: 'Serie 3',
+    data: [0, 100, 2000, 3800, 4500, 3900, 6100, 5800, 500, 1000, 1300, 0]
   }
-
 ]
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -128,29 +122,26 @@ const series = [
 .card-btn {
   height: 55px;
   border-radius: 12px;
-  border: 1px solid var(--border-border-complementario, #DDE4ED);
+  border: 1px solid var(--border-border-complementario, #dde4ed);
   margin-left: 8px;
 
   @media (max-width: 767px) {
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
   }
 }
 
 .card-btn:hover {
-  background-color: #3587FF;
+  background-color: #3587ff;
   color: white;
-
-
 }
 
 .card__buttons {
   gap: 8px;
 
   &-approved {
-    height: 50px;
+    height: 46px;
     background-color: rgba(3, 121, 89, 0.05);
     border: none;
-
   }
 
   &-approved:hover {
@@ -159,10 +150,9 @@ const series = [
   }
 
   &-pending {
-    height: 50px;
+    height: 46px;
     border: none;
     background-color: rgba(242, 199, 68, 0.05);
-
   }
 
   &-pending:hover {
@@ -171,7 +161,7 @@ const series = [
   }
 
   &-cancel {
-    height: 50px;
+    height: 46px;
     border: none;
     background-color: rgba(224, 30, 90, 0.05);
   }
@@ -180,4 +170,5 @@ const series = [
     background-color: #091d8b;
     color: white;
   }
-}</style>
+}
+</style>

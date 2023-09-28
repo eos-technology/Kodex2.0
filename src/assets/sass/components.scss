@@ -1,3 +1,5 @@
+@import '@/assets/sass/mixins';
+
 .table-custom {
   // overflow-x: scroll;
   overflow: hidden;
@@ -58,60 +60,176 @@
 //CARDS
 
 .card-big {
-    .card {
-      --bs-card-border-radius: 16px; /* Cambio de 1.6rem a 16px */
-      --bs-card-spacer-y: 24px; /* Cambio de 2.4rem a 24px */
-      --bs-card-spacer-x: 24px; /* Cambio de 2.4rem a 24px */
-      --bs-card-border-color: #dde4ed;
-      
-      &-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px; /* Cambio de 2.4rem a 24px */
-        background-color: transparent;
-        padding: 0;
-        border: none;
+  .card {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background-color: transparent;
+      padding: 0;
+      border: none;
+    }
+
+    &-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  &__item {
+    flex: 1 1 210px;
+  }
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}
+
+.dot-status {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 100%;
+}
+
+.dot-status--enable {
+  background-color: #00b183;
+}
+
+.dot-status--in-process {
+  background-color: #f2c744;
+}
+
+.dot-status--disable {
+  background-color: #040919;
+}
+
+//CHARTS
+
+.chart {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  &__options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  &__btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  &__btn {
+    height: 48px;
+    border-radius: 12px !important;
+    border: 1px solid #dde4ed !important;
+    font-size: 14px;
+    font-weight: 400;
+    @media (max-width: 767px) {
+      padding: 12px 16px;
+    }
+    &:hover {
+      background-color: #3587ff;
+      color: white;
+    }
+  }
+}
+
+//Table
+
+.table-custom {
+  // overflow-x: scroll;
+  overflow: hidden;
+  border: 1px solid #dde4ed;
+  border-radius: 16px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9fbfc;
+  }
+  th,
+  td {
+    padding: 16px;
+  }
+  th,
+  td {
+    text-align: center;
+  }
+  th:first-child {
+    text-align: left;
+  }
+  th {
+    background-color: #f9fbfc;
+    color: #0a1e8c;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 17px;
+    border-bottom: 1px solid #f4f5f8;
+  }
+  &__flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
+    th,
+    td {
+      padding: 16px 2px;
+    }
+
+    tr {
+      th:first-child,
+      td:first-child {
+        padding-left: 16px;
       }
-      
-      &-box {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      
-      &-body {
-        display: flex;
-        flex-direction: column;
-        gap: 24px; /* Cambio de 2.4rem a 24px */
+      th:last-child,
+      td:last-child {
+        padding-right: 16px;
       }
     }
   }
-  
-  .dot {
-    height: 8px; 
-    width: 8px; 
-    border-radius: 100%;
-  }
+}
+//BTN
 
-  .dot-status {
-    display: inline-block;
-    height: 8px;
-    width: 8px;
-    border-radius: 100%;
-  }
-  
-  .dot-status--enable{
-    background-color: #00B183;
-  }
-  
-  .dot-status--in-process{
-    background-color: #F2C744;
-  }
-  
-  .dot-status--disable{
-    background-color: #040919;
-  }
-
-
-
+.outline-btn {
+  border-radius: 12px;
+  border: 1px solid #f4f5f8;
+  color: #051255;
+  width: fit-content;
+  height: 44px;
+  padding: 10px 16px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}

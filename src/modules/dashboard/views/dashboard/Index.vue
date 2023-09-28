@@ -20,22 +20,14 @@
     </div>
 
     <!-- Cards -->
-    <Cards
-      icon="coins"
-      :title="$t('dashboard.projects')"
-      value="1"
-      icon1="payment"
-      :title1="$t('dashboard.totalTx')"
-      value1="0"
-      icon2="money"
-      :title2="$t('dashboard.gain')"
-      value2="$0.00"
-      icon3="bank-clock"
-      :title3="$t('dashboard.activeTokens')"
-      value3="0"
-    />
+    <div class="cards">
+      <Cards icon="coins" :title="$t('dashboard.projects')" value="1" />
+      <Cards icon="payment" :title="$t('dashboard.totalTx')" value="0" />
+      <Cards icon="money" :title="$t('dashboard.gain')" value="$0.00" />
+      <Cards icon="bank-clock" :title="$t('dashboard.activeTokens')" value="0" />
+    </div>
     <!-- Validation -->
-    <v-card class="pa-4 pa-md-6 rounded-lg">
+    <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
       <div class="card-big">
         <div class="card-header">
           <div>
@@ -78,7 +70,6 @@ const modules = [Pagination]
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/sass/mixins';
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -93,6 +84,7 @@ const modules = [Pagination]
       border-radius: 1rem;
     }
   }
+
   .card {
     position: relative;
   }

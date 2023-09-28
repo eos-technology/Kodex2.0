@@ -2,20 +2,12 @@
   <section class="dashboard">
     <Header :title="$t('dashboard.dashboard')" />
     <!-- Cards -->
-    <Cards
-      icon="coins"
-      :title="$t('dashboard.charged')"
-      value="$0.00"
-      icon1="payment"
-      :title1="$t('dashboard.totalTx')"
-      value1="0"
-      icon2="money"
-      :title2="$t('dashboard.approvedTx')"
-      value2="0"
-      icon3="bank-clock"
-      :title3="$t('dashboard.txPending')"
-      value3="0"
-    />
+    <div class="cards">
+      <Cards icon="coins" :title="$t('dashboard.charged')" value="$0.00" />
+      <Cards icon="payment" :title="$t('dashboard.totalTx')" value="0" />
+      <Cards icon="money" :title="$t('dashboard.approvedTx')" value="0" />
+      <Cards icon="bank-clock" :title="$t('dashboard.txPending')" value="0" />
+    </div>
     <!-- Project Detaail and Payments Methods -->
     <ProjectDetail class="project" />
   </section>
