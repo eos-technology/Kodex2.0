@@ -156,7 +156,10 @@
     "statusDetail": "Status",
     "block": "Block",
     "quantitySRS": "SRS quantity",
-    "resources": "Resources consumed and rates"
+    "resources": "Resources consumed and rates",
+    "seeDetail": "See detail",
+    "sendMail": "Send by e-mail",
+    "downloadTax": "Download receipt"
   },
   "payments": {
     "paymentLink": "Payment links",
@@ -297,7 +300,8 @@
     "sendEmail": "A copy has been emailed",
     "goBack": "Go back",
     "permission": "User permissions are saved",
-    "permission2": "of the project"
+    "permission2": "of the project",
+    "generateBtn": "Generate"
   },
   "setting": {
     "title": "Setting",

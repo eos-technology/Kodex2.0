@@ -161,7 +161,10 @@
     "confirmed": "SRs confirmadas",
     "block": "Bloquear",
     "quantitySRS": "Cantidad SRS",
-    "resources": "Recursos consumidos y tarifas"
+    "resources": "Recursos consumidos y tarifas",
+    "seeDetail": "Ver detalle",
+    "sendMail": "Enviar por correo",
+    "downloadTax": "Descargar recibo"
   },
   "payments": {
     "paymentLink": "Enlaces de pago",
@@ -302,7 +305,8 @@
     "sendEmail": "Se ha enviado una copia al correo",
     "goBack": "Regresar",
     "permission": "Se guardado los permisos del usuario",
-    "permission2": "del proyecto"
+    "permission2": "del proyecto",
+    "generateBtn": "Generar"
   },
   "setting": {
     "title": "Configuración",

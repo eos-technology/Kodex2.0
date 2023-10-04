@@ -6,8 +6,19 @@
 
   <form class="configureCrypto__form gap">
     <div class="configureCrypto__Wallet">
-      <label for="wallet">Wallet</label><br />
-      <input v-model="form.wallet" type="text" name="wallet" placeholder="Wallet address" />
+      <label for="wallet"
+        ><p class="b-regular mb-1">Wallet</p>
+
+        <v-text-field
+          placeholder="Wallet address"
+          rounded="lg"
+          variant="solo-filled"
+          single-line
+          density="compact"
+          v-model="form.wallet"
+        >
+        </v-text-field>
+      </label>
     </div>
 
     <div class="configureCrypto__warning">
@@ -18,7 +29,9 @@
 
     <div class="configureCrypto__buttons">
       <v-btn @click="emit('next', form)" color="primary">{{ $t('globals.save') }}</v-btn>
-      <v-btn @click="$router.back()" variant="outlined" class="w-btn border-btn">{{ $t('cancel') }}</v-btn>
+      <v-btn @click="$router.back()" variant="outlined" class="w-btn border-btn">{{
+        $t('cancel')
+      }}</v-btn>
     </div>
   </form>
 </template>
@@ -26,7 +39,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 
-const emit = defineEmits([ 'next'])
+const emit = defineEmits(['next'])
 
 const form = reactive({ wallet: '' })
 </script>
@@ -101,7 +114,6 @@ const form = reactive({ wallet: '' })
   flex-direction: column;
   gap: 24px;
 }
-
 
 :deep(.v-btn) {
   text-transform: none;

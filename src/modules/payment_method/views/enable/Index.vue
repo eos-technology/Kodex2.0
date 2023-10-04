@@ -24,7 +24,14 @@
           <v-window-item value="one">
             <div class="tab-crypto">
               <div class="search-box">
-                <BaseInput placeholder="Search" class="search" type="search" />
+                <v-text-field
+                  variant="solo-filled"
+                  placeholder="Search"
+                  rounded="lg"
+                  density="compact"
+                  prependInnerIcon="mdi-magnify"
+                  type="search"
+                ></v-text-field>
               </div>
               <div class="tab-crypto__currencies">
                 <CurrencyMethod
@@ -38,12 +45,17 @@
             </div>
           </v-window-item>
 
-
           <v-window-item value="two">
             <div class="tab-fiat">
               <div class="search-box">
-                <BaseInput placeholder="Search" class="search" type="search" />
-
+                <v-text-field
+                  variant="solo-filled"
+                  placeholder="Search"
+                  rounded="lg"
+                  density="compact"
+                  prependInnerIcon="mdi-magnify"
+                  type="search"
+                ></v-text-field>
               </div>
               <div class="tab-fiat__currencies">
                 <CurrencyMethod
@@ -64,7 +76,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import CurrencyMethod from '../components/CurrencyMethod.vue'
-import BaseInput from './content/BaseInput.vue'
 
 const tab = ref()
 
@@ -153,24 +164,24 @@ const fiatCoins = [
   flex-direction: column;
   gap: 24px;
 
-  &__header{
+  &__header {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 }
 
-.tab-crypto__currencies,.tab-fiat__currencies{
+.tab-crypto__currencies,
+.tab-fiat__currencies {
   display: flex;
   flex-direction: column;
   gap: 19px;
 }
 
-.search-box{
+.search-box {
   width: 100%;
   margin-bottom: 32px;
 }
-
 
 :deep(.v-card) {
   max-width: 500px;
