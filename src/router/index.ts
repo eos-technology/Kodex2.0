@@ -11,6 +11,7 @@ import configRoutes from '@/modules/config/router'
 import projectRoutes from '@/modules/project/router'
 import authRoutes from '@/modules/auth/router'
 import dashboardRoutes from '@/modules/dashboard/router'
+import cart_Routes from '@/modules/cart/router'
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,7 +26,8 @@ export const router = createRouter({
     configRoutes,
     projectRoutes,
     dashboardRoutes,
-    authRoutes
+    authRoutes,
+    cart_Routes
   ],
   linkExactActiveClass: 'active'
 })

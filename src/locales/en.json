@@ -419,5 +419,36 @@
   "search": "Search",
   "filter": {
     "filter": "Filter"
+  },
+  "cart": {
+    "header1": "Customer information",
+    "header2": "Pay with Crypto",
+    "header3": "Finish",
+    "step": "Step",
+    "resumen": "Summary",
+    "item1": "Total quantity of items",
+    "item2": "Tax",
+    "item3": "Discount",
+    "total": "Total to pay",
+    "pay": "Pay",
+    "title1": "Personal information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "scan": "Scan QR code from your MetaMask",
+    "title2": "Payment information",
+    "scan2": "Scan the QR code!",
+    "time": "Time remaining",
+    "cancel": "Cancel",
+    "check": "Check payment",
+    "item4": "Purchase name",
+    "item5": "Amount in COP",
+    "item6": "Amount in USDT",
+    "item7": "Wallet",
+    "copy": "Copy",
+    "back": "Back",
+    "title3": "All ready",
+    "finish-text1": "Your purchase of",
+    "finish-text2": " was successful"
   }
 }
