@@ -162,13 +162,6 @@ const coins = [
   }
 }
 
-:deep(.v-field) {
-  border-radius: 12px;
-  border: 1px solid var(--border-border-input, #f4f5f8);
-  background: var(--inputs-fondo-2, #f6f7f9);
-  box-shadow: none;
-}
-
 .primary {
   height: 48px;
   border-radius: 16px;

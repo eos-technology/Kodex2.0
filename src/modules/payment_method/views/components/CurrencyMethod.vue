@@ -164,24 +164,4 @@ const isToogle = ref(props.toggle)
   color: #3587ff;
   text-decoration: underline;
 }
-
-:deep(.v-switch__track) {
-  background-color: #e9ecf1;
-  opacity: 1;
-}
-
-:deep(.v-selection-control--dirty .v-switch__thumb) {
-  color: #fff;
-}
-
-:deep(.v-input__details) {
-  display: none;
-}
-
-:deep(
-    .v-selection-control.v-selection-control--dirty.v-selection-control--density-default
-      .v-switch__track
-  ) {
-  background-color: #091d8b;
-}
 </style>

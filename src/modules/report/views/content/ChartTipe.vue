@@ -90,27 +90,4 @@ const series = [
 .projects-chart {
   height: 100%;
 }
-
-.input-select {
-  cursor: pointer;
-  padding: 0.625rem;
-  display: flex;
-  gap: 8px;
-
-  img {
-    width: 1.5rem;
-  }
-}
-
-.img-select {
-  width: 1.5rem;
-}
-
-:deep(.v-field) {
-  width: 12.5rem;
-  border-radius: 12px;
-  border: 1px solid #f4f5f8;
-  background: #f6f7f9;
-  box-shadow: none;
-}
 </style>

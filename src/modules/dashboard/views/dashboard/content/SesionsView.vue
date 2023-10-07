@@ -56,7 +56,13 @@
           <div class="card-header">
             <p class="l-light">{{ $t('setting.block-ip') }}</p>
             <div>
-              <v-switch inset class="switch" color="#091D8B"></v-switch>
+              <v-switch
+                hide-details
+                density="compact"
+                inset
+                class="switch"
+                color="#091D8B"
+              ></v-switch>
             </div>
           </div>
         </v-card>

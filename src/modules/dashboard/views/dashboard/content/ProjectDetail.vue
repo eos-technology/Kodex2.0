@@ -4,6 +4,43 @@
       <!-- Poject Detail -->
       <div class="card-header">
         <h4 class="h4-semibold">{{ $t('dashboard.detailProject') }}</h4>
+        <div class="chart__options">
+          <v-select
+            density="compact"
+            v-model="selectedItem"
+            :items="options"
+            variant="solo"
+            menu-icon="mdi-chevron-down"
+            hide-details="auto"
+          >
+            <template #item="{ item }">
+              <div class="d-flex align-center input-select" @click="selectedItem = item.value.text">
+                <img :src="item.value.icon" alt="" />
+                <p class="b-medium">{{ item.value.text }}</p>
+              </div>
+            </template>
+            <template v-slot:prepend-inner>
+              <div class="d-flex align-center">
+                <img
+                  class="img-select mr-2"
+                  src="@/assets/images/avatar.png"
+                  v-if="selectedItem === null"
+                />
+                <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">Proyecto</p>
+              </div>
+              <div class="d-flex align-center" v-for="icon in options" :key="icon.text">
+                <img class="img-select" :src="icon.icon" alt="" v-if="icon.text === selectedItem" />
+              </div>
+            </template>
+          </v-select>
+          <div class="chart__btns">
+            <v-btn size="46" variant="outlined" class="chart__btn">1M</v-btn>
+            <v-btn size="46" variant="outlined" class="chart__btn">3M</v-btn>
+            <v-btn size="46" variant="outlined" class="chart__btn">6M</v-btn>
+            <v-btn size="46" variant="outlined" class="chart__btn">1Y</v-btn>
+            <v-btn size="46" variant="outlined" class="chart__btn">All</v-btn>
+          </div>
+        </div>
       </div>
       <div class="project-chart">
         <ChartProject />
@@ -81,6 +118,7 @@
         </div>
       </div>
       <v-pagination
+        class="pagination"
         v-model="currentPage"
         :length="rows"
         :total-visible="7"
@@ -96,6 +134,10 @@ import ChartProject from '../charts/ChartProject.vue'
 import { getFile } from '@/helpers/Index'
 const rows = ref(100)
 const currentPage = ref(3)
+
+const selectedItem = ref(null)
+
+const options = [{ icon: 'src/assets/images/avatar.png', text: 'Proyecto' }]
 const coins = [
   {
     icon: 'tether',
@@ -204,22 +246,11 @@ const coins = [
   &-chart {
     height: 416px;
   }
-  :deep(.v-btn) {
-    border-radius: 12px;
-    border: 1px solid #f4f5f8;
-    color: #001e62;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    font-size: 14px;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  :deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
-    background: #051255 !important;
-    color: #fff;
-  }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

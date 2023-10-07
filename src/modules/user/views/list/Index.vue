@@ -421,15 +421,6 @@ const data = [
   }
 }
 
-:deep(.v-field--variant-solo) {
-  border-radius: 12px;
-  border: 1px solid var(--border-border-input, #f4f5f8);
-  background: var(--inputs-fondo-2, #f6f7f9);
-  box-shadow: none;
-  color: #394357;
-  max-width: 250px;
-  width: 100%;
-}
 .dot-status {
   width: 8px;
   height: 8px;

@@ -238,42 +238,4 @@ const fiatCoins = [
   }
 }
 
-:deep(.v-tab--selected .v-tab__slider) {
-  display: none;
-}
-
-:deep(.v-slide-group__content) {
-  background: #f6f8fa;
-  border-radius: 100px;
-  padding: 4px;
-  overflow: hidden;
-}
-
-:deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
-  background: #051255 !important;
-  color: #fff;
-}
-
-:deep(.v-switch__track) {
-  background-color: #e9ecf1;
-  opacity: 1;
-}
-
-:deep(.v-selection-control--dirty .v-switch__thumb) {
-  color: #fff;
-}
-
-:deep(.v-input__details) {
-  display: none;
-}
-
-:deep(
-    .v-selection-control.v-selection-control--dirty.v-selection-control--density-default.v-switch__track
-  ) {
-  background-color: #091d8b;
-}
-
-:deep(.v-window) {
-  margin-top: 32px;
-}
 </style>

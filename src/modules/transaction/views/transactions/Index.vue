@@ -315,28 +315,7 @@ const data = [
     gap: 1rem;
     flex-wrap: nowrap;
     height: 44px;
-    :deep(.v-field--variant-solo) {
-      border-radius: 0.75rem;
-      border: 0.0625rem solid #f4f5f8;
-      background: #f6f7f9;
-      box-shadow: none;
-      color: #394357;
-      max-width: 250px;
-      min-width: 200px;
-      width: 100%;
-      padding: 12px 16px;
-    }
-    :deep(.v-field__input) {
-      padding: 0;
-      margin: 0;
-      min-height: unset;
-      align-items: center;
-    }
-    :deep(.v-text-field input) {
-      margin: 0;
-      margin-left: 8px;
-      height: 20px;
-    }
+
   }
   &__box {
     display: flex;

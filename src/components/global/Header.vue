@@ -8,8 +8,8 @@
 <script lang="ts" setup>
 defineProps({
   title: String,
-  text: String,
-});
+  text: String
+})
 </script>
 <style lang="scss" scoped>
 .header {
@@ -19,22 +19,14 @@ defineProps({
   flex-wrap: wrap;
   justify-content: space-between;
 
-  @media (max-width: 767px){
-    h3{
+  @media (max-width: 767px) {
+    h3 {
       font-size: 7.5vw;
     }
 
-    button{
+    button {
       width: 100%;
     }
   }
-}
-
-:deep(.v-btn){
-  border-radius: 16px;
-  box-shadow: none;
-  width: fit-content !important;
-  padding: 10px 16px;
-  text-transform: none;
 }
 </style>

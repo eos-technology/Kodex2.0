@@ -347,16 +347,6 @@ const data = [
     border-radius: 100%;
 }
 
-:deep(.v-field--variant-solo) {
-    border-radius: 12px;
-    border: 1px solid var(--border-border-input, #F4F5F8);
-    background: var(--inputs-fondo-2, #F6F7F9);
-    box-shadow: none;
-    color: #394357;
-    max-width: 250px;
-    width: 100%;
-
-}
 
 .primary {
     height: 48px;

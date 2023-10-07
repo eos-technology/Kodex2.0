@@ -238,22 +238,8 @@ const filter = reactive({
   opacity: 0;
 }
 
-// switch
-:deep(.v-switch__track) {
-  background-color: #e9ecf1;
-  opacity: 1;
-}
 
-:deep(.v-selection-control--dirty .v-switch__thumb) {
-  color: #fff;
-}
 
-:deep(
-    .v-selection-control.v-selection-control--dirty.v-selection-control--density-default
-      .v-switch__track
-  ) {
-  background-color: #091d8b;
-}
 
 :deep(.v-input__details) {
   display: none;

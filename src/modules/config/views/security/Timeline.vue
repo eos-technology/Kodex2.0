@@ -7,18 +7,52 @@
     <v-card class="card pa-6 mt-8">
       <div class="card-body small-gap">
         <div class="filter">
-          <v-text-field class="search" :placeholder="$t('transactions.search')" variant="solo">
+          <v-text-field
+            size="44"
+            class="search"
+            :placeholder="$t('transactions.search')"
+            variant="solo"
+          >
             <template v-slot:prepend-inner>
-              <i class="icon-search"></i>
+              <i class="icon-search ml-5"></i>
             </template>
           </v-text-field>
 
           <div class="filter__option">
-            <input type="date" class="input-date" />
+            <v-text-field
+              single-line
+              class="w-100"
+              variant="solo-filled"
+              type="date"
+              hide-details
+              size="44"
+              density="compact"
+              rounded="lg"
+            ></v-text-field>
 
-            <select>
+            <v-select
+              variant="solo-filled"
+              single-line
+              class="w-100"
+              rounded="lg"
+              hide-details
+              size="44"
+              density="compact"
+              label="Select"
+              :items="[
+                'Seleccionar tipo',
+                'California',
+                'Colorado',
+                'Florida',
+                'Georgia',
+                'Texas',
+                'Wyoming'
+              ]"
+            ></v-select>
+
+            <!-- <select>
               <option value="" selected>{{ $t('setting.select') }}</option>
-            </select>
+            </select> -->
           </div>
         </div>
         <div class="timeline big-gap">
@@ -338,15 +372,5 @@ const shortDate = (date: any) => {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-:deep(.v-field--variant-solo) {
-  border-radius: 12px;
-  border: 1px solid var(--border-border-input, #f4f5f8);
-  background: var(--inputs-fondo-2, #f6f7f9);
-  box-shadow: none;
-  color: #394357;
-  max-width: 250px;
-  width: 100%;
 }
 </style>

@@ -84,17 +84,17 @@
           <hr />
           <div class="account-settings__hook">
             <form>
-              <div class="from-input">
-                <label for="hook"
-                  ><p class="b-regular mb-1">Web Hook</p>
-                  <v-text-field
-                    density="compact"
-                    name="Hook"
-                    placeholder="Web Hook Link"
-                    variant="solo-filled"
-                  ></v-text-field>
-                </label>
-              </div>
+              <label class="w-100" for="hook"
+                ><p class="b-regular mb-1">Web Hook</p>
+                <v-text-field
+                  density="compact"
+                  name="Hook"
+                  placeholder="Web Hook Link"
+                  variant="solo-filled"
+                  hide-details="auto"
+                ></v-text-field>
+              </label>
+
               <div class="form-button">
                 <v-btn class="primary outlined-add text-none">{{
                   $t('setting.test-connection')
@@ -271,10 +271,10 @@ const newApiKeys = [
 
   &__hook {
     form {
-      display: grid;
-      grid-template-columns: 85% 15%;
-      align-items: center;
-
+      display: flex;
+      grid-template-columns: 1fr 15%;
+      align-items: flex-end;
+      gap: 1rem;
       @media (max-width: 767px) {
         display: flex;
         flex-direction: column;
@@ -305,8 +305,6 @@ const newApiKeys = [
     }
 
     .form-button {
-      margin: 0 0 0 auto;
-
       @media (max-width: 767px) {
         margin: 0;
         width: 100%;
@@ -512,5 +510,6 @@ const newApiKeys = [
 .outlined-add {
   color: #091d8b;
   border: 1px solid var(--button-primario-primario, #091d8b);
+  height: 44px;
 }
 </style>

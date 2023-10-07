@@ -685,35 +685,12 @@ watch(form, (newValue, oldValue) => {
   }
 }
 
-:deep(.v-btn){
-  border-radius: 16px;
-  padding: 12px 16px;
-  height: fit-content;
 
-  text-transform: none;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%;
-}
 
-// switch
-:deep(.v-switch__track){
-  background-color: #E9ECF1;
-  opacity: 1;
-}
 
-:deep(.v-selection-control--dirty .v-switch__thumb){
-  color: #FFF;
-}
 
-:deep(.v-selection-control.v-selection-control--dirty.v-selection-control--density-default .v-switch__track){
-  background-color: #091D8B;
-}
 
-:deep(.v-input__details){
-  display: none;
-} 
+
 </style>
 
 <style>

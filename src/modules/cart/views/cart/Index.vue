@@ -37,17 +37,6 @@ const step = ref(1)
   align-items: center;
   gap: 32px;
 
-  :deep(.v-card) {
-    width: 100%;
-    max-width: 960px;
-    border-radius: 16px;
-    border: 1px solid #dde4ed;
-  }
-
-  :deep(.v-card-item) {
-    padding: 0;
-  }
-
   &__header {
     background-image: url('../../../../assets/images/banner.webp');
     background-size: 100% 100%;
