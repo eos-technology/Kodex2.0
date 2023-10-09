@@ -236,7 +236,7 @@
 
 //Inputs
 
-.v-input__control {
+/* .v-input__control {
   background: #f6f7f9;
   border-radius: 12px;
   -webkit-border-radius: 12px;
@@ -273,12 +273,12 @@
 
 .v-text-field input.v-field__input .v-field--variant-solo-filled .v-field__overlay {
   box-shadow: none;
-}
+} */
 
-.v-input--density-compact {
-  --v-input-control-height: fit-content !important;
-  --v-input-padding-top: 7px;
-}
+// .v-input--density-compact {
+//   --v-input-control-height: fit-content !important;
+//   --v-input-padding-top: 7px;
+// }
 
 // switch
 
@@ -312,17 +312,6 @@
 }
 
 // Button select chart
-
-.input-select {
-  cursor: pointer;
-  padding: 0.625rem;
-  display: flex;
-  gap: 8px;
-
-  img {
-    width: 1.5rem;
-  }
-}
 
 .img-select {
   width: 1.5rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <MenuApp class="app__menu" @click="isMenuOpen = false" />
+    <MenuApp class="app__menu" @route-value="isMenuOpen = false" />
     <MenuAppMobile class="app__menu-mobile" />
     <div class="app__content">
       <MenuProjects v-if="$route.name != 'dashboard'" @menu-clicked="handleMenuClicked" />
@@ -36,6 +36,8 @@ const contentClass = computed(() => {
     }
   }
 })
+
+console.log(route.name)
 </script>
 
 <style lang="scss" scoped>
@@ -115,6 +117,7 @@ const contentClass = computed(() => {
 }
 .menu-show__text {
   max-width: calc(100vw - 336px);
+  width: 100%;
   margin-left: 264px;
   @media (max-width: 768px) {
     max-width: unset;
