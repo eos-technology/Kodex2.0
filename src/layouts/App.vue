@@ -64,7 +64,7 @@ const contentClass = computed(() => {
   }
   &__content {
     width: 100%;
-    margin-left: 72px;
+    // margin-left: 72px;
     background-color: #e9ebef;
     border-top-left-radius: 32px;
     overflow: hidden;
