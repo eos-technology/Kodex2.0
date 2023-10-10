@@ -41,7 +41,13 @@
                     <div class="filter__inputs">
                       <div class="expansion-item">
                         <p class="b-regular">{{ $t('payments.range') }}</p>
-                        <v-switch v-model="disableAmount" inset></v-switch>
+                        <v-switch
+                          v-model="disableAmount"
+                          hide-details
+                          density="compact"
+                          inset
+                          class="switch"
+                        ></v-switch>
                       </div>
                       <label for="minimum">
                         <p class="b-regular mb-1">{{ $t('payments.minimum') }}</p>
@@ -81,7 +87,13 @@
                   <div class="expansion-content">
                     <div class="expansion-item">
                       <p class="b-regular">{{ $t('payments.range') }}</p>
-                      <v-switch v-model="disableDate" inset></v-switch>
+                      <v-switch
+                        v-model="disableAmount"
+                        hide-details
+                        density="compact"
+                        inset
+                        class="switch"
+                      ></v-switch>
                     </div>
 
                     <div class="filter__inputs">
@@ -237,9 +249,6 @@ const filter = reactive({
 :deep(.v-expansion-panel-title--active > .v-expansion-panel-title__overlay) {
   opacity: 0;
 }
-
-
-
 
 :deep(.v-input__details) {
   display: none;

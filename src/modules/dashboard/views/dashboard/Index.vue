@@ -87,13 +87,14 @@ const modules = [Pagination]
 
   .card {
     position: relative;
+    &-header {
+      flex-wrap: wrap;
+      @media (max-width: 380px) {
+        justify-content: center;
+      }
+    }
   }
-  &__chart {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-right: -86px;
-  }
+
   .card-big {
     display: grid;
     gap: 1.5rem;

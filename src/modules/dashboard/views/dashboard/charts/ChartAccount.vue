@@ -1,6 +1,12 @@
 <template>
   <div id="chart">
-    <apexchart type="radialBar" height="100%" :options="chartOptions" :series="series"></apexchart>
+    <apexchart
+      type="radialBar"
+      height="80"
+      width="80"
+      :options="chartOptions"
+      :series="series"
+    ></apexchart>
   </div>
 </template>
 
@@ -9,16 +15,26 @@ const series = [16]
 
 const chartOptions = {
   chart: {
-    height: '100%',
     type: 'radialBar',
-    margin: 0,
-    padding: 0
+    sparkline: {
+      enabled: true
+    }
   },
   plotOptions: {
     radialBar: {
       hollow: {
+        padding: 0,
         margin: 0,
-        size: '50%'
+        size: '45%'
+      },
+      track: {
+        show: true,
+        startAngle: undefined,
+        endAngle: undefined,
+        background: '#EBF3FF',
+        strokeWidth: '98%',
+        opacity: 1,
+        margin: 5
       },
       dataLabels: {
         showOn: 'always',
@@ -28,9 +44,9 @@ const chartOptions = {
           fontSize: '10px'
         },
         value: {
-          offsetY: 6,
+          offsetY: 5,
           color: '#091841',
-          fontSize: '18px',
+          fontSize: '16px',
           fontWeight: 600,
           fontFamily: 'Urbanist',
           show: true

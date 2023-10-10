@@ -121,7 +121,7 @@
         class="pagination"
         v-model="currentPage"
         :length="rows"
-        :total-visible="7"
+        :total-visible="totalVisible"
         align="center"
       ></v-pagination>
     </div>
@@ -129,11 +129,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import ChartProject from '../charts/ChartProject.vue'
 import { getFile } from '@/helpers/Index'
 const rows = ref(100)
 const currentPage = ref(3)
+
+const totalVisible = ref(7)
+
+onMounted(() => {
+  const handleResize = () => {
+    totalVisible.value = window.innerWidth > 600 ? 7 : 4
+  }
+
+  handleResize()
+  window.addEventListener('resize', handleResize)
+
+  // Limpia el event listener cuando el componente es desmontado
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', handleResize)
+  })
+})
 
 const selectedItem = ref(null)
 
@@ -252,5 +268,16 @@ const coins = [
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.table-custom {
+  tr,
+  th {
+    @media (max-width: 350px) {
+      font-size: 12px;
+    }
+  }
 }
 </style>

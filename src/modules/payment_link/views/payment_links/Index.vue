@@ -2,7 +2,7 @@
   <section class="payment">
     <Header :title="$t('paymentsLink.header')" :text="$t('paymentsLink.headerBtn')" />
     <div class="card-big">
-      <v-card>
+      <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
         <div class="card-content">
           <div class="card-header">
             <SearchField />
@@ -12,7 +12,7 @@
           </div>
 
           <!-- view desktop (table) -->
-          <div class="table-custom" v-dragscroll>
+          <div class="table-custom">
             <table>
               <thead>
                 <tr>
@@ -61,7 +61,7 @@
                   </td>
                   <td>
                     <div class="table-custom__center">
-                      <v-switch inset></v-switch>
+                      <v-switch hide-details density="compact" inset></v-switch>
                     </div>
                   </td>
                   <td>
@@ -116,19 +116,21 @@
                   </div>
                   <div class="card-custom__item">
                     <p>{{ $t('paymentsLink.status') }}</p>
-                    <p>
-                      {{ item.status }}
-                    </p>
-                    <div
-                      class="dot-status"
-                      :class="
-                        item.status === 'Activo' ? 'dot-status--success' : 'dot-status--disable'
-                      "
-                    ></div>
+                    <div class="d-flex align-center">
+                      <div
+                        class="dot-status mr-2"
+                        :class="
+                          item.status === 'Activo' ? 'dot-status--success' : 'dot-status--disable'
+                        "
+                      ></div>
+                      <p>
+                        {{ item.status }}
+                      </p>
+                    </div>
                   </div>
                   <div class="card-custom__item">
                     <p>{{ $t('paymentsLink.active') }}</p>
-                    <v-switch inset></v-switch>
+                    <v-switch hide-details density="compact" inset></v-switch>
                   </div>
                 </div>
               </div>
@@ -168,7 +170,11 @@
 
           <v-window v-model="tab">
             <v-window-item class="tabs__content" value="one">
-              <img :src="getFile({ route: 'images', url: 'qr', extension: 'svg' })" alt="" />
+              <img
+                class="img-qr"
+                :src="getFile({ route: 'images', url: 'qr', extension: 'svg' })"
+                alt=""
+              />
               <label for="copy">
                 <p class="b-regular mb-1">{{ $t('paymentsLink.copyShare') }}</p>
                 <button class="copy">
@@ -262,12 +268,6 @@ const data = [
   align-items: center;
 }
 
-.table-custom {
-  @media (max-width: 47.9375rem) {
-    display: none;
-  }
-}
-
 .modal {
   position: absolute;
   top: 0;
@@ -279,7 +279,7 @@ const data = [
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 47.9375rem) {
+  @media (max-width: 767px) {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -294,38 +294,10 @@ const data = [
         display: block;
         margin: 0 auto;
       }
-
-      :deep(.v-btn) {
-        flex: 1;
-        border: none;
-        font-weight: 600;
-        color: #fff;
-        font-size: 1.0625rem;
-        letter-spacing: 0;
-        &::after {
-          display: none;
-        }
-      }
-
-      :deep(.v-btn.v-slide-group-item--active.v-tab--selected) {
-        background-color: #fff;
-        border-radius: 6.25rem;
-        box-shadow: 0rem 0.625rem 0.9375rem -0.1875rem rgba(16, 24, 40, 0.1),
-          0rem 0.25rem 0.375rem -0.25rem rgba(16, 24, 40, 0.1);
-        font-weight: 500;
-      }
     }
     &__content {
       display: grid;
       gap: 2rem;
-      :deep(.v-btn--variant-tonal) {
-        border: 1px solid #dde4ed;
-        background-color: #f6f7f7;
-      }
-      :deep(.v-btn--variant-tonal span.v-btn__content) {
-        display: flex;
-        justify-content: space-between;
-      }
     }
   }
 
@@ -347,7 +319,7 @@ const data = [
       outline: none;
     }
 
-    @media (max-width: 47.9375rem) {
+    @media (max-width: 767px) {
       width: 85vw;
     }
   }
@@ -377,7 +349,7 @@ const data = [
     padding: 1.5rem;
     border-radius: 1rem;
     width: 100%;
-    @media (max-width: 47.9375rem) {
+    @media (max-width: 767px) {
       border-radius: 1rem 1rem 0 0;
     }
   }
@@ -395,7 +367,7 @@ const data = [
 .card-custom {
   display: none;
 
-  @media (max-width: 47.9375rem) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -441,10 +413,6 @@ const data = [
 
       :deep(.v-input) {
         flex: none;
-      }
-
-      :deep(.v-selection-control__input) {
-        height: fit-content;
       }
     }
 
@@ -512,40 +480,6 @@ const data = [
 .dot-status--error {
   background-color: #e01e5a;
 }
-
-:deep(.v-card) {
-  padding: 1.5rem;
-  border-radius: 1rem;
-  border: 0.0625rem solid #dde4ed;
-}
-
-:deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
-  background: #051255 !important;
-  color: #fff;
-}
-
-:deep(.v-tab--selected .v-tab__slider) {
-  display: none;
-}
-
-:deep(.v-slide-group__content) {
-  background: #f6f8fa;
-  border-radius: 6.25rem;
-  padding: 0.25rem;
-  overflow: hidden;
-}
-
-:deep(.v-input__details) {
-  display: none;
-}
-
-:deep(.v-window) {
-  margin-top: 2rem;
-}
-
-:global(.v-card--variant-elevated) {
-  box-shadow: none !important;
-}
 </style>
 
 <style>
@@ -554,6 +488,13 @@ h3 {
 }
 h5 {
   color: #0a1e8c;
+}
+
+.img-qr {
+  @media (max-width: 350px) {
+    height: 200px;
+    width: 200px;
+  }
 }
 
 .copy {

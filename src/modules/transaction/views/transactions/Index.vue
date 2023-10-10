@@ -26,7 +26,12 @@
 
     <v-card class="card-table pa-4 pa-md-6 rounded-lg">
       <div class="transactions__header">
-        <v-text-field :placeholder="$t('transactions.search')" variant="solo" hide-details="auto">
+        <v-text-field
+          :placeholder="$t('transactions.search')"
+          variant="solo"
+          hide-details
+          density="compact"
+        >
           <template v-slot:prepend-inner>
             <i class="icon-search"></i>
           </template>
@@ -39,77 +44,8 @@
         </div>
       </div>
 
-      <!-- Cards 37.5rem-->
-      <div class="table-custom container" v-for="(item, index) in data" :key="index">
-        <div class="container__header">
-          <div>
-            <p class="l-medium">{{ item.account }}</p>
-          </div>
-          <div>
-            <!-- <b-button variant="outline" class="container__button"><img src="../../../../assets/icons/ArrowNext.png"
-                  alt=""></b-button> -->
-          </div>
-        </div>
-        <div class="container__body">
-          <div class="container__body-info">
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.wallet') }}</p>
-              <p class="l-medium">Your Wallet</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.type') }}</p>
-              <p class="l-medium">{{ item.type }}</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.date') }}</p>
-              <p class="l-medium">{{ item.date }}</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.status') }}</p>
-              <div class="transaction__table-box">
-                <div class="transaction__table-box">
-                  <div
-                    class="dot-status"
-                    :class="
-                      $t(item.status) === $t('transactions.approved')
-                        ? 'bg-success'
-                        : $t(item.status) === $t('transactions.pending')
-                        ? 'bg-danger'
-                        : 'bg-warning'
-                    "
-                  ></div>
-                  <p class="font-weight-bold">{{ $t(item.status) }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container__body-links">
-            <div class="transaction__table-link">
-              <router-link :to="{ name: 'detail' }">
-                <button class="transaction__table-link-btn">
-                  <i class="icon-bell"></i>
-                </button>
-              </router-link>
-              <p class="transaction__table-link-text">{{ $t(item.notification) }}</p>
-            </div>
-            <div class="transaction__table-link">
-              <button class="transaction__table-link-btn">
-                <i class="icon-bank-send"></i>
-              </button>
-              <p class="transaction__table-link-text">{{ $t(item.send) }}</p>
-            </div>
-            <div class="transaction__table-link">
-              <button class="transaction__table-link-btn">
-                <i class="icon-bank-warning"></i>
-              </button>
-              <p class="transaction__table-link-text">{{ $t(item.validate) }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Table -->
-      <div class="table-custom transaction__table" v-dragscroll>
+      <div class="table-custom transaction__table">
         <table class="">
           <thead class="">
             <tr>
@@ -200,13 +136,84 @@
                 </div>
               </td>
               <td>
-                <button class="transaction__table-box-dots" @click="isOpen = true">
+                <button class="transaction__table-box-dots mx-auto" @click="isOpen = true">
                   <i class="icon-dots"></i>
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Table Mobile-->
+      <div class="table-custom container" v-for="(item, index) in data" :key="index">
+        <div class="container__header">
+          <div>
+            <p class="l-medium text-primary">{{ item.account }}</p>
+          </div>
+
+          <div>
+            <b-button variant="outline" class="container__button" @click="isOpen = true"
+              ><img src="@/assets/icons/ArrowNext.png" alt=""
+            /></b-button>
+          </div>
+        </div>
+        <div class="container__body">
+          <div class="container__body-info">
+            <div class="container__body-rows">
+              <p class="l-medium">{{ $t('transactions.wallet') }}</p>
+              <p class="l-medium">Your Wallet</p>
+            </div>
+            <div class="container__body-rows">
+              <p class="l-medium">{{ $t('transactions.type') }}</p>
+              <p class="l-medium">{{ item.type }}</p>
+            </div>
+            <div class="container__body-rows">
+              <p class="l-medium">{{ $t('transactions.date') }}</p>
+              <p class="l-medium">{{ item.date }}</p>
+            </div>
+            <div class="container__body-rows">
+              <p class="l-medium">{{ $t('transactions.status') }}</p>
+              <div class="transaction__table-box">
+                <div class="transaction__table-box">
+                  <div
+                    class="dot-status"
+                    :class="
+                      $t(item.status) === $t('transactions.approved')
+                        ? 'bg-success'
+                        : $t(item.status) === $t('transactions.pending')
+                        ? 'bg-danger'
+                        : 'bg-warning'
+                    "
+                  ></div>
+                  <p class="font-weight-bold">{{ $t(item.status) }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container__body-links">
+            <div class="transaction__table-link">
+              <router-link :to="{ name: 'detail' }">
+                <button class="transaction__table-link-btn">
+                  <i class="icon-bell"></i>
+                </button>
+              </router-link>
+              <p class="transaction__table-link-text">{{ $t(item.notification) }}</p>
+            </div>
+            <div class="transaction__table-link">
+              <button class="transaction__table-link-btn">
+                <i class="icon-bank-send"></i>
+              </button>
+              <p class="transaction__table-link-text">{{ $t(item.send) }}</p>
+            </div>
+            <div class="transaction__table-link">
+              <button class="transaction__table-link-btn">
+                <i class="icon-bank-warning"></i>
+              </button>
+              <p class="transaction__table-link-text">{{ $t(item.validate) }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </v-card>
   </section>
@@ -315,7 +322,6 @@ const data = [
     gap: 1rem;
     flex-wrap: nowrap;
     height: 44px;
-
   }
   &__box {
     display: flex;
@@ -327,60 +333,70 @@ const data = [
   display: flex;
   flex-direction: column;
 
-  overflow: hidden;
-
-  @media (max-width: 37.5rem) {
+  @media (max-width: 767px) {
     height: 100vh;
     overflow-y: scroll;
   }
 
   &__header {
-    @media (max-width: 37.5rem) {
+    @media (max-width: 767px) {
       flex-direction: column;
       flex-direction: column-reverse;
     }
 
     &-search {
-      @media (max-width: 37.5rem) {
+      @media (max-width: 767px) {
         width: 100%;
       }
     }
 
     &-input {
-      @media (max-width: 37.5rem) {
+      @media (max-width: 767px) {
         width: 100%;
       }
     }
   }
 
   &__table {
-    @media (max-width: 37.5rem) {
+    @media (max-width: 767px) {
       display: none;
     }
 
     &-links {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      /* Convertido de 384px a 15rem */
+      justify-content: center;
+      gap: 12px;
+      @media (max-width: 1060px) {
+        height: 24px;
+        width: 24px;
+        justify-content: unset;
+      }
     }
 
     &-box {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      /* Convertido de 128px a 5rem */
+      gap: 8px;
+
+      img {
+        @media (max-width: 1060px) {
+          height: 24px;
+          width: 24px;
+        }
+      }
 
       &-dots {
         display: flex;
-        padding: 0.5rem;
-        /* Convertido de 128px a 5rem */
+        padding: 8px;
         align-items: center;
-        border-radius: 0.75rem;
-        /* Convertido de 192px a 7.5rem */
-        border: 0.0625rem solid #f4f5f8;
-        /* Convertido de 16px a .625rem */
+        border-radius: 12px;
+        border: 1px solid #f4f5f8;
         background: #f6f8fa;
+        @media (max-width: 1160px) {
+          padding: 6px;
+          border-radius: 6px;
+        }
       }
 
       &-btn {
@@ -388,9 +404,9 @@ const data = [
         padding: 7.5rem 7.5rem;
         /* Convertido de 192px a 7.5rem */
         align-items: center;
-        gap: 6.25rem;
+        gap: 10px;
         /* Convertido de 160px a 6.25rem */
-        border-radius: 0.75rem;
+        border-radius: 12px;
         /* Convertido de 160px a 6.25rem */
         border: 1px solid #f4f5f8;
         /* Convertido de 16px a .625rem */
@@ -402,12 +418,12 @@ const data = [
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 0.625rem;
+      gap: 10px;
       /* Convertido de 64px a 2.5rem */
 
       &-btn {
         display: flex;
-        padding: 0.625rem;
+        padding: 10px;
         /* Convertido de 96px a 3.75rem */
         align-items: center;
         gap: 6.25rem;
@@ -416,11 +432,18 @@ const data = [
         /* Convertido de 160px a 6.25rem */
         border: none;
         background: #ebf3ff;
+        @media (max-width: 1160px) {
+          padding: 6px;
+          border-radius: 6px;
+        }
       }
 
       &-text {
         color: #3587ff;
+        font-size: 12px;
         text-decoration-line: underline;
+        @media (max-width: 330px) {
+        }
       }
     }
   }
@@ -429,8 +452,8 @@ const data = [
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10rem;
-    /* Convertido de 256px a 10rem */
+    gap: 10px;
+    /* Convertido de 256px a 10px */
 
     &__box {
       display: flex;
@@ -441,17 +464,17 @@ const data = [
       &-copy {
         display: flex;
         align-items: center;
-        gap: 10rem;
-        /* Convertido de 256px a 10rem */
+        gap: 10px;
+        /* Convertido de 256px a 10px */
 
-        @media (max-width: 37.5rem) {
+        @media (max-width: 767px) {
           flex-direction: column;
           flex-direction: column-reverse;
           align-items: end;
         }
 
         &-value {
-          @media (max-width: 37.5rem) {
+          @media (max-width: 767px) {
             max-width: 8.125rem;
           }
         }
@@ -482,7 +505,7 @@ const data = [
     gap: 15rem;
     /* Convertido de 384px a 15rem */
 
-    @media (max-width: 37.5rem) {
+    @media (max-width: 767px) {
       flex-direction: column;
     }
 
@@ -508,41 +531,51 @@ const data = [
   flex-direction: column;
   padding: 0;
 
-  @media (max-width: 37.5rem) {
+  @media (max-width: 767px) {
     display: flex;
   }
 
   &__button {
+    cursor: pointer;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    border: 1px solid #f4f5f8;
     background: #f6f8fa;
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 
   &__header {
     display: flex;
-    padding: 10rem;
-    /* Convertido de 256px a 10rem */
+    padding: 16px;
+    /* Convertido de 256px a 10px */
     justify-content: space-between;
     align-items: center;
-    gap: 5rem;
+    gap: 8px;
     /* Convertido de 128px a 5rem */
-    border-bottom: 0.625rem solid #f4f5f8;
+    border-bottom: 1px solid #f4f5f8;
     /* Convertido de 16px a .625rem */
     background: #f9fbfc;
   }
 
   &__body {
     display: flex;
-    padding: 10rem;
-    /* Convertido de 256px a 10rem */
+    padding: 16px;
+    /* Convertido de 256px a 10px */
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 10rem;
-    /* Convertido de 256px a 10rem */
+    gap: 10px;
+    /* Convertido de 256px a 10px */
 
     &-info {
       display: flex;
       flex-direction: column;
-      gap: 5rem;
+      gap: 8px;
       /* Convertido de 128px a 5rem */
       width: 100%;
     }
@@ -550,7 +583,7 @@ const data = [
     &-rows {
       display: flex;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 8px;
     }
 
     &-links {
@@ -559,7 +592,7 @@ const data = [
       padding-top: 1rem;
       justify-content: space-around;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
       border-top: 0.0625rem solid #f4f5f8;
     }
   }
@@ -572,8 +605,8 @@ const data = [
 }
 
 .dot-status {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 8px;
+  height: 8px;
   border-radius: 100%;
 }
 
@@ -585,6 +618,20 @@ const data = [
 .table-custom.transaction__table {
   table {
     border-collapse: collapse;
+  }
+  td,
+  th {
+    @media (max-width: 1160px) {
+      padding: 8px;
+      font-size: 12px;
+    }
+  }
+  td,
+  th {
+    @media (max-width: 850px) {
+      padding: 6px;
+      font-size: 10px;
+    }
   }
 }
 

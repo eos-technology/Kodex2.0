@@ -1,6 +1,6 @@
 <template>
   <div class="card-big">
-    <v-card>
+    <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
       <div class="main-content">
         <!-- Poject Detail -->
         <div class="card-header">
@@ -56,7 +56,7 @@
       </div>
     </v-card>
 
-    <v-card>
+    <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
       <div class="main-content">
         <!-- Payment Methods -->
         <h5 class="h5-semibold">{{ $t('dashboard.payments') }}</h5>
@@ -84,6 +84,7 @@
           </div>
         </div>
         <v-pagination
+          class="pagination"
           v-model="currentPage"
           :length="rows"
           :total-visible="7"
@@ -249,32 +250,12 @@ const coins = [
   gap: 24px;
 }
 
-:deep(.v-card) {
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid #dde4ed;
-}
-
-:deep(.v-btn) {
-  border-radius: 12px;
-  border: 1px solid #f4f5f8;
-  color: #001e62;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-  font-size: 14px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-:deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
-  background: #051255 !important;
-  color: #fff;
-}
-
-:global(.v-card--variant-elevated) {
-  box-shadow: none;
+.table-custom {
+  tr,
+  th {
+    @media (max-width: 350px) {
+      font-size: 12px;
+    }
+  }
 }
 </style>
