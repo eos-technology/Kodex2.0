@@ -139,7 +139,13 @@
           </div>
         </div>
       </div>
-      <v-pagination v-model="page" :length="5" rounded="circle" class="mt-4"></v-pagination>
+      <v-pagination
+        class="pagination"
+        v-model="currentPage"
+        :length="rows"
+        :total-visible="3"
+        align="center"
+      ></v-pagination>
     </v-card>
   </section>
   <!-- Options modal -->
@@ -179,7 +185,8 @@
 import { ref } from 'vue'
 import { getFile } from '@/helpers/Index'
 const isOpen = ref(false)
-const page = ref(3)
+const rows = ref(100)
+const currentPage = ref(3)
 
 const data = [
   {

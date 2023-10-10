@@ -142,7 +142,9 @@ const notifications = [
   flex-direction: column;
   gap: 1rem;
   max-width: 72px;
-
+  @media (max-width: 768px) {
+    display: none;
+  }
   &__logo {
     margin-bottom: 1rem;
   }

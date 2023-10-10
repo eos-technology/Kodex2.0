@@ -136,9 +136,10 @@
           </div>
 
           <v-pagination
+            class="pagination"
             v-model="currentPage"
             :length="rows"
-            :total-visible="7"
+            :total-visible="3"
             align="center"
           ></v-pagination>
         </div>
@@ -445,8 +446,6 @@ const data = [
       :deep(.v-selection-control__input) {
         height: fit-content;
       }
-
-
     }
 
     &__item {
@@ -520,8 +519,6 @@ const data = [
   border: 0.0625rem solid #dde4ed;
 }
 
-
-
 :deep(.v-pagination__item.v-pagination__item--is-active .v-btn) {
   background: #051255 !important;
   color: #fff;
@@ -538,15 +535,9 @@ const data = [
   overflow: hidden;
 }
 
-
-
-
-
 :deep(.v-input__details) {
   display: none;
 }
-
-
 
 :deep(.v-window) {
   margin-top: 2rem;

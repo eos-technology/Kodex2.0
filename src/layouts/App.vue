@@ -77,6 +77,10 @@ console.log(route.name)
       border-top-left-radius: 0;
       width: 100%;
       max-width: unset;
+      overflow: unset;
+      min-height: calc(100vh - 75px);
+
+      height: 100%;
     }
     &-int {
       border-top-left-radius: 32px;
@@ -98,12 +102,10 @@ console.log(route.name)
 
       @media (max-width: 768px) {
         width: 100%;
-        max-width: unset;
         margin-left: 0;
         border-top-left-radius: 0px;
-        max-height: 100vh;
         position: unset;
-        overflow-y: unset;
+        min-height: calc(100vh - 75px);
       }
     }
   }
