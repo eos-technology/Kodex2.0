@@ -1,7 +1,7 @@
 <template>
   <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
     <div class="chart">
-      <div class="d-flex card__buttons">
+      <div class="card__buttons">
         <v-btn variant="outlined" class="card__buttons-approved rounded-lg">
           <div class="dot bg-success mr-2"></div>
           <p class="l-regular text-none">{{ $t('reports.approved') }}</p>
@@ -136,12 +136,19 @@ const series = [
 }
 
 .card__buttons {
+  display: flex;
   gap: 8px;
-
+  flex-wrap: wrap;
+  @media (max-width: 530px) {
+    width: 100%;
+  }
   &-approved {
     height: 46px;
     background-color: rgba(3, 121, 89, 0.05);
     border: none;
+    @media (max-width: 530px) {
+      width: 100%;
+    }
   }
 
   &-approved:hover {
@@ -153,6 +160,9 @@ const series = [
     height: 46px;
     border: none;
     background-color: rgba(242, 199, 68, 0.05);
+    @media (max-width: 530px) {
+      width: 100%;
+    }
   }
 
   &-pending:hover {
@@ -164,6 +174,9 @@ const series = [
     height: 46px;
     border: none;
     background-color: rgba(224, 30, 90, 0.05);
+    @media (max-width: 530px) {
+      width: 100%;
+    }
   }
 
   &-cancel:hover {

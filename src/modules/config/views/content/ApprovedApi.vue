@@ -44,7 +44,10 @@
 
         <div class="approved-api__buttons mt-8">
           <p class="b-regular b-regular--red">{{ $t('setting.delete-key') }}</p>
-          <p><i class="icon-copy"></i> {{ $t('setting.copy-api') }}</p>
+          <div class="approved-api__flex">
+            <i class="icon-copy"></i>
+            <p>{{ $t('setting.copy-api') }}</p>
+          </div>
         </div>
       </div>
     </v-card>
@@ -74,6 +77,11 @@ const isBlocked = ref(true)
       flex-direction: column;
       align-items: flex-start;
     }
+  }
+  &__flex {
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 
   &__form {
@@ -134,6 +142,12 @@ const isBlocked = ref(true)
     @media (max-width: 767px) {
       flex-direction: column-reverse;
       gap: 1.4rem;
+    }
+    .icon-copy {
+      color: #3587ff;
+      text-decoration: none;
+      background: none;
+      font-size: 1rem;
     }
   }
 

@@ -1,12 +1,16 @@
 <template>
   <section class="report d-flex flex-column">
-    <div class="d-flex align-center justify-space-between">
+    <div class="report__header">
       <h3 class="h3-bold">{{ $t('reports.header') }}</h3>
-      <router-link :to="{ name: 'generate' }">
-        <v-btn color="#091D8B" class="text-none text-white primary">{{
-          $t('reports.btnReports')
-        }}</v-btn>
-      </router-link>
+
+      <v-btn
+        @click="$router.push({ name: 'generate' })"
+        color="primary"
+        class="text-none text-white"
+        rounded="lg"
+        size="large"
+        >{{ $t('reports.btnReports') }}</v-btn
+      >
     </div>
     <!-- Cards -->
     <div class="cards">
@@ -27,9 +31,11 @@ import ChartTransactions from '../content/ChartTransactions.vue'
 <style lang="scss" scoped>
 .report {
   gap: 24px;
-}
-.primary {
-  height: 48px;
-  border-radius: 16px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 }
 </style>

@@ -365,7 +365,8 @@ const newApiKeys = [
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
+    flex-wrap: wrap;
+    gap: 1rem;
     @media (max-width: 767px) {
       h3 {
         font-size: 7.5vw;
