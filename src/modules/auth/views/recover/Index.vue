@@ -16,12 +16,11 @@
         <p class="regular">{{ $t('login.mail') }}</p>
         <v-text-field
           hide-details="auto"
-          rounded="lg"
-          flat
           type="email"
           variant="solo-filled"
-          density="compact"
           id="email"
+          class="inpt"
+          density="compact"
           v-model="form.email"
           :placeholder="$t('login.mail')"
         >
@@ -30,14 +29,7 @@
     </div>
 
     <div class="login__footer">
-      <v-btn
-        size="48"
-        flat
-        color="primary"
-        class="w-100 rounded-lg text-capitalize"
-        @click="step = 2"
-        >{{ $t('login.resetPass') }}</v-btn
-      >
+      <v-btn color="primary" class="btn" @click="step = 2">{{ $t('login.resetPass') }}</v-btn>
       <div class="login__links">
         <router-link to="register" class="link-auth">{{ $t('login.account') }}</router-link>
         <router-link :to="{ name: 'register' }" class="link-aux">{{
@@ -67,42 +59,32 @@
           :placeholder="$t('login.pass')"
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="visible = !visible"
+          class="inpt"
           density="compact"
           hide-details="auto"
-          flat
           :type="visible ? 'text' : 'password'"
-          rounded="lg"
           id="pass"
         ></v-text-field
       ></label>
       <label for="confirmPass"
         ><p class="b-regular">{{ $t('login.confirmPass') }}</p>
         <v-text-field
+          class="inpt"
+          density="compact"
           variant="solo-filled"
           v-model="form.confirmpass"
           :placeholder="$t('login.pass')"
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           @click:append-inner="visible = !visible"
-          density="compact"
           hide-details="auto"
-          flat
           :type="visible ? 'text' : 'password'"
-          rounded="lg"
           id="confirmPass"
         ></v-text-field
       ></label>
     </div>
 
     <div class="login__footer">
-      <v-btn
-        flat
-        size="48"
-        color="primary"
-        class="w-100 text-capitalize"
-        rounded="lg"
-        @click="step = 3"
-        >{{ $t('login.resetPass') }}</v-btn
-      >
+      <v-btn color="primary" class="btn" @click="step = 3">{{ $t('login.resetPass') }}</v-btn>
       <div class="login__links">
         <router-link to="register" class="link-auth">{{ $t('login.account') }}</router-link>
         <router-link :to="{ name: 'register' }" class="link-aux">{{
@@ -125,15 +107,7 @@
         </p>
       </div>
       <div class="login__footer">
-        <v-btn
-          flat
-          size="48"
-          color="primary"
-          class="w-100 text-capitalize"
-          rounded="lg"
-          @click="step = 1"
-          >{{ $t('login.goBack') }}</v-btn
-        >
+        <v-btn color="primary" class="btn" @click="step = 1">{{ $t('login.goBack') }}</v-btn>
         <div class="login__links">
           <router-link to="" class="link-auth">{{ $t('login.account') }}</router-link>
           <router-link :to="{ name: 'register' }" class="link-aux">{{

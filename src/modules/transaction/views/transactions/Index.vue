@@ -28,9 +28,10 @@
       <div class="transactions__header">
         <v-text-field
           :placeholder="$t('transactions.search')"
-          variant="solo"
+          variant="solo-filled"
           hide-details
           density="compact"
+          class="inpt inpt-search"
         >
           <template v-slot:prepend-inner>
             <i class="icon-search"></i>
@@ -38,12 +39,11 @@
         </v-text-field>
         <div class="transactions__box">
           <FilterBtn />
-          <v-btn class="outline-btn text-none rounded-lg" variant="outlined">{{
-            $t('transactions.button')
-          }}</v-btn>
+          <v-btn class="btn" color="secondary" variant="outlined"
+            ><p class="btn-line">{{ $t('transactions.button') }}</p></v-btn
+          >
         </div>
       </div>
-
       <!-- Table -->
       <div class="table-custom transaction__table">
         <table class="">
@@ -144,14 +144,12 @@
           </tbody>
         </table>
       </div>
-
       <!-- Table Mobile-->
       <div class="table-custom container" v-for="(item, index) in data" :key="index">
         <div class="container__header">
           <div>
             <p class="l-medium text-primary">{{ item.account }}</p>
           </div>
-
           <div>
             <b-button variant="outline" class="container__button" @click="isOpen = true"
               ><img src="@/assets/icons/ArrowNext.png" alt=""
@@ -320,13 +318,16 @@ const data = [
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    flex-wrap: nowrap;
-    height: 44px;
+    flex-wrap: wrap;
   }
   &__box {
     display: flex;
     gap: 1rem;
     flex-wrap: nowrap;
+  }
+  &__container {
+    display: grid;
+    gap: 1rem;
   }
 }
 .transaction {

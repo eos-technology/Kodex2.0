@@ -5,15 +5,16 @@ export const light: ThemeDefinition = {
   colors: {
     background: '#F9FAFB',
     surface: '#fff',
-    primary: '#0A1E8C',
+    primary: '#091D8B',
     'primary-darken-1': '#001E62',
     input: '#F6F7F9',
-    secondary: '#397EA6',
+    secondary: '#F6F7F9',
     'secondary-darken-1': '#3587FF',
-    error: '#B42318',
-    info: '#2196F3',
-    success: '#47CD89',
-    warning: '#B54708'
+    error: '#EF4444',
+    success: '#00B183',
+    warning: '#F2C744',
+    disable: '#040919',
+    info: '#1264A3'
   }
 }
 
@@ -22,14 +23,15 @@ export const dark: ThemeDefinition = {
   colors: {
     background: '#F9FAFB',
     surface: '#fff',
-    primary: '#0A1E8C',
+    primary: '#091D8B',
     'primary-darken-1': '#001E62',
     input: '#F6F7F9',
-    secondary: '#397EA6',
+    secondary: '#F6F7F9',
     'secondary-darken-1': '#3587FF',
-    error: '#B42318',
-    info: '#2196F3',
-    success: '#47CD89',
-    warning: '#B54708'
+    error: '#EF4444',
+    success: '#00B183',
+    warning: '#F2C744',
+    disable: '#040919',
+    info: '#1264A3'
   }
 }

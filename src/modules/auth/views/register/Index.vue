@@ -13,7 +13,7 @@
         </p>
       </div>
 
-      <v-btn flat class="w-100 bg-input text-capitalize rounded-lg" size="48"
+      <v-btn color="secondary" class="btn btn-secondary"
         ><img class="mr-2" src="@/assets/icons/google.svg" alt="" /> {{ $t('login.google') }}</v-btn
       >
 
@@ -34,8 +34,7 @@
               v-model="form.name"
               :placeholder="$t('login.yourName')"
               hide-details="auto"
-              rounded="lg"
-              flat
+              class="inpt"
               density="compact"
               id="name"
             ></v-text-field>
@@ -47,8 +46,7 @@
               v-model="form.lastName"
               :placeholder="$t('login.yourLastnames')"
               hide-details="auto"
-              rounded="lg"
-              flat
+              class="inpt"
               density="compact"
               id="lastName"
             ></v-text-field>
@@ -61,27 +59,20 @@
             v-model="form.email"
             placeholder="Example@email.com"
             hide-details="auto"
-            rounded="lg"
-            flat
+            class="inpt"
             type="email"
             density="compact"
             id="email"
           ></v-text-field>
         </label>
         <!-- Tel input -->
-        <FlagInput :label="$t('login.phone')" v-model="form.phone" />
+        <!-- <FlagInput :label="$t('login.phone')" v-model="form.phone" /> -->
       </div>
     </div>
 
     <!-- Footer -->
     <div class="login__footer">
-      <v-btn
-        color="primary"
-        class="w-100 rounded-b-lg text-capitalize"
-        size="48"
-        type="submit"
-        @click="step = 2"
-      >
+      <v-btn color="primary" class="btn" type="submit" @click="step = 2">
         {{ $t('login.continue') }}</v-btn
       >
 

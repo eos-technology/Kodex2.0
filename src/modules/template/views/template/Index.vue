@@ -2,7 +2,13 @@
   <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0 theme">
     <!-- Tabs -->
     <!-- Para centrar se puede usar start - center - end -->
-    <v-tabs align-tabs="center" v-model="tab">
+    <v-tabs class="tabs-line" align-tabs="start" v-model="tab">
+      <v-tab value="one">Item One</v-tab>
+      <v-tab value="two">Item Two</v-tab>
+      <v-tab value="three">Item Three</v-tab>
+    </v-tabs>
+    <!-- Para centrar se puede usar start - center - end -->
+    <v-tabs class="tabs-rounded" align-tabs="center" v-model="tab">
       <v-tab value="one">Item One</v-tab>
       <v-tab value="two">Item Two</v-tab>
       <v-tab value="three">Item Three</v-tab>
@@ -16,6 +22,7 @@
         <v-btn class="btn" color="info">Botón info</v-btn>
         <v-btn class="btn" color="success">Botón success</v-btn>
         <v-btn class="btn" color="warning">Botón warning</v-btn>
+        <v-btn class="btn" color="disable">Botón warning</v-btn>
       </v-window-item>
 
       <v-window-item class="theme__buttons" value="two">
@@ -25,6 +32,7 @@
         <v-btn class="btn" variant="outlined" color="info">Botón info</v-btn>
         <v-btn class="btn" variant="outlined" color="success">Botón success</v-btn>
         <v-btn class="btn" variant="outlined" color="warning">Botón warning</v-btn>
+        <v-btn class="btn" variant="outlined" color="disable">Botón warning</v-btn>
       </v-window-item>
     </v-window>
 

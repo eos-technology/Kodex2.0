@@ -7,7 +7,7 @@
         <v-btn variant="text" color="#001E62" class="border-btn w-btn">{{
           $t('payment-methods.import-crypto')
         }}</v-btn>
-        <v-btn @click="$router.push({name:'payment_method-enable'})" color="primary">{{
+        <v-btn @click="$router.push({ name: 'payment_method-enable' })" color="primary">{{
           $t('payment-methods.enable-method')
         }}</v-btn>
       </div>
@@ -19,7 +19,7 @@
         <v-card-item>
           <div class="tabs__modal">
             <!-- Switch -->
-            <v-tabs v-model="tab">
+            <v-tabs class="tabs-rounded" v-model="tab">
               <v-tab value="one"><span class="t-btn">Crypto</span></v-tab>
               <v-tab value="two"><span class="t-btn">Fiat</span> </v-tab>
             </v-tabs>
@@ -64,9 +64,6 @@
         </v-card-item>
       </v-card>
     </div>
-
-
-    
   </div>
 </template>
 
@@ -75,7 +72,7 @@ import { ref } from 'vue'
 
 import CurrencyMethod from '../components/CurrencyMethod.vue'
 import NoConfigure from './content/NoConfigure.vue'
-import BaseInput from './content/BaseInput.vue';
+import BaseInput from './content/BaseInput.vue'
 
 const tab = ref()
 
@@ -111,7 +108,7 @@ const cryptoCoins = [
     valueDollars: '$0.00',
     ammount: 'dashboard.amountTether',
     ammountValue: '$0.00',
-    type:'crypto'
+    type: 'crypto'
   },
   {
     icon: 'btc',
@@ -237,7 +234,6 @@ const fiatCoins = [
       }
     }
   }
-
 }
 
 .gap {
@@ -259,7 +255,7 @@ const fiatCoins = [
   width: 37%;
   margin: 0 auto;
 
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
     width: 90%;
   }
 
@@ -282,7 +278,7 @@ const fiatCoins = [
     font-weight: 500;
   }
 
-  .t-btn{
+  .t-btn {
     color: #051255;
   }
 }
@@ -306,8 +302,6 @@ const fiatCoins = [
     background-color: #fff;
   }
 }
-
-
 </style>
 
 <style>

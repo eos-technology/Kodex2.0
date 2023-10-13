@@ -9,7 +9,7 @@
           {{ $t('login.data') }}
         </p>
       </div>
-      <v-btn flat class="w-100 bg-input text-capitalize rounded-lg" size="48"
+      <v-btn class="btn btn-secondary" color="secondary"
         ><img class="mr-2" src="@/assets/icons/google.svg" alt="" /> {{ $t('login.google') }}</v-btn
       >
 
@@ -25,12 +25,11 @@
         <label for="email">
           <p class="b-regular">{{ $t('login.mail') }}</p>
           <v-text-field
+            class="inpt"
             variant="solo-filled"
             v-model="form.email"
             placeholder="Example@example.com"
             hide-details="auto"
-            rounded="lg"
-            flat
             type="email"
             density="compact"
             id="email"
@@ -39,6 +38,7 @@
         <label for="pass"
           ><p class="b-regular">{{ $t('login.pass') }}</p>
           <v-text-field
+            class="inpt"
             variant="solo-filled"
             v-model="form.pass"
             :placeholder="$t('login.pass')"
@@ -63,13 +63,7 @@
 
     <!-- Footer -->
     <div class="login__footer">
-      <v-btn
-        color="primary"
-        class="w-100 rounded-b-lg text-capitalize"
-        size="48"
-        type="submit"
-        @click="step = 2"
-      >
+      <v-btn color="primary" class="btn" type="submit" @click="step = 2">
         {{ $t('login.sesion') }}</v-btn
       >
 
@@ -103,7 +97,7 @@
     </div>
 
     <div class="login__footer">
-      <v-btn color="primary" size="48" class="w-100 rounded-lg text-capitalize">
+      <v-btn color="primary" class="btn">
         {{ $t('login.code') }}
       </v-btn>
       <div class="login__links">

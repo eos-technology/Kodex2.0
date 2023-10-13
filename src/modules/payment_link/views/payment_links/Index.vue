@@ -161,9 +161,9 @@
         </div>
 
         <div class="tabs__modal">
-          <v-tabs v-model="tab">
-            <v-tab size="40" value="one"><span class="t-btn">QR</span></v-tab>
-            <v-tab size="40" value="two"
+          <v-tabs class="tabs-rounded w-100" v-model="tab">
+            <v-tab class="w-50" value="one"><span class="t-btn">QR</span></v-tab>
+            <v-tab class="w-50" value="two"
               ><span class="t-btn">{{ $t('paymentsLink.email') }} </span></v-tab
             >
           </v-tabs>
@@ -184,16 +184,15 @@
                 </button>
               </label>
 
-              <v-btn size="48" color="primary" class="w-100 py-3 px-4 rounded-lg text-capitalize">{{
-                $t('download-qr')
-              }}</v-btn>
+              <v-btn color="primary" class="btn">{{ $t('download-qr') }}</v-btn>
             </v-window-item>
 
             <v-window-item class="tabs__content" value="two">
               <label for="email">
                 <p class="b-regular mb-1">{{ $t('paymentsLink.shareByEmail') }}</p>
                 <v-text-field
-                  variant="solo"
+                  class="inpt"
+                  variant="solo-filled"
                   placeholder="Example@email.com"
                   density="compact"
                   hide-details="auto"
@@ -201,7 +200,6 @@
                   rounded="lg"
                   id="email"
                   type="email"
-                  elevation-0
                 ></v-text-field>
               </label>
 
@@ -290,6 +288,8 @@ const data = [
 
   .tabs {
     &__modal {
+      display: grid;
+      gap: 24px;
       img {
         display: block;
         margin: 0 auto;

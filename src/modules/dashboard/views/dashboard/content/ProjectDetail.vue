@@ -9,7 +9,8 @@
             density="compact"
             v-model="selectedItem"
             :items="options"
-            variant="solo"
+            variant="solo-filled"
+            class="inpt"
             menu-icon="mdi-chevron-down"
             hide-details="auto"
           >
@@ -22,7 +23,7 @@
             <template v-slot:prepend-inner>
               <div class="d-flex align-center">
                 <img
-                  class="img-select mr-2"
+                  class="img-select ml-2 mr-2"
                   src="@/assets/images/avatar.png"
                   v-if="selectedItem === null"
                 />

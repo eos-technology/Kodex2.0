@@ -1,56 +1,56 @@
 <template>
   <div class="flag">
-    <label for="">{{ label }}</label>
-    <vue-tel-input v-model="value" v-bind="bindProps"></vue-tel-input>
+    <!-- <label for="tel">{{ label }}</label>
+    <vue-tel-input v-model="value" v-bind="bindProps" id="tel"></vue-tel-input> -->
   </div>
 </template>
 
-<script>
-import { ref } from "@vue/reactivity";
-import { computed } from "@vue/runtime-core";
-export default {
-  components: {},
-  props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    modelValue: {
-      type: [String, Number],
-      default: "",
-    },
-  },
-  setup(props, { emit }) {
-    const value = computed({
-      get() {
-        return props.modelValue;
-      },
-      set(value) {
-        emit("update:modelValue", value);
-      },
-    });
-    const phone = ref("0123456789");
-    const bindProps = {
-      defaultCountry: "CO",
-      placeholder: "Enter a phone number",
-      required: false,
-      preferredCountries: ["CO", "BR"],
-      name: "telephone",
-      dropdownOptions: {
-        disabledDialCode: true,
-        showFlags: true,
-      },
-      inputOptions: {
-        showDialCode: true,
-      },
-    };
-    return {
-      value,
-      phone,
-      bindProps,
-    };
-  },
-};
+<script lang="ts">
+// import { ref, computed } from 'vue'
+
+// export default {
+//   components: {},
+//   props: {
+//     label: {
+//       type: String,
+//       default: ''
+//     },
+//     modelValue: {
+//       type: [String, Number],
+//       default: ''
+//     }
+//   },
+//   setup(props, { emit }) {
+//     const value = computed({
+//       get() {
+//         return props.modelValue
+//       },
+//       set(value) {
+//         emit('update:modelValue', value)
+//       }
+//     })
+//     const phone = ref('0123456789')
+//     const bindProps = {
+//       defaultCountry: 'CO',
+//       placeholder: 'Enter a phone number',
+//       required: false,
+//       preferredCountries: ['CO', 'BR'],
+//       name: 'telephone',
+//       dropdownOptions: {
+//         disabledDialCode: true,
+//         showFlags: true
+//       },
+//       inputOptions: {
+//         showDialCode: true
+//       }
+//     }
+//     return {
+//       value,
+//       phone,
+//       bindProps
+//     }
+//   }
+// }
 </script>
 <style lang="scss">
 .flag {
@@ -98,7 +98,7 @@ export default {
     line-height: 20px;
     color: #295170;
   }
-  &__selection{
+  &__selection {
     gap: 8px;
   }
 }
