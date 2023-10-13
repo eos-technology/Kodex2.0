@@ -2,7 +2,7 @@
   <section class="send">
     <h3 class="h3-bold mb-6">{{ $t('transactions.headerTitle') }}</h3>
     <router-link :to="{ name: 'transactions' }" style="text-decoration: none" class="text-black">
-      <BackDummy />
+      <BackDummy class="mb-4" />
     </router-link>
     <v-card class="card-transaction pa-4 rounded-lg d-flex flex-column" v-if="!send">
       <h3 class="h3-bold">{{ $t('transactions.send') }}</h3>
@@ -11,17 +11,16 @@
         <span>{{ $t('transactions.email') }}</span>
         <v-text-field
           placeholder="Example@mail.com"
-          variant="solo"
-          class="rounded-lg"
+          variant="solo-filled"
+          density="compact"
+          class="inpt"
         ></v-text-field>
       </div>
-      <v-btn class="text-none text-white mt-4 primary" color="#091D8B" @click="send = true">{{
+      <v-btn class="btn" color="primary" @click="send = true">{{
         $t('transactions.btnSend')
       }}</v-btn>
       <router-link :to="{ name: 'transactions' }">
-        <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">{{
-          $t('transactions.btnCancel')
-        }}</v-btn>
+        <v-btn variant="outlined" class="btn mt-4 w-100">{{ $t('transactions.btnCancel') }}</v-btn>
       </router-link>
     </v-card>
     <v-card class="card-transaction pa-4 rounded-lg d-flex flex-column align-center" v-if="send">

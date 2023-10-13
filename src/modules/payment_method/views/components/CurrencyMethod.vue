@@ -40,7 +40,14 @@
         </div>
         <div class="payments__box" v-if="isEnable">
           <!-- <b-form-checkbox v-model="isToogle" name="check-button" switch /> -->
-          <v-switch v-model="isToogle" inset></v-switch>
+
+          <v-switch
+            v-model="isToogle"
+            density="compact"
+            hide-details
+            color="primary"
+            inset
+          ></v-switch>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'config' }" style="text-decoration: none" class="text-black">
       <BackDummy />
     </router-link>
-    <v-card class="card pa-6">
+    <v-card class="card pa-4 pa-md-6 rounded-lg">
       <div class="card-body big-gap">
         <div class="small-gap">
           <h1 class="h4-bold">{{ $t('setting.info') }}</h1>
@@ -27,6 +27,7 @@
               <v-text-field
                 variant="solo-filled"
                 density="compact"
+                class="inpt"
                 :placeholder="$t('setting.name')"
                 id="name"
                 v-model="form.name"
@@ -40,6 +41,7 @@
               <v-text-field
                 variant="solo-filled"
                 density="compact"
+                class="inpt"
                 placeholder="Example@email.com"
                 id="email"
                 v-model="form.email"
@@ -53,6 +55,7 @@
               <v-text-field
                 variant="solo-filled"
                 density="compact"
+                class="inpt"
                 type="number"
                 placeholder="0.0%"
                 id="telerance"
@@ -91,11 +94,12 @@
               <label class="b-regular l-font">{{ $t('setting.api-pay') }}</label>
               <div>
                 <v-switch
-                  hide-details
                   v-model="form.apiPay"
                   name="check-button"
+                  density="compact"
+                  hide-details
+                  color="primary"
                   inset
-                  color="#091D8B"
                 ></v-switch>
               </div>
             </div>
@@ -104,11 +108,12 @@
               <label class="b-regular l-font">{{ $t('setting.modal-pay') }}</label>
               <div>
                 <v-switch
-                  hide-details
                   v-model="form.modalPay"
                   name="check-button"
+                  density="compact"
+                  hide-details
+                  color="primary"
                   inset
-                  color="#091D8B"
                 ></v-switch>
               </div>
             </div>
@@ -117,11 +122,12 @@
               <label class="b-regular l-font">{{ $t('setting.link-pay') }}</label>
               <div>
                 <v-switch
-                  hide-details
                   v-model="form.linkPay"
                   name="check-button"
+                  density="compact"
+                  hide-details
+                  color="primary"
                   inset
-                  color="#091D8B"
                 ></v-switch>
               </div>
             </div>
@@ -129,14 +135,12 @@
 
           <div class="small-gap">
             <router-link :to="{ name: 'config' }">
-              <v-btn class="text-none text-white mt-4 w-100 primary" color="#091D8B">{{
-                $t('setting.save')
-              }}</v-btn>
+              <v-btn class="mt-4 w-100 btn" color="primary">{{ $t('setting.save') }}</v-btn>
             </router-link>
             <router-link :to="{ name: 'config' }">
-              <v-btn variant="outlined" class="text-none w-100 primary outlined">{{
-                $t('setting.cancel')
-              }}</v-btn>
+              <v-btn variant="outlined" color="secondary" class="w-100 btn"
+                ><p class="text-primary">{{ $t('setting.cancel') }}</p></v-btn
+              >
             </router-link>
           </div>
         </form>

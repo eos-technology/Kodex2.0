@@ -34,10 +34,11 @@
           <div>
             <v-switch
               v-model="isBlocked"
-              hide-details
-              inset
-              color="#091D8B"
               name="check-button"
+              density="compact"
+              hide-details
+              color="primary"
+              inset
             ></v-switch>
           </div>
         </div>

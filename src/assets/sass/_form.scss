@@ -29,6 +29,10 @@
 .inpt {
   &-search {
     max-width: 250px;
+    @media (max-width: 450px) {
+      width: 100%;
+      max-width: unset;
+    }
   }
   .v-input--density-compact .v-field--variant-solo,
   .v-input--density-compact .v-field--variant-solo-inverted,

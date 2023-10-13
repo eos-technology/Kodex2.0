@@ -29,10 +29,12 @@
           </div>
 
           <div class="security-code__buttons">
-            <v-btn @click="onNext" color="primary">{{
+            <v-btn @click="onNext" color="primary" class="btn">{{
               $t('payment-methods.verify')
             }}</v-btn>
-            <v-btn @click="$router.back()" variant="outlined" class="w-btn border-btn">{{ $t('cancel') }}</v-btn>
+            <v-btn color="secondary" @click="$router.back()" variant="outlined" class="btn"
+              ><p class="text-primary">{{ $t('cancel') }}</p></v-btn
+            >
           </div>
         </div>
 
@@ -49,7 +51,9 @@
             </p>
           </div>
 
-          <v-btn @click="$router.back()" color="primary">{{ $t('globals.back') }}</v-btn>
+          <v-btn @click="$router.back()" color="primary" class="btn">{{
+            $t('globals.back')
+          }}</v-btn>
         </div>
       </v-card-item>
     </v-card>
@@ -68,8 +72,8 @@ import VerificationCode from './content/VerificationCode.vue'
 const router = useRoute()
 const currency = router.params.currency.toString()
 
-console.log(router);
-console.log(currency);
+console.log(router)
+console.log(currency)
 
 const step = ref(1)
 
@@ -79,7 +83,7 @@ const onNext = () => {
 </script>
 
 <style lang="scss" scoped>
-.config{
+.config {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -142,7 +146,6 @@ const onNext = () => {
     width: 100%;
   }
 }
-
 
 .gap {
   display: flex;

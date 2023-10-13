@@ -12,6 +12,7 @@
           <h3 class="h4-bold pa-4 text-primary">{{ $t('filter.filter') }}</h3>
           <div class="filter__accordion">
             <v-expansion-panels variant="accordion">
+              <!-- Status -->
               <v-expansion-panel title="Estado">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
@@ -34,7 +35,7 @@
                   </div>
                 </v-expansion-panel-text>
               </v-expansion-panel>
-
+              <!-- Amount -->
               <v-expansion-panel :title="$t('payments.amount')">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
@@ -43,10 +44,10 @@
                         <p class="b-regular">{{ $t('payments.range') }}</p>
                         <v-switch
                           v-model="disableAmount"
-                          hide-details
                           density="compact"
+                          hide-details
+                          color="primary"
                           inset
-                          class="switch"
                         ></v-switch>
                       </div>
                       <label for="minimum">
@@ -81,18 +82,19 @@
                   </div>
                 </v-expansion-panel-text>
               </v-expansion-panel>
-
+              <!-- Date -->
               <v-expansion-panel :title="$t('payments.date')">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
                     <div class="expansion-item">
                       <p class="b-regular">{{ $t('payments.range') }}</p>
+
                       <v-switch
-                        v-model="disableAmount"
-                        hide-details
+                        v-model="disableDate"
                         density="compact"
+                        hide-details
+                        color="primary"
                         inset
-                        class="switch"
                       ></v-switch>
                     </div>
 

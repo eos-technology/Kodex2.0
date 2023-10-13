@@ -38,8 +38,9 @@
           <label class="b-regular">{{ $t('reports.label') }}</label>
           <v-select
             density="compact"
+            class="inpt"
             :placeholder="$t('reports.select')"
-            variant="solo"
+            variant="solo-filled"
             menu-icon="mdi-chevron-down"
           ></v-select>
         </div>
@@ -80,23 +81,35 @@
           <div class="d-flex align-center justify-space-between">
             <div class="w-100 mr-4">
               <label class="b-regular">{{ $t('reports.startDate') }}</label>
-              <v-text-field density="compact" type="date" variant="solo"></v-text-field>
+              <v-text-field
+                class="inpt"
+                density="compact"
+                type="date"
+                variant="solo-filled"
+              ></v-text-field>
             </div>
             <div class="w-100">
               <label class="b-regular">{{ $t('reports.endDate') }}</label>
-              <v-text-field density="compact" type="date" variant="solo"></v-text-field>
+              <v-text-field
+                class="inpt"
+                density="compact"
+                type="date"
+                variant="solo-filled"
+              ></v-text-field>
             </div>
           </div>
-          <router-link :to="{ name: 'details' }">
-            <v-btn class="text-none text-white mt-4 w-100 primary" color="#091D8B">{{
-              $t('reports.generateBtn')
-            }}</v-btn>
-          </router-link>
-          <router-link :to="{ name: 'reports' }">
-            <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">{{
-              $t('reports.btnCancel')
-            }}</v-btn>
-          </router-link>
+
+          <v-btn @click="$router.push({ name: 'details' })" class="btn w-100" color="primary">{{
+            $t('reports.generateBtn')
+          }}</v-btn>
+
+          <v-btn
+            @click="$router.push({ name: 'reports' })"
+            color="secondary"
+            variant="outlined"
+            class="btn w-100 mt-4"
+            ><p class="text-primary">{{ $t('reports.btnCancel') }}</p></v-btn
+          >
         </div>
       </v-card>
     </div>

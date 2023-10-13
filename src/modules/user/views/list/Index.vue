@@ -3,149 +3,148 @@
     <div class="d-flex align-center justify-space-between">
       <h3 class="h3-bold">{{ $t('users.header') }}</h3>
       <router-link :to="{ name: 'create-user' }">
-        <v-btn color="#091D8B" class="text-none text-white primary">{{
-          $t('users.btnUser')
-        }}</v-btn>
+        <v-btn color="#091D8B" class="btn">{{ $t('users.btnUser') }}</v-btn>
       </router-link>
     </div>
-    <v-card class="pa-6">
-      <div class="d-flex">
-        <v-text-field
-          density="compact"
-          class="search"
-          :placeholder="$t('transactions.search')"
-          variant="solo"
-        >
-          <template v-slot:prepend-inner>
-            <i class="icon-search"></i>
-          </template>
-        </v-text-field>
-        <v-btn class="text-none font-weight-bold primary outlined" variant="outlined"
-          >{{ $t('transactions.button') }}
-        </v-btn>
-      </div>
-      <!-- view desktop (table) -->
-      <div class="table-custom" v-dragscroll>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <p class="fw-bold">ID</p>
-              </th>
-              <th>
-                <p class="fw-bold">{{ $t('user.completeName') }}</p>
-              </th>
-              <th>
-                <p class="fw-bold">{{ $t('user.date') }}</p>
-              </th>
-              <th>
-                <p class="fw-bold">{{ $t('user.permissions') }}</p>
-              </th>
-              <th>
-                <p class="fw-bold">FEE</p>
-              </th>
-              <th>
-                <p class="fw-bold">{{ $t('user.status') }}</p>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody v-for="(item, index) in data" :key="index">
-            <tr>
-              <td>
-                <p class="fw-bold">{{ item.id }}</p>
-              </td>
-              <td>
-                <div>
-                  <p class="b-medium fw-bold">{{ item.name }}</p>
-                  <p class="s-light">{{ item.email }}</p>
-                </div>
-              </td>
-              <td>
-                {{ item.date }}
-              </td>
-              <td>{{ item.permissions }}</td>
-              <td>{{ item.fee }}</td>
-              <td>
-                <div class="users__box">
-                  <div
-                    class="dot-status"
-                    :class="
-                      item.status === 'Aprovada'
-                        ? 'bg-success'
-                        : item.status === 'Cancelada'
-                        ? 'bg-red'
-                        : 'bg-yellow'
-                    "
-                  ></div>
-                  <p class="fw-bold">{{ item.status }}</p>
-                </div>
-              </td>
-              <td>
-                <button class="users__btn" @click="isOpen = true">
-                  <i class="icon-dots"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- view phone (cards) -->
-      <div class="card-custom">
-        <div v-for="(item, index) in data" :key="index" class="card">
-          <div class="card-body">
-            <div class="card-custom__header">
+    <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
+      <div class="users__content">
+        <div class="users__header">
+          <v-text-field
+            :placeholder="$t('transactions.search')"
+            variant="solo-filled"
+            hide-details
+            density="compact"
+            class="inpt inpt-search"
+          >
+            <template v-slot:prepend-inner>
+              <i class="icon-search"></i>
+            </template>
+          </v-text-field>
+          <v-btn class="btn" color="secondary" variant="outlined"
+            ><p class="btn-line">{{ $t('transactions.button') }}</p></v-btn
+          >
+        </div>
+        <!-- view desktop (table) -->
+        <div class="table-custom">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <p class="fw-bold">ID</p>
+                </th>
+                <th>
+                  <p class="fw-bold">{{ $t('user.completeName') }}</p>
+                </th>
+                <th>
+                  <p class="fw-bold">{{ $t('user.date') }}</p>
+                </th>
+                <th>
+                  <p class="fw-bold">{{ $t('user.permissions') }}</p>
+                </th>
+                <th>
+                  <p class="fw-bold">FEE</p>
+                </th>
+                <th>
+                  <p class="fw-bold">{{ $t('user.status') }}</p>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody v-for="(item, index) in data" :key="index">
+              <tr>
+                <td>
+                  <p class="fw-bold">{{ item.id }}</p>
+                </td>
+                <td>
+                  <div>
+                    <p class="b-medium fw-bold">{{ item.name }}</p>
+                    <p class="s-light">{{ item.email }}</p>
+                  </div>
+                </td>
+                <td>
+                  {{ item.date }}
+                </td>
+                <td>{{ item.permissions }}</td>
+                <td>{{ item.fee }}</td>
+                <td>
+                  <div class="users__box">
+                    <div
+                      class="dot-status"
+                      :class="
+                        item.status === 'Aprobada'
+                          ? 'bg-success'
+                          : item.status === 'Cancelada'
+                          ? 'bg-red'
+                          : 'bg-yellow'
+                      "
+                    ></div>
+                    <p class="fw-bold">{{ item.status }}</p>
+                  </div>
+                </td>
+                <td>
+                  <button class="users__btn" @click="isOpen = true">
+                    <i class="icon-dots"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- view phone (cards) -->
+        <div class="cards-custom">
+          <v-card v-for="(item, index) in data" :key="index">
+            <div class="cards-custom__header">
               <p class="fw-bold">{{ item.name }}</p>
               <button class="users__btn" @click="isOpen = true">
                 <i class="icon-arrow-right"></i>
               </button>
             </div>
-
-            <div class="card-custom__content">
-              <div class="card-custom__item">
-                <p>{{ $t('user.email') }}</p>
-                <p>{{ item.email }}</p>
-              </div>
-              <div class="card-custom__item">
-                <p>{{ $t('user.date') }}</p>
-                <p>{{ item.date }}</p>
-              </div>
-              <div class="card-custom__item">
-                <p>{{ $t('user.permissions') }}</p>
-                <p>{{ item.permissions }}</p>
-              </div>
-              <div class="card-custom__item">
-                <p>FEE</p>
-                <p>{{ item.fee }}</p>
-              </div>
-              <div class="card-custom__item">
-                <p>{{ $t('user.status') }}</p>
-                <div class="users__box">
-                  <div
-                    class="dot-status"
-                    :class="
-                      item.status === 'Aprovada'
-                        ? 'bg-success'
-                        : item.status === 'Cancelada'
-                        ? 'bg-danger'
-                        : 'bg-warning'
-                    "
-                  ></div>
-                  <p>{{ item.status }}</p>
+            <div class="cards-body">
+              <div class="cards-custom__content">
+                <div class="cards-custom__item">
+                  <p>{{ $t('user.email') }}</p>
+                  <p>{{ item.email }}</p>
+                </div>
+                <div class="cards-custom__item">
+                  <p>{{ $t('user.date') }}</p>
+                  <p>{{ item.date }}</p>
+                </div>
+                <div class="cards-custom__item">
+                  <p>{{ $t('user.permissions') }}</p>
+                  <p>{{ item.permissions }}</p>
+                </div>
+                <div class="cards-custom__item">
+                  <p>FEE</p>
+                  <p>{{ item.fee }}</p>
+                </div>
+                <div class="cards-custom__item">
+                  <p>{{ $t('user.status') }}</p>
+                  <div class="users__box">
+                    <div
+                      class="dot-status"
+                      :class="
+                        item.status === 'Aprobada'
+                          ? 'bg-success'
+                          : item.status === 'Cancelada'
+                          ? 'bg-danger'
+                          : 'bg-warning'
+                      "
+                    ></div>
+                    <p>{{ item.status }}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </v-card>
         </div>
+        <v-pagination
+          class="pagination"
+          v-model="currentPage"
+          :length="rows"
+          :total-visible="3"
+          align="center"
+        ></v-pagination>
       </div>
-      <v-pagination
-        class="pagination"
-        v-model="currentPage"
-        :length="rows"
-        :total-visible="3"
-        align="center"
-      ></v-pagination>
     </v-card>
   </section>
   <!-- Options modal -->
@@ -196,7 +195,7 @@ const data = [
     date: '00/00/0000',
     permissions: 'SuperUsuario',
     fee: 'FEE',
-    status: 'Aprovada'
+    status: 'Aprobada'
   },
   {
     id: 1,
@@ -205,7 +204,7 @@ const data = [
     date: '00/00/0000',
     permissions: 'SuperUsuario',
     fee: 'FEE',
-    status: 'Aprovada'
+    status: 'Aprobada'
   },
   {
     id: 1,
@@ -214,7 +213,7 @@ const data = [
     date: '00/00/0000',
     permissions: 'SuperUsuario',
     fee: 'FEE',
-    status: 'Aprovada'
+    status: 'Aprobada'
   }
 ]
 </script>
@@ -222,17 +221,20 @@ const data = [
 .users {
   display: grid;
   gap: 2.4rem;
+  &__content {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+  }
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 
-    @media (max-width: 767px) {
-      flex-direction: column;
-      gap: 2.4rem;
-      align-items: flex-start;
-
+    @media (max-width: 450px) {
+      flex-direction: column-reverse;
       button {
         width: 100%;
       }
@@ -300,7 +302,7 @@ const data = [
   }
 }
 
-.card-custom {
+.cards-custom {
   display: none;
 
   @media (max-width: 767px) {
@@ -308,15 +310,16 @@ const data = [
     flex-direction: column;
     gap: 2.4rem;
 
-    .card {
-      overflow: hidden;
+    .cards {
+      &-body {
+        padding: 1rem;
+      }
     }
 
     &__header {
+      padding: 1rem;
       background-color: #f9fbfc;
       outline-color: #f9fbfc;
-      outline-width: 2.4rem;
-      outline-style: solid;
 
       display: flex;
       flex-direction: row;
@@ -334,7 +337,6 @@ const data = [
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      padding-top: 16px;
     }
 
     &__item {

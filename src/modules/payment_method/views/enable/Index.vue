@@ -11,9 +11,9 @@
           <p class="l-regular">{{ $t('payment-methods.select-method') }}</p>
         </div>
 
-        <div class="tabs__modal">
+        <div class="tabs__modal mb-8">
           <!-- Switch -->
-          <v-tabs v-model="tab">
+          <v-tabs class="tabs-rounded w-100" v-model="tab">
             <v-tab value="one"><span class="t-btn">Crypto</span></v-tab>
             <v-tab value="two"><span class="t-btn">Fiat</span> </v-tab>
           </v-tabs>
@@ -27,7 +27,8 @@
                 <v-text-field
                   variant="solo-filled"
                   placeholder="Search"
-                  rounded="lg"
+                  hide-details
+                  class="inpt"
                   density="compact"
                   prependInnerIcon="mdi-magnify"
                   type="search"
@@ -50,8 +51,9 @@
               <div class="search-box">
                 <v-text-field
                   variant="solo-filled"
+                  hide-details
                   placeholder="Search"
-                  rounded="lg"
+                  class="inpt"
                   density="compact"
                   prependInnerIcon="mdi-magnify"
                   type="search"
@@ -237,5 +239,4 @@ const fiatCoins = [
     background-color: #fff;
   }
 }
-
 </style>

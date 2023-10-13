@@ -12,8 +12,8 @@
         <v-text-field
           density="compact"
           placeholder="Example@mail.com"
-          variant="solo"
-          class="rounded-lg"
+          variant="solo-filled"
+          class="inpt"
         ></v-text-field>
       </div>
       <div class="b-regular">
@@ -21,16 +21,14 @@
         <v-text-field
           density="compact"
           placeholder="0.00%"
-          variant="solo"
-          class="rounded-lg"
+          variant="solo-filled"
+          class="inpt"
         ></v-text-field>
       </div>
-      <v-btn class="text-none text-white mt-4 primary" color="#091D8B" @click="send = true">
-        {{ $t('users.send') }}</v-btn
-      >
+      <v-btn class="btn" color="#091D8B" @click="send = true"> {{ $t('users.send') }}</v-btn>
       <router-link :to="{ name: 'user' }">
-        <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">
-          {{ $t('users.cancel') }}</v-btn
+        <v-btn variant="outlined" color="secondary" class="btn w-100 mt-6">
+          <p class="text-primary">{{ $t('users.cancel') }}</p></v-btn
         >
       </router-link>
     </v-card>
@@ -43,9 +41,7 @@
         {{ $t('reports.sendEmail') }} <span class="font-weight-bold">email@email.com</span>
       </p>
       <router-link :to="{ name: 'user' }" class="w-100">
-        <v-btn class="text-none text-white mt-6 w-100 primary" color="#091D8B">{{
-          $t('transactions.back')
-        }}</v-btn>
+        <v-btn class="btn w-100 mt-6" color="#091D8B">{{ $t('transactions.back') }}</v-btn>
       </router-link>
     </v-card>
   </section>

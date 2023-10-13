@@ -7,7 +7,8 @@
           density="compact"
           v-model="selectedItem"
           :items="options"
-          variant="solo"
+          variant="solo-filled"
+          class="inpt"
           menu-icon="mdi-chevron-down"
           hide-details="auto"
         >
@@ -20,13 +21,11 @@
           <template v-slot:prepend-inner>
             <div class="d-flex align-center">
               <img
-                class="img-select mr-2"
-                src="@/assets/icons/tether.png"
+                class="img-select ml-2 mr-2"
+                src="@/assets/images/avatar.png"
                 v-if="selectedItem === null"
               />
-              <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">
-                Tether USDT
-              </p>
+              <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">Proyecto</p>
             </div>
             <div class="d-flex align-center" v-for="icon in options" :key="icon.text">
               <img class="img-select" :src="icon.icon" alt="" v-if="icon.text === selectedItem" />
@@ -34,11 +33,11 @@
           </template>
         </v-select>
         <div class="chart__btns">
-          <v-btn size="46" variant="outlined" class="chart__btn">1M</v-btn>
-          <v-btn size="46" variant="outlined" class="chart__btn">3M</v-btn>
-          <v-btn size="46" variant="outlined" class="chart__btn">6M</v-btn>
-          <v-btn size="46" variant="outlined" class="chart__btn">1Y</v-btn>
-          <v-btn size="46" variant="outlined" class="chart__btn">All</v-btn>
+          <v-btn size="44" variant="outlined" class="chart__btn">1M</v-btn>
+          <v-btn size="44" variant="outlined" class="chart__btn">3M</v-btn>
+          <v-btn size="44" variant="outlined" class="chart__btn">6M</v-btn>
+          <v-btn size="44" variant="outlined" class="chart__btn">1Y</v-btn>
+          <v-btn size="44" variant="outlined" class="chart__btn">All</v-btn>
         </div>
       </div>
     </div>

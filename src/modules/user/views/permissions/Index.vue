@@ -11,16 +11,14 @@
         <div class="d-flex align-center justify-space-between">
           <p class="l-light">{{ item.name }}</p>
           <div>
-            <v-switch hide-details inset color="#091D8B"></v-switch>
+            <v-switch density="compact" hide-details color="primary" inset></v-switch>
           </div>
         </div>
       </div>
-      <v-btn class="text-none text-white mt-4 primary" color="#091D8B" @click="saved = true">
-        {{ $t('user.save') }}</v-btn
-      >
+      <v-btn class="mt-4 btn" color="#091D8B" @click="saved = true"> {{ $t('user.save') }}</v-btn>
       <router-link :to="{ name: 'user' }">
-        <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">
-          {{ $t('users.cancel') }}</v-btn
+        <v-btn variant="outlined" class="mt-4 btn w-100" color="secondary">
+          <p class="text-primary">{{ $t('users.cancel') }}</p></v-btn
         >
       </router-link>
     </v-card>
@@ -37,9 +35,7 @@
         {{ $t('reports.permission2') }}<span class="font-weight-bold"> NombreProyecto</span>
       </p>
       <router-link :to="{ name: 'user' }" class="w-100">
-        <v-btn class="text-none text-white mt-6 w-100 primary" color="#091D8B">{{
-          $t('transactions.back')
-        }}</v-btn>
+        <v-btn class="btn w-100 mt-4" color="primary">{{ $t('transactions.back') }}</v-btn>
       </router-link>
     </v-card>
   </section>

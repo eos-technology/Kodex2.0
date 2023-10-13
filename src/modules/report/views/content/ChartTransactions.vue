@@ -16,11 +16,11 @@
         </v-btn>
       </div>
       <div class="chart__btns">
-        <v-btn size="46" variant="outlined" class="chart__btn">1M</v-btn>
-        <v-btn size="46" variant="outlined" class="chart__btn">3M</v-btn>
-        <v-btn size="46" variant="outlined" class="chart__btn">6M</v-btn>
-        <v-btn size="46" variant="outlined" class="chart__btn">1Y</v-btn>
-        <v-btn size="46" variant="outlined" class="chart__btn">All</v-btn>
+        <v-btn size="44" variant="outlined" class="chart__btn">1M</v-btn>
+        <v-btn size="44" variant="outlined" class="chart__btn">3M</v-btn>
+        <v-btn size="44" variant="outlined" class="chart__btn">6M</v-btn>
+        <v-btn size="44" variant="outlined" class="chart__btn">1Y</v-btn>
+        <v-btn size="44" variant="outlined" class="chart__btn">All</v-btn>
       </div>
     </div>
     <div id="chart">

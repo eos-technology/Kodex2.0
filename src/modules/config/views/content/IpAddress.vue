@@ -1,11 +1,16 @@
 <template>
   <div class="header">
-    <v-text-field class="search" :placeholder="$t('transactions.search')" variant="solo">
+    <v-text-field
+      class="inpt inpt-search"
+      :placeholder="$t('transactions.search')"
+      variant="solo-filled"
+      density="compact"
+    >
       <template v-slot:prepend-inner>
         <i class="icon-search"></i>
       </template>
     </v-text-field>
-    <v-btn class="text-none text-white primary" color="#091D8B">{{ $t('setting.add') }}</v-btn>
+    <v-btn class="btn primary" color="#091D8B">{{ $t('setting.add') }}</v-btn>
   </div>
   <div class="ip-address">
     <v-card class="card pa-6" v-for="(address, index) in data" :key="index">
@@ -23,7 +28,7 @@
         <div class="ip-address__block mt-4">
           <p class="l-regular">{{ $t('setting.block') }}</p>
           <div>
-            <v-switch hide-details inset color="#091D8B"></v-switch>
+            <v-switch density="compact" hide-details color="primary" inset></v-switch>
           </div>
         </div>
 
@@ -63,7 +68,7 @@ const data = [
   margin-bottom: 24px;
 
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   gap: 16px;
 
   @media (max-width: 767px) {

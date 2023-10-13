@@ -33,13 +33,17 @@
         </div>
 
         <div class="banner__button">
-          <v-btn class="text-none">
+          <v-btn class="btn" color="error" variant="outlined">
             <span class="icon-trash"><i class="icon-delete"></i></span>
             <span class="trash">{{ $t('setting.delete-img') }}</span>
           </v-btn>
-          <v-btn @click="$router.push({ name: 'add-image' })">{{
-            $t('setting.attach-image')
-          }}</v-btn>
+          <v-btn
+            class="btn"
+            color="primary"
+            variant="outlined"
+            @click="$router.push({ name: 'add-image' })"
+            >{{ $t('setting.attach-image') }}</v-btn
+          >
         </div>
       </div>
     </div>
@@ -134,14 +138,13 @@ import { getFile } from '@/helpers/Index'
 
   &__button {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 1.2vw;
 
     @media (max-width: 767px) {
       width: 100%;
       display: grid;
-      grid-template-columns: 15% 80%;
+      grid-template-columns: min-content 1fr;
       gap: 16px;
 
       button {
@@ -149,6 +152,9 @@ import { getFile } from '@/helpers/Index'
         font-size: 14px;
         width: 100%;
       }
+    }
+    @media (max-width: 320px) {
+      grid-template-columns: 1fr;
     }
   }
 }

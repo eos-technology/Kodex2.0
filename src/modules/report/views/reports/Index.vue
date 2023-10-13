@@ -3,14 +3,9 @@
     <div class="report__header">
       <h3 class="h3-bold">{{ $t('reports.header') }}</h3>
 
-      <v-btn
-        @click="$router.push({ name: 'generate' })"
-        color="primary"
-        class="text-none text-white"
-        rounded="lg"
-        size="large"
-        >{{ $t('reports.btnReports') }}</v-btn
-      >
+      <v-btn @click="$router.push({ name: 'generate' })" color="primary" class="btn" hide-details>{{
+        $t('reports.btnReports')
+      }}</v-btn>
     </div>
     <!-- Cards -->
     <div class="cards">

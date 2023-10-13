@@ -29,7 +29,17 @@
             <v-window-item value="one">
               <!-- Tab Crypto -->
               <div class="tab-crypto">
-                <BaseInput placeholder="Search" class="search" type="search" />
+                <v-text-field
+                  :placeholder="$t('transactions.search')"
+                  variant="solo-filled"
+                  hide-details
+                  density="compact"
+                  class="inpt inpt-search"
+                >
+                  <template v-slot:prepend-inner>
+                    <i class="icon-search"></i>
+                  </template>
+                </v-text-field>
                 <div class="tab-crypto__currencies">
                   <CurrencyMethod
                     @enable-configure="enableConfigure(1), (btn = !btn)"
@@ -47,7 +57,17 @@
                 <NoConfigure v-if="!isConfigureFiat" />
 
                 <div class="tab-fiat__content" v-if="isConfigureFiat">
-                  <BaseInput placeholder="Search" class="search" type="search" />
+                  <v-text-field
+                    :placeholder="$t('transactions.search')"
+                    variant="solo-filled"
+                    hide-details
+                    density="compact"
+                    class="inpt inpt-search"
+                  >
+                    <template v-slot:prepend-inner>
+                      <i class="icon-search"></i>
+                    </template>
+                  </v-text-field>
                   <div class="tab-fiat__currencies">
                     <CurrencyMethod
                       @enable-configure="enableConfigure(2), (btn = !btn)"
@@ -72,7 +92,6 @@ import { ref } from 'vue'
 
 import CurrencyMethod from '../components/CurrencyMethod.vue'
 import NoConfigure from './content/NoConfigure.vue'
-import BaseInput from './content/BaseInput.vue'
 
 const tab = ref()
 

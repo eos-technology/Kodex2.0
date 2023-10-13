@@ -21,8 +21,9 @@
             hide-details
             id="code"
             :placeholder="$t('setting.code')"
-            variant="solo"
-            class="rounded-lg"
+            variant="solo-filled"
+            density="compact"
+            class="inpt"
           ></v-text-field>
           <p class="b-regular message mt-2">{{ $t('settings.email-code') }} example@email.com</p>
         </label>
@@ -31,7 +32,7 @@
           <p class="b-regular b-regular--red">{{ $t('setting.delete-key') }}</p>
           <div class="buttons">
             <p>{{ $t('setting.resend-code') }}</p>
-            <v-btn variant="outlined" class="text-none primary outlined">
+            <v-btn variant="outlined" class="btn" color="primary">
               {{ $t('setting.validate-api') }}</v-btn
             >
           </div>

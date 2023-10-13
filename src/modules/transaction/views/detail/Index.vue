@@ -29,101 +29,94 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <div class="d-flex align-center justify-space-between mt-10">
+      <!-- Content -->
+      <div class="d-info">
+        <div class="d-info__header mt-6">
           <p>{{ $t('transactions.idTransaction') }}</p>
-          <div class="d-flex align-center">
-            <button class="transaction__table-box-btn mr-6">
+          <div class="d-info__copy">
+            <button class="d-info__btn">
               <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
             </button>
-            <p class="fw-bold table__box-copy-value font-weight-bold">
-              Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95
-            </p>
+            <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
           </div>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.name') }}</p>
           <p class="fw-bold font-weight-bold">Alberto Style</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.email') }}</p>
-          <p class="fw-bold table__box-copy-value font-weight-bold">Albertostyle@email.com</p>
+          <p class="l-medium">Albertostyle@email.com</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.money') }}</p>
           <p class="fw-bold font-weight-bold">Tether(USDT)</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.quantity') }}</p>
           <p class="fw-bold font-weight-bold">780</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.commission') }}</p>
           <p class="fw-bold font-weight-bold">20</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.walletDatail') }}</p>
-          <div class="d-flex align-center">
-            <button class="transaction__table-box-btn mr-6">
+          <div class="d-info__copy">
+            <button class="d-info__btn">
               <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
             </button>
-            <p class="fw-bold table__box-copy-value font-weight-bold">
-              Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95
-            </p>
+            <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
           </div>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.creationDetail') }}</p>
           <p class="fw-bold font-weight-bold">0000/00/00 00:00</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.paymentDate') }}</p>
           <p class="fw-bold font-weight-bold">0000/00/00 00:00</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header d-info__account">
           <p>{{ $t('transactions.accountDetail') }}</p>
-          <p class="fw-bold table__box-copy-value font-weight-bold">
-            Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95
-          </p>
+          <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>Hash</p>
-          <div class="d-flex align-center">
-            <button class="transaction__table-box-btn mr-6">
+          <div class="d-info__copy">
+            <button class="d-info__btn">
               <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
             </button>
-            <p class="fw-bold table__box-copy-value font-weight-bold">
-              Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95
-            </p>
+            <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
           </div>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.result') }}</p>
           <div class="table__box-status">
             <div class="dot-status bg-success"></div>
             <p class="fw-bold font-weight-bold">{{ $t('transactions.approved') }}</p>
           </div>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.statusDetail') }}</p>
           <div class="table__box-status">
             <div class="dot-status bg-warning"></div>
             <p class="fw-bold font-weight-bold">{{ $t('transactions.approved') }}</p>
           </div>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.confirmed') }}</p>
           <p class="fw-bold font-weight-bold">Chain cloud</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.block') }}</p>
           <p class="fw-bold font-weight-bold">484685361</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.quantitySRS') }}</p>
           <p class="fw-bold font-weight-bold">6</p>
         </div>
-        <div class="d-flex align-center justify-space-between mt-2">
+        <div class="d-info__header">
           <p>{{ $t('transactions.resources') }}</p>
           <p class="fw-bold font-weight-bold">345 TRX</p>
         </div>
@@ -314,6 +307,75 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+  }
+}
+
+.d-info {
+  display: grid;
+  gap: 1rem;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &__copy {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    p {
+      text-align: right;
+
+      @media (max-width: 670px) {
+        max-width: 140px;
+      }
+      @media (max-width: 480px) {
+        max-width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+      }
+    }
+    @media (max-width: 670px) {
+      flex-direction: column-reverse;
+    }
+  }
+  &__account {
+    @media (max-width: 670px) {
+      p {
+        max-width: 140px;
+      }
+    }
+  }
+  &__btn {
+    display: flex;
+    padding: 8px 12px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #f4f5f8;
+    i {
+      font-size: 1rem;
+      color: #001e62;
+      background-color: #fff;
+      padding: 0;
+    }
+    @media (max-width: 670px) {
+      border: none;
+      color: #3587ff;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+
+      i {
+        color: #3587ff;
+      }
+    }
   }
 }
 </style>

@@ -11,7 +11,7 @@
 
         <v-text-field
           placeholder="Wallet address"
-          rounded="lg"
+          class="inpt"
           variant="solo-filled"
           single-line
           density="compact"
@@ -28,10 +28,12 @@
     </div>
 
     <div class="configureCrypto__buttons">
-      <v-btn @click="emit('next', form)" color="primary">{{ $t('globals.save') }}</v-btn>
-      <v-btn @click="$router.back()" variant="outlined" class="w-btn border-btn">{{
-        $t('cancel')
+      <v-btn @click="emit('next', form)" class="btn" color="primary">{{
+        $t('globals.save')
       }}</v-btn>
+      <v-btn @click="$router.back()" color="secondary" variant="outlined" class="btn"
+        ><p class="text-primary">{{ $t('cancel') }}</p></v-btn
+      >
     </div>
   </form>
 </template>

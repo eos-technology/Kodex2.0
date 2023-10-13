@@ -36,18 +36,20 @@
         <p class="l-light mt-4">{{ $t('users.describe') }}</p>
         <div class="mt-6">
           <label class="b-regular">{{ $t('reports.label') }}</label>
-          <v-text-field density="compact" placeholder="Your Wallet" variant="solo"></v-text-field>
+          <v-text-field
+            class="inpt"
+            density="compact"
+            placeholder="Your Wallet"
+            variant="solo-filled"
+          ></v-text-field>
         </div>
-        <v-btn
-          class="text-none text-white mt-4 w-100 primary"
-          color="#091D8B"
-          @click="saved = true"
-          >{{ $t('reports.generate') }}</v-btn
-        >
+        <v-btn class="mt-4 w-100 btn" color="#091D8B" @click="saved = true">{{
+          $t('reports.generate')
+        }}</v-btn>
         <router-link :to="{ name: 'user' }">
-          <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">{{
-            $t('reports.btnCancel')
-          }}</v-btn>
+          <v-btn color="secondary" variant="outlined" class="btn mt-4 w-100"
+            ><p class="text-primary">{{ $t('reports.btnCancel') }}</p></v-btn
+          >
         </router-link>
       </v-card>
     </div>
@@ -62,9 +64,7 @@
           {{ $t('users.user') }} <span class="font-weight-bold">NombreUsuario</span>
         </p>
         <router-link :to="{ name: 'user' }" class="w-100">
-          <v-btn class="text-none text-white mt-6 w-100 primary" color="#091D8B">{{
-            $t('transactions.back')
-          }}</v-btn>
+          <v-btn class="mt-6 w-100 btn" color="primary">{{ $t('transactions.back') }}</v-btn>
         </router-link>
       </v-card>
     </div>

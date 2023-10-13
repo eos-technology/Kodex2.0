@@ -61,7 +61,7 @@
                   </td>
                   <td>
                     <div class="table-custom__center">
-                      <v-switch hide-details density="compact" inset></v-switch>
+                      <v-switch density="compact" hide-details color="primary" inset></v-switch>
                     </div>
                   </td>
                   <td>
