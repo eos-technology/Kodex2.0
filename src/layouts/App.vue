@@ -66,12 +66,13 @@ console.log(route.name)
   }
   &__content {
     width: 100%;
+    margin: 10px 10px 10px 0;
     // margin-left: 72px;
     background-color: #e9ebef;
-    border-top-left-radius: 32px;
+    border-radius: 32px;
     overflow: hidden;
-    min-height: 100vh;
-    height: 100%;
+
+    max-height: calc(100vh - 20px);
     @media (max-width: 768px) {
       margin: 75px 0 0;
       border-top-left-radius: 0;
@@ -84,7 +85,7 @@ console.log(route.name)
     }
     &-int {
       border-top-left-radius: 32px;
-      position: fixed;
+      // position: fixed;
       max-height: 100%;
       overflow-y: auto;
       background-color: #f8f8f8;
