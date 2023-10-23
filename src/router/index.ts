@@ -18,7 +18,7 @@ export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     //module
-templateRoutes,
+    templateRoutes,
     gatewayRoutes,
     userRoutes,
     payment_methodRoutes,

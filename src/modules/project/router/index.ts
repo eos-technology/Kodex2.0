@@ -8,7 +8,14 @@ const projectRoutes = {
     {
       path: '',
       name: 'project',
-      component: () => import('@/modules/project/views/dashboard/Index.vue')
+      component: () => import('@/modules/project/layout/Project.vue'),
+      children: [
+        {
+          path: '',
+          name: 'project',
+          component: () => import('@/modules/project/views/dashboard/Index.vue'),
+        }    
+      ]
     },
     {
       path: 'new_project',

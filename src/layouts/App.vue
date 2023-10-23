@@ -3,8 +3,7 @@
     <MenuApp class="app__menu" @route-value="isMenuOpen = false" />
     <MenuAppMobile class="app__menu-mobile" />
     <div class="app__content">
-      <MenuProjects v-if="$route.name != 'dashboard'" @menu-clicked="handleMenuClicked" />
-      <div class="app__content-int" :class="contentClass">
+      <div class="app__content-int">
         <RouterView></RouterView>
       </div>
     </div>
@@ -70,7 +69,7 @@ console.log(route.name)
     // margin-left: 72px;
     background-color: #e9ebef;
     border-radius: 32px;
-    overflow: hidden;
+    overflow-y: hidden;
 
     max-height: calc(100vh - 20px);
     @media (max-width: 768px) {
@@ -84,13 +83,11 @@ console.log(route.name)
       height: 100%;
     }
     &-int {
+      position: relative;
       border-top-left-radius: 32px;
-      // position: fixed;
       max-height: 100%;
       overflow-y: auto;
       background-color: #f8f8f8;
-      padding: 1.5rem;
-      margin-left: 72px;
       width: 100%;
       min-height: 100vh;
       height: 100%;
@@ -116,7 +113,7 @@ console.log(route.name)
 }
 
 .menu-hide {
-  max-width: calc(100vw - 144px);
+  /* max-width: calc(100vw - 144px); */
   @media (max-width: 768px) {
     max-width: unset;
   }
