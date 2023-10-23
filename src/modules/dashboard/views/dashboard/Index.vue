@@ -1,5 +1,5 @@
 <template>
-  <section class="dashboard">
+  <section class="dashboard pa-5">
     <h3 class="h3-bold">{{ $t('dashboard.panelTitle') }}</h3>
     <!-- Banner -->
     <div class="dashboard__swiper">
