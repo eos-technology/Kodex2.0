@@ -66,11 +66,100 @@
                   </td>
                   <td>
                     <div class="table-custom__center" @click="isOpen = true">
-                      <img
-                        class="share"
-                        :src="getFile({ route: 'icons', url: 'save', extension: 'svg' })"
-                        alt=""
-                      />
+                      <v-dialog width="450">
+                        <template v-slot:activator="{ props }">
+                          <img
+                            v-bind="props"
+                            class="share"
+                            :src="getFile({ route: 'icons', url: 'save', extension: 'svg' })"
+                            alt=""
+                          />
+                        </template>
+
+                        <template v-slot:default="{ isActive }">
+                          <v-card rounded="lg">
+                            <div class="modal">
+                              <div class="modal__header">
+                                <h5 class="h5-bold">{{ $t('paymentsLink.share') }}</h5>
+                                <button class="modal__close" @click="isActive.value = false">
+                                  <img
+                                    :src="
+                                      getFile({
+                                        route: 'icons/form',
+                                        url: 'close',
+                                        extension: 'svg'
+                                      })
+                                    "
+                                    alt=""
+                                  />
+                                </button>
+                              </div>
+                              <div class="tabs__modal">
+                                <v-tabs class="tabs-rounded w-100" v-model="tab">
+                                  <v-tab class="w-50" value="one"
+                                    ><span class="t-btn">QR</span></v-tab
+                                  >
+                                  <v-tab class="w-50" value="two"
+                                    ><span class="t-btn"
+                                      >{{ $t('paymentsLink.email') }}
+                                    </span></v-tab
+                                  >
+                                </v-tabs>
+                                <v-window v-model="tab">
+                                  <v-window-item class="tabs__content" value="one">
+                                    <img
+                                      class="img-qr"
+                                      :src="
+                                        getFile({
+                                          route: 'images/svg',
+                                          url: 'qr',
+                                          extension: 'svg'
+                                        })
+                                      "
+                                      alt=""
+                                    />
+                                    <label for="copy">
+                                      <p class="b-regular mb-1">
+                                        {{ $t('paymentsLink.copyShare') }}
+                                      </p>
+                                      <button class="copy">
+                                        <p class="b-medium text-primary text-lowercase">
+                                          www.YourLink.com/User
+                                        </p>
+                                        <i class="icon-copy"></i>
+                                      </button>
+                                    </label>
+                                    <v-btn color="primary" class="btn">{{
+                                      $t('download-qr')
+                                    }}</v-btn>
+                                  </v-window-item>
+                                  <v-window-item class="tabs__content" value="two">
+                                    <label for="email">
+                                      <p class="b-regular mb-1">
+                                        {{ $t('paymentsLink.shareByEmail') }}
+                                      </p>
+                                      <v-text-field
+                                        class="inpt"
+                                        variant="solo-filled"
+                                        placeholder="Example@email.com"
+                                        density="compact"
+                                        hide-details="auto"
+                                        single-line
+                                        rounded="lg"
+                                        id="email"
+                                        type="email"
+                                      ></v-text-field>
+                                    </label>
+                                    <v-btn class="btn" color="primary" @click="step = 2">{{
+                                      $t('send')
+                                    }}</v-btn>
+                                  </v-window-item>
+                                </v-window>
+                              </div>
+                            </div>
+                          </v-card>
+                        </template>
+                      </v-dialog>
                     </div>
                   </td>
                 </tr>
@@ -148,74 +237,6 @@
       </v-card>
     </div>
   </section>
-
-  <!-- Modal -->
-  <teleport to="body">
-    <div class="modal" v-if="isOpen">
-      <div class="modal__content" v-if="step === 1">
-        <div class="modal__header">
-          <h5 class="h5-bold">{{ $t('paymentsLink.share') }}</h5>
-          <button class="modal__close" @click="isOpen = false">
-            <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })" alt="" />
-          </button>
-        </div>
-
-        <div class="tabs__modal">
-          <v-tabs class="tabs-rounded w-100" v-model="tab">
-            <v-tab class="w-50" value="one"><span class="t-btn">QR</span></v-tab>
-            <v-tab class="w-50" value="two"
-              ><span class="t-btn">{{ $t('paymentsLink.email') }} </span></v-tab
-            >
-          </v-tabs>
-
-          <v-window v-model="tab">
-            <v-window-item class="tabs__content" value="one">
-              <img
-                class="img-qr"
-                :src="getFile({ route: 'images', url: 'qr', extension: 'svg' })"
-                alt=""
-              />
-              <label for="copy">
-                <p class="b-regular mb-1">{{ $t('paymentsLink.copyShare') }}</p>
-                <button class="copy">
-                  <p class="b-medium text-primary text-lowercase">www.YourLink.com/User</p>
-
-                  <i class="icon-copy"></i>
-                </button>
-              </label>
-
-              <v-btn color="primary" class="btn">{{ $t('download-qr') }}</v-btn>
-            </v-window-item>
-
-            <v-window-item class="tabs__content" value="two">
-              <label for="email">
-                <p class="b-regular mb-1">{{ $t('paymentsLink.shareByEmail') }}</p>
-                <v-text-field
-                  class="inpt"
-                  variant="solo-filled"
-                  placeholder="Example@email.com"
-                  density="compact"
-                  hide-details="auto"
-                  single-line
-                  rounded="lg"
-                  id="email"
-                  type="email"
-                ></v-text-field>
-              </label>
-
-              <v-btn
-                size="48"
-                color="primary"
-                class="w-100 py-3 px-4 rounded-lg text-capitalize"
-                @click="step = 2"
-                >{{ $t('send') }}</v-btn
-              >
-            </v-window-item>
-          </v-window>
-        </div>
-      </div>
-    </div>
-  </teleport>
 </template>
 
 <script lang="ts" setup>
@@ -267,60 +288,49 @@ const data = [
 }
 
 .modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #000000c5;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 767px) {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    align-items: flex-end;
-  }
+  display: grid;
+  padding: 1.5rem;
+  gap: 2rem;
 
   .tabs {
     &__modal {
       display: grid;
       gap: 24px;
+
       img {
         display: block;
-        margin: 0 auto;
+        margin-block: 0;
+        margin-inline: auto;
       }
     }
+
     &__content {
       display: grid;
-      gap: 2rem;
+      gap: 24px;
     }
   }
 
   .t-btn {
-    font-weight: 300;
     color: #0a1e8c;
+    font-weight: 300;
     text-transform: capitalize;
   }
 
   &__input {
-    width: 25rem;
-    border-radius: 0.75rem;
     border: 0.0625rem solid #dde4ed;
+    border-radius: 0.75rem;
     background: #f6f8fa;
-    padding: 0.75rem 1rem;
     font-size: 0.875rem;
+    inline-size: 25rem;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
 
     &:focus-visible {
       outline: none;
     }
 
     @media (max-width: 767px) {
-      width: 85vw;
+      inline-size: 85vw;
     }
   }
 
@@ -331,24 +341,25 @@ const data = [
 
   &__close {
     display: grid;
-    place-content: center;
     padding: 0.5rem;
-    background: #f6f8fa;
-    border-radius: 6.25rem;
     border: none;
-    width: 2rem;
-    height: 2rem;
+    border-radius: 6.25rem;
+    background: #f6f8fa;
+    block-size: 2rem;
+    inline-size: 2rem;
+    place-content: center;
   }
 
   &__content {
-    max-width: 28.125rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    background-color: #fff;
     padding: 1.5rem;
     border-radius: 1rem;
-    width: 100%;
+    background-color: #fff;
+    gap: 2rem;
+    inline-size: 100%;
+    max-inline-size: 28.125rem;
+
     @media (max-width: 767px) {
       border-radius: 1rem 1rem 0 0;
     }
