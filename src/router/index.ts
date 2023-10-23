@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 //importation
-import templateRoutes from '@/modules/template/router';
+import templateRoutes from '@/modules/template/router'
 import gatewayRoutes from '@/modules/gateway/router'
 import userRoutes from '@/modules/user/router'
 import payment_methodRoutes from '@/modules/payment_method/router'
@@ -31,7 +31,7 @@ export const router = createRouter({
     authRoutes,
     cart_Routes
   ],
-  linkExactActiveClass: 'active'
+  linkExactActiveClass: 'router-link-active'
 })
 
 /* router.beforeEach((to, from, next) => {

@@ -67,7 +67,7 @@
 import { ref } from 'vue'
 const emit = defineEmits(['route-value'])
 
-const projects = [{ icon: 'NP', name: 'Project', route: 'project' }]
+const projects = [{ icon: 'NP', name: 'Project', route: 'project-dashboard' }]
 
 const drawer = ref(false)
 

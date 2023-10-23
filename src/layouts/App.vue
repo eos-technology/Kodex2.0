@@ -11,32 +11,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import MenuApp from '@/components/MenuApp.vue'
-import MenuProjects from '@/components/MenuProjects.vue'
-import { useRoute } from 'vue-router'
 import MenuAppMobile from '@/components/MenuAppMobile.vue'
-const route = useRoute()
 
 const isMenuOpen = ref(false)
-
-function handleMenuClicked(isOpen: boolean) {
-  isMenuOpen.value = isOpen
-}
-
-const contentClass = computed(() => {
-  if (isMenuOpen.value) {
-    return 'menu-show__text'
-  } else {
-    if (route.name === 'dashboard') {
-      return 'menu-show'
-    } else {
-      return 'menu-hide'
-    }
-  }
-})
-
-console.log(route.name)
 </script>
 
 <style lang="scss" scoped>

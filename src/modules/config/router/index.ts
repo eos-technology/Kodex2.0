@@ -21,20 +21,19 @@ const configRoutes = {
         {
           path: 'timeline',
           name: 'timeline',
-          component: () => import('@/modules/config/views/security/Timeline.vue'),
+          component: () => import('@/modules/config/views/security/Timeline.vue')
         },
         {
           path: 'restrictions',
           name: 'restrictions',
-          component: () => import('@/modules/config/views/security/Restrictions.vue'),
+          component: () => import('@/modules/config/views/security/Restrictions.vue')
         }
-
       ]
     },
     {
-        path: 'add-image',
-        name: 'add-image',
-        component: () => import('@/modules/config/views/add_image/Index.vue')
+      path: 'add-image',
+      name: 'add-image',
+      component: () => import('@/modules/config/views/add_image/Index.vue')
     },
     {
       path: 'keys',

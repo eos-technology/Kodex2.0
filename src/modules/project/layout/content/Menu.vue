@@ -28,15 +28,18 @@
         <v-divider color="#000000" />
       </v-list>
 
-      <v-list density="compact" style="margin: auto" v-for="route in routes">
+      <v-list density="compact" style="margin: auto" v-for="route in routes" :key="route.name">
         <v-list-item>
           <router-link class="route" :to="{ name: `${route.route}` }">
             <v-list-item-icon>
               <i
+                class="menu__icon"
                 :class="`icon-${route.icon} icon ${route.name == 'Dashboard' ? 'active' : ''}`"
               ></i>
             </v-list-item-icon>
-            <v-list-item-title v-if="!mini">{{ route.name }} </v-list-item-title>
+            <v-list-item-title v-if="!mini"
+              ><p>{{ route.name }}</p>
+            </v-list-item-title>
             <v-tooltip v-else activator="parent" location="end">
               {{ route.name }}
             </v-tooltip>
@@ -51,20 +54,20 @@
 import { ref } from 'vue'
 const mini = ref<boolean>(true)
 
-const emit = defineEmits(['toggleDrawer'])
+// const emit = defineEmits(['toggleDrawer'])
 
 const toggleMiniVariant = () => {
   mini.value = !mini.value
 }
 
 const routes = [
-  { icon: 'dash', name: 'Dashboard', route: 'project' },
-  { icon: 'link', name: 'Enlaces de pago', route: 'project' },
-  { icon: 'transaction', name: 'Transaction', route: 'project' },
-  { icon: 'clock', name: 'Reports', route: 'project' },
-  { icon: 'bank', name: 'Métodos de pago', route: 'project' },
-  { icon: 'user', name: 'Usuarios', route: 'project' },
-  { icon: 'setting', name: 'Configuración', route: 'project' }
+  { icon: 'dash', name: 'Dashboard', route: 'project-dashboard' },
+  { icon: 'link', name: 'Enlaces de pago', route: 'payment_links' },
+  { icon: 'transaction', name: 'Transaction', route: 'transactions' },
+  { icon: 'clock', name: 'Reports', route: 'reports' },
+  { icon: 'bank', name: 'Métodos de pago', route: 'payment_method' },
+  { icon: 'user', name: 'Usuarios', route: 'user' },
+  { icon: 'setting', name: 'Configuración', route: 'config' }
 ]
 </script>
 
@@ -103,38 +106,32 @@ const routes = [
   color: #001e62;
 }
 
-.v-list-item-title {
-  color: #001e62;
-}
-.router-link-exact-active i {
-  background: #061461;
-  color: #fafafa;
-}
-.router-link-exact-active .v-list-item-title {
-  font-weight: 600;
-}
 .route {
   display: flex;
-  align-items: center;
+  text-decoration: none;
   gap: 12px;
-  font-size: 14px;
   font-weight: 300;
+  font-size: 14px;
   line-height: 20px;
-  &.active {
-    font-weight: 700;
-    .menu__icon {
-      padding: 8px;
-      background: #061461;
-      border-radius: 12px;
-      color: #fff;
-    }
-  }
+  align-items: center;
   &--text {
     color: #fff;
     font-size: 1.7rem;
     text-align: center;
   }
 }
+.router-link-active p {
+  color: #001e62;
+  font-weight: 600;
+}
+.router-link-active i {
+  background: #061461;
+  color: #fafafa;
+  padding: 8px;
+  border-radius: 12px;
+  color: #fff;
+}
+
 .project_name {
   color: #0a1e8c;
   font-weight: 700;

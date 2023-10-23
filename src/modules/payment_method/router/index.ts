@@ -5,22 +5,22 @@ const payment_methodRoutes = {
     requiresAuth: false
   },
   children: [
-    {
-      path: '',
-      name: 'payment_method',
-      component: () => import('@/modules/payment_method/views/list/Index.vue')
-    },
-    {
-      path: 'enable',
-      name: 'payment_method-enable',
-      component: () => import('@/modules/payment_method/views/enable/Index.vue')
-    },
-    {
-      path: 'config/:currency',
-      name: 'payment_method-config',
-      component: () => import('@/modules/payment_method/views/config/Index.vue'),
-      params: true
-    }
+    // {
+    //   path: '',
+    //   name: 'payment_method',
+    //   component: () => import('@/modules/payment_method/views/list/Index.vue')
+    // },
+    // {
+    //   path: 'enable',
+    //   name: 'payment_method-enable',
+    //   component: () => import('@/modules/payment_method/views/enable/Index.vue')
+    // },
+    // {
+    //   path: 'config/:currency',
+    //   name: 'payment_method-config',
+    //   component: () => import('@/modules/payment_method/views/config/Index.vue'),
+    //   params: true
+    // }
   ]
 }
 
