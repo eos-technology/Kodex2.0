@@ -3,12 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 //importation
 import templateRoutes from '@/modules/template/router'
 import gatewayRoutes from '@/modules/gateway/router'
-import userRoutes from '@/modules/user/router'
-import payment_methodRoutes from '@/modules/payment_method/router'
-import reportRoutes from '@/modules/report/router'
-import payment_linkRoutes from '@/modules/payment_link/router'
-import transactionRoutes from '@/modules/transaction/router'
-import configRoutes from '@/modules/config/router'
 import projectRoutes from '@/modules/project/router'
 import authRoutes from '@/modules/auth/router'
 import dashboardRoutes from '@/modules/dashboard/router'
@@ -20,12 +14,6 @@ export const router = createRouter({
     //module
     templateRoutes,
     gatewayRoutes,
-    userRoutes,
-    payment_methodRoutes,
-    reportRoutes,
-    payment_linkRoutes,
-    transactionRoutes,
-    configRoutes,
     projectRoutes,
     dashboardRoutes,
     authRoutes,

@@ -1,6 +1,6 @@
 <template>
   <div class="card-big">
-    <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
+    <v-card class="pa-4 pa-md-6" rounded="lg">
       <div class="main-content">
         <!-- Poject Detail -->
         <div class="card-header">
@@ -56,7 +56,7 @@
       </div>
     </v-card>
 
-    <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
+    <v-card class="pa-4 pa-md-6" rounded="lg">
       <div class="main-content">
         <!-- Payment Methods -->
         <h5 class="h5-semibold">{{ $t('dashboard.payments') }}</h5>

@@ -1,6 +1,5 @@
 const configRoutes = {
   path: '/config',
-  component: () => import('@/layouts/App.vue'),
   meta: {
     requiresAuth: false
   },

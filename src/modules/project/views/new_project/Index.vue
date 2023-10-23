@@ -1,5 +1,5 @@
 <template>
-  <section class="new-proyect">
+  <section class="new-proyect pa-5">
     <Header :title="$t('dashboard.proyects')" />
 
     <GoBack />
@@ -7,7 +7,7 @@
     <v-card>
       <v-card-item>
         <!-- step 1 -->
-        <div v-if="step==1" class="new-proyect__content">
+        <div v-if="step == 1" class="new-proyect__content">
           <div class="new-proyect__header">
             <h3 class="h3-bold">{{ $t('dashboard.new') }}</h3>
             <p class="l-light">{{ $t('dashboard.desc1') }}</p>
@@ -24,7 +24,9 @@
           </div>
 
           <div class="new-proyect__buttons">
-            <v-btn @click="step++" color="primary" variant="flat">{{ $t('dashboard.new-btn') }}</v-btn>
+            <v-btn @click="step++" color="primary" variant="flat">{{
+              $t('dashboard.new-btn')
+            }}</v-btn>
             <v-btn class="cancel" color="#001E62" variant="text">{{
               $t('dashboard.cancel-btn')
             }}</v-btn>
@@ -32,18 +34,21 @@
         </div>
 
         <!-- step 2 -->
-        <div v-if="step==2" class="new-proyect__content">
-            <div class="new-proyect__header a-center">
-                <div class="new-proyect__img">
-                    <img :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })" />
-                </div>
-                <h3 class="h3-bold">{{ $t('dashboard.allReady') }}</h3>
-                <p class="l-light">{{ $t('dashboard.text-1') }} <span class="l-medium">{{ name }}</span> {{ $t('dashboard.text-2') }}</p>
+        <div v-if="step == 2" class="new-proyect__content">
+          <div class="new-proyect__header a-center">
+            <div class="new-proyect__img">
+              <img :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })" />
             </div>
-            <div class="new-proyect__buttons">
-                <v-btn color="primary" variant="flat">{{ $t('dashboard.configure') }}</v-btn>
-                <v-btn color="#3587FF" variant="plain">{{ $t('dashboard.omit') }}</v-btn>
-            </div>
+            <h3 class="h3-bold">{{ $t('dashboard.allReady') }}</h3>
+            <p class="l-light">
+              {{ $t('dashboard.text-1') }} <span class="l-medium">{{ name }}</span>
+              {{ $t('dashboard.text-2') }}
+            </p>
+          </div>
+          <div class="new-proyect__buttons">
+            <v-btn color="primary" variant="flat">{{ $t('dashboard.configure') }}</v-btn>
+            <v-btn color="#3587FF" variant="plain">{{ $t('dashboard.omit') }}</v-btn>
+          </div>
         </div>
       </v-card-item>
     </v-card>
@@ -51,7 +56,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import getFile from '@/helpers/getFile';
+import getFile from '@/helpers/getFile'
 
 const name = ref(null)
 const step = ref(1)
@@ -68,8 +73,8 @@ const step = ref(1)
     flex-direction: column;
     gap: 16px;
 
-    &.a-center{
-        align-items: center;
+    &.a-center {
+      align-items: center;
     }
   }
 
@@ -118,12 +123,12 @@ const step = ref(1)
     }
   }
 
-  &__img{
+  &__img {
     width: 150px;
     height: 150px;
 
-    img{
-        width: 100%;
+    img {
+      width: 100%;
     }
   }
 }

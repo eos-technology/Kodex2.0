@@ -1,6 +1,6 @@
 <template>
   <!-- Cards -->
-  <v-card class="cards__item pa-4 pa-md-6 rounded-lg d-flex align-center border elevation-0"
+  <v-card class="cards__item pa-4 pa-md-6 d-flex align-center" rounded="lg"
     ><i :class="`icon-${icon} icon`"></i>
     <div>
       <p class="b-light">{{ title }}</p>
@@ -13,16 +13,7 @@
 defineProps({
   icon: String,
   title: String,
-  value: String,
-  icon1: String,
-  title1: String,
-  value1: String,
-  icon2: String,
-  title2: String,
-  value2: String,
-  icon3: String,
-  title3: String,
-  value3: String
+  value: String
 })
 </script>
 
