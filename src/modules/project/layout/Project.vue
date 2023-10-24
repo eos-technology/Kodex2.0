@@ -1,8 +1,8 @@
 <template>
-  <v-app>
-    <MenuProject />
+  <v-app class="app">
+    <MenuProject class="app__menu" />
     <v-main class="main-project">
-      <div class="pa-5 project-container">
+      <div class="project-container">
         <RouterView />
       </div>
     </v-main>
@@ -17,7 +17,11 @@ import MenuProject from './content/Menu.vue'
   background: #f8f8f8;
 }
 .project-container {
-  overflow-y: scroll;
   max-height: 100vh;
+  padding: 24px;
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 16px;
+  }
 }
 </style>

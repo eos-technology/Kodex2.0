@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pa-6">
+  <v-card rounded="lg" class="pa-6 mb-12">
     <div class="card-body">
       <div class="setting-section">
         <v-tabs class="tabs-line" v-model="tab">

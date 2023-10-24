@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card pa-6">
+  <v-card rounded="lg" class="card pa-6">
     <div class="banner">
       <div class="banner__picture">
         <img

@@ -70,9 +70,7 @@ const isMenuOpen = ref(false)
       width: 100%;
       min-height: 100vh;
       height: 100%;
-      @media (max-width: 600px) {
-        padding: 1rem;
-      }
+
       &::-webkit-scrollbar {
         width: 0px;
       }

@@ -16,6 +16,7 @@
     "@intlify/unplugin-vue-i18n": "^1.2.0",
     "apexcharts": "^3.42.0",
     "axios": "^1.4.0",
+    "intl-tel-input": "^18.2.1",
     "luxon": "^3.3.0",
     "pinia": "^2.1.4",
     "pinia-plugin-persistedstate": "^3.2.0",

@@ -1,6 +1,6 @@
 <template>
   <div class="project_menu">
-    <v-navigation-drawer :rail="mini" :rail-width="75">
+    <v-navigation-drawer flat :rail="mini" :rail-width="72">
       <!-- Contenido del menú -->
       <v-list>
         <v-list-item>
@@ -72,11 +72,26 @@ const routes = [
 </script>
 
 <style lang="scss">
+.project_menu {
+  .v-navigation-drawer {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
 .v-navigation-drawer--rail .v-list-item__content {
   margin: auto;
 }
 .project_menu .v-navigation-drawer {
-  position: absolute !important;
+  // position: absolute !important;
+  left: 72px !important;
+  border-radius: 32px 0 0 32px;
+  height: calc(100vh - 20px) !important;
+  margin: auto 0;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 .project_menu .v-navigation-drawer,
 .project_menu .v-list {

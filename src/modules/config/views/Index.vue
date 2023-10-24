@@ -15,6 +15,6 @@ import Tabs from './Tabs.vue'
 .optional-section {
   display: flex;
   flex-direction: column;
-  gap: 1.67vw;
+  gap: 24px;
 }
 </style>
