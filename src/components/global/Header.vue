@@ -1,14 +1,17 @@
 <template>
   <header class="header">
     <h3 class="h3-bold">{{ title }}</h3>
-    <v-btn color="primary" v-if="text">{{ text }}</v-btn>
+    <v-btn @click="$router.push({ name: `${route}` })" class="btn" color="primary" v-if="text">{{
+      text
+    }}</v-btn>
   </header>
 </template>
 
 <script lang="ts" setup>
 defineProps({
   title: String,
-  text: String
+  text: String,
+  route: String
 })
 </script>
 <style lang="scss" scoped>
