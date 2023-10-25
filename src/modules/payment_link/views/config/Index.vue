@@ -30,7 +30,7 @@
             <!-- Link payment type -->
             <div class="config__item">
               <h6 class="h6-semibold">{{ $t('payments.type-paymentLink') }}</h6>
-              <RadioGroup />
+
               <v-radio-group
                 v-model="form.paymentType"
                 name="paymentType"
@@ -48,7 +48,20 @@
             <!-- Payment method -->
             <div class="config__item">
               <h6 class="h6-semibold">{{ $t('payment-methods.title') }}</h6>
-              <RadioGroup v-model="form.payment" name="payment" :options="payment" />
+
+              <v-radio-group
+                v-model="form.payment"
+                name="payment"
+                :options="payment"
+                density="compact"
+                hide-details
+                color="primary"
+                inline
+              >
+                <v-radio label="Un único pago" value="crypto"></v-radio>
+                <v-radio label="Varios pagos" value="bank"></v-radio>
+                <v-radio label="Varios pagos" value="user"></v-radio>
+              </v-radio-group>
               <div class="config__option" v-if="form.payment === 'bank'">
                 <AddBox />
                 <SelectField

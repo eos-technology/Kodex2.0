@@ -27,7 +27,9 @@
 
       <v-window-item class="theme__buttons" value="two">
         <v-btn class="btn" variant="outlined" color="primary">Botón primary</v-btn>
-        <v-btn class="btn" variant="outlined" color="secondary">Botón secondary</v-btn>
+        <v-btn class="btn" variant="outlined" color="secondary"
+          ><p class="text-primary">Botón secondary</p></v-btn
+        >
         <v-btn class="btn" variant="outlined" color="error">Botón error</v-btn>
         <v-btn class="btn" variant="outlined" color="info">Botón info</v-btn>
         <v-btn class="btn" variant="outlined" color="success">Botón success</v-btn>
@@ -72,6 +74,10 @@
       variant="solo-filled"
       label="Label"
     ></v-textarea>
+
+    <v-btn class="btn" color="primary" @click="$router.push({ name: 'config-payments' })"
+      >Config</v-btn
+    >
   </v-card>
 </template>
 <script setup lang="ts">
