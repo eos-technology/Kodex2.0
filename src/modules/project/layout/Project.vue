@@ -17,11 +17,20 @@ import MenuProject from './content/Menu.vue'
   background: #f8f8f8;
 }
 .project-container {
-  max-height: 100vh;
+  // max-height: 100vh;
   padding: 24px;
+  padding-bottom: 48px;
   @media (max-width: 768px) {
     margin: 0;
     padding: 16px;
+  }
+}
+
+:deep(.v-main){
+  padding-left: 72px;
+
+  @media (max-width: 768px){
+    padding-left: 0;
   }
 }
 </style>

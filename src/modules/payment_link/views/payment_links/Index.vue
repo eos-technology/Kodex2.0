@@ -10,10 +10,18 @@
       <v-card class="pa-4 pa-md-6 rounded-lg elevation-0 border">
         <div class="card-content">
           <div class="card-header">
-            <SearchField />
+            <v-text-field
+              class="inpt inpt-search"
+              elevation-0
+              density="compact"
+              hide-details
+              :placeholder="$t('search')"
+              variant="solo-filled"
+              clearable 
+            >
+              <template v-slot:prepend-inner><i class="icon-search"></i></template>
+            </v-text-field>
             <FilterBtn />
-            <!-- <BaseInput placeholder="Search" class="search" type="search" />
-            <FilterBtn /> -->
           </div>
 
           <!-- view desktop (table) -->
