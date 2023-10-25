@@ -111,7 +111,7 @@
                                       class="img-qr"
                                       :src="
                                         getFile({
-                                          route: 'images/svg',
+                                          route: 'images',
                                           url: 'qr',
                                           extension: 'svg'
                                         })
@@ -285,85 +285,6 @@ const data = [
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.modal {
-  display: grid;
-  padding: 1.5rem;
-  gap: 2rem;
-
-  .tabs {
-    &__modal {
-      display: grid;
-      gap: 24px;
-
-      img {
-        display: block;
-        margin-block: 0;
-        margin-inline: auto;
-      }
-    }
-
-    &__content {
-      display: grid;
-      gap: 24px;
-    }
-  }
-
-  .t-btn {
-    color: #0a1e8c;
-    font-weight: 300;
-    text-transform: capitalize;
-  }
-
-  &__input {
-    border: 0.0625rem solid #dde4ed;
-    border-radius: 0.75rem;
-    background: #f6f8fa;
-    font-size: 0.875rem;
-    inline-size: 25rem;
-    padding-block: 0.75rem;
-    padding-inline: 1rem;
-
-    &:focus-visible {
-      outline: none;
-    }
-
-    @media (max-width: 767px) {
-      inline-size: 85vw;
-    }
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__close {
-    display: grid;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 6.25rem;
-    background: #f6f8fa;
-    block-size: 2rem;
-    inline-size: 2rem;
-    place-content: center;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background-color: #fff;
-    gap: 2rem;
-    inline-size: 100%;
-    max-inline-size: 28.125rem;
-
-    @media (max-width: 767px) {
-      border-radius: 1rem 1rem 0 0;
-    }
-  }
 }
 
 .payment {

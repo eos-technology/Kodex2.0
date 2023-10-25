@@ -82,9 +82,55 @@
                   </div>
                 </td>
                 <td>
-                  <button class="users__btn" @click="isOpen = true">
-                    <i class="icon-dots"></i>
-                  </button>
+                  <div class="table-custom__center">
+                    <v-dialog width="450">
+                      <template v-slot:activator="{ props }">
+                        <i v-bind="props" class="icon-dots share-btn"></i>
+                      </template>
+
+                      <template v-slot:default="{ isActive }">
+                        <v-card class="modal__card" rounded="lg">
+                          <div class="modal">
+                            <div class="modal__header">
+                              <h5 class="h5-bold">{{ $t('user.options') }}</h5>
+                              <button class="modal__close" @click="isActive.value = false">
+                                <img
+                                  :src="
+                                    getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
+                                  "
+                                  alt=""
+                                />
+                              </button>
+                            </div>
+                            <div class="modal__options">
+                              <router-link
+                                :to="{ name: 'permissions' }"
+                                style="text-decoration: none"
+                              >
+                                <div class="modal__option">
+                                  <p>{{ $t('user.edit-permissions') }}</p>
+                                  <span><i class="icon-arrow-right"></i></span>
+                                </div>
+                              </router-link>
+                              <router-link
+                                :to="{ name: 'payment-method' }"
+                                style="text-decoration: none"
+                              >
+                                <div class="modal__option">
+                                  <p>{{ $t('user.payment-method') }}</p>
+                                  <span><i class="icon-arrow-right"></i></span>
+                                </div>
+                              </router-link>
+                              <div class="modal__option">
+                                <p>{{ $t('user.delete') }}</p>
+                                <span><i class="icon-arrow-right"></i></span>
+                              </div>
+                            </div>
+                          </div>
+                        </v-card>
+                      </template>
+                    </v-dialog>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -95,9 +141,48 @@
           <v-card v-for="(item, index) in data" :key="index">
             <div class="cards-custom__header">
               <p class="fw-bold">{{ item.name }}</p>
-              <button class="users__btn" @click="isOpen = true">
-                <i class="icon-arrow-right"></i>
-              </button>
+
+              <v-dialog width="450">
+                <template v-slot:activator="{ props }">
+                  <v-btn v-bind="props" size="32" flat class="users__btn">
+                    <i class="icon-arrow-right"></i>
+                  </v-btn>
+                </template>
+
+                <template v-slot:default="{ isActive }">
+                  <v-card class="modal__card" rounded="lg">
+                    <div class="modal">
+                      <div class="modal__header">
+                        <h5 class="h5-bold">{{ $t('user.options') }}</h5>
+                        <button class="modal__close" @click="isActive.value = false">
+                          <img
+                            :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                      <div class="modal__options">
+                        <router-link :to="{ name: 'permissions' }" style="text-decoration: none">
+                          <div class="modal__option">
+                            <p>{{ $t('user.edit-permissions') }}</p>
+                            <span><i class="icon-arrow-right"></i></span>
+                          </div>
+                        </router-link>
+                        <router-link :to="{ name: 'payment-method' }" style="text-decoration: none">
+                          <div class="modal__option">
+                            <p>{{ $t('user.payment-method') }}</p>
+                            <span><i class="icon-arrow-right"></i></span>
+                          </div>
+                        </router-link>
+                        <div class="modal__option">
+                          <p>{{ $t('user.delete') }}</p>
+                          <span><i class="icon-arrow-right"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </v-card>
+                </template>
+              </v-dialog>
             </div>
             <div class="cards-body">
               <div class="cards-custom__content">
@@ -147,43 +232,11 @@
       </div>
     </v-card>
   </section>
-  <!-- Options modal -->
-  <teleport to="body">
-    <div class="modal" v-if="isOpen == true">
-      <div class="modal__content">
-        <div class="modal__header">
-          <h5 class="h5-bold">{{ $t('user.options') }}</h5>
-          <button class="modal__close" @click="isOpen = false">
-            <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })" alt="" />
-          </button>
-        </div>
-
-        <div class="modal__options">
-          <router-link :to="{ name: 'permissions' }" style="text-decoration: none">
-            <div class="modal__option">
-              <p>{{ $t('user.edit-permissions') }}</p>
-              <span><i class="icon-arrow-right"></i></span>
-            </div>
-          </router-link>
-          <router-link :to="{ name: 'payment-method' }" style="text-decoration: none">
-            <div class="modal__option">
-              <p>{{ $t('user.payment-method') }}</p>
-              <span><i class="icon-arrow-right"></i></span>
-            </div>
-          </router-link>
-          <div class="modal__option">
-            <p>{{ $t('user.delete') }}</p>
-            <span><i class="icon-arrow-right"></i></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </teleport>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getFile } from '@/helpers/Index'
-const isOpen = ref(false)
+
 const rows = ref(100)
 const currentPage = ref(3)
 
@@ -354,78 +407,6 @@ const data = [
       p:first-child {
         font-weight: 500;
       }
-    }
-  }
-}
-
-.modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.774);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 767px) {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    align-items: flex-end;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__close {
-    display: grid;
-    place-content: center;
-    padding: 8px;
-    background: #f6f8fa;
-    border-radius: 100px;
-    border: none;
-    width: 32px;
-    height: 32px;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: #fff;
-    padding: 24px;
-    border-radius: 1.6rem;
-    width: 450px;
-
-    @media (max-width: 767px) {
-      border-radius: 1.6rem 1.6rem 0 0;
-      width: 100vw;
-    }
-  }
-
-  &__options {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-  }
-
-  &__option {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-
-    p {
-      color: #001e62;
-      font-weight: 300;
     }
   }
 }

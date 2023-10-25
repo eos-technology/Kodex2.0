@@ -117,3 +117,128 @@ body {
 body .rounded-lg {
   border-radius: 16px !important;
 }
+
+// 👉 Modal
+
+.modal {
+  display: grid;
+  padding: 1.5rem;
+  gap: 2rem;
+
+  .tabs {
+    &__modal {
+      display: grid;
+      gap: 24px;
+
+      img {
+        display: block;
+        margin-block: 0;
+        margin-inline: auto;
+      }
+    }
+
+    &__content {
+      display: grid;
+      gap: 24px;
+    }
+  }
+
+  .t-btn {
+    color: #0a1e8c;
+    font-weight: 300;
+    text-transform: capitalize;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  &__option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      p,
+      i {
+        font-weight: 600;
+      }
+    }
+
+    p {
+      color: #001e62;
+      font-weight: 300;
+    }
+    i {
+      font-size: 20px;
+    }
+  }
+
+  &__input {
+    border: 0.0625rem solid #dde4ed;
+    border-radius: 0.75rem;
+    background: #f6f8fa;
+    font-size: 0.875rem;
+    inline-size: 25rem;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    @media (max-width: 767px) {
+      inline-size: 85vw;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__close {
+    display: grid;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6.25rem;
+    background: #f6f8fa;
+    block-size: 2rem;
+    inline-size: 2rem;
+    place-content: center;
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    gap: 2rem;
+    inline-size: 100%;
+    max-inline-size: 28.125rem;
+
+    @media (max-width: 767px) {
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+}
+
+// 👉 Share button table dots
+
+.share-btn {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #f4f5f8;
+  background: #f6f8fa;
+  &:hover {
+    filter: brightness(90%);
+  }
+}

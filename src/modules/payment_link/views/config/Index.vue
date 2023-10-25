@@ -15,20 +15,34 @@
             <div class="config__item">
               <h6 class="h6-semibold">{{ $t('payments.name-link') }}</h6>
               <div class="field-box">
-                <TextField 
-                  :label="$t('payments.name-link-payment')" 
+                <v-text-field
+                  class="inpt"
+                  elevation-0
+                  density="compact"
+                  hide-details
+                  :label="$t('payments.name-link-payment')"
                   :placeholder="$t('payments.payment-name')"
-                  v-model:modelValue="form.link"/>
+                  v-model:modelValue="form.link"
+                  variant="solo-filled"
+                ></v-text-field>
               </div>
             </div>
             <!-- Link payment type -->
             <div class="config__item">
               <h6 class="h6-semibold">{{ $t('payments.type-paymentLink') }}</h6>
-              <RadioGroup
+              <RadioGroup />
+              <v-radio-group
                 v-model="form.paymentType"
                 name="paymentType"
                 :options="paymentType"
-              />
+                density="compact"
+                hide-details
+                color="primary"
+                inline
+              >
+                <v-radio label="Un único pago" value="unique"></v-radio>
+                <v-radio label="Varios pagos" value="multi"></v-radio>
+              </v-radio-group>
               <AddBox />
             </div>
             <!-- Payment method -->
@@ -43,49 +57,83 @@
                   v-model="form.bank"
                   :options="['Bank 1', 'Bank 2']"
                 />
-                <TextField
+                <v-text-field
                   :label="$t('payments.full-name')"
                   placeholder="Nombre"
                   v-model="form.fullName"
-                />
+                ></v-text-field>
                 <div class="config__item-grid">
-                  <TextField
+                  <v-text-field
+                    class="inpt"
+                    elevation-0
+                    density="compact"
+                    hide-details
                     :label="$t('payment-methods.account-number')"
                     placeholder="Número de cuenta"
                     v-model="form.account"
-                  />
-                  <SelectField
+                    variant="solo-filled"
+                  ></v-text-field>
+
+                  <v-select
+                    class="inpt"
+                    elevation-0
+                    density="compact"
+                    hide-details
+                    variant="solo-filled"
                     :label="$t('payment-methods.type-account')"
                     select="Select tipo de cuenta"
                     v-model="form.accountType"
-                    :options="['Corriente', 'Ahorros']"
-                  />
-                  <SelectField
+                    :items="['Corriente', 'Ahorros']"
+                  ></v-select>
+
+                  <v-select
+                    class="inpt"
+                    elevation-0
+                    density="compact"
+                    hide-details
+                    variant="solo-filled"
                     :label="$t('payment-methods.document-type')"
                     select="Select tipo de documento"
                     v-model="form.document"
-                    :options="['Cedula', 'Pasaporte']"
-                  />
-                  <TextField
+                    :items="['Cedula', 'Pasaporte']"
+                  ></v-select>
+
+                  <v-text-field
+                    class="inpt"
+                    elevation-0
+                    density="compact"
+                    hide-details
                     :label="$t('payments.document-number')"
                     :placeholder="$t('payments.document-number')"
                     v-model="form.numDocument"
                     type="number"
-                  />
+                    variant="solo-filled"
+                  ></v-text-field>
                 </div>
               </div>
               <div class="config__option" v-if="form.payment === 'crypto'">
-                <SelectField
-                  :label="$t('payments.crypto-type')"
-                  select="Select crypto"
+                <v-select
                   v-model="form.crypto"
-                  :options="['BNB', 'BTC', 'USDT']"
-                />
-                <TextField
+                  select="Select crypto"
+                  class="inpt"
+                  elevation-0
+                  density="compact"
+                  hide-details
+                  variant="solo-filled"
+                  :label="$t('payments.crypto-type')"
+                  :items="['BNB', 'BTC', 'USDT']"
+                ></v-select>
+
+                <v-text-field
+                  class="inpt"
+                  elevation-0
+                  density="compact"
+                  hide-details
                   :label="$t('payments.wallet')"
                   :placeholder="$t('payments.your-wallet')"
                   v-model="form.wallet"
-                />
+                  variant="solo-filled"
+                ></v-text-field>
               </div>
               <div class="config__option" v-else></div>
             </div>
@@ -94,12 +142,17 @@
               <h6 class="h6-semibold">Configuración avanzada</h6>
               <div class="config__flex switch-box">
                 <p class="b-regular">Habilitar rango de pago</p>
-                <!-- <b-form-checkbox v-model="form.range" name="check-button" switch> </b-form-checkbox> -->
-                <v-switch v-model="form.range" inset></v-switch>
+                <v-switch
+                  v-model="form.range"
+                  density="compact"
+                  hide-details
+                  color="primary"
+                  inset
+                ></v-switch>
               </div>
               <div class="config__item-grid">
-                <TextField label="Fecha de inicio" type="date" v-model="form.dateIn" />
-                <TextField label="Fecha de finalización" type="date" v-model="form.dateOut" />
+                <v-text-field label="Fecha de inicio" type="date" v-model="form.dateIn" />
+                <v-text-field label="Fecha de finalización" type="date" v-model="form.dateOut" />
               </div>
             </div>
           </div>
@@ -135,8 +188,10 @@
             </div>
           </div>
           <div class="config__btns">
-            <v-btn color="primary" variant="text" class="secondary-btn">{{ $t('cancel') }}</v-btn>
-            <v-btn color="primary" type="submit" @click="step = 2">{{
+            <v-btn color="secondary" variant="outlined" class="btn"
+              ><p class="text-primary">{{ $t('cancel') }}</p></v-btn
+            >
+            <v-btn class="btn" color="primary" type="submit" @click="step = 2">{{
               $t('continue')
             }}</v-btn>
           </div>
@@ -158,13 +213,13 @@
             <!-- Payment Detail -->
             <div class="config__item">
               <h6 class="h6-semibold">{{ $t('payments.detail-payment') }}</h6>
-              <TextField
+              <v-text-field
                 :label="$t('payments.amount')"
                 placeholder="$0.00"
                 type="number"
                 v-model="form.amount"
               />
-              <TextField
+              <v-text-field
                 :label="$t('payments.tax-amount')"
                 placeholder="$0.00"
                 type="number"
@@ -176,7 +231,7 @@
                 </b-form-checkbox> -->
                 <v-switch v-model="form.discount" inset></v-switch>
               </div>
-              <TextField
+              <v-text-field
                 :label="$t('payments.discount-amount')"
                 placeholder="$0.00"
                 type="number"
@@ -218,7 +273,10 @@
                       </td>
                       <td>
                         <button class="config__btn-delete">
-                          <img :src="getFile({route:'icons', url:'delete',extension:'svg'})" alt="" />
+                          <img
+                            :src="getFile({ route: 'icons', url: 'delete', extension: 'svg' })"
+                            alt=""
+                          />
                         </button>
                       </td>
                     </tr>
@@ -252,9 +310,7 @@
           </div>
           <div class="config__btns">
             <v-btn color="primary" variant="text" class="secondary-btn">{{ $t('cancel') }}</v-btn>
-            <v-btn color="primary" @click="step = 4">{{
-              $t('payments.generate-link')
-            }}</v-btn>
+            <v-btn color="primary" @click="step = 4">{{ $t('payments.generate-link') }}</v-btn>
           </div>
         </div>
       </div>
@@ -271,9 +327,9 @@
           </p>
         </div>
         <div class="g-link__item">
-          <TextField :label="$t('payments.product-name')" :placeholder="$t('name')" />
+          <v-text-field :label="$t('payments.product-name')" :placeholder="$t('name')" />
           <AddBox class="w" />
-          <TextField :label="$t('payments.amount')" type="number" placeholder="$0.00" />
+          <v-text-field :label="$t('payments.amount')" type="number" placeholder="$0.00" />
           <DropZone />
         </div>
         <div class="g-link__item">
@@ -321,21 +377,29 @@
             <div class="config__card-grid">
               <div class="config__card-box">
                 <div class="config__card-send">
-                  <TextField
+                  <v-text-field
                     label="Compartir vía email"
                     placeholder="Example@email.com"
                     type="email"
                     v-model="form.sendMail"
                     class="w-100"
                   />
-                  <v-btn color="primary" class="config__send w-btn" variant="outlined">{{ $t('send') }}</v-btn>
+                  <v-btn color="primary" class="config__send w-btn" variant="outlined">{{
+                    $t('send')
+                  }}</v-btn>
                 </div>
               </div>
               <div class="line vertical"></div>
               <div class="config__card-box">
-                <img class="config__qr" :src="getFile({route:'images', url:'qr', extension:'svg'})" alt="" />
+                <img
+                  class="config__qr"
+                  :src="getFile({ route: 'images', url: 'qr', extension: 'svg' })"
+                  alt=""
+                />
                 <div class="config__btns-qr">
-                  <v-btn color="primary" variant="outlined" class="w-btn">{{ $t('payments.download-qr') }}</v-btn>
+                  <v-btn color="primary" variant="outlined" class="w-btn">{{
+                    $t('payments.download-qr')
+                  }}</v-btn>
                   <v-btn color="primary" variant="outlined" class="w-btn">Via WhatsApp</v-btn>
                 </div>
               </div>
@@ -352,10 +416,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch  } from 'vue'
-import getFile from '@/helpers/getFile';
-
-
+import { ref, watch } from 'vue'
+import getFile from '@/helpers/getFile'
 
 const step = ref(1)
 
@@ -390,7 +452,7 @@ const form = ref({
   discountAmount: '',
   addProducts: false,
   sendMail: '',
-  wallet:''
+  wallet: ''
 })
 
 const data = [
@@ -398,13 +460,11 @@ const data = [
   { name: 'Nombre del Producto', quantity: 1, amount: '$0.00' }
 ]
 
-const onSubmit = (event: Event) => {
-
-};
+const onSubmit = (event: Event) => {}
 
 watch(form, (newValue, oldValue) => {
-  console.log(`Counter changed from ${oldValue} to ${newValue}`);
-});
+  console.log(`Counter changed from ${oldValue} to ${newValue}`)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -626,8 +686,8 @@ watch(form, (newValue, oldValue) => {
   }
 }
 
-.table-custom{
-  table{
+.table-custom {
+  table {
     border-collapse: collapse;
   }
 }
@@ -660,41 +720,38 @@ watch(form, (newValue, oldValue) => {
   }
 }
 
-.justify-content-between{
+.justify-content-between {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.secondary-btn{
-  border: 1px solid #F4F5F8;
-  color: #001E62;
+.secondary-btn {
+  border: 1px solid #f4f5f8;
+  color: #001e62;
 }
 
-.w-btn{
-  border: 1px solid #F4F5F8;
-  background-color:#FFF;
+.w-btn {
+  border: 1px solid #f4f5f8;
+  background-color: #fff;
   font-weight: 600;
 }
 
-.switch-box{
-  :deep(.v-input){
+.switch-box {
+  :deep(.v-input) {
     display: inline-block;
     flex: none;
   }
 }
-
-
-
-
-
-
-
 </style>
 
 <style>
-h6,h3,.b-regular,.b-light,.l-light {
+h6,
+h3,
+.b-regular,
+.b-light,
+.l-light {
   color: #0a1e8c;
 }
 </style>

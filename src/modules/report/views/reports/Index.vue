@@ -15,7 +15,7 @@
       <Cards icon="hand-coins-currency" :title="$t('reports.activeMoney')" value="0" />
     </div>
     <ChartTipe />
-    <ChartTransactions />
+    <ChartTransactions class="mb-12" />
   </section>
 </template>
 <script setup lang="ts">
