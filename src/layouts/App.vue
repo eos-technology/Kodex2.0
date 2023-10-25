@@ -1,4 +1,5 @@
 <template>
+  <Error />
   <div class="app">
     <MenuApp class="app__menu" @route-value="isMenuOpen = false" />
     <MenuAppMobile class="app__menu-mobile" />

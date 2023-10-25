@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <img class="menu__logo" src="../assets/icons/logo.svg" alt="logo Kodex" />
-    <router-link @click="handleRouteClick" class="menu__route" :to="{ name: 'dashboard' }"
+    <router-link class="menu__route" :to="{ name: 'dashboard' }"
       ><i class="icon-dashboard menu__icon"></i>
       <v-tooltip activator="parent" location="end">Dashboard</v-tooltip></router-link
     >
@@ -16,9 +16,11 @@
       class="menu__route menu__route--text l-semibold"
       v-for="(item, index) in projects"
       :key="index"
-      :to="{ name: `${item.route}` }"
-      >{{ item.icon }}
-      <v-tooltip activator="parent" location="end">Nombre proyecto</v-tooltip>
+      :to="{ name: 'project-dashboard', params: { uuid: `${item.uuid}` } }"
+    >
+      <img v-if="item.logo" :src="item.logo" alt="" style="max-width: 90%; margin: auto" />
+      <span v-else>{{ generateName(item.name) }}</span>
+      <v-tooltip activator="parent" location="end">{{ item.name }}</v-tooltip>
     </router-link>
     <div class="menu__line line"></div>
 
@@ -32,7 +34,15 @@
       <v-list-item>
         <div class="notification__header">
           <h5 class="h5-semibold text-primary">Push Notifications</h5>
-          <a href="#" class="link-aux">Mark all as read</a>
+          <v-btn
+            size="small"
+            rounded="lg"
+            class="link-aux"
+            variant="text"
+            @click="onDisableNotification(undefined)"
+          >
+            Mark all as read
+          </v-btn>
         </div>
 
         <div class="notification__card">
@@ -46,37 +56,76 @@
       </v-list-item>
       <v-list density="compact" nav>
         <v-list-item v-for="(item, index) in notifications" :key="index">
-          <div class="notification__alert">
-            <div class="notification__icon" :class="getIconClass(item.icon)">
-              <i :class="`icon-${item.icon}`"></i>
+          <div class="notification__alert" @click="onDisableNotification(item.uuid)">
+            <div class="notification__icon" :class="getIconClass(item.type)">
+              <i :class="`icon-${item.type}`"></i>
             </div>
             <div class="notification__info">
               <p class="l-medium">{{ item.title }}</p>
               <p class="b-light">
                 {{ item.text }}
               </p>
-              <p class="b-medium">{{ item.date }}</p>
+              <p class="b-medium">{{ formatDate()(item.created_at, 'dd.MM.yyyy HH:mm') }}</p>
             </div>
           </div>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer></v-layout
-  >
+    </v-navigation-drawer>
+  </v-layout>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
-const emit = defineEmits(['route-value'])
+import { ref, onMounted } from 'vue'
+import { toast } from 'vue3-toastify'
 
-const projects = [{ icon: 'NP', name: 'Project', route: 'project-dashboard' }]
+const emit = defineEmits(['route-value'])
+import { useProjectStore } from '@/modules/project/store/projectStore'
+import { useNotificationStore } from '@/stores/notificationStore'
+import formatDate from '@/helpers/formatDate'
+const projectStore = useProjectStore()
+const notificationStore = useNotificationStore()
+
+const projects = ref<any>([])
+const getProjects = async () => {
+  await projectStore.getProjects().then((response: any) => {
+    projects.value = response
+  })
+}
+const notifications = ref<any>([])
+const getNotifications = async () => {
+  await notificationStore.getNotifications().then((response: any) => {
+    notifications.value = response
+  })
+}
+
+const onDisableNotification = async (uuid: string | undefined) => {
+  await notificationStore.readNotification({ uuid: uuid }).then((response: any) => {
+    if (response != 'done') {
+      const index = notifications.value.findIndex((objeto: any) => objeto.uuid === response)
+      if (index) {
+        notifications.value.splice(index, 1)
+      }
+    } else {
+      notifications.value = []
+      drawer.value = false
+    }
+    toast('Notificaciones eliminadas éxitosamente')
+  })
+}
+
+onMounted(() => {
+  getProjects(), getNotifications()
+})
+
+const generateName = (name: string) => {
+  // Obtener las iniciales del nombre
+  const initials = name
+    .split(' ')
+    .map((word) => word.charAt(0))
+    .join('')
+  return initials
+}
 
 const drawer = ref(false)
-
-const name = ref(false)
-
-function handleRouteClick() {
-  name.value = !name.value
-  emit('route-value', name.value)
-}
 
 const getIconClass = (iconType: string) => {
   switch (iconType) {
@@ -94,45 +143,6 @@ const getIconClass = (iconType: string) => {
       return 'done'
   }
 }
-
-const notifications = [
-  {
-    icon: 'check',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  },
-  {
-    icon: 'info',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  },
-  {
-    icon: 'bell',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  },
-  {
-    icon: 'warning',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  },
-  {
-    icon: 'close-circle',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  },
-  {
-    icon: 'done-circle',
-    title: 'Título de Notificación',
-    text: 'Proin tortor est, efficitur quis ullamcorper id, cursus et odio. Nam sit amet lectus vitae ligula pharetra aliquam.',
-    date: '2h ago'
-  }
-]
 </script>
 
 <style lang="scss" scoped>

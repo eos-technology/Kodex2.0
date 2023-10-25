@@ -5,20 +5,22 @@ const payment_methodRoutes = {
   },
   children: [
     {
-      path: '',
+      path: ':uuid',
       name: 'payment_method',
-      component: () => import('@/modules/payment_method/views/list/Index.vue')
+      component: () => import('@/modules/payment_method/views/list/Index.vue'),
+      props: true
     },
     {
-      path: 'enable',
+      path: ':uuid/enable',
       name: 'payment_method-enable',
-      component: () => import('@/modules/payment_method/views/enable/Index.vue')
+      component: () => import('@/modules/payment_method/views/enable/Index.vue'),
+      props: true
     },
     {
-      path: 'config/:currency',
+      path: ':uuid/config/:currency',
       name: 'payment_method-config',
       component: () => import('@/modules/payment_method/views/config/Index.vue'),
-      params: true
+      props: true
     }
   ]
 }

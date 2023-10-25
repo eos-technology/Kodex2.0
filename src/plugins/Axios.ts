@@ -25,7 +25,7 @@ axios.interceptors.response.use(
     const errorsStore = useErrorsStore()
 
     if (error.request.status == 401) {
-      router.push({ name: 'login' })
+      router.push({ name: 'login', replace: true })
     }
 
     let errorsArray = []

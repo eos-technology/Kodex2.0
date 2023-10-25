@@ -5,29 +5,34 @@ const userRoutes = {
   },
   children: [
     {
-      path: '',
+      path: ':uuid',
       name: 'user',
-      component: () => import('@/modules/user/views/list/Index.vue')
+      component: () => import('@/modules/user/views/list/Index.vue'),
+      props: true
     },
     {
-      path: 'create',
+      path: ':uuid/create',
       name: 'create-user',
-      component: () => import('@/modules/user/views/create_user/Index.vue')
+      component: () => import('@/modules/user/views/create_user/Index.vue'),
+      props: true
     },
     {
-      path: 'permissions',
+      path: ':uuid/permissions',
       name: 'permissions',
-      component: () => import('@/modules/user/views/permissions/Index.vue')
+      component: () => import('@/modules/user/views/permissions/Index.vue'),
+      props: true
     },
     {
-      path: 'payment-method',
+      path: ':uuid/payment-method',
       name: 'payment-method',
-      component: () => import('@/modules/user/views/payment_method/Index.vue')
+      component: () => import('@/modules/user/views/payment_method/Index.vue'),
+      props: true
     },
     {
-      path: 'invite',
+      path: ':uuid/invite',
       name: 'invite',
-      component: () => import('@/modules/user/views/invite/Index.vue')
+      component: () => import('@/modules/user/views/invite/Index.vue'),
+      props: true
     }
   ]
 }

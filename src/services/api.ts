@@ -2,18 +2,40 @@ import type { Endpoint } from '@/types/apiTypes'
 
 const api: any = {
   auth: {
-    endpointExample: <Endpoint>{
+    login: <Endpoint>{
       method: 'post',
-      uri: function (params?: any) {
-        return `carts/${params}`
+      uri: function () {
+        return `/auth/signin`
       }
     }
   },
-  othersModules: {
-    endpointExample: <Endpoint>{
+  user: {
+    info: <Endpoint>{
+      method: 'get',
+      uri: function () {
+        return `/user/info`
+      }
+    }
+  },
+  project: {
+    projects: <Endpoint>{
+      method: 'get',
+      uri: function () {
+        return `/project`
+      }
+    }
+  },
+  notification: {
+    notifications: <Endpoint>{
+      method: 'get',
+      uri: function () {
+        return `/notification`
+      }
+    },
+    toggle: <Endpoint>{
       method: 'post',
-      uri: function (params?: any) {
-        return `carts/${params}`
+      uri: function () {
+        return `/notification`
       }
     }
   }
