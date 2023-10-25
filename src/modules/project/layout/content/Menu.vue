@@ -74,9 +74,14 @@ const routes = [
 <style lang="scss">
 .project_menu {
   .v-navigation-drawer {
+    transform: translateX(0) !important;
     @media (max-width: 768px) {
       display: none;
     }
+  }
+
+  .v-navigation-drawer--temporary{
+    box-shadow: none;
   }
 }
 
