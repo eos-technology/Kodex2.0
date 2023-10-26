@@ -22,10 +22,10 @@
             <div class="d-flex align-center">
               <img
                 class="img-select ml-2 mr-2"
-                src="@/assets/images/avatar.png"
+                src="@/assets/icons/tether.svg"
                 v-if="selectedItem === null"
               />
-              <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">Proyecto</p>
+              <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">Tether USDT</p>
             </div>
             <div class="d-flex align-center" v-for="icon in options" :key="icon.text">
               <img class="img-select" :src="icon.icon" alt="" v-if="icon.text === selectedItem" />

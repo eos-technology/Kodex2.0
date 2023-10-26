@@ -32,6 +32,7 @@
           hide-details
           density="compact"
           class="inpt inpt-search"
+          clearable
         >
           <template v-slot:prepend-inner>
             <i class="icon-search"></i>
@@ -59,8 +60,8 @@
               <th></th>
             </tr>
           </thead>
-          <tbody v-for="(item, index) in data" :key="index">
-            <tr>
+          <tbody>
+            <tr v-for="(item, index) in data" :key="index">
               <td>
                 <p class="l-medium">{{ item.id }}</p>
               </td>
@@ -140,47 +141,7 @@
                   <i class="icon-dots"></i>
                 </button> -->
                 <div class="table-custom__center" @click="isOpen = true">
-                  <v-dialog width="450">
-                    <template v-slot:activator="{ props }">
-                      <i v-bind="props" class="icon-dots share-btn"></i>
-                    </template>
-
-                    <template v-slot:default="{ isActive }">
-                      <v-card class="modal__card" rounded="lg">
-                        <div class="modal">
-                          <div class="modal__header">
-                            <h5 class="h5-bold">{{ $t('user.options') }}</h5>
-                            <button class="modal__close" @click="isActive.value = false">
-                              <img
-                                :src="
-                                  getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
-                                "
-                                alt=""
-                              />
-                            </button>
-                          </div>
-                          <div class="modal__options">
-                            <router-link :to="{ name: 'detail' }" style="text-decoration: none">
-                              <div class="modal__option">
-                                <p>{{ $t('transactions.seeDetail') }}</p>
-                                <span><i class="icon-arrow-right"></i></span>
-                              </div>
-                            </router-link>
-                            <router-link :to="{ name: 'send_copy' }" style="text-decoration: none">
-                              <div class="modal__option">
-                                <p>{{ $t('transactions.sendMail') }}</p>
-                                <span><i class="icon-arrow-right"></i></span>
-                              </div>
-                            </router-link>
-                            <div class="modal__option">
-                              <p>{{ $t('transactions.downloadTax') }}</p>
-                              <span><i class="icon-arrow-right"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </v-card>
-                    </template>
-                  </v-dialog>
+                  <i class="icon-dots share-btn"></i>
                 </div>
               </td>
             </tr>
@@ -194,60 +155,21 @@
             <p class="l-medium text-primary">{{ item.account }}</p>
           </div>
           <div>
-            <v-dialog width="450">
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  v-bind="props"
-                  border="#F4F5F8"
-                  flat
-                  size="32"
-                  class="container__button"
-                  @click="isOpen = true"
-                  ><img src="@/assets/icons/ArrowNext.png" alt=""
-                /></v-btn>
-              </template>
-
-              <template v-slot:default="{ isActive }">
-                <v-card class="modal__card" rounded="lg">
-                  <div class="modal">
-                    <div class="modal__header">
-                      <h5 class="h5-bold">{{ $t('user.options') }}</h5>
-                      <button class="modal__close" @click="isActive.value = false">
-                        <img
-                          :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })"
-                          alt=""
-                        />
-                      </button>
-                    </div>
-                    <div class="modal__options">
-                      <router-link :to="{ name: 'detail' }" style="text-decoration: none">
-                        <div class="modal__option">
-                          <p>{{ $t('transactions.seeDetail') }}</p>
-                          <span><i class="icon-arrow-right"></i></span>
-                        </div>
-                      </router-link>
-                      <router-link :to="{ name: 'send_copy' }" style="text-decoration: none">
-                        <div class="modal__option">
-                          <p>{{ $t('transactions.sendMail') }}</p>
-                          <span><i class="icon-arrow-right"></i></span>
-                        </div>
-                      </router-link>
-                      <div class="modal__option">
-                        <p>{{ $t('transactions.downloadTax') }}</p>
-                        <span><i class="icon-arrow-right"></i></span>
-                      </div>
-                    </div>
-                  </div>
-                </v-card>
-              </template>
-            </v-dialog>
+            <v-btn
+              border="#F4F5F8"
+              flat
+              size="32"
+              class="container__button"
+              @click="isOpen = true"
+              ><img src="@/assets/icons/ArrowNext.png" alt=""
+            /></v-btn>
           </div>
         </div>
         <div class="container__body">
           <div class="container__body-info">
             <div class="container__body-rows">
               <p class="l-medium">{{ $t('transactions.wallet') }}</p>
-              <p class="l-medium">Your Wallet</p>
+              <p class="l-medium" style="text-align: right">Your Wallet</p>
             </div>
             <div class="container__body-rows">
               <p class="l-medium">{{ $t('transactions.type') }}</p>
@@ -302,6 +224,37 @@
       </div>
     </v-card>
   </section>
+
+  <v-dialog width="450" v-model="isOpen">
+    <v-card class="modal__card" rounded="lg">
+      <div class="modal">
+        <div class="modal__header">
+          <h5 class="h5-bold">{{ $t('user.options') }}</h5>
+          <button class="modal__close" @click="isOpen = false">
+            <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })" alt="" />
+          </button>
+        </div>
+        <div class="modal__options">
+          <router-link :to="{ name: 'detail' }" style="text-decoration: none">
+            <div class="modal__option">
+              <p>{{ $t('transactions.seeDetail') }}</p>
+              <span><i class="icon-arrow-right"></i></span>
+            </div>
+          </router-link>
+          <router-link :to="{ name: 'send_copy' }" style="text-decoration: none">
+            <div class="modal__option">
+              <p>{{ $t('transactions.sendMail') }}</p>
+              <span><i class="icon-arrow-right"></i></span>
+            </div>
+          </router-link>
+          <div class="modal__option">
+            <p>{{ $t('transactions.downloadTax') }}</p>
+            <span><i class="icon-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </v-card>
+  </v-dialog>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -688,6 +641,10 @@ const data = [
       padding: 6px;
       font-size: 10px;
     }
+  }
+
+  tr:nth-child(2n) {
+    background-color: #f8f9fb;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="payments">
+  <div class="payments text-primary">
     <div class="payments__content">
       <div class="payments__coin" :class="{ 'payments__coin--width': !isEnable }">
         <img :src="getFile({ route: 'icons', url: `${item.icon}`, extension: 'png' })" alt="" />

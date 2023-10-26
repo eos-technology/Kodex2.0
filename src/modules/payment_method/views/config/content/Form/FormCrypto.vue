@@ -6,19 +6,16 @@
 
   <form class="configureCrypto__form gap">
     <div class="configureCrypto__Wallet">
-      <label for="wallet"
-        ><p class="b-regular mb-1">Wallet</p>
-
-        <v-text-field
-          placeholder="Wallet address"
-          class="inpt"
-          variant="solo-filled"
-          single-line
-          density="compact"
-          v-model="form.wallet"
-        >
-        </v-text-field>
-      </label>
+      <label class="text-primary b-regular">Wallet</label>
+      <v-text-field
+        placeholder="Wallet address"
+        class="inpt mt-1"
+        variant="solo-filled"
+        single-line
+        density="compact"
+        v-model="form.wallet"
+      >
+      </v-text-field>
     </div>
 
     <div class="configureCrypto__warning">
@@ -31,9 +28,9 @@
       <v-btn @click="emit('next', form)" class="btn" color="primary">{{
         $t('globals.save')
       }}</v-btn>
-      <v-btn @click="$router.back()" color="secondary" variant="outlined" class="btn"
-        ><p class="text-primary">{{ $t('cancel') }}</p></v-btn
-      >
+      <v-btn @click="$router.back()" color="secondary" variant="outlined" class="btn">
+        <p class="text-primary">{{ $t('cancel') }}</p>
+      </v-btn>
     </div>
   </form>
 </template>
