@@ -8,21 +8,21 @@
       <h3 class="h3-bold">{{ $t('reports.sendCopy') }}</h3>
       <p class="l-light mt-4">{{ $t('reports.description') }}</p>
       <div class="b-regular mt-8">
-        <span>{{ $t('reports.email') }}</span>
+        <span class="text-primary b-regular">{{ $t('reports.email') }}</span>
         <v-text-field
+          class="inpt mt-1"
+          elevation-0
           density="compact"
+          hide-details
+          variant="solo-filled"
           placeholder="Example@mail.com"
-          variant="solo"
-          class="rounded-lg"
         ></v-text-field>
       </div>
-      <v-btn class="text-none text-white mt-4 primary" color="#091D8B" @click="send = true">{{
-        $t('transactions.btnSend')
-      }}</v-btn>
+      <v-btn class="btn" color="primary" @click="send = true">{{ $t('transactions.btnSend') }}</v-btn>
       <router-link :to="{ name: 'reports' }">
-        <v-btn variant="outlined" class="text-none mt-4 w-100 primary outlined">{{
-          $t('transactions.btnCancel')
-        }}</v-btn>
+        <v-btn class="btn w-100" variant="outlined" color="secondary">
+          <p class="text-primary">{{ $t('transactions.btnCancel') }}</p>
+        </v-btn>
       </router-link>
     </v-card>
     <v-card class="card-transaction pa-4 rounded-lg d-flex flex-column align-center" v-if="send">
@@ -34,9 +34,7 @@
         {{ $t('reports.sendEmail') }} <span class="font-weight-bold">email@email.com</span>
       </p>
       <router-link :to="{ name: 'reports' }" class="w-100">
-        <v-btn class="text-none text-white mt-6 w-100 primary" color="#091D8B">{{
-          $t('transactions.back')
-        }}</v-btn>
+        <v-btn class="btn w-100" color="primary">{{ $t('transactions.back') }}</v-btn>
       </router-link>
     </v-card>
   </section>
@@ -50,6 +48,7 @@ const send = ref<boolean>(false)
 .card-transaction {
   margin: auto;
   width: 450px;
+  gap: 1rem;
 
   @media (max-width: 500px) {
     width: 100%;

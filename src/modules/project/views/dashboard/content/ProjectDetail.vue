@@ -4,7 +4,56 @@
       <div class="main-content">
         <!-- Poject Detail -->
         <div class="card-header">
-          <h4 class="h4-semibold">{{ $t('dashboard.detailProject') }}</h4>
+          <h4 class="h4-semibold">{{ $t('dashboard.approvedTransactions') }}</h4>
+          <div class="chart-options">
+            <v-select
+              density="compact"
+              v-model="selectedItem"
+              :items="options"
+              variant="solo-filled"
+              class="inpt"
+              menu-icon="mdi-chevron-down"
+              hide-details="auto"
+            >
+              <template #item="{ item }">
+                <div
+                  class="d-flex align-center input-select"
+                  @click="selectedItem = item.value.text"
+                >
+                  <img :src="item.value.icon" alt=""/>
+                  <p class="b-medium">{{ item.value.text }}</p>
+                </div>
+              </template>
+              <template v-slot:prepend-inner>
+                <div class="d-flex align-center">
+                  <img
+                    class="img-select ml-2 mr-2"
+                    src="@/assets/icons/tether.svg"
+                    v-if="selectedItem === null"
+                  />
+                  <p class="b-medium" style="width: 6.25rem" v-if="selectedItem === null">
+                    Tether USDT
+                  </p>
+                </div>
+                <div class="d-flex align-center" v-for="icon in options" :key="icon.text">
+                  <img
+                    class="img-select"
+                    :src="icon.icon"
+                    alt=""
+                    v-if="icon.text === selectedItem"
+                  />
+                </div>
+              </template>
+            </v-select>
+
+            <div class="chart__btns">
+              <v-btn size="44" variant="outlined" class="chart__btn">1M</v-btn>
+              <v-btn size="44" variant="outlined" class="chart__btn">3M</v-btn>
+              <v-btn size="44" variant="outlined" class="chart__btn">6M</v-btn>
+              <v-btn size="44" variant="outlined" class="chart__btn">1Y</v-btn>
+              <v-btn size="44" variant="outlined" class="chart__btn">All</v-btn>
+            </div>
+          </div>
         </div>
         <div class="project-chart">
           <ChartProject />
@@ -101,6 +150,15 @@ import ChartProject from './charts/ChartProject.vue'
 import getFile from '@/helpers/getFile'
 const rows = ref(100)
 const currentPage = ref(3)
+
+//select options
+const selectedItem = ref(null)
+const options = [
+  { icon: 'src/assets/icons/tether.png', text: 'Tether USDT' },
+  { icon: 'src/assets/icons/btc.png', text: 'Bitcoin' },
+  { icon: 'src/assets/icons/bnb.png', text: 'BNB' },
+  { icon: 'src/assets/icons/eth.png', text: 'Ethereum' }
+]
 
 const coins = [
   {
@@ -248,6 +306,23 @@ const coins = [
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chart-options{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .table-custom {

@@ -6,7 +6,7 @@
       <p class="b-regular">{{ $t('payment-methods.enable-fiat-text') }}</p>
     </div>
 
-    <v-btn color="primary">{{ $t('configure') }}</v-btn>
+    <v-btn class="btn" color="primary">{{ $t('configure') }}</v-btn>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ import getFile from '@/helpers/getFile'
     width: 93.75px;
     margin: 0 auto;
   }
-
+ 
   &__text {
     display: flex;
     flex-direction: column;
