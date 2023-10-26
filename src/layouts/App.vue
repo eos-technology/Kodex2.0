@@ -33,11 +33,11 @@ const isMenuOpen = ref(false)
     height: 100%;
     min-height: 100vh;
     position: fixed;
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
       display: none;
     }
     &-mobile {
-      @media (min-width: 768px) {
+      @media (min-width: 1280px) {
         display: none;
       }
     }
@@ -51,7 +51,7 @@ const isMenuOpen = ref(false)
     overflow-y: hidden;
 
     max-height: calc(100vh - 20px);
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
       margin: 75px 0 0;
       border-top-left-radius: 0;
       width: 100%;
@@ -78,7 +78,7 @@ const isMenuOpen = ref(false)
         background-color: #888;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1280px) {
         width: 100%;
         margin-left: 0;
         border-top-left-radius: 0px;
