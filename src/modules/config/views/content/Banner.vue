@@ -50,7 +50,7 @@
             <div class="image-project__section">
               <p class="l-regular">{{ $t('setting.message-image') }}</p>
             </div>
-            <!-- <DropZone /> -->
+           <DropZone /> 
             <div class="image-project__section">
               <v-btn class="btn" color="primary" @click="isOpen = false">{{ $t('setting.save') }}</v-btn>
               <v-btn class="btn" variant="outlined" color="secondary" @click="isOpen = false">
