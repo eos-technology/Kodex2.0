@@ -45,6 +45,15 @@ import { getFile } from '@/helpers/Index'
 const rows = ref(100)
 const currentPage = ref(3)
 
+//select options
+const selectedItem = ref(null)
+const options = [
+  { icon: 'src/assets/icons/tether.png', text: 'Tether USDT' },
+  { icon: 'src/assets/icons/btc.png', text: 'Bitcoin' },
+  { icon: 'src/assets/icons/bnb.png', text: 'BNB' },
+  { icon: 'src/assets/icons/eth.png', text: 'Ethereum' }
+]
+
 const coins = [
   {
     icon: 'tether',
@@ -191,6 +200,23 @@ const coins = [
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chart-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .table-custom {

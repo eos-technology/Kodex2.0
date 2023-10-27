@@ -9,45 +9,74 @@
   <form class="configureFiat__form gap">
     <div class="configureFiat__Wallet gap gap--form">
       <div>
-        <label for="name">{{ $t('payment-methods.name') }}</label
-        ><br />
-        <input v-model="form.name" type="text" name="name" :placeholder="$t('name')" />
+        <label class="text-primary b-regular">{{ $t('payment-methods.name') }}</label>
+        <v-text-field
+          class="inpt mt-1"
+          elevation-0
+          density="compact"
+          hide-details
+          variant="solo-filled"
+          :placeholder="$t('name')"
+          v-model="form.name"
+        ></v-text-field>
       </div>
 
       <div>
-        <label for="account">{{ $t('payment-methods.account-number') }}</label
-        ><br />
-        <input
-          v-model="form.account"
-          type="text"
-          name="account"
+        <label class="text-primary b-regular">{{ $t('payment-methods.account-number') }}</label>
+        <v-text-field
+          class="inpt mt-1"
+          elevation-0
+          density="compact"
+          hide-details
+          variant="solo-filled"
           :placeholder="$t('payment-methods.account-number')"
-        />
+          v-model="form.account"
+          type="number"
+        ></v-text-field>
       </div>
 
       <div>
-        <label for="AccountType">{{ $t('payment-methods.type-account') }}</label
-        ><br />
-        <select v-model="form.accountType" name="AccountType">
-          <option value="" selected>{{ $t('payment-methods.select-type') }}</option></select
-        ><br />
+        <label class="text-primary b-regular">{{ $t('payment-methods.type-account') }}</label>
+        <v-select
+          class="inpt mt-1"
+          elevation-0
+          density="compact"
+          hide-details
+          variant="solo-filled"
+          :items="['item1', 'item2', 'item3', 'item4', 'item5', 'item6']"
+          v-model="form.accountType"
+          :placeholder="$t('payment-methods.select-type') "
+        ></v-select>
       </div>
+
       <div>
-        <label for="documentType">{{ $t('payment-methods.document-type') }}</label
-        ><br />
-        <select v-model="form.documentType" name="documentType">
-          <option value="" selected>{{ $t('payment-methods.select-document') }}</option></select
-        ><br />
+        <label class="text-primary b-regular">{{ $t('payment-methods.document-type') }}</label>
+        
+        <v-select
+          class="inpt mt-1"
+          elevation-0
+          density="compact"
+          hide-details
+          variant="solo-filled"
+          :items="['item1', 'item2', 'item3', 'item4', 'item5', 'item6']"
+          v-model="form.documentType"
+          :placeholder="$t('payment-methods.select-document') "
+        ></v-select>
       </div>
+
+
       <div>
-        <label for="document">{{ $t('payment-methods.number-document') }}</label
-        ><br />
-        <input
-          v-model="form.document"
-          type="text"
-          name="document"
+        <label class="text-primary b-regular">{{ $t('payment-methods.number-document') }}</label>
+        <v-text-field
+          class="inpt mt-1"
+          elevation-0
+          density="compact"
+          hide-details
+          variant="solo-filled"
           :placeholder="$t('payment-methods.number-document')"
-        />
+          v-model="form.document"
+          type="number"
+        ></v-text-field>
       </div>
     </div>
 
@@ -58,8 +87,10 @@
     </div>
 
     <div class="configureFiat__buttons">
-      <v-btn @click="emit('next', form)" color="primary">{{ $t('globals.save') }}</v-btn>
-      <v-btn @click="$router.back()" variant="outlined" class="w-btn border-btn">{{ $t('cancel') }}</v-btn>
+      <v-btn class="btn" color="primary" @click="emit('next', form)">{{ $t('globals.save') }}</v-btn>
+      <v-btn class="btn" variant="outlined" color="secondary" @click="$router.back()">
+        <p class="text-primary">{{ $t('cancel') }}</p>
+      </v-btn>
     </div>
   </form>
 </template>
@@ -72,8 +103,8 @@ const emit = defineEmits(['cancel', 'next'])
 const form = reactive({
   name: '',
   account: '',
-  accountType: '',
-  documentType: '',
+  accountType: null,
+  documentType: null,
   document: ''
 })
 </script>
@@ -174,6 +205,14 @@ const form = reactive({
 
   &.w-btn {
     background-color: #fff;
+  }
+}
+
+:deep(.v-field__input){
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
   }
 }
 </style>

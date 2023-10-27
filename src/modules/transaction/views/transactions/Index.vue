@@ -341,6 +341,10 @@ const props = defineProps({
       font-size: 10px;
     }
   }
+
+  tr:nth-child(2n) {
+    background-color: #f8f9fb;
+  }
 }
 
 .transaction__table-link-btn {

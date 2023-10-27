@@ -25,12 +25,9 @@ import MenuProject from './content/Menu.vue'
     padding: 16px;
   }
 }
-
-:deep(.v-main){
-  padding-left: 72px;
-
-  @media (max-width: 768px){
-    padding-left: 0;
-  }
+</style>
+<style>
+.v-main .v-main-project {
+  /* padding-left: 72px !important; */
 }
 </style>

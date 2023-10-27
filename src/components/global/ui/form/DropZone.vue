@@ -7,12 +7,12 @@
       </p>
     </div>
     <div
-      class="drop__drag-area"
+      class="drop__drag-area mt-1"
       @dragover.prevent="onDragOver"
       @dragleave.prevent="onDragleave"
       @drop.prevent="onDrop"
     >
-      <img :src="getFile('icons', 'cloud')" alt="" />
+      <img src="@/assets/icons/cloud.svg" alt="" />
       <span v-if="!isDragging">
         <p class="b-light">
           Drag and drop file, or
@@ -25,14 +25,14 @@
         </p>
         <p class="s-light text-center">Upload files up to 8gb</p>
       </span>
-
+      
       <div v-else class="drop__select">Drop image here</div>
       <input
-        type="file"
-        name="file"
-        class="file"
-        ref="fileInput"
-        multiple
+      type="file"
+      name="file"
+      class="file"
+      ref="fileInput"
+      multiple
         @change="onFileSelect"
       />
     </div>

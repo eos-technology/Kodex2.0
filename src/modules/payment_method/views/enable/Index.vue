@@ -1,11 +1,12 @@
 <template>
-  <div class="enable">
-    <div class="config__header">
-      <h3 class="h3-bold">{{ $t('payment-methods.title') }}</h3>
-    </div>
-    <BackDummy @click="$router.back()" />
+  <div class="enable ">
     <v-card>
-      <v-card-item>
+      <v-card-item class="text-primary">
+        <div class="modal__close">
+          <button @click="$emit('close')" variant="plain">
+            <i class="icon-close-notification" style="font-size: 1.5rem;" ></i>
+          </button>
+        </div>
         <div class="enable__header">
           <h3 class="h3-bold">{{ $t('payment-methods.enable-method') }}</h3>
           <p class="l-regular">{{ $t('payment-methods.select-method') }}</p>
@@ -13,9 +14,9 @@
 
         <div class="tabs__modal mb-8">
           <!-- Switch -->
-          <v-tabs class="tabs-rounded w-100" v-model="tab">
-            <v-tab value="one"><span class="t-btn">Crypto</span></v-tab>
-            <v-tab value="two"><span class="t-btn">Fiat</span> </v-tab>
+          <v-tabs class="tabs-rounded w-100" align-tabs="center" v-model="tab">
+            <v-tab value="one">Crypto</v-tab>
+            <v-tab value="two">Fiat </v-tab>
           </v-tabs>
         </div>
 
@@ -23,16 +24,20 @@
         <v-window v-model="tab">
           <v-window-item value="one">
             <div class="tab-crypto">
-              <div class="search-box">
+              <div class="search-box ">
                 <v-text-field
                   variant="solo-filled"
-                  placeholder="Search"
+                  :placeholder="$t('search')"
                   hide-details
                   class="inpt"
                   density="compact"
-                  prependInnerIcon="mdi-magnify"
                   type="search"
-                ></v-text-field>
+                  clearable 
+                >
+                  <template v-slot:prepend-inner>
+                    <i class="icon-search"></i>
+                  </template>
+                </v-text-field>
               </div>
               <div class="tab-crypto__currencies">
                 <CurrencyMethod
@@ -52,12 +57,16 @@
                 <v-text-field
                   variant="solo-filled"
                   hide-details
-                  placeholder="Search"
+                  :placeholder="$t('search')"
                   class="inpt"
                   density="compact"
-                  prependInnerIcon="mdi-magnify"
                   type="search"
-                ></v-text-field>
+                  clearable 
+                >
+                  <template v-slot:prepend-inner>
+                    <i class="icon-search"></i>
+                  </template>
+                </v-text-field>
               </div>
               <div class="tab-fiat__currencies">
                 <CurrencyMethod
@@ -80,6 +89,8 @@ import { ref } from 'vue'
 import CurrencyMethod from '../components/CurrencyMethod.vue'
 
 const tab = ref()
+
+defineEmits(['close'])
 
 const cryptoCoins = [
   {
@@ -200,7 +211,7 @@ const fiatCoins = [
     flex: 1;
     border: none;
     font-weight: 300;
-    color: #fff;
+  
     font-size: 14px;
 
     &::after {
@@ -220,23 +231,11 @@ const fiatCoins = [
   }
 }
 
-:deep(.v-btn) {
-  text-transform: none;
-  border-radius: 16px;
-  height: fit-content;
-  padding: 10px 16px;
+.modal__close{
+  margin-left: auto;  
 
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%;
-
-  &.border-btn {
-    border: 1px solid #f4f5f8;
-  }
-
-  &.w-btn {
-    background-color: #fff;
+  i{
+    transform: translateY(12%);
   }
 }
 </style>

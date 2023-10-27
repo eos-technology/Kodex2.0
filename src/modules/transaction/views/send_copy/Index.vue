@@ -20,7 +20,9 @@
         $t('transactions.btnSend')
       }}</v-btn>
       <router-link :to="{ name: 'transactions' }">
-        <v-btn variant="outlined" class="btn mt-4 w-100">{{ $t('transactions.btnCancel') }}</v-btn>
+        <v-btn class="btn mt-4 w-100" variant="outlined" color="secondary">
+          <p class="text-primary">{{ $t('transactions.btnCancel') }}</p>
+        </v-btn>
       </router-link>
     </v-card>
     <v-card class="card-transaction pa-4 rounded-lg d-flex flex-column align-center" v-if="send">
@@ -32,9 +34,7 @@
         {{ $t('transactions.sendCopy') }} <span class="font-weight-bold">email@email.com</span>
       </p>
       <router-link :to="{ name: 'transactions' }" class="w-100">
-        <v-btn class="text-none text-white mt-6 w-100 primary" color="#091D8B">{{
-          $t('transactions.back')
-        }}</v-btn>
+        <v-btn class="btn mt-6 w-100" color="primary">{{ $t('transactions.back') }}</v-btn>
       </router-link>
     </v-card>
   </section>

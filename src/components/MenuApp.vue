@@ -28,6 +28,18 @@
       <img src="../assets/icons/plus.svg" alt="" />
       <v-tooltip activator="parent" location="end">Crear nuevo proyecto</v-tooltip>
     </button>
+    <div class="menu__line line"></div>
+
+    <div class="menu__route-content">
+      <router-link
+        class="menu__route menu__route--text l-semibold"
+        v-for="(item, index) in projects"
+        :key="index"
+        :to="{ name: `${item.route}` }"
+        >{{ item.icon }}
+        <v-tooltip activator="parent" location="end">Nombre proyecto</v-tooltip>
+      </router-link>
+    </div>
   </div>
   <v-layout class="notification">
     <v-navigation-drawer width="450" v-model="drawer" temporary location="end">
@@ -70,8 +82,12 @@
           </div>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-  </v-layout>
+    </v-navigation-drawer></v-layout
+  >
+  <v-btn size="40" class="menu__logout">
+    <i class="icon-close-circle text-error"></i>
+    <v-tooltip activator="parent" location="end">Cerrar sesión</v-tooltip>
+  </v-btn>
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
@@ -152,7 +168,7 @@ const getIconClass = (iconType: string) => {
   flex-direction: column;
   gap: 1rem;
   max-width: 72px;
-  @media (max-width: 768px) {
+  @media (max-width: 1280px) {
     display: none;
   }
   &__logo {
@@ -175,6 +191,34 @@ const getIconClass = (iconType: string) => {
     width: 2.5rem;
     outline: none;
     border: none;
+    &-content {
+      max-height: calc(100vh - 420px);
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 0px; /* Ancho de la barra de desplazamiento */
+      }
+
+      /* Estilos del track (el fondo de la barra de desplazamiento) */
+      &::-webkit-scrollbar-track {
+        background: #f5f5f5; /* Color del fondo del track */
+        border-radius: 0px;
+      }
+
+      /* Estilos del thumb (el "botón" que puedes arrastrar) */
+      &::-webkit-scrollbar-thumb {
+        background: #d4d4d4; /* Color del thumb */
+        border-radius: 0px;
+      }
+
+      /* Estilos del thumb cuando se está interactuando con él */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #c5c5c5; /* Color del thumb en hover */
+        border-radius: 0px;
+      }
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
     &.active {
       background: #3587ff;
     }
@@ -191,6 +235,15 @@ const getIconClass = (iconType: string) => {
   &__line {
     opacity: 0.2;
     margin: 8px 0;
+  }
+  &__logout {
+    position: absolute;
+    bottom: 24px;
+    left: 16px;
+    border-radius: 12px;
+    i {
+      font-size: 24px;
+    }
   }
 }
 
