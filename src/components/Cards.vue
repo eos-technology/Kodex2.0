@@ -4,7 +4,8 @@
     ><i :class="`icon-${icon} icon`"></i>
     <div>
       <p class="b-light">{{ title }}</p>
-      <h5 class="h5-bold">{{ value }}</h5>
+      <h5 class="h5-bold" v-if="!loading">{{ value }}</h5>
+      <v-progress-circular v-else indeterminate />
     </div>
   </v-card>
 </template>
@@ -13,7 +14,11 @@
 defineProps({
   icon: String,
   title: String,
-  value: String
+  value: String,
+  loading: {
+    type: Boolean,
+    default: false
+  }
 })
 </script>
 

@@ -118,6 +118,17 @@ body .rounded-lg {
   border-radius: 16px !important;
 }
 
+.suspensive{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rounded-80{
+  border-radius: 0.87rem !important;
+  
+}
+
 // 👉 Modal
 
 .modal {

@@ -146,7 +146,7 @@
     "name": "Name of the buyer",
     "money": "Currency",
     "quantity": "Amount",
-    "commission": "gateway commission",
+    "commission": "Comission",
     "walletDatail": "Wallet",
     "btnCopy": "Copy",
     "creationDetail": "Creation date",
@@ -159,7 +159,11 @@
     "resources": "Resources consumed and rates",
     "seeDetail": "See detail",
     "sendMail": "Send by e-mail",
-    "downloadTax": "Download receipt"
+    "downloadTax": "Download receipt",
+    "amount_usd": "USD quantity",
+    "received": "Received",
+    "received_usd": "Received usd",
+    "btnCopied": "Copied"
   },
   "payments": {
     "paymentLink": "Payment links",

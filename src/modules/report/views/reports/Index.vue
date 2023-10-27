@@ -8,20 +8,28 @@
       }}</v-btn>
     </div>
     <!-- Cards -->
-    <div class="cards">
-      <Cards icon="coins" :title="$t('reports.profits')" value="$0.00" />
-      <Cards icon="dollar-send-arrow" :title="$t('reports.totalTx')" value="0" />
-      <Cards icon="money" :title="$t('reports.totalUser')" value="0" />
-      <Cards icon="hand-coins-currency" :title="$t('reports.activeMoney')" value="0" />
-    </div>
-    <ChartTipe />
-    <ChartTransactions class="mb-12" />
+    <ProjectStats :uuid="uuid" />
+    <v-card class="pa-4 pa-md-6" rounded="lg">
+      <ChartProfits />
+    </v-card>
+    <v-card class="pa-4 pa-md-6" rounded="lg">
+      <ChartTransactions class="mb-12" />
+      <TransactionsStats class="mt-4" />
+    </v-card>
   </section>
 </template>
 <script setup lang="ts">
-import Cards from '@/components/Cards.vue'
-import ChartTipe from '../content/ChartTipe.vue'
-import ChartTransactions from '../content/ChartTransactions.vue'
+import ChartProfits from '@/modules/report/components/ChartProfits.vue'
+import ChartTransactions from '@/modules/report/components/ChartTransactions.vue'
+import ProjectStats from '@/components/ProjectStats.vue'
+import TransactionsStats from '@/modules/report/components/TransactionsStats.vue'
+
+const props = defineProps({
+  uuid: {
+    required: true,
+    type: String
+  }
+})
 </script>
 <style lang="scss" scoped>
 .report {

@@ -150,7 +150,7 @@
     "name": "Nombre del comprador",
     "money": "Moneda",
     "quantity": "Cantidad",
-    "commission": "Comisión pasarela",
+    "commission": "Comisión",
     "walletDatail": "Wallet",
     "btnCopy": "Copiar",
     "creationDetail": "Fecha de creación",
@@ -164,7 +164,11 @@
     "resources": "Recursos consumidos y tarifas",
     "seeDetail": "Ver detalle",
     "sendMail": "Enviar por correo",
-    "downloadTax": "Descargar recibo"
+    "downloadTax": "Descargar recibo",
+    "amount_usd": "Cantidad en dolares",
+    "received": "Recibido",
+    "received_usd": "Recibido en dolares",
+    "btnCopied": "Copiado"
   },
   "payments": {
     "paymentLink": "Enlaces de pago",

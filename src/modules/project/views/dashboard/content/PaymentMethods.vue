@@ -2,62 +2,6 @@
   <div class="card-big">
     <v-card class="pa-4 pa-md-6" rounded="lg">
       <div class="main-content">
-        <!-- Poject Detail -->
-        <div class="card-header">
-          <h4 class="h4-semibold">{{ $t('dashboard.detailProject') }}</h4>
-        </div>
-        <div class="project-chart">
-          <ChartProject />
-        </div>
-        <h5 class="h5-semibold">{{ $t('dashboard.transactions') }}</h5>
-        <div class="table-custom">
-          <table>
-            <thead>
-              <tr>
-                <th>{{ $t('dashboard.transactionsType') }}</th>
-                <th>{{ $t('dashboard.amount') }}</th>
-                <th>{{ $t('dashboard.total') }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="table-custom__flex">
-                    <div class="dot-status dot-status--success"></div>
-                    {{ $t('dashboard.approved') }}
-                  </div>
-                </td>
-                <td>100</td>
-                <td>$100.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="table-custom__flex">
-                    <div class="dot-status dot-status--warning"></div>
-                    {{ $t('dashboard.pending') }}
-                  </div>
-                </td>
-                <td>100</td>
-                <td>$100.00</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="table-custom__flex">
-                    <div class="dot-status dot-status--error"></div>
-                    {{ $t('dashboard.cancel') }}
-                  </div>
-                </td>
-                <td>100</td>
-                <td>$100.00</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </v-card>
-
-    <v-card class="pa-4 pa-md-6" rounded="lg">
-      <div class="main-content">
         <!-- Payment Methods -->
         <h5 class="h5-semibold">{{ $t('dashboard.payments') }}</h5>
 
@@ -97,8 +41,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import ChartProject from './charts/ChartProject.vue'
-import getFile from '@/helpers/getFile'
+import { getFile } from '@/helpers/Index'
 const rows = ref(100)
 const currentPage = ref(3)
 

@@ -30,47 +30,6 @@
             </div>
           </div>
         </div>
-        <!-- Content
-        <div class="d-info">
-          
-          
-          
-          
-          
-          
-          
-          
-          <div class="d-info__header d-info__account">
-            <p>{{ $t('transactions.accountDetail') }}</p>
-            <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
-          </div>
-          
-          
-
-          <div class="d-info__header">
-            <p>{{ $t('transactions.statusDetail') }}</p>
-            <div class="table__box-status">
-              <div class="dot-status bg-warning"></div>
-              <p class="fw-bold font-weight-bold">{{ $t('transactions.approved') }}</p>
-            </div>
-          </div>
-          <div class="d-info__header">
-            <p>{{ $t('transactions.confirmed') }}</p>
-            <p class="fw-bold font-weight-bold">Chain cloud</p>
-          </div>
-          <div class="d-info__header">
-            <p>{{ $t('transactions.block') }}</p>
-            <p class="fw-bold font-weight-bold">484685361</p>
-          </div>
-          <div class="d-info__header">
-            <p>{{ $t('transactions.quantitySRS') }}</p>
-            <p class="fw-bold font-weight-bold">6</p>
-          </div>
-          <div class="d-info__header">
-            <p>{{ $t('transactions.resources') }}</p>
-            <p class="fw-bold font-weight-bold">345 TRX</p>
-          </div>
-        </div> -->
       </v-card>
     </div>
 
@@ -80,37 +39,37 @@
           <div class="d-info__group">
             <p>{{ $t('transactions.idTransaction') }}</p>
             <div class="d-info__copy">
-              <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
-              <button class="d-info__btn">
-                <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
-              </button>
+              <p class="l-medium">{{ detail.uuid }}</p>
+              <CopyButton :text="detail.uuid" />
             </div>
           </div>
 
-
           <div class="d-info__header">
             <p>{{ $t('transactions.name') }}</p>
-            <p class="l-medium">Alberto Style</p>
+            <p class="l-medium">{{ detail.purchase_name }}</p>
           </div>
 
           <div class="d-info__header">
             <p>{{ $t('transactions.email') }}</p>
-            <p class="l-medium">Albertostyle@email.com</p>
+            <p class="l-medium">{{ detail.purchase_email }}</p>
           </div>
 
           <div class="d-info__header">
             <p>{{ $t('transactions.money') }}</p>
-            <p class="l-medium">Tether(USDT)</p>
+            <p class="l-medium">{{ detail.payment_method }}</p>
           </div>
 
           <div class="d-info__header">
             <p>{{ $t('transactions.quantity') }}</p>
-            <p class="l-medium">780</p>
+            <p class="l-medium">
+              {{ formatCurrency()(detail.quantity, detail.payment_round) }}
+              {{ detail.payment_symbol }}
+            </p>
           </div>
 
           <div class="d-info__header">
-            <p>{{ $t('transactions.commission') }}</p>
-            <p class="l-medium">20</p>
+            <p>{{ $t('transactions.amount_usd') }}</p>
+            <p class="l-medium">{{ detail.quantity_usd }} USD</p>
           </div>
         </div>
       </v-card>
@@ -120,38 +79,49 @@
           <div class="d-info__group">
             <p>{{ $t('transactions.walletDatail') }}</p>
             <div class="d-info__copy">
-              <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
-              <button class="d-info__btn">
-                <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
-              </button>
+              <p class="l-medium">{{ detail.payment_address }}</p>
+              <CopyButton :text="detail.payment_address" />
             </div>
           </div>
 
-          <div class="d-info__group">
+          <!-- <div class="d-info__group">
             <p>Hash</p>
             <div class="d-info__copy">
-              <p class="l-medium">Tp5MueB2cZk1f9846ctjdryPt6mMde56giu95</p>
+              <p class="l-medium"></p>
               <button class="d-info__btn">
                 <i class="icon-copy"></i>{{ $t('transactions.btnCopy') }}
               </button>
             </div>
-          </div>
+          </div> -->
 
-          <div class="d-info__header">
+          <div class="d-info__header" v-if="detail && detail.created_at">
             <p>{{ $t('transactions.creationDetail') }}</p>
-            <p class="l-medium">0000/00/00 00:00</p>
+            <p class="l-medium">{{ formatDate()(detail.created_at) }}</p>
+          </div>
+
+          <div class="d-info__header" v-if="detail && detail.payed_at">
+            <p>{{ $t('transactions.paymentDate') }}</p>
+            <p class="l-medium">{{ formatDate()(detail.payed_at) }}</p>
           </div>
 
           <div class="d-info__header">
-            <p>{{ $t('transactions.paymentDate') }}</p>
-            <p class="l-medium">0000/00/00 00:00</p>
+            <p>{{ $t('transactions.received') }}</p>
+            <p class="l-medium">
+              {{ formatCurrency()(detail.received, detail.payment_round) }}
+              {{ detail.payment_symbol }}
+            </p>
+          </div>
+
+          <div class="d-info__header">
+            <p>{{ $t('transactions.received_usd') }}</p>
+            <p class="l-medium">{{ formatCurrency()(detail.received_usd) }} USD</p>
           </div>
 
           <div class="d-info__header">
             <p>{{ $t('transactions.result') }}</p>
             <div class="table__box-status">
-              <div class="dot-status bg-success"></div>
-              <p class="fw-bold font-weight-bold">{{ $t('transactions.approved') }}</p>
+              <!-- <div class="dot-status bg-success"></div> -->
+              <p class="fw-bold font-weight-bold">{{ detail.status }}</p>
             </div>
           </div>
         </div>
@@ -159,7 +129,33 @@
     </div>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useTransactionStore } from '@/modules/transaction/store/transactionStore'
+const transactionStore = useTransactionStore()
+import { formatCurrency, formatDate } from '@/helpers/Index'
+
+const props = defineProps({
+  transaction: {
+    required: true,
+    type: String
+  }
+})
+
+const loading = ref<boolean>(false)
+const detail = ref<any>([])
+const getDetail = async () => {
+  loading.value = true
+  await transactionStore.getDetail({ uuid: props.transaction }).then((response: any) => {
+    detail.value = response
+    loading.value = false
+  })
+}
+
+onMounted(() => {
+  getDetail()
+})
+</script>
 <style lang="scss" scoped>
 .transaction {
   display: flex;
@@ -366,7 +362,7 @@
     gap: 1rem;
     p {
       text-align: right;
-      @media (max-width: 520px){
+      @media (max-width: 520px) {
         max-width: 60vw;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -376,11 +372,10 @@
       @media (max-width: 480px) {
         max-width: 40vw;
       }
-      @media (max-width: 350px){
+      @media (max-width: 350px) {
         max-width: 30vw;
       }
     }
-
   }
   &__account {
     @media (max-width: 670px) {
@@ -422,7 +417,7 @@
   flex-wrap: wrap;
   gap: 32px;
 
-  @media (max-width: 1227px){
+  @media (max-width: 1227px) {
     flex-direction: column;
     gap: 0;
   }

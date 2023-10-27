@@ -16,6 +16,7 @@ import './plugins/Luxon'
 import { i18n } from './plugins/i18n'
 import Vue3Toasity, { type ToastContainerOptions } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { VueClipboard } from '@soerenmartius/vue3-clipboard'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
@@ -29,6 +30,7 @@ app.use(globalComponents)
 app.use(vuetify)
 app.use(i18n)
 app.use(VueApexCharts)
+app.use(VueClipboard)
 
 //PROJECT BASE
 app.use(pinia)

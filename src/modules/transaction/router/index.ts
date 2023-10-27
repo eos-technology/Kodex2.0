@@ -17,7 +17,7 @@ const transactionRoutes = {
       props: true
     },
     {
-      path: ':uuid/detail',
+      path: ':uuid/detail/:transaction?',
       name: 'detail',
       component: () => import('@/modules/transaction/views/detail/Index.vue'),
       props: true

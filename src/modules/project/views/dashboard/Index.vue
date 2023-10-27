@@ -2,20 +2,29 @@
   <section class="dashboard">
     <Header :title="$t('dashboard.dashboard')" />
     <!-- Cards -->
-    <div class="cards">
-      <Cards icon="coins" :title="$t('dashboard.charged')" value="$0.00" />
-      <Cards icon="payment" :title="$t('dashboard.totalTx')" value="0" />
-      <Cards icon="money" :title="$t('dashboard.approvedTx')" value="0" />
-      <Cards icon="bank-clock" :title="$t('dashboard.txPending')" value="0" />
-    </div>
+    <ProjectStats :uuid="uuid" />
+    <v-card class="pa-4 pa-md-6" rounded="lg">
+      <ChartProfits />
+      <h5 class="h5-semibold">{{ $t('dashboard.transactions') }}</h5>
+      <TransactionsStats class="mt-4" />
+    </v-card>
     <!-- Project Detaail and Payments Methods -->
-    <ProjectDetail class="project" />
+    <PaymentMethods class="project" />
   </section>
 </template>
 
 <script lang="ts" setup>
-import ProjectDetail from './content/ProjectDetail.vue'
-import Cards from '@/components/Cards.vue'
+import ProjectStats from '@/components/ProjectStats.vue'
+import PaymentMethods from './content/PaymentMethods.vue'
+import ChartProfits from '@/modules/report/components/ChartProfits.vue'
+import TransactionsStats from '@/modules/report/components/TransactionsStats.vue'
+
+const props = defineProps({
+  uuid: {
+    required: true,
+    type: String
+  }
+})
 </script>
 
 <style lang="scss" scoped>

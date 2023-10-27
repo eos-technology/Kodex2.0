@@ -16,7 +16,15 @@ export const useProjectStore = defineStore({
       } catch (error: any) {
         throw new Error(error);
       }
-    }
+    },
+    async createProject(payload: {name: string, color: string }) {
+      try {
+        const data: any = await makeRequest({ method: api.project.create, body: payload })
+        return data
+      } catch (error: any) {
+        throw new Error(error);
+      }
+    },
   },
   //persist: true // SOLO PARA PERSISTIR
 })

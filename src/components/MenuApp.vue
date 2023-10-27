@@ -79,9 +79,9 @@ import { toast } from 'vue3-toastify'
 
 const emit = defineEmits(['route-value'])
 import { useProjectStore } from '@/modules/project/store/projectStore'
+const projectStore = useProjectStore()
 import { useNotificationStore } from '@/stores/notificationStore'
 import formatDate from '@/helpers/formatDate'
-const projectStore = useProjectStore()
 const notificationStore = useNotificationStore()
 
 const projects = ref<any>([])

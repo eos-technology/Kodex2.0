@@ -23,7 +23,33 @@ const api: any = {
       uri: function () {
         return `/project`
       }
-    }
+    },
+    create: <Endpoint>{
+      method: 'post',
+      uri: function () {
+        return `/project`
+      }
+    },
+  },
+  transaction: {
+    transactions: <Endpoint>{
+      method: 'get',
+      uri: function (payload: {uuid: string}) {
+        return `/transaction/${payload.uuid}`
+      }
+    },
+    stats: <Endpoint>{
+      method: 'get',
+      uri: function (payload: {uuid: string}) {
+        return `/transaction/stats/${payload.uuid}`
+      }
+    },
+    detail: <Endpoint>{
+      method: 'get',
+      uri: function (payload: {uuid: string}) {
+        return `/transaction/detail/${payload.uuid}`
+      }
+    },
   },
   notification: {
     notifications: <Endpoint>{
