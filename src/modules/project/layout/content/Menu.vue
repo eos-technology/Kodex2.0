@@ -74,9 +74,15 @@ const routes = [
 <style lang="scss">
 .project_menu {
   .v-navigation-drawer {
+    transform: translateX(0) !important;
+
     @media (max-width: 768px) {
       display: none;
     }
+  }
+
+  .v-navigation-drawer--temporary {
+    box-shadow: none;
   }
 }
 
@@ -85,11 +91,12 @@ const routes = [
 }
 .project_menu .v-navigation-drawer {
   // position: absolute !important;
+  position: fixed !important;
   left: 72px !important;
   border-radius: 32px 0 0 32px;
   height: calc(100vh - 20px) !important;
   margin: auto 0;
-  @media (max-width: 768px) {
+  @media (max-width: 1280px) {
     display: none;
   }
 }

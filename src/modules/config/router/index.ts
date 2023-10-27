@@ -5,22 +5,25 @@ const configRoutes = {
   },
   children: [
     {
-      path: '',
+      path: ':uuid',
       name: 'config',
-      component: () => import('@/modules/config/views/Index.vue')
+      component: () => import('@/modules/config/views/Index.vue'),
+      props: true
     },
     {
       path: 'security',
       children: [
         {
-          path: 'timeline',
+          path: ':uuid/timeline',
           name: 'timeline',
-          component: () => import('@/modules/config/views/security/Timeline.vue')
+          component: () => import('@/modules/config/views/security/Timeline.vue'),
+          props: true
         },
         {
-          path: 'restrictions',
+          path: ':uuid/restrictions',
           name: 'restrictions',
-          component: () => import('@/modules/config/views/security/Restrictions.vue')
+          component: () => import('@/modules/config/views/security/Restrictions.vue'),
+          props: true
         }
       ]
     }

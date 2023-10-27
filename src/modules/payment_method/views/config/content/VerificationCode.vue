@@ -112,6 +112,11 @@ function submit() {
     border: 1px solid #eaecf0;
     border-radius: 0.5rem;
     text-align: center;
+    color: #061C4E;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -121,6 +126,10 @@ function submit() {
 
     &:focus-visible {
       outline: none;
+    }
+
+    &[disabled]{
+      opacity: 0.7;
     }
   }
 }

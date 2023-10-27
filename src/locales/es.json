@@ -60,6 +60,7 @@
     "total": "TOTAL TX",
     "totalTx": "Total de TX",
     "approved": "Aprobadas",
+    "approvedTransactions": "Transacciones aprobadas",
     "pending": "Pendientes",
     "cancel": "Canceladas",
     "payments": "Métodos de pago",
@@ -110,7 +111,22 @@
     "email": "Correo",
     "account-type": "Tipo de banco",
     "shareByEmail": "Compartir vía email",
-    "copyShare": "Copia y comparte su Link"
+    "copyShare": "Copia y comparte su Link",
+    "name":"Nombre",
+    "uniquePayment":"Un único pago",
+    "multiPayment":"Varios pagos",
+    "userChoose":"Usuario elige",
+    "depositBank":"Déposito bancario",
+    "selectCrypto":"Seleccione cripto",
+    "selectBank":"Seleccione banco",
+    "numberAccount":"Número de cuenta",
+    "selectAccountType":"Seleccione el tipo de cuenta",
+    "selectDocumentType":"Seleccione tipo de documento",
+    "advancedSettings":"Configuración avanzada",
+    "enablePaymentRange":"Habilitar rango de pago",
+    "dateIn":"Fecha de inicio",
+    "dateOut":"Fecha de finalización",
+    "quantity":"Cantidad"
   },
   "filter": {
     "filter": "Filtro"
@@ -150,7 +166,7 @@
     "name": "Nombre del comprador",
     "money": "Moneda",
     "quantity": "Cantidad",
-    "commission": "Comisión pasarela",
+    "commission": "Comisión",
     "walletDatail": "Wallet",
     "btnCopy": "Copiar",
     "creationDetail": "Fecha de creación",
@@ -164,7 +180,11 @@
     "resources": "Recursos consumidos y tarifas",
     "seeDetail": "Ver detalle",
     "sendMail": "Enviar por correo",
-    "downloadTax": "Descargar recibo"
+    "downloadTax": "Descargar recibo",
+    "amount_usd": "Cantidad en dolares",
+    "received": "Recibido",
+    "received_usd": "Recibido en dolares",
+    "btnCopied": "Copiado"
   },
   "payments": {
     "paymentLink": "Enlaces de pago",
@@ -457,5 +477,9 @@
     "title3": "Todo listo",
     "finish-text1": "Su compra de",
     "finish-text2": "realizada con éxito"
+  },
+  "menu":{
+    "createNewProyect":"Crear nuevo proyecto",
+    "selectProyect":"Selecciona proyecto"
   }
 }

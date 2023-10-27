@@ -4,7 +4,10 @@ const defaultFormat = 'dd/MM/yyyy HH:mm:ss'
 
 const formatDate =
   () =>
-  (date: DateTime, format: string = defaultFormat): string => {
+  (date: DateTime | string, format: string = defaultFormat): string => {
+    if (typeof date == 'string') {
+      date = DateTime.fromISO(date)
+    }
     return date.toFormat(format)
   }
 

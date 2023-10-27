@@ -5,7 +5,7 @@
       <BackDummy />
     </router-link>
     <div class="card-big reports__card" v-if="!selectedMethod">
-      <v-card class="pa-6">
+      <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
         <h3 class="h3-bold">{{ $t('reports.method') }}</h3>
         <p class="mt-4">{{ $t('reports.selectMethod') }}</p>
         <div
@@ -26,19 +26,19 @@
               <p class="s-light text-nowrap">{{ $t(item.value) }}</p>
             </div>
           </div>
-          <i class="icon-arrow-right"></i>
+          <i class="icon-arrow-right" style="font-size: 1.5rem;"></i>
         </div>
       </v-card>
     </div>
     <div class="card-big reports__card" v-if="selectedMethod">
-      <v-card class="pa-6">
+      <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
         <h3 class="h3-bold">{{ $t('reports.typeReport') }}</h3>
         <p class="l-light mt-4">{{ $t('reports.selectCategory') }}</p>
         <div class="mt-6">
           <label class="b-regular">{{ $t('reports.label') }}</label>
           <v-select
             density="compact"
-            class="inpt"
+            class="inpt mt-1"
             :placeholder="$t('reports.select')"
             variant="solo-filled"
             menu-icon="mdi-chevron-down"
@@ -79,23 +79,31 @@
             </div>
           </v-radio-group>
           <div class="d-flex align-center justify-space-between">
-            <div class="w-100 mr-4">
+            <div class="w-100 mr-4 date-box">
               <label class="b-regular">{{ $t('reports.startDate') }}</label>
               <v-text-field
                 class="inpt"
                 density="compact"
                 type="date"
                 variant="solo-filled"
-              ></v-text-field>
+              >
+                <template v-slot:prepend-inner>
+                  <i class="icon-calendar" style="color: #394357;"></i>
+                </template>
+              </v-text-field>
             </div>
-            <div class="w-100">
+            <div class="w-100 date-box">
               <label class="b-regular">{{ $t('reports.endDate') }}</label>
               <v-text-field
                 class="inpt"
                 density="compact"
                 type="date"
                 variant="solo-filled"
-              ></v-text-field>
+              >
+                <template v-slot:prepend-inner>
+                  <i class="icon-calendar" style="color: #394357;"></i>
+                </template>
+              </v-text-field>
             </div>
           </div>
 
@@ -184,5 +192,18 @@ const coins = [
   border: 1px solid var(--border-border-input, #f4f5f8);
   background: var(--fondos-blanco, #fff);
   color: #001e62;
+}
+
+:deep(.v-field__field){
+  input[type=date]{
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+    margin-left: -25px;
+  }
+
+  input[type=date]::-webkit-calendar-picker-indicator{
+    color: transparent;
+    opacity: 0;
+  }
 }
 </style>

@@ -13,22 +13,14 @@
           <div class="filter__accordion">
             <v-expansion-panels variant="accordion">
               <!-- Status -->
-              <v-expansion-panel title="Estado">
+              <v-expansion-panel title="Estado" v-if="!hideStatus">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
-                    <div class="expansion-item">
-                      <p class="l-regular">Activo</p>
+                    <div class="expansion-item" v-for="status in statusVisibles">
+                      <p class="l-regular">{{ status.name }}</p>
                       <v-checkbox
+                        v-bind:value="status.value"
                         v-model="filter.status"
-                        value="active"
-                        color="#091D8B"
-                      ></v-checkbox>
-                    </div>
-                    <div class="expansion-item">
-                      <p class="l-regular">Inactivo</p>
-                      <v-checkbox
-                        v-model="filter.status"
-                        value="desactive"
                         color="#091D8B"
                       ></v-checkbox>
                     </div>
@@ -36,27 +28,16 @@
                 </v-expansion-panel-text>
               </v-expansion-panel>
               <!-- Amount -->
-              <v-expansion-panel :title="$t('payments.amount')">
+              <v-expansion-panel :title="$t('payments.amount')" v-if="!hideAmount">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
                     <div class="filter__inputs">
-                      <div class="expansion-item">
-                        <p class="b-regular">{{ $t('payments.range') }}</p>
-                        <v-switch
-                          v-model="disableAmount"
-                          density="compact"
-                          hide-details
-                          color="primary"
-                          inset
-                        ></v-switch>
-                      </div>
                       <label for="minimum">
                         <p class="b-regular mb-1">{{ $t('payments.minimum') }}</p>
                         <v-text-field
                           placeholder="$0.00"
                           type="number"
                           v-model="filter.amountLow"
-                          :disabled="!disableAmount"
                           variant="outlined"
                           density="compact"
                           rounded="lg"
@@ -70,7 +51,6 @@
                           placeholder="$0.00"
                           type="number"
                           v-model="filter.amountHight"
-                          :disabled="!disableAmount"
                           variant="outlined"
                           density="compact"
                           rounded="lg"
@@ -83,28 +63,15 @@
                 </v-expansion-panel-text>
               </v-expansion-panel>
               <!-- Date -->
-              <v-expansion-panel :title="$t('payments.date')">
+              <v-expansion-panel :title="$t('payments.date')" v-if="!hideDates">
                 <v-expansion-panel-text>
                   <div class="expansion-content">
-                    <div class="expansion-item">
-                      <p class="b-regular">{{ $t('payments.range') }}</p>
-
-                      <v-switch
-                        v-model="disableDate"
-                        density="compact"
-                        hide-details
-                        color="primary"
-                        inset
-                      ></v-switch>
-                    </div>
-
                     <div class="filter__inputs">
                       <label for="dateIn">
                         <p class="b-regular mb-1">{{ $t('payments.dateIn') }}</p>
                         <v-text-field
                           type="date"
                           v-model="filter.dateFrom"
-                          :disabled="!disableDate"
                           variant="outlined"
                           density="compact"
                           rounded="lg"
@@ -117,7 +84,6 @@
                         <v-text-field
                           type="date"
                           v-model="filter.dateTo"
-                          :disabled="!disableDate"
                           variant="outlined"
                           density="compact"
                           rounded="lg"
@@ -134,8 +100,8 @@
         </v-list-item>
         <v-list-item class="pa-4 filter__footer">
           <div class="filter__btn-box">
-            <v-btn size="large" color="primary" variant="outlined">Clear</v-btn>
-            <v-btn size="large" color="primary">Save</v-btn>
+            <v-btn size="large" color="primary" @click="clearAll()" variant="outlined">Clear</v-btn>
+            <v-btn size="large" color="primary" @click="saveFilter()">Save</v-btn>
           </div>
         </v-list-item>
       </v-list>
@@ -144,17 +110,112 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed, watch } from 'vue'
 
-const disableAmount = ref(false)
-const disableDate = ref(false)
+const props = defineProps({
+  excludes: {
+    type: Array,
+    default: [],
+    required: false
+  },
+  hideStatus: {
+    type: Boolean,
+    default: false
+  },
+  hideAmount: {
+    type: Boolean,
+    default: false
+  },
+  hideDates: {
+    type: Boolean,
+    default: false
+  }
+})
 
-const filter = reactive({
-  status: null,
+const emits = defineEmits(['setStatuses', 'setPrices', 'setDates'])
+
+const filter = reactive<any>({
+  status: [],
   amountLow: null,
   amountHight: null,
   dateFrom: null,
   dateTo: null
+})
+
+const statuses = ref<any>([
+  {
+    name: 'Created',
+    value: 1
+  },
+  {
+    name: 'Incomplete',
+    value: 2
+  },
+  {
+    name: 'Canceled',
+    value: 3
+  },
+  {
+    name: 'Complete',
+    value: 4
+  },
+  {
+    name: 'Waiting Confirmations',
+    value: 5
+  },
+  {
+    name: 'Error Withdraw',
+    value: 6
+  },
+  {
+    name: 'Confirmating',
+    value: 7
+  }
+])
+
+const emitStatus = () => {
+  let statuses = filter.status.join(',')
+  emits('setStatuses', statuses)
+}
+
+const emitDates = () => {
+  emits('setDates', { from: filter.dateFrom, to: filter.dateTo })
+}
+
+const emitPrices = () => {
+  emits('setPrices', { low: filter.amountLow, high: filter.amountHight })
+}
+
+const clearAll = () => {
+  filter.status = []
+  filter.dateFrom = null
+  filter.dateTo = null
+  filter.amountLow = null
+  filter.amountHight = null
+  saveFilter()
+}
+
+const saveFilter = () => {
+  if (!props.hideStatus) {
+    emitStatus()
+  }
+  if (!props.hideAmount) {
+    emitPrices()
+  }
+  if (!props.hideDates) {
+    emitDates()
+  }
+}
+
+const statusVisibles = computed(() => {
+  let visibles: any = []
+  statuses.value.map((val: { name: string; value: number }) => {
+    if (!props.excludes.includes(val.value)) {
+      visibles.push(val)
+    }
+  })
+
+  return visibles
 })
 </script>
 

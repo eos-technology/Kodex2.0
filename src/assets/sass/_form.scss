@@ -234,8 +234,8 @@
   -o-transform: unset !important;
 }
 
-.v-selection-control--dirty .v-switch__thumb {
-  color: #fff;
+.v-switch--inset .v-selection-control--dirty .v-switch__thumb {
+  background-color: #fff !important;
 }
 
 .v-selection-control.v-selection-control--dirty.v-selection-control--density-compact

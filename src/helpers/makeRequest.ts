@@ -3,8 +3,9 @@ import { type AxiosRequestConfig } from 'axios'
 import axios from '@/plugins/Axios'
 import type { Endpoint } from '@/types/apiTypes'
 
-const makeRequest = async (data: { route: string; params?: any; body?: any }) => {
-  const route: Endpoint = api[data.route]
+const makeRequest = async (data: { method: Endpoint; params?: any; body?: any }) => {
+
+  const route: Endpoint = data.method
 
   const body: any = data.body
 

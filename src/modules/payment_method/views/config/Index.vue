@@ -1,12 +1,12 @@
 <template>
-  <div class="config">
+  <div class="config ">
     <div class="config__header">
       <h3 class="h3-bold">{{ $t('payment-methods.title') }}</h3>
     </div>
     <BackDummy @click="$router.back()" />
 
     <v-card>
-      <v-card-item>
+      <v-card-item class="text-primary">
         <!-- step 1 -->
         <div v-if="step === 1" class="configureCrypto gap">
           <FormCrypto v-if="currency === 'crypto'" @next="onNext" />
@@ -29,12 +29,10 @@
           </div>
 
           <div class="security-code__buttons">
-            <v-btn @click="onNext" color="primary" class="btn">{{
-              $t('payment-methods.verify')
-            }}</v-btn>
-            <v-btn color="secondary" @click="$router.back()" variant="outlined" class="btn"
-              ><p class="text-primary">{{ $t('cancel') }}</p></v-btn
-            >
+            <v-btn class="btn" color="primary" @click="onNext">{{ $t('payment-methods.verify') }}</v-btn>
+            <v-btn class="btn" variant="outlined" color="secondary" @click="$router.back()">
+              <p class="text-primary">{{ $t('cancel') }}</p>
+            </v-btn>
           </div>
         </div>
 
@@ -51,9 +49,7 @@
             </p>
           </div>
 
-          <v-btn @click="$router.back()" color="primary" class="btn">{{
-            $t('globals.back')
-          }}</v-btn>
+          <v-btn @click="$router.back()" color="primary" class="btn"> {{ $t('globals.back') }} </v-btn>
         </div>
       </v-card-item>
     </v-card>

@@ -13,14 +13,16 @@ const projectRoutes = {
   },
   children: [
     {
-      path: '',
+      path: ':uuid',
       name: 'project',
       component: () => import('@/modules/project/layout/Project.vue'),
+      props: true,
       children: [
         {
           path: '',
           name: 'project-dashboard',
-          component: () => import('@/modules/project/views/dashboard/Index.vue')
+          component: () => import('@/modules/project/views/dashboard/Index.vue'),
+          props: true
         },
         userRoutes,
         payment_methodRoutes,

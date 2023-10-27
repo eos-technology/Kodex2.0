@@ -1,4 +1,5 @@
 <template>
+  <Error />
   <section class="auth">
     <div class="auth__content">
       <RouterView></RouterView>

@@ -18,18 +18,23 @@
             <input
               class="b-light"
               type="text"
-              v-model="name"
+              v-model="form.name"
               :placeholder="$t('dashboard.yourProyect')"
             />
           </div>
 
           <div class="new-proyect__buttons">
-            <v-btn @click="step++" color="primary" variant="flat">{{
-              $t('dashboard.new-btn')
-            }}</v-btn>
-            <v-btn class="cancel" color="#001E62" variant="text">{{
-              $t('dashboard.cancel-btn')
-            }}</v-btn>
+            <v-btn :loading="loading" @click="createProject()" color="primary" variant="flat">
+              {{ $t('dashboard.new-btn') }}
+            </v-btn>
+            <v-btn
+              @click="$router.push({ name: 'dashboard' })"
+              class="cancel"
+              color="#001E62"
+              variant="text"
+            >
+              {{ $t('dashboard.cancel-btn') }}
+            </v-btn>
           </div>
         </div>
 
@@ -41,13 +46,20 @@
             </div>
             <h3 class="h3-bold">{{ $t('dashboard.allReady') }}</h3>
             <p class="l-light">
-              {{ $t('dashboard.text-1') }} <span class="l-medium">{{ name }}</span>
+              {{ $t('dashboard.text-1') }} <span class="l-medium"> {{ name }} </span>
               {{ $t('dashboard.text-2') }}
             </p>
           </div>
           <div class="new-proyect__buttons">
-            <v-btn color="primary" variant="flat">{{ $t('dashboard.configure') }}</v-btn>
-            <v-btn color="#3587FF" variant="plain">{{ $t('dashboard.omit') }}</v-btn>
+            <v-btn
+              @click="$router.push({ name: 'config', params: { uuid: project.uuid } })"
+              color="primary"
+              variant="flat"
+              >{{ $t('dashboard.configure') }}</v-btn
+            >
+            <v-btn @click="$router.push({ name: 'dashboard' })" color="#3587FF" variant="plain">{{
+              $t('dashboard.omit')
+            }}</v-btn>
           </div>
         </div>
       </v-card-item>
@@ -56,7 +68,26 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import getFile from '@/helpers/getFile'
+import { getFile } from '@/helpers/Index'
+
+import { useProjectStore } from '@/modules/project/store/projectStore'
+const projectStore = useProjectStore()
+
+let form = ref<{ name: string | null; color: string | null }>({
+  name: null,
+  color: null
+})
+
+const loading = ref<boolean>(false)
+const project = ref<any>(null)
+const createProject = async () => {
+  loading.value = true
+  await projectStore.createProject(form.value).then((response: any) => {
+    loading.value = false
+    step.value = 2
+    project.value = response
+  })
+}
 
 const name = ref(null)
 const step = ref(1)

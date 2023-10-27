@@ -59,6 +59,7 @@
     "total": "TOTAL TX",
     "totalTx": "Total TX",
     "approved": "Approved",
+    "approvedTransactions": "Approved transactions",
     "pending": "Earrings",
     "cancel": "Canceled",
     "payments": "Payment methods",
@@ -109,7 +110,22 @@
     "email": "Email",
     "account-type": "Bank type",
     "shareByEmail": "Share via email",
-    "copyShare": "Copy and share your link"
+    "copyShare": "Copy and share your link",
+    "name":"Name",
+    "uniquePayment":"A single payment",
+    "multiPayment":"Various payments",
+    "userChoose":"User chooses",
+    "depositBank":"Bank deposit",
+    "selectCrypto":"Select crypto",
+    "selectBank":"Select bank",
+    "numberAccount":"Account number",
+    "selectAccountType":"Select account type",
+    "selectDocumentType":"Select document type",
+    "advancedSettings":"Advanced settings",
+    "enablePaymentRange":"Enable payment range",
+    "dateIn":"Start date",
+    "dateOut":"Finish date",
+    "quantity":"Quantity"
   },
   "transactions": {
     "headerTitle": "Transactions",
@@ -146,7 +162,7 @@
     "name": "Name of the buyer",
     "money": "Currency",
     "quantity": "Amount",
-    "commission": "gateway commission",
+    "commission": "Comission",
     "walletDatail": "Wallet",
     "btnCopy": "Copy",
     "creationDetail": "Creation date",
@@ -159,7 +175,11 @@
     "resources": "Resources consumed and rates",
     "seeDetail": "See detail",
     "sendMail": "Send by e-mail",
-    "downloadTax": "Download receipt"
+    "downloadTax": "Download receipt",
+    "amount_usd": "USD quantity",
+    "received": "Received",
+    "received_usd": "Received usd",
+    "btnCopied": "Copied"
   },
   "payments": {
     "paymentLink": "Payment links",
@@ -454,5 +474,9 @@
     "title3": "All ready",
     "finish-text1": "Your purchase of",
     "finish-text2": " was successful"
+  },
+  "menu":{
+    "createNewProyect":"Create new project",
+    "selectProyect":"Select project"
   }
 }

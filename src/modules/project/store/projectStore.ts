@@ -1,24 +1,30 @@
 import { defineStore } from 'pinia'
 import makeRequest from '@/helpers/makeRequest'
-import type { loginRequest, loginResponseType } from '../types/storeTypes'
+import api from '@/services/api'
 // project imports
 
-export const useprojectStore = defineStore({
+export const useProjectStore = defineStore({
   id: 'project',
   state: (): any => ({
-    bearer: null
   }),
   getters: {},
   actions: {
-    async login(body: loginRequest) {
+    async getProjects() {
       try {
-        const data: loginResponseType = await makeRequest({ route: 'login', body })
-        this.bearer = data.bearer
+        const data: any = await makeRequest({ method: api.project.projects })
         return data
-      } catch (error) {
-        return error
+      } catch (error: any) {
+        throw new Error(error);
       }
-    }
+    },
+    async createProject(payload: {name: string, color: string }) {
+      try {
+        const data: any = await makeRequest({ method: api.project.create, body: payload })
+        return data
+      } catch (error: any) {
+        throw new Error(error);
+      }
+    },
   },
   //persist: true // SOLO PARA PERSISTIR
 })

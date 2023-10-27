@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit" class="login" v-if="step === 1">
+  <Form class="login__form" @submit="onLogin" v-slot="{ isSubmitting }">
     <div class="login__main">
       <img class="login__img" src="@/assets/images/logo.svg" alt="" />
       <!-- Info -->
@@ -40,7 +40,7 @@
           <v-text-field
             class="inpt"
             variant="solo-filled"
-            v-model="form.pass"
+            v-model="form.password"
             :placeholder="$t('login.pass')"
             :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
             @click:append-inner="visible = !visible"
@@ -52,18 +52,13 @@
             id="pass"
           ></v-text-field
         ></label>
-        <v-checkbox
-          color="primary"
-          :label="$t('login.remember')"
-          class="w-100"
-          v-model="form.check"
-        ></v-checkbox>
+        <v-checkbox color="primary" :label="$t('login.remember')" class="w-100"></v-checkbox>
       </div>
     </div>
 
     <!-- Footer -->
     <div class="login__footer">
-      <v-btn color="primary" class="btn" type="submit" @click="step = 2">
+      <v-btn color="primary" class="btn" type="submit" :loading="isSubmitting">
         {{ $t('login.sesion') }}</v-btn
       >
 
@@ -76,56 +71,50 @@
         }}</router-link>
       </div>
     </div>
-  </form>
-
-  <section class="login" v-if="step === 2">
-    <div class="login__main">
-      <div class="login__back">
-        <BackDummy @click="step = 1" />
-        <img class="login__img" src="@/assets/images/logo.svg" alt="" />
-      </div>
-      <div class="login__info">
-        <h3 class="h1-bold text-primary">{{ $t('login.validateGoogle') }}</h3>
-        <p class="b-light">
-          {{ $t('login.validateText') }}
-        </p>
-      </div>
-      <VerificationCode />
-      <router-link to="" class="link-under text-secondary-darken-1">{{
-        $t('login.resend')
-      }}</router-link>
-    </div>
-
-    <div class="login__footer">
-      <v-btn color="primary" class="btn">
-        {{ $t('login.code') }}
-      </v-btn>
-      <div class="login__links">
-        <router-link to="recover" class="link-auth">{{ $t('login.account') }}</router-link>
-        <router-link :to="{ name: 'register' }" class="link-aux">{{
-          $t('login.newAccount')
-        }}</router-link>
-      </div>
-    </div>
-  </section>
+  </Form>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { Form } from 'vee-validate'
+import { ref, reactive } from 'vue'
+import { useAuthStore } from '../../store/authStore'
+import type { loginRequest } from '../../types/storeTypes'
+import { useUserStore } from '@/modules/auth/store/userStore'
+import { router } from '@/router'
 
-const step = ref(1)
+const authStore = useAuthStore()
+const userStore = useUserStore()
 
 const visible = ref(false)
 
-function onSubmit() {
-  alert('Submitted')
-}
-
-const form = ref({
-  pass: '',
-  email: '',
-  check: false
+let form: loginRequest = reactive({
+  email: null,
+  password: null,
+  remember: false,
+  meta: {
+    location: '',
+    ip: ''
+  }
 })
+
+const rules = reactive({
+  email: [(v: string) => !!v || 'Password is required'],
+  password: [
+    (v: string) => !!v || 'Password is required',
+    (v: string) => (v && v.length <= 15) || 'Password must be less than 10 characters'
+  ]
+})
+
+const onLogin = async () => {
+  await authStore.login(form).then((response: any) => {
+    userStore
+      .userInfo()
+      .then(() => {
+        router.push({ name: 'dashboard', replace: true })
+      })
+      .catch()
+  })
+}
 </script>
 
 <style lang="scss" scoped>

@@ -2,373 +2,24 @@
   <section class="transactions">
     <h3 class="h3-bold mb-6">{{ $t('transactions.headerTitle') }}</h3>
     <!-- Cards -->
-    <div class="cards">
-      <Cards
-        class="cards__item"
-        icon="coins"
-        :title="$t('transactions.availableBalance')"
-        value="1"
-      />
-      <Cards class="cards__item" icon="payment" :title="$t('transactions.totalTx')" value="0" />
-      <Cards
-        class="cards__item"
-        icon="money"
-        :title="$t('transactions.txApproved')"
-        value="$0.00"
-      />
-      <Cards
-        class="cards__item"
-        icon="bank-clock"
-        :title="$t('transactions.txEarrings')"
-        value="0"
-      />
-    </div>
+    <ProjectStats :uuid="uuid" class="mb-4" />
 
-    <v-card class="card-table pa-4 pa-md-6 rounded-lg">
-      <div class="transactions__header">
-        <v-text-field
-          :placeholder="$t('transactions.search')"
-          variant="solo-filled"
-          hide-details
-          density="compact"
-          class="inpt inpt-search"
-        >
-          <template v-slot:prepend-inner>
-            <i class="icon-search"></i>
-          </template>
-        </v-text-field>
-        <div class="transactions__box">
-          <FilterBtn />
-          <v-btn class="btn" color="secondary" variant="outlined"
-            ><p class="btn-line">{{ $t('transactions.button') }}</p></v-btn
-          >
-        </div>
-      </div>
-      <!-- Table -->
-      <div class="table-custom transaction__table">
-        <table class="">
-          <thead class="">
-            <tr>
-              <th>{{ $t('transactions.id') }}</th>
-              <th>{{ $t('transactions.account') }}</th>
-              <th>{{ $t('transactions.wallet') }}</th>
-              <th>{{ $t('transactions.type') }}</th>
-              <th>{{ $t('transactions.date') }}</th>
-              <th>{{ $t('transactions.status') }}</th>
-              <th>{{ $t('transactions.detail') }}</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody v-for="(item, index) in data" :key="index">
-            <tr>
-              <td>
-                <p class="l-medium">{{ item.id }}</p>
-              </td>
-              <td>{{ item.account }}</td>
-              <td>{{ item.walletTo }}</td>
-              <td>
-                <div class="transaction__table-box">
-                  <img
-                    :src="getFile({ route: 'icons', url: `${item.icon}`, extension: 'png' })"
-                    alt=""
-                  />
-                  <div>
-                    <p class="l-medium">{{ item.type }}</p>
-                    <p class="s-light text-nowrap">{{ $t(item.value) }}</p>
-                  </div>
-                </div>
-              </td>
-              <td>{{ item.date }}</td>
-              <td>
-                <div class="transaction__table-box">
-                  <div
-                    class="dot-status"
-                    :class="
-                      $t(item.status) === $t('transactions.approved')
-                        ? 'bg-success'
-                        : $t(item.status) === $t('transactions.pending')
-                        ? 'bg-yellow'
-                        : 'bg-red'
-                    "
-                  ></div>
-                  <p class="font-weight-bold">{{ $t(item.status) }}</p>
-                </div>
-              </td>
-              <td>
-                <div class="transaction__table-links">
-                  <div class="transaction__table-link">
-                    <router-link
-                      :to="{ name: 'send_copy' }"
-                      style="text-decoration: none"
-                      class="text-black"
-                    >
-                      <button class="transaction__table-link-btn">
-                        <i class="icon-bell"></i>
-                      </button>
-                    </router-link>
-                    <v-tooltip activator="parent" location="bottom">{{
-                      $t(item.notification)
-                    }}</v-tooltip>
-                    <!-- <p class="transaction__table-link-text">{{ $t(item.notification) }}</p> -->
-                  </div>
-                  <div class="transaction__table-link">
-                    <router-link
-                      :to="{ name: 'detail' }"
-                      style="text-decoration: none"
-                      class="text-black"
-                    >
-                      <button class="transaction__table-link-btn">
-                        <i class="icon-bank-send"></i>
-                      </button>
-                    </router-link>
-                    <v-tooltip activator="parent" location="bottom">{{ $t(item.send) }}</v-tooltip>
-                    <!-- <p class="transaction__table-link-text">{{ $t(item.send) }}</p> -->
-                  </div>
-                  <div class="transaction__table-link">
-                    <button class="transaction__table-link-btn">
-                      <i class="icon-bank-warning"></i>
-                    </button>
-                    <v-tooltip activator="parent" location="bottom">{{
-                      $t(item.validate)
-                    }}</v-tooltip>
-                    <!-- <p class="transaction__table-link-text">{{ $t(item.validate) }}</p> -->
-                  </div>
-                </div>
-              </td>
-              <td>
-                <!-- <button class="transaction__table-box-dots mx-auto" @click="isOpen = true">
-                  <i class="icon-dots"></i>
-                </button> -->
-                <div class="table-custom__center" @click="isOpen = true">
-                  <v-dialog width="450">
-                    <template v-slot:activator="{ props }">
-                      <i v-bind="props" class="icon-dots share-btn"></i>
-                    </template>
-
-                    <template v-slot:default="{ isActive }">
-                      <v-card class="modal__card" rounded="lg">
-                        <div class="modal">
-                          <div class="modal__header">
-                            <h5 class="h5-bold">{{ $t('user.options') }}</h5>
-                            <button class="modal__close" @click="isActive.value = false">
-                              <img
-                                :src="
-                                  getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
-                                "
-                                alt=""
-                              />
-                            </button>
-                          </div>
-                          <div class="modal__options">
-                            <router-link :to="{ name: 'detail' }" style="text-decoration: none">
-                              <div class="modal__option">
-                                <p>{{ $t('transactions.seeDetail') }}</p>
-                                <span><i class="icon-arrow-right"></i></span>
-                              </div>
-                            </router-link>
-                            <router-link :to="{ name: 'send_copy' }" style="text-decoration: none">
-                              <div class="modal__option">
-                                <p>{{ $t('transactions.sendMail') }}</p>
-                                <span><i class="icon-arrow-right"></i></span>
-                              </div>
-                            </router-link>
-                            <div class="modal__option">
-                              <p>{{ $t('transactions.downloadTax') }}</p>
-                              <span><i class="icon-arrow-right"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </v-card>
-                    </template>
-                  </v-dialog>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Table Mobile-->
-      <div class="table-custom container" v-for="(item, index) in data" :key="index">
-        <div class="container__header">
-          <div>
-            <p class="l-medium text-primary">{{ item.account }}</p>
-          </div>
-          <div>
-            <v-dialog width="450">
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  v-bind="props"
-                  border="#F4F5F8"
-                  flat
-                  size="32"
-                  class="container__button"
-                  @click="isOpen = true"
-                  ><img src="@/assets/icons/ArrowNext.png" alt=""
-                /></v-btn>
-              </template>
-
-              <template v-slot:default="{ isActive }">
-                <v-card class="modal__card" rounded="lg">
-                  <div class="modal">
-                    <div class="modal__header">
-                      <h5 class="h5-bold">{{ $t('user.options') }}</h5>
-                      <button class="modal__close" @click="isActive.value = false">
-                        <img
-                          :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })"
-                          alt=""
-                        />
-                      </button>
-                    </div>
-                    <div class="modal__options">
-                      <router-link :to="{ name: 'detail' }" style="text-decoration: none">
-                        <div class="modal__option">
-                          <p>{{ $t('transactions.seeDetail') }}</p>
-                          <span><i class="icon-arrow-right"></i></span>
-                        </div>
-                      </router-link>
-                      <router-link :to="{ name: 'send_copy' }" style="text-decoration: none">
-                        <div class="modal__option">
-                          <p>{{ $t('transactions.sendMail') }}</p>
-                          <span><i class="icon-arrow-right"></i></span>
-                        </div>
-                      </router-link>
-                      <div class="modal__option">
-                        <p>{{ $t('transactions.downloadTax') }}</p>
-                        <span><i class="icon-arrow-right"></i></span>
-                      </div>
-                    </div>
-                  </div>
-                </v-card>
-              </template>
-            </v-dialog>
-          </div>
-        </div>
-        <div class="container__body">
-          <div class="container__body-info">
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.wallet') }}</p>
-              <p class="l-medium">Your Wallet</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.type') }}</p>
-              <p class="l-medium">{{ item.type }}</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.date') }}</p>
-              <p class="l-medium">{{ item.date }}</p>
-            </div>
-            <div class="container__body-rows">
-              <p class="l-medium">{{ $t('transactions.status') }}</p>
-              <div class="transaction__table-box">
-                <div class="transaction__table-box">
-                  <div
-                    class="dot-status"
-                    :class="
-                      $t(item.status) === $t('transactions.approved')
-                        ? 'bg-success'
-                        : $t(item.status) === $t('transactions.pending')
-                        ? 'bg-danger'
-                        : 'bg-warning'
-                    "
-                  ></div>
-                  <p class="font-weight-bold">{{ $t(item.status) }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container__body-links">
-            <div class="transaction__table-link">
-              <router-link :to="{ name: 'detail' }">
-                <button class="transaction__table-link-btn">
-                  <i class="icon-bell"></i>
-                </button>
-              </router-link>
-              <p class="transaction__table-link-text">{{ $t(item.notification) }}</p>
-            </div>
-            <div class="transaction__table-link">
-              <button class="transaction__table-link-btn">
-                <i class="icon-bank-send"></i>
-              </button>
-              <p class="transaction__table-link-text">{{ $t(item.send) }}</p>
-            </div>
-            <div class="transaction__table-link">
-              <button class="transaction__table-link-btn">
-                <i class="icon-bank-warning"></i>
-              </button>
-              <p class="transaction__table-link-text">{{ $t(item.validate) }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </v-card>
+    <Table :uuid="uuid" />
   </section>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
-import Cards from '@/components/Cards.vue'
-import { getFile } from '@/helpers/Index'
+import Table from './content/Table.vue'
+import ProjectStats from '@/components/ProjectStats.vue'
 
-const isOpen = ref(false)
-
-const data = [
-  {
-    id: 1,
-    account: '000000001',
-    walletTo: '00000000000',
-    icon: 'tether',
-    type: 'Tether',
-    value: 'USDT',
-    date: '00/00/0000',
-    status: 'transactions.approved',
-    notification: 'transactions.notification',
-    send: 'transactions.sent',
-    validate: 'transactions.validate'
-  },
-  {
-    id: 1,
-    account: '000000001',
-    walletTo: '00000000000',
-    icon: 'tether',
-    type: 'Tether',
-    value: 'USDT',
-    date: '00/00/0000',
-    status: 'transactions.pending',
-    notification: 'transactions.notification',
-    send: 'transactions.sent',
-    validate: 'transactions.validate'
-  },
-  {
-    id: 1,
-    account: '000000001',
-    walletTo: '00000000000',
-    icon: 'tether',
-    type: 'Tether',
-    value: 'USDT',
-    date: '00/00/0000',
-    status: 'transactions.cancel',
-    notification: 'transactions.notification',
-    send: 'transactions.sent',
-    validate: 'transactions.validate'
-  },
-  {
-    id: 1,
-    account: '000000001',
-    walletTo: '00000000000',
-    icon: 'tether',
-    type: 'Tether',
-    value: 'USDT',
-    date: '00/00/0000',
-    status: 'transactions.approved',
-    notification: 'transactions.notification',
-    send: 'transactions.sent',
-    validate: 'transactions.validate'
+const props = defineProps({
+  uuid: {
+    required: true,
+    type: String
   }
-]
+})
 </script>
 <style lang="scss" scoped>
 .transactions {
-  display: grid;
-  gap: 24px;
   &__header {
     display: flex;
     justify-content: space-between;
@@ -436,6 +87,7 @@ const data = [
       gap: 8px;
 
       img {
+        max-width: 40px;
         @media (max-width: 1060px) {
           height: 24px;
           width: 24px;
@@ -688,6 +340,10 @@ const data = [
       padding: 6px;
       font-size: 10px;
     }
+  }
+
+  tr:nth-child(2n) {
+    background-color: #f8f9fb;
   }
 }
 

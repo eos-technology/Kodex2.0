@@ -5,29 +5,34 @@ const reportRoutes = {
   },
   children: [
     {
-      path: '',
+      path: ':uuid',
       name: 'reports',
-      component: () => import('@/modules/report/views/reports/Index.vue')
+      component: () => import('@/modules/report/views/reports/Index.vue'),
+      props: true
     },
     {
-      path: 'generate',
+      path: ':uuid/generate',
       name: 'generate',
-      component: () => import('@/modules/report/views/generate/Index.vue')
+      component: () => import('@/modules/report/views/generate/Index.vue'),
+      props: true
     },
     {
-      path: 'download',
+      path: ':uuid/download',
       name: 'download',
-      component: () => import('@/modules/report/views/download/Index.vue')
+      component: () => import('@/modules/report/views/download/Index.vue'),
+      props: true
     },
     {
-      path: 'send_report',
+      path: ':uuid/send_report',
       name: 'send_report',
-      component: () => import('@/modules/report/views/send_report/Index.vue')
+      component: () => import('@/modules/report/views/send_report/Index.vue'),
+      props: true
     },
     {
-      path: 'details',
+      path: ':uuid/details',
       name: 'details',
-      component: () => import('@/modules/report/views/details/Index.vue')
+      component: () => import('@/modules/report/views/details/Index.vue'),
+      props: true
     }
   ]
 }
