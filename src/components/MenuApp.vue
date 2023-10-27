@@ -74,7 +74,7 @@
     </v-navigation-drawer></v-layout
   >
   <v-btn size="40" class="menu__logout">
-    <i class="icon-close-circle text-error"></i>
+    <i class="icon-logout text-error"></i>
     <v-tooltip activator="parent" location="end">Cerrar sesión</v-tooltip>
   </v-btn>
 </template>
@@ -414,6 +414,8 @@ const getIconClass = (iconType: string) => {
     bottom: 24px;
     left: 16px;
     border-radius: 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
     i {
       font-size: 24px;
     }
