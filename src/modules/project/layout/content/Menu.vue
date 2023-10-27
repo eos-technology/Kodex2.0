@@ -91,7 +91,7 @@ const routes = [
 }
 .project_menu .v-navigation-drawer {
   // position: absolute !important;
-  position: fixed;
+  position: fixed !important;
   left: 72px !important;
   border-radius: 32px 0 0 32px;
   height: calc(100vh - 20px) !important;
