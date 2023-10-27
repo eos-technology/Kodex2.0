@@ -7,7 +7,10 @@
         <v-btn class="btn btn-white" variant="outlined" color="secondary">
           <p class="text-primary"> {{ $t('payment-methods.import-crypto') }} </p>
         </v-btn>
-        <v-btn class="btn" color="primary" @click="$router.push({ name: 'payment_method-enable' })">
+        <!-- <v-btn class="btn" color="primary" @click="$router.push({ name: 'payment_method-enable' })">
+          {{ $t('payment-methods.enable-method') }}
+        </v-btn> -->
+        <v-btn class="btn" color="primary" @click="dialog=true">
           {{ $t('payment-methods.enable-method') }}
         </v-btn>
       </div>
@@ -84,6 +87,11 @@
       </v-card>
     </div>
   </div>
+
+  <!-- Modal -->
+  <v-dialog v-model="dialog">
+    <EnableMethod @close="dialog=false"/>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
@@ -91,6 +99,7 @@ import { ref } from 'vue'
 
 import CurrencyMethod from '../components/CurrencyMethod.vue'
 import NoConfigure from './content/NoConfigure.vue'
+import EnableMethod from '../enable/Index.vue'
 
 const tab = ref()
 
@@ -99,21 +108,16 @@ const isConfigureFiat = ref(false)
 const isEnable = ref(false)
 const isConfigure = ref(false)
 const btn = ref(true)
+const dialog = ref(false)
 
 const changeCurrency = (value: number) => (currencyType.value = value)
-const enableMethod = () => {
-  isEnable.value = true
-  btn.value = !btn.value
-}
+
 const enableConfigure = (e = currencyType.value) => {
   changeCurrency(e)
   isConfigure.value = true
   isEnable.value = false
 }
-const back = () => {
-  btn.value = !btn.value
-  currencyType.value = 1
-}
+
 
 const cryptoCoins = [
   {

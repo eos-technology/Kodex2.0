@@ -1,11 +1,12 @@
 <template>
   <div class="enable ">
-    <div class="config__header">
-      <h3 class="h3-bold">{{ $t('payment-methods.title') }}</h3>
-    </div>
-    <BackDummy @click="$router.back()" />
     <v-card>
       <v-card-item class="text-primary">
+        <div class="modal__close">
+          <button @click="$emit('close')" variant="plain">
+            <i class="icon-close-notification" style="font-size: 1.5rem;" ></i>
+          </button>
+        </div>
         <div class="enable__header">
           <h3 class="h3-bold">{{ $t('payment-methods.enable-method') }}</h3>
           <p class="l-regular">{{ $t('payment-methods.select-method') }}</p>
@@ -88,6 +89,8 @@ import { ref } from 'vue'
 import CurrencyMethod from '../components/CurrencyMethod.vue'
 
 const tab = ref()
+
+defineEmits(['close'])
 
 const cryptoCoins = [
   {
@@ -228,5 +231,11 @@ const fiatCoins = [
   }
 }
 
+.modal__close{
+  margin-left: auto;  
 
+  i{
+    transform: translateY(12%);
+  }
+}
 </style>
