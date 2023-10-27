@@ -477,5 +477,9 @@
     "title3": "Todo listo",
     "finish-text1": "Su compra de",
     "finish-text2": "realizada con éxito"
+  },
+  "menu":{
+    "createNewProyect":"Crear nuevo proyecto",
+    "selectProyect":"Selecciona proyecto"
   }
 }

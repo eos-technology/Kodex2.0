@@ -102,6 +102,7 @@
                       :placeholder="$t('paymentsLink.numberAccount')"
                       v-model="form.account"
                       variant="solo-filled"
+                      type="number"
                     ></v-text-field>
                   </div>
 
@@ -902,7 +903,7 @@ watch(form, (newValue, oldValue) => {
   row-gap: 1rem;
 }
 
-:deep(.v-field__input){
+:deep(.v-field__field){
   input[type=date]{
     flex-direction: row-reverse;
     gap: 0.5rem;
@@ -913,7 +914,14 @@ watch(form, (newValue, oldValue) => {
     color: transparent;
     opacity: 0;
   }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
 }
+
 </style>
 
 <style>

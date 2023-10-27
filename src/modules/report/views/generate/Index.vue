@@ -194,18 +194,16 @@ const coins = [
   color: #001e62;
 }
 
-.date-box{
-  :deep(.v-field__input){
-    input[type=date]{
-      flex-direction: row-reverse;
-      gap: 0.5rem;
-      margin-left: -25px;
-    }
+:deep(.v-field__field){
+  input[type=date]{
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+    margin-left: -25px;
+  }
 
-    input[type=date]::-webkit-calendar-picker-indicator{
-      color: transparent;
-      opacity: 0;
-    }
+  input[type=date]::-webkit-calendar-picker-indicator{
+    color: transparent;
+    opacity: 0;
   }
 }
 </style>

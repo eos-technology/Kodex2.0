@@ -101,3 +101,16 @@ const modules = [Pagination]
   }
 }
 </style>
+
+<style>
+h3 {
+  color: #0a1e8c;
+}
+
+h4 {
+  color: #0a1e8c;
+}
+h5 {
+  color: #0a1e8c;
+}
+</style>
