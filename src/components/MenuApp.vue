@@ -11,23 +11,10 @@
     </button>
 
     <div class="menu__line line"></div>
-
-    <router-link
-      class="menu__route menu__route--text l-semibold"
-      v-for="(item, index) in projects"
-      :key="index"
-      :to="{ name: 'project-dashboard', params: { uuid: `${item.uuid}` } }"
-    >
-      <img v-if="item.logo" :src="item.logo" alt="" style="max-width: 90%; margin: auto" />
-      <span v-else>{{ generateName(item.name) }}</span>
-      <v-tooltip activator="parent" location="end">{{ item.name }}</v-tooltip>
-    </router-link>
-    <div class="menu__line line"></div>
-
-    <button class="menu__plus" @click="$router.push({ name: 'new_project' })">
+    <v-btn class="menu__plus" @click="$router.push({ name: 'new_project' })">
       <img src="../assets/icons/plus.svg" alt="" />
       <v-tooltip activator="parent" location="end">Crear nuevo proyecto</v-tooltip>
-    </button>
+    </v-btn>
     <div class="menu__line line"></div>
 
     <div class="menu__route-content">
@@ -379,6 +366,7 @@ const getIconClass = (iconType: string) => {
     &-content {
       max-height: calc(100vh - 420px);
       overflow-y: auto;
+
       &::-webkit-scrollbar {
         width: 0px; /* Ancho de la barra de desplazamiento */
       }
