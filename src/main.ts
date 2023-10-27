@@ -44,7 +44,7 @@ app.use(Vue3Toasity, {
 app.mount('#app')
 
 const prodApi = 'https://space-api.kodexpay.com/app/v1'
-const devApi = 'http://127.0.0.1:3030/v2'
+const devApi = 'https://93cd-131-100-48-235.ngrok-free.app/v2'
 
 app.config.globalProperties.apiUrl = app.config.globalProperties.mode == 'dev' ? devApi : prodApi
 axios.defaults.baseURL = app.config.globalProperties.apiUrl

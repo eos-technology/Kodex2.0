@@ -212,7 +212,7 @@
       rounded="circle"
     ></v-pagination>
   </v-card>
-  <ModalDetail v-if="isOpen" :transaction_uuid="temp" @close-modal="isOpen = false" />
+  <ModalDetail v-if="isOpen && temp" :transaction_uuid="temp" @close-modal="isOpen = false" />
 </template>
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
@@ -274,7 +274,7 @@ onMounted(() => {
 })
 
 const isOpen = ref(false)
-const temp = ref(null)
+const temp = ref<string | null>(null)
 
 const setDetail = (uuid: string) => {
   temp.value = uuid
