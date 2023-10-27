@@ -10,7 +10,7 @@
         <i class="icon-search"></i>
       </template>
     </v-text-field>
-    <v-btn class="btn primary" color="#091D8B">{{ $t('setting.add') }}</v-btn>
+    <v-btn class="btn " color="primary">{{ $t('setting.add') }}</v-btn>
   </div>
   <div class="buyers">
     <v-card class="card pa-6" v-for="(user, index) in buyers" :key="index">

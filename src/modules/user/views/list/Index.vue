@@ -2,27 +2,20 @@
   <section class="users">
     <div class="d-flex align-center justify-space-between">
       <h3 class="h3-bold">{{ $t('users.header') }}</h3>
-      <router-link :to="{ name: 'create-user' }">
-        <v-btn color="#091D8B" class="btn">{{ $t('users.btnUser') }}</v-btn>
-      </router-link>
+      <v-btn color="primary" class="btn" @click="users = true">{{ $t('users.btnUser') }}</v-btn>
     </div>
     <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
       <div class="users__content">
         <div class="users__header">
-          <v-text-field
-            :placeholder="$t('transactions.search')"
-            variant="solo-filled"
-            hide-details
-            density="compact"
-            class="inpt inpt-search"
-          >
+          <v-text-field :placeholder="$t('transactions.search')" variant="solo-filled" hide-details density="compact"
+            class="inpt inpt-search">
             <template v-slot:prepend-inner>
               <i class="icon-search"></i>
             </template>
           </v-text-field>
-          <v-btn class="btn" color="secondary" variant="outlined"
-            ><p class="btn-line">{{ $t('transactions.button') }}</p></v-btn
-          >
+          <v-btn class="btn" color="secondary" variant="outlined">
+            <p class="btn-line">{{ $t('transactions.button') }}</p>
+          </v-btn>
         </div>
         <!-- view desktop (table) -->
         <div class="table-custom">
@@ -68,16 +61,12 @@
                 <td>{{ item.fee }}</td>
                 <td>
                   <div class="users__box">
-                    <div
-                      class="dot-status"
-                      :class="
-                        item.status === 'Aprobada'
-                          ? 'bg-success'
-                          : item.status === 'Cancelada'
-                          ? 'bg-red'
-                          : 'bg-yellow'
-                      "
-                    ></div>
+                    <div class="dot-status" :class="item.status === 'Aprobada'
+                      ? 'bg-success'
+                      : item.status === 'Cancelada'
+                        ? 'bg-red'
+                        : 'bg-yellow'
+                      "></div>
                     <p class="fw-bold">{{ item.status }}</p>
                   </div>
                 </td>
@@ -94,33 +83,19 @@
                             <div class="modal__header">
                               <h5 class="h5-bold">{{ $t('user.options') }}</h5>
                               <button class="modal__close" @click="isActive.value = false">
-                                <img
-                                  :src="
-                                    getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
-                                  "
-                                  alt=""
-                                />
+                                <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
+                                  " alt="" />
                               </button>
                             </div>
                             <div class="modal__options">
-                              <router-link
-                                :to="{ name: 'permissions' }"
-                                style="text-decoration: none"
-                              >
-                                <div class="modal__option">
-                                  <p>{{ $t('user.edit-permissions') }}</p>
-                                  <span><i class="icon-arrow-right"></i></span>
-                                </div>
-                              </router-link>
-                              <router-link
-                                :to="{ name: 'payment-method' }"
-                                style="text-decoration: none"
-                              >
-                                <div class="modal__option">
-                                  <p>{{ $t('user.payment-method') }}</p>
-                                  <span><i class="icon-arrow-right"></i></span>
-                                </div>
-                              </router-link>
+                              <div class="modal__option" @click="permission = true">
+                                <p>{{ $t('user.edit-permissions') }}</p>
+                                <span><i class="icon-arrow-right"></i></span>
+                              </div>
+                              <div class="modal__option" @click="method = true">
+                                <p>{{ $t('user.payment-method') }}</p>
+                                <span><i class="icon-arrow-right"></i></span>
+                              </div>
                               <div class="modal__option">
                                 <p>{{ $t('user.delete') }}</p>
                                 <span><i class="icon-arrow-right"></i></span>
@@ -155,25 +130,18 @@
                       <div class="modal__header">
                         <h5 class="h5-bold">{{ $t('user.options') }}</h5>
                         <button class="modal__close" @click="isActive.value = false">
-                          <img
-                            :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })"
-                            alt=""
-                          />
+                          <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })" alt="" />
                         </button>
                       </div>
                       <div class="modal__options">
-                        <router-link :to="{ name: 'permissions' }" style="text-decoration: none">
-                          <div class="modal__option">
-                            <p>{{ $t('user.edit-permissions') }}</p>
-                            <span><i class="icon-arrow-right"></i></span>
-                          </div>
-                        </router-link>
-                        <router-link :to="{ name: 'payment-method' }" style="text-decoration: none">
-                          <div class="modal__option">
-                            <p>{{ $t('user.payment-method') }}</p>
-                            <span><i class="icon-arrow-right"></i></span>
-                          </div>
-                        </router-link>
+                        <div class="modal__option" @click="permission = true">
+                          <p>{{ $t('user.edit-permissions') }}</p>
+                          <span><i class="icon-arrow-right"></i></span>
+                        </div>
+                        <div class="modal__option" @click="method = true">
+                          <p>{{ $t('user.payment-method') }}</p>
+                          <span><i class="icon-arrow-right"></i></span>
+                        </div>
                         <div class="modal__option">
                           <p>{{ $t('user.delete') }}</p>
                           <span><i class="icon-arrow-right"></i></span>
@@ -205,16 +173,12 @@
                 <div class="cards-custom__item">
                   <p>{{ $t('user.status') }}</p>
                   <div class="users__box">
-                    <div
-                      class="dot-status"
-                      :class="
-                        item.status === 'Aprobada'
-                          ? 'bg-success'
-                          : item.status === 'Cancelada'
-                          ? 'bg-danger'
-                          : 'bg-warning'
-                      "
-                    ></div>
+                    <div class="dot-status" :class="item.status === 'Aprobada'
+                      ? 'bg-success'
+                      : item.status === 'Cancelada'
+                        ? 'bg-danger'
+                        : 'bg-warning'
+                      "></div>
                     <p>{{ item.status }}</p>
                   </div>
                 </div>
@@ -222,23 +186,204 @@
             </div>
           </v-card>
         </div>
-        <v-pagination
-          class="pagination"
-          v-model="currentPage"
-          :length="rows"
-          :total-visible="3"
-          align="center"
-        ></v-pagination>
+        <v-pagination class="pagination" v-model="currentPage" :length="rows" :total-visible="3"
+          align="center"></v-pagination>
       </div>
     </v-card>
+
+
+    <v-dialog width="450" v-model="permission">
+      <v-card rounded="lg">
+        <div class="modal">
+          <div class="modal__header">
+            <h5 class="h5-bold">{{ $t('user.edit-permissions') }}</h5>
+            <button class="modal__close" @click="permission = false">
+              <img :src="getFile({
+                route: 'icons/form',
+                url: 'close',
+                extension: 'svg'
+              })
+                " alt="" />
+            </button>
+          </div>
+          <div class="rounded-lg d-flex flex-column" v-if="!saved">
+            <p class="l-light mt-4">{{ $t('user.permissions-text') }}</p>
+            <div class="d-flex flex-column mt-4" v-for="(item, index) in permissions" :key="index">
+              <div class="d-flex align-center justify-space-between">
+                <p class="l-light">{{ item.name }}</p>
+                <div>
+                  <v-switch density="compact" hide-details color="primary" inset></v-switch>
+                </div>
+              </div>
+            </div>
+            <v-btn class="mt-4 btn" color="primary" @click="saved = true"> {{ $t('user.save') }}</v-btn>
+            <router-link :to="{ name: 'user' }">
+              <v-btn variant="outlined" class="mt-4 btn w-100" color="secondary">
+                <p class="text-primary">{{ $t('users.cancel') }}</p>
+              </v-btn>
+            </router-link>
+          </div>
+          <div class=" rounded-lg d-flex flex-column align-center text-center" v-if="saved">
+            <div>
+              <img src="@/assets/images/ready.webp" alt="" />
+            </div>
+            <h3 class="h3-bold">{{ $t('reports.allDone') }}</h3>
+            <p class="l-light mt-4">
+              {{ $t('reports.permission') }} <span class="font-weight-bold">NombreUsuario</span>
+              {{ $t('reports.permission2') }}<span class="font-weight-bold"> NombreProyecto</span>
+            </p>
+            <v-btn class="btn w-100 mt-4" color="primary" @click="permission = false">{{ $t('transactions.back')
+            }}</v-btn>
+          </div>
+        </div>
+      </v-card>
+    </v-dialog>
+    <v-dialog width="450" v-model="method">
+      <v-card rounded="lg">
+        <div class="modal">
+          <div class="modal__header">
+            <h5 class="h5-bold">{{ $t('reports.method') }}</h5>
+            <button class="modal__close" @click="method = false">
+              <img :src="getFile({
+                route: 'icons/form',
+                url: 'close',
+                extension: 'svg'
+              })
+                " alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="d-flex flex-column pa-6" v-if="!selectedMethod">
+          <p class="l-light">{{ $t('reports.selectMethod') }}</p>
+          <div class="reports__card-box mt-4" v-for="(item, index) in coins" :key="index" @click="selectedMethod = true">
+            <div class="reports__card-icon">
+              <div>
+                <img :src="getFile({ route: 'icons', url: `${item.icon}`, extension: 'png' })" alt="" />
+              </div>
+              <div>
+                <p class="l-medium">{{ item.coin }}</p>
+                <p class="s-light text-nowrap">{{ $t(item.value) }}</p>
+              </div>
+            </div>
+            <i class="icon-arrow-right"></i>
+          </div>
+        </div>
+        <div class="d-flex flex-column pa-6" v-if="selectedMethod && !savedMethod">
+          <h3 class="h5-bold">Tether USDT</h3>
+          <p class="l-light mt-4">{{ $t('users.describe') }}</p>
+          <div class="mt-6">
+            <label class="b-regular">{{ $t('reports.label') }}</label>
+            <v-text-field class="inpt" density="compact" placeholder="Your Wallet" variant="solo-filled"></v-text-field>
+          </div>
+          <v-btn class="mt-4 w-100 btn" color="primary" @click="savedMethod = true">{{
+            $t('reports.generate')
+          }}</v-btn>
+          <v-btn color="secondary" variant="outlined" class="btn mt-4 w-100">
+            <p class="text-primary">{{ $t('reports.btnCancel') }}</p>
+          </v-btn>
+        </div>
+        <div class="d-flex flex-column pa-6 align-center text-center" v-if="savedMethod">
+          <div>
+            <img src="@/assets/images/ready.webp" alt="" />
+          </div>
+          <h3 class="h3-bold">{{ $t('reports.allDone') }}</h3>
+          <p class="l-light mt-4">
+            {{ $t('users.saveWallet') }} <span class="font-weight-bold">Tether USDT</span>
+            {{ $t('users.user') }} <span class="font-weight-bold">NombreUsuario</span>
+          </p>
+          <v-btn class="mt-6 w-100 btn" color="primary" @click="method = false">{{ $t('transactions.back') }}</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+    <v-dialog width="450" v-model="users">
+      <v-card rounded="lg">
+        <div class="modal">
+          <div class="modal__header">
+            <h5 class="h5-bold">{{ $t('users.btnUser') }}</h5>
+            <button class="modal__close" @click="users = false">
+              <img :src="getFile({
+                route: 'icons/form',
+                url: 'close',
+                extension: 'svg'
+              })
+                " alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="d-flex flex-column pa-6" v-if="!send">
+          <p class="l-light">{{ $t('users.description') }}</p>
+          <div class="b-regular mt-8">
+            <span>{{ $t('users.email') }}</span>
+            <v-text-field density="compact" placeholder="Example@mail.com" variant="solo-filled"
+              class="inpt"></v-text-field>
+          </div>
+          <div class="b-regular">
+            <span>{{ $t('users.feeProject') }}</span>
+            <v-text-field density="compact" placeholder="0.00%" variant="solo-filled" class="inpt"></v-text-field>
+          </div>
+          <v-btn class="btn" color="primary" @click="send = true"> {{ $t('users.send') }}</v-btn>
+          <v-btn variant="outlined" color="secondary" class="btn w-100 mt-6" @click="users = false">
+            <p class="text-primary">{{ $t('users.cancel') }}</p>
+          </v-btn>
+        </div>
+        <div class="d-flex flex-column pa-6 align-center" v-if="send">
+          <div>
+            <img src="@/assets/images/ready.webp" alt="" />
+          </div>
+          <h3 class="h3-bold">{{ $t('reports.allDone') }}</h3>
+          <p class="l-light mt-4">
+            {{ $t('reports.sendEmail') }} <span class="font-weight-bold">email@email.com</span>
+          </p>
+          <v-btn class="btn w-100 mt-6" color="primary" @click="users = false">{{ $t('transactions.back')
+          }}</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+
+
+
   </section>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getFile } from '@/helpers/Index'
 
+const permission = ref(false)
+const method = ref(false)
+const users = ref(false)
 const rows = ref(100)
 const currentPage = ref(3)
+
+const saved = ref<boolean>(false)
+const send = ref<boolean>(false)
+const selectedMethod = ref<boolean>(false)
+const savedMethod = ref<boolean>(false)
+
+
+
+
+const coins = [
+  {
+    icon: 'tether',
+    coin: 'Tether',
+    value: 'USDT'
+  },
+  {
+    icon: 'btc',
+    coin: 'Bitcoin',
+    value: 'BTC'
+  },
+  {
+    icon: 'bnb',
+    coin: 'Binance',
+    value: 'BNB'
+  },
+  {
+    icon: 'eth',
+    coin: 'Etherium',
+    value: 'ETH'
+  }
+]
 
 const data = [
   {
@@ -269,11 +414,33 @@ const data = [
     status: 'Aprobada'
   }
 ]
+
+const permissions = [
+  {
+    name: 'Text'
+  },
+  {
+    name: 'Text'
+  },
+  {
+    name: 'Text'
+  },
+  {
+    name: 'Text'
+  },
+  {
+    name: 'Text'
+  },
+  {
+    name: 'Text'
+  }
+]
 </script>
 <style lang="scss" scoped>
 .users {
   display: grid;
   gap: 2.4rem;
+
   &__content {
     display: grid;
     gap: 24px;
@@ -288,6 +455,7 @@ const data = [
 
     @media (max-width: 450px) {
       flex-direction: column-reverse;
+
       button {
         width: 100%;
       }
@@ -416,6 +584,7 @@ const data = [
   height: 8px;
   border-radius: 100%;
 }
+
 .primary {
   height: 48px;
   border-radius: 16px;
@@ -425,5 +594,34 @@ const data = [
   border: 1px solid var(--border-border-input, #f4f5f8);
   background: var(--fondos-blanco, #fff);
   color: #001e62;
+}
+
+
+.reports {
+
+  &__card {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    &-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: #fafafa;
+      border: 1px solid #dde4ed;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
 }
 </style>

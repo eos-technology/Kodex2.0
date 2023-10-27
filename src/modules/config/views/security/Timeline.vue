@@ -15,7 +15,7 @@
             density="compact"
           >
             <template v-slot:prepend-inner>
-              <i class="icon-search ml-5"></i>
+              <i class="icon-search"></i>
             </template>
           </v-text-field>
 

@@ -15,31 +15,24 @@
           </div>
         </div>
 
-        <div class="approved-api__form mt-4">
-          <input :type="checked ? 'password' : 'text'" :value="apiKey?.apiKey" disabled />
+        <div class=" mt-4">
+          <v-text-field :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'" :type="visible ? 'text' : 'password'"
+            class="inpt" elevation-0 density="compact" hide-details variant="solo-filled"
+            @click:append-inner="visible = !visible" v-model="apiKeys" >
+          </v-text-field>
+          <!-- <input :type="checked ? 'password' : 'text'" :value="apiKey?.apiKey" disabled />
 
           <div class="eye">
-            <input
-              class="check"
-              :id="apiKey?.apiKey"
-              @change="checked = !checked"
-              type="checkbox"
-            />
+            <input class="check" :id="apiKey?.apiKey" @change="checked = !checked" type="checkbox" />
             <label :for="apiKey?.apiKey"><i class="icon-eye"></i></label>
-          </div>
+          </div> -->
         </div>
 
         <div class="approved-api__block mt-6">
           <p class="b-regular">{{ $t('setting.block-api') }}</p>
           <div>
-            <v-switch
-              v-model="isBlocked"
-              name="check-button"
-              density="compact"
-              hide-details
-              color="primary"
-              inset
-            ></v-switch>
+            <v-switch v-model="isBlocked" name="check-button" density="compact" hide-details color="primary"
+              inset></v-switch>
           </div>
         </div>
 
@@ -61,9 +54,9 @@ import { ref } from 'vue'
 defineProps({
   apiKey: Object
 })
-
-const checked = ref(true)
+const apiKeys = 'g#uyro*&xl3tn(!u%eo5*r^+ayyr7y3np2h$^j)u-rt7a#8$)8'
 const isBlocked = ref(true)
+const visible = ref(false)
 </script>
 
 <style lang="scss" scoped>
@@ -79,6 +72,7 @@ const isBlocked = ref(true)
       align-items: flex-start;
     }
   }
+
   &__flex {
     display: flex;
     gap: 8px;
@@ -144,6 +138,7 @@ const isBlocked = ref(true)
       flex-direction: column-reverse;
       gap: 1.4rem;
     }
+
     .icon-copy {
       color: #3587ff;
       text-decoration: none;

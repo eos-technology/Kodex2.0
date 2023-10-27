@@ -1,11 +1,7 @@
 <template>
   <section class="keys">
-    <h3 class="h3-bold mb-6">{{ $t('setting.title') }}</h3>
-    <router-link :to="{ name: 'config' }" style="text-decoration: none" class="text-black">
-      <BackDummy />
-    </router-link>
-    <v-card class="card pa-6">
-      <div class="card-body">
+    <div class="pa-6">
+  
         <!-- Step 1 -->
         <div v-if="!saved" class="big-gap">
           <div class="small-gap">
@@ -18,83 +14,54 @@
               <div>
                 <label for="name">
                   <p class="b-regular mb-1">{{ $t('setting.name-api') }}</p>
-                  <v-text-field
-                    variant="solo-filled"
-                    density="compact"
-                    v-model="form.name"
-                    id="name"
-                    type="text"
-                    :placeholder="$t('setting.name')"
-                    hide-details
-                  ></v-text-field>
+                  <v-text-field class="inpt" elevation-0 density="compact" hide-details :label="$t('setting.name')"
+                    variant="solo-filled" v-model="form.name" id="name" type="text"></v-text-field>
                 </label>
               </div>
 
               <label for="domain" class="b-regular">
                 <p class="b-regular mb-1">{{ $t('setting.domain') }}</p>
-                <v-text-field
-                  variant="solo-filled"
-                  density="compact"
-                  v-model="form.domain"
-                  hide-details
-                  id="domain"
-                  placeholder="www.example.com"
-                ></v-text-field>
+                <v-text-field class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" type="text"
+                  v-model="form.domain" id="domain" placeholder="www.example.com"></v-text-field>
               </label>
 
               <label>
                 <p class="b-regular mb-1">{{ $t('setting.use-type') }}</p>
-                <v-select
-                  label="Select"
-                  density="compact"
-                  variant="solo-filled"
-                  hide-details
-                  single-line
-                  :items="options"
-                ></v-select>
+                <v-select class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" label="Select"
+                  :items="options"></v-select>
               </label>
             </div>
 
             <div class="small-gap">
-              <v-btn
-                @click="saved = true"
-                class="text-none text-white w-100 primary"
-                color="#091D8B"
-                >{{ $t('setting.save') }}</v-btn
-              >
-              <router-link :to="{ name: 'config' }">
-                <v-btn class="text-none w-100 primary outlined" variant="outlined">{{
+              <v-btn @click="saved = true" class="btn" color="primary">{{
+                $t('setting.save') }}</v-btn>
+              <v-btn class="btn" variant="outlined" color="secondary">
+                <p class="text-primary">{{
                   $t('setting.cancel')
-                }}</v-btn>
-              </router-link>
+                }}</p>
+              </v-btn>
             </div>
           </form>
         </div>
 
         <!-- Step 2 -->
         <div v-if="saved" class="approved-message">
-          <img
-            class="image"
-            :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })"
-            alt=""
-          />
+          <img class="image" :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })" alt="" />
           <div class="approved-message__message">
             <h1 class="h3-bold">{{ $t('payment-methods.all-ready') }}</h1>
-
             <p class="l-regular">
               {{ $t('newApi-message1') }} <span>ApiKey</span> {{ $t('newApi-message2') }}
               <span>{{ form.apiMethod }}</span> {{ $t('newApi-message3') }}
               <span>{{ form.projectName }}</span> {{ $t('newApi-message4') }}
             </p>
           </div>
-          <router-link :to="{ name: 'config' }" class="w-100">
-            <v-btn class="text-none text-white primary" color="#091D8B">{{
-              $t('globals.back')
-            }}</v-btn>
-          </router-link>
+          <v-btn class="btn" color="primary">{{
+            $t('globals.back')
+          }}</v-btn>
+
         </div>
-      </div>
-    </v-card>
+   
+    </div>
   </section>
 </template>
 <script setup lang="ts">

@@ -15,78 +15,68 @@
             <div class="account-settings">
               <div class="row-setting">
                 <h3 class="h3-semibold">{{ $t('setting.myaccount') }}</h3>
-                <router-link
-                  :to="{ name: 'account' }"
-                  class="b-regular"
-                  style="color: #3587ff; text-decoration: underline"
-                >
+                <p @click="isOpen = true" style="color: #3587ff; text-decoration: underline; cursor: pointer;">
                   {{ $t('setting.edit') }}
-                </router-link>
+                </p>
               </div>
               <div class="account-settings__group">
                 <div class="row-setting">
-                  <p>{{ $t('setting.name-account') }}</p>
-                  <p>nombre de cuenta</p>
+                  <p class="l-light">{{ $t('setting.name-account') }}</p>
+                  <p class="l-medium">nombre de cuenta</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.email') }}</p>
-                  <p>example@email.com</p>
+                  <p class="l-light">{{ $t('setting.email') }}</p>
+                  <p class="l-medium">example@email.com</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.tolerance') }}</p>
-                  <p>0.0%</p>
+                  <p class="l-light">{{ $t('setting.tolerance') }}</p>
+                  <p class="l-medium">0.0%</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.state') }}</p>
-                  <p>
+                  <p class="l-light">{{ $t('setting.state') }}</p>
+                  <p class="l-medium">
                     <span class="dot-status dot-status--in-process"></span>&nbsp; Proceso de
                     verficación
                   </p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.primary-color') }}</p>
-                  <p>
+                  <p class="l-light">{{ $t('setting.primary-color') }}</p>
+                  <p class="l-medium">
                     <span class="square"></span>
                     #1264A3
                   </p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.secundary-color') }}</p>
-                  <p>
+                  <p class="l-light">{{ $t('setting.secundary-color') }}</p>
+                  <p class="l-medium">
                     <span class="square"></span>
                     #1264A3
                   </p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.kodex-icon') }}</p>
-                  <p><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-light">{{ $t('setting.kodex-icon') }}</p>
+                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.api-pay') }}</p>
-                  <p><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-light">{{ $t('setting.api-pay') }}</p>
+                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.modal-pay') }}</p>
-                  <p><span class="dot-status dot-status--disable"></span>&nbsp; Deshabilitado</p>
+                  <p class="l-light">{{ $t('setting.modal-pay') }}</p>
+                  <p class="l-medium"><span class="dot-status dot-status--disable"></span>&nbsp; Deshabilitado</p>
                 </div>
                 <div class="row-setting">
-                  <p>{{ $t('setting.link-pay') }}</p>
-                  <p><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-light">{{ $t('setting.link-pay') }}</p>
+                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
               </div>
               <hr />
               <div class="account-settings__hook">
                 <form>
-                  <label class="w-100" for="hook"
-                    ><p class="b-regular mb-1">Web Hook</p>
-                    <v-text-field
-                      class="inpt"
-                      density="compact"
-                      name="Hook"
-                      placeholder="Web Hook Link"
-                      variant="solo-filled"
-                      hide-details="auto"
-                    ></v-text-field>
+                  <label class="w-100" for="hook">
+                    <p class="b-regular mb-1">Web Hook</p>
+                    <v-text-field class="inpt" density="compact" name="Hook" placeholder="Web Hook Link"
+                      variant="solo-filled" hide-details="auto"></v-text-field>
                   </label>
 
                   <div class="form-button">
@@ -95,12 +85,11 @@
                     }}</v-btn>
                   </div>
                 </form>
-                <p>{{ $t('setting.hook-message') }}</p>
+                <p class="b-light mt-2">{{ $t('setting.hook-message') }}</p>
               </div>
-            </div></v-window-item
-          >
-          <v-window-item value="2"
-            ><!-- Security tab -->
+            </div>
+          </v-window-item>
+          <v-window-item value="2"><!-- Security tab -->
             <div class="security-settings">
               <h3 class="h3-semibold">{{ $t('setting.security') }}</h3>
 
@@ -117,16 +106,17 @@
                     <i class="icon-arrow-right l-semibold"></i>
                   </div>
                 </router-link>
-              </div></div
-          ></v-window-item>
+              </div>
+            </div>
+          </v-window-item>
           <v-window-item value="3">
             <!-- Api Keys tab -->
             <div class="api-settings">
               <div class="api-settings__header">
                 <h3 class="h3-semibold">Api Keys</h3>
-                <router-link :to="{ name: 'keys' }">
-                  <v-btn class="btn" color="primary">{{ $t('setting.new-api') }}</v-btn>
-                </router-link>
+
+                <v-btn class="btn" color="primary" @click="newApi = true">{{ $t('setting.new-api') }}</v-btn>
+
               </div>
 
               <!-- Verify api -->
@@ -140,8 +130,7 @@
               </div>
             </div>
           </v-window-item>
-          <v-window-item value="4"
-            ><!-- verification tab -->
+          <v-window-item value="4"><!-- verification tab -->
             <div class="verification-settings">
               <h3 class="h3-semibold">{{ $t('setting.verificationkyc') }}</h3>
 
@@ -174,16 +163,210 @@
                   {{ $t('setting.account-certificate') }}
                 </p>
                 <hr />
-                <v-btn class="text-none primary outlined" variant="outlined">{{
-                  $t('setting.validate-view-document')
-                }}</v-btn>
+                <v-btn class="btn" variant="outlined" color="secondary">
+                  <p class="text-primary">{{
+                    $t('setting.validate-view-document')
+                  }}</p>
+                </v-btn>
+                
               </div>
-            </div></v-window-item
-          >
+            </div>
+          </v-window-item>
         </v-window>
       </div>
     </div>
   </v-card>
+  <v-dialog width="450" v-model="isOpen">
+    <v-card rounded="lg">
+      <div class="modal">
+        <div class="modal__header">
+          <h5 class="h5-bold">{{ $t('setting.info') }}</h5>
+          <button class="modal__close" @click="isOpen = false">
+            <img :src="getFile({
+              route: 'icons/form',
+              url: 'close',
+              extension: 'svg'
+            })
+              " alt="" />
+          </button>
+        </div>
+        <div class="card rounded-lg">
+          <div class="card-body big-gap">
+            <div class="small-gap">
+              <p class="l-regular">{{ $t('setting.info-description') }}</p>
+            </div>
+
+            <form class="big-gap mt-2">
+              <div class="small-gap">
+                <p class="l-semibold">{{ $t('setting.info-account') }}</p>
+
+                <div class="toggle">
+                  <label class="b-regular l-font">{{ $t('setting.show-icon') }}</label>
+                  <div>
+
+                    <v-switch v-model="form.showIcon" name="check-button" density="compact" hide-details color="primary"
+                      inset></v-switch>
+                  </div>
+                </div>
+
+                <label for="name">
+                  <p class="b-regular mb-1">{{ $t('setting.name-account') }}</p>
+                  <v-text-field variant="solo-filled" density="compact" class="inpt" :placeholder="$t('setting.name')"
+                    id="name" v-model="form.name" hide-details></v-text-field>
+                </label>
+
+                <label for="email">
+                  <p class="b-regular mb-1">{{ $t('setting.email') }}</p>
+
+                  <v-text-field variant="solo-filled" density="compact" class="inpt" placeholder="Example@email.com"
+                    id="email" v-model="form.email" hide-details></v-text-field>
+                </label>
+
+                <label for="telerance">
+                  <p class="b-regular mb-1">{{ $t('setting.tolerance') }}</p>
+
+                  <v-text-field variant="solo-filled" density="compact" class="inpt" type="number" placeholder="0.0%"
+                    id="telerance" v-model="form.tolerance" hide-details></v-text-field>
+                  <p class="b-regular message mt-2">{{ $t('setting.tolerance-message') }} $0.00</p>
+                </label>
+              </div>
+
+              <div class="small-gap">
+                <p class="l-semibold">{{ $t('setting.customize-color') }}</p>
+
+                <div class="primary-colors">
+                  <label for="primaryColor">{{ $t('setting.primary-color') }}</label>
+                  <div class="input-modificate">
+                    <input class="color" type="color" v-model="form.primaryColor" />
+                    <input class="b-regular colors" type="text" :value="form.primaryColor" disabled />
+                  </div>
+                </div>
+
+                <label class="secundary-colors" for="secundaryColor">{{ $t('setting.secundary-color') }}
+
+                  <div class="input-modificate">
+                    <input class="color" type="color" v-model="form.secundaryColor" />
+                    <input class="b-regular colors" type="text" :value="form.secundaryColor" disabled />
+                  </div>
+                </label>
+              </div>
+
+              <div class="small-gap">
+                <p class="l-semibold">{{ $t('setting.pays') }}</p>
+
+                <div class="toggle">
+                  <label class="b-regular l-font">{{ $t('setting.api-pay') }}</label>
+                  <div>
+                    <v-switch v-model="form.apiPay" name="check-button" density="compact" hide-details color="primary"
+                      inset></v-switch>
+                  </div>
+                </div>
+
+                <div class="toggle">
+                  <label class="b-regular l-font">{{ $t('setting.modal-pay') }}</label>
+                  <div>
+                    <v-switch v-model="form.modalPay" name="check-button" density="compact" hide-details color="primary"
+                      inset></v-switch>
+                  </div>
+                </div>
+
+                <div class="toggle">
+                  <label class="b-regular l-font">{{ $t('setting.link-pay') }}</label>
+                  <div>
+                    <v-switch v-model="form.linkPay" name="check-button" density="compact" hide-details color="primary"
+                      inset></v-switch>
+                  </div>
+                </div>
+              </div>
+              <div class="small-gap">
+                <v-btn class="mt-4 w-100 btn" color="primary" @click="isOpen = false">{{ $t('setting.save') }}</v-btn>
+                <v-btn variant="outlined" color="secondary" class="w-100 btn" @click="isOpen = false">
+                  <p class="text-primary">{{ $t('setting.cancel') }}</p>
+                </v-btn>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </v-card>
+  </v-dialog>
+  <v-dialog width="450" v-model="newApi">
+    <v-card rounded="lg">
+      <div class="modal">
+        <div class="modal__header">
+          <h5 class="h5-bold">{{ $t('setting.info') }}</h5>
+          <button class="modal__close" @click="newApi = false">
+            <img :src="getFile({
+              route: 'icons/form',
+              url: 'close',
+              extension: 'svg'
+            })
+              " alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="pa-6">
+
+        <!-- Step 1 -->
+        <div v-if="!saved" class="big-gap">
+          <div class="small-gap">
+            <h1 class="h4-bold">{{ $t('setting.create-api') }}</h1>
+            <p class="l-regular">{{ $t('setting.info-description') }}</p>
+          </div>
+
+          <form class="big-gap">
+            <div class="small-gap">
+              <div>
+                <label for="name">
+                  <p class="b-regular mb-1">{{ $t('setting.name-api') }}</p>
+                  <v-text-field class="inpt" elevation-0 density="compact" hide-details :label="$t('setting.name')"
+                    variant="solo-filled" v-model="dataApi.name" id="name" type="text"></v-text-field>
+                </label>
+              </div>
+
+              <label for="domain" class="b-regular">
+                <p class="b-regular mb-1">{{ $t('setting.domain') }}</p>
+                <v-text-field class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" type="text"
+                  v-model="dataApi.domain" id="domain" placeholder="www.example.com"></v-text-field>
+              </label>
+
+              <label>
+                <p class="b-regular mb-1">{{ $t('setting.use-type') }}</p>
+                <v-select class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" label="Select"
+                  :items="options"></v-select>
+              </label>
+            </div>
+
+            <div class="small-gap">
+              <v-btn @click="saved = true" class="btn" color="primary">{{
+                $t('setting.save') }}</v-btn>
+              <v-btn class="btn" variant="outlined" color="secondary" @click="newApi = false">
+                <p class="text-primary">{{
+                  $t('setting.cancel')
+                }}</p>
+              </v-btn>
+            </div>
+          </form>
+        </div>
+        <!-- Step 2 -->
+        <div v-if="saved" class="approved-message">
+          <img class="image" :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })" alt="" />
+          <div class="approved-message__message">
+            <h1 class="h3-bold">{{ $t('payment-methods.all-ready') }}</h1>
+            <p class="l-regular">
+              {{ $t('newApi-message1') }} <span>ApiKey</span> {{ $t('newApi-message2') }}
+              <span>{{ dataApi.apiMethod }}</span> {{ $t('newApi-message3') }}
+              <span>{{ dataApi.projectName }}</span> {{ $t('newApi-message4') }}
+            </p>
+          </div>
+          <v-btn class="btn" color="primary" @click="newApi = false">{{
+            $t('globals.back')
+          }}</v-btn>
+        </div>
+      </div>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
@@ -191,8 +374,37 @@ import { ref } from 'vue'
 import VerifyApi from './content/VerifyApi.vue'
 import ApprovedApi from './content/ApprovedApi.vue'
 import DropZone from '@/components/global/ui/DropZone.vue'
+import { getFile } from '@/helpers/Index'
+import { reactive } from 'vue'
 
 const tab = ref()
+
+const isOpen = ref(false)
+const newApi = ref(false)
+
+const form = reactive({
+  showIcon: false,
+  name: '',
+  email: '',
+  tolerance: null,
+  primaryColor: '#1264A3',
+  secundaryColor: '#1264A3',
+  apiPay: false,
+  modalPay: false,
+  linkPay: false
+})
+
+const saved = ref<boolean>(false)
+
+const dataApi = reactive({
+  name: '',
+  domain: '',
+  apiMethod: '',
+  projectName: 'NombreProyecto'
+})
+
+const options = ['Pagos por Api', 'Pagos por Modal', 'Pagos por Enlaces']
+
 
 const apiKeys = [
   {
@@ -271,6 +483,7 @@ const newApiKeys = [
       grid-template-columns: 1fr 15%;
       align-items: flex-end;
       gap: 1rem;
+
       @media (max-width: 767px) {
         display: flex;
         flex-direction: column;
@@ -363,6 +576,7 @@ const newApiKeys = [
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
+
     @media (max-width: 767px) {
       h3 {
         font-size: 7.5vw;
@@ -508,5 +722,107 @@ const newApiKeys = [
   color: #091d8b;
   border: 1px solid var(--button-primario-primario, #091d8b);
   height: 44px;
+}
+
+.card {
+
+
+  .input-modificate {
+    width: 100%;
+    padding: 11px 16px;
+    background-color: #f9fafb;
+    border: 1px solid #dde4ed;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #394357;
+  }
+
+  input:focus-visible {
+    outline: none;
+  }
+
+  .input-modificate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+      appearance: none;
+      background: transparent;
+      border: none;
+      outline: 0;
+    }
+
+    .color {
+      padding: 0;
+      min-height: 16px;
+      min-width: 16px;
+      width: 24px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.big-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.small-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 6.5vw;
+      line-height: normal;
+    }
+
+    p {
+      font-size: 3.5vw;
+      line-height: normal;
+    }
+  }
+}
+
+.l-semibold,
+.b-regular {
+  color: #001e62;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.approved-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  img {
+    width: 120px;
+  }
+
+  &__message {
+    text-align: center;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
 }
 </style>

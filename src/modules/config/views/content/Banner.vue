@@ -2,24 +2,12 @@
   <v-card rounded="lg" class="card pa-6">
     <div class="banner">
       <div class="banner__picture">
-        <img
-          class="image"
-          :src="getFile({ route: 'images', url: 'settings-banner', extension: 'png' })"
-          alt=""
-        />
-        <img
-          class="logo"
-          :src="getFile({ route: 'images', url: 'logo-largo', extension: 'png' })"
-          alt=""
-        />
+        <img class="image" :src="getFile({ route: 'images', url: 'settings-banner', extension: 'png' })" alt="" />
+        <img class="logo" :src="getFile({ route: 'images', url: 'logo-largo', extension: 'png' })" alt="" />
       </div>
 
       <div class="banner__profile">
-        <img
-          class="profile"
-          :src="getFile({ route: 'images', url: 'Basic', extension: 'png' })"
-          alt=""
-        />
+        <img class="profile" :src="getFile({ route: 'images', url: 'Basic', extension: 'png' })" alt="" />
       </div>
 
       <div class="banner__info">
@@ -37,21 +25,52 @@
             <span class="icon-trash"><i class="icon-delete"></i></span>
             <span class="trash">{{ $t('setting.delete-img') }}</span>
           </v-btn>
-          <v-btn
-            class="btn"
-            color="primary"
-            variant="outlined"
-            @click="$router.push({ name: 'add-image' })"
-            >{{ $t('setting.attach-image') }}</v-btn
-          >
+          <v-btn class="btn" color="primary" variant="outlined" @click="isOpen = true">{{
+            $t('setting.attach-image') }}</v-btn>
         </div>
       </div>
     </div>
   </v-card>
+  <v-dialog width="450" v-model="isOpen">
+    <v-card rounded="lg">
+      <div class="modal">
+        <div class="modal__header">
+          <h5 class="h5-bold">{{ $t('setting.project-image') }}</h5>
+          <button class="modal__close" @click="isOpen = false">
+            <img :src="getFile({
+              route: 'icons/form',
+              url: 'close',
+              extension: 'svg'
+            })
+              " alt="" />
+          </button>
+        </div>
+        <div class="d-flex flex-column pa-6">
+          <div class="image-project">
+            <div class="image-project__section">
+              <p class="l-regular">{{ $t('setting.message-image') }}</p>
+            </div>
+            <!-- <DropZone /> -->
+            <div class="image-project__section">
+              <v-btn class="btn" color="primary" @click="isOpen = false">{{ $t('setting.save') }}</v-btn>
+              <v-btn class="btn" variant="outlined" color="secondary" @click="isOpen = false">
+                <p class="text-primary">{{ $t('setting.cancel') }}</p>
+              </v-btn>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { getFile } from '@/helpers/Index'
+import { ref } from 'vue'
+
+
+const isOpen = ref(false)
 </script>
 
 <style lang="scss" scoped>
@@ -153,11 +172,32 @@ import { getFile } from '@/helpers/Index'
         width: 100%;
       }
     }
+
     @media (max-width: 320px) {
       grid-template-columns: 1fr;
     }
   }
 }
+
+.image-project {
+     display: flex;
+     flex-direction: column;
+     gap: 32px;
+
+     &__section {
+         display: flex;
+         flex-direction: column;
+         gap: 16px;
+
+         @media (max-width: 767px) {
+             gap: 6px;
+         }
+     }
+
+     @media (max-width: 767px) {
+         gap: 24px;
+     }
+ }
 
 .icon-trash {
   display: none;

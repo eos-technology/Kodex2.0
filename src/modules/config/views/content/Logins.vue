@@ -46,7 +46,7 @@
       <div class="d-flex align-center justify-space-between mt-2">
         <p class="l-light">{{ $t('setting.block-ip') }}</p>
         <div>
-          <v-switch hide-details inset color="#091D8B"></v-switch>
+          <v-switch density="compact" hide-details color="primary" inset></v-switch>
         </div>
       </div>
     </v-card>

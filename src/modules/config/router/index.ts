@@ -10,11 +10,6 @@ const configRoutes = {
       component: () => import('@/modules/config/views/Index.vue')
     },
     {
-      path: 'account',
-      name: 'account',
-      component: () => import('@/modules/config/views/account/Index.vue')
-    },
-    {
       path: 'security',
       children: [
         {
@@ -28,21 +23,6 @@ const configRoutes = {
           component: () => import('@/modules/config/views/security/Restrictions.vue')
         }
       ]
-    },
-    {
-      path: 'add-image',
-      name: 'add-image',
-      component: () => import('@/modules/config/views/add_image/Index.vue')
-    },
-    {
-      path: 'keys',
-      name: 'keys',
-      component: () => import('@/modules/config/views/keys/Index.vue')
-    },
-    {
-      path: 'kyc',
-      name: 'kyc',
-      component: () => import('@/modules/config/views/kyc/Index.vue')
     }
   ]
 }
