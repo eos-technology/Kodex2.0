@@ -35,9 +35,11 @@
         class="menu__route menu__route--text l-semibold"
         v-for="(item, index) in projects"
         :key="index"
-        :to="{ name: `${item.route}` }"
-        >{{ item.icon }}
-        <v-tooltip activator="parent" location="end">Nombre proyecto</v-tooltip>
+        :to="{ name: 'project-dashboard', params: { uuid: `${item.uuid}` } }"
+      >
+        <img v-if="item.logo" :src="item.logo" alt="" style="max-width: 90%; margin: auto" />
+        <span v-else>{{ generateName(item.name) }}</span>
+        <v-tooltip activator="parent" location="end">{{ item.name }}</v-tooltip>
       </router-link>
     </div>
   </div>
@@ -100,7 +102,190 @@ import { useNotificationStore } from '@/stores/notificationStore'
 import formatDate from '@/helpers/formatDate'
 const notificationStore = useNotificationStore()
 
-const projects = ref<any>([])
+const projects = ref<any>([
+  {
+    uuid: '54a2ea3f-c509-408d-b4b6-302e80511121',
+    name: 'Kodex Backoffice',
+    color: 'Azul Oscuro',
+    logo: 'http://127.0.0.1:5173/src/assets/icons/logo.svg',
+    owner: true
+  },
+  {
+    uuid: 'c0ef91e2-b964-44fd-a10b-062fe0ab9e01',
+    name: 'GainUp',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '42143f57-46f0-4eb9-a9ed-98d9651b34b0',
+    name: 'AxioFx',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '44547771-df9b-4a99-aa14-08233b9b7d40',
+    name: 'Elv Backoffice',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '75537c97-59ac-436d-b3e5-8a735e0d858f',
+    name: 'Genesys',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '7c33bf49-fe05-4eb0-ba4c-7e4d413e70ef',
+    name: 'Prueba',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '3446b82f-2dd4-4529-81a7-a8ad40d4579e',
+    name: 'QuantumToken',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '99292394-faee-4234-a6a0-0d1585913f8c',
+    name: 'TreeCoin',
+    color: 'Blanco',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '176c3c83-0805-4851-aba4-0849f4ed87f3',
+    name: 'SpaceApp',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '35835f17-427a-4ec1-aa25-6decc53f759e',
+    name: 'SpaxeToken',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'df5f1b66-d894-4008-bddd-5638fa5ba2f3',
+    name: 'GoldenMx',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '00edc998-e83c-4b27-ba50-6cdc6be70729',
+    name: 'GoldenToken',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '6b28b143-ae46-4319-a169-1a4093cb9e2e',
+    name: 'Confiance',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'f2f2a1e6-8ee7-4c4b-93e8-8423a6ad03e3',
+    name: 'MfxPrime',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '77fcb8ff-12e9-4733-aacb-70aaa22c61a4',
+    name: 'MfxBroker',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '3c6224e8-3548-4be3-ac3a-82a4d192c446',
+    name: 'B7Academy',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '48b7709b-1424-4407-8127-2ff19543ab65',
+    name: 'Reim Investment',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'a620111e-cf9e-4aba-8b2e-ea14e8cfac97',
+    name: 'CoffeeSwap',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '168b5dcd-e86f-4f0d-8562-0367d6fe0a4f',
+    name: 'Ihamora',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '6d0a6e9c-f59b-4779-9730-94c3d698ddb3',
+    name: 'Spaxe',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'bbaedf94-916c-43d2-b336-f65156c83b98',
+    name: 'EmaxMarkets',
+    color: 'Dark Blue',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'd492dd7d-43cc-4e64-a3d0-2e2b109079ab',
+    name: 'BeexBots',
+    color: 'Azul Oscuro',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'a8f22617-8c11-411c-a563-832234096ed1',
+    name: 'Prueba V2 Act',
+    color: '#001244',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: '258fa5ed-9dfe-4fd5-9863-6ad51e6c7edc',
+    name: 'Prueba canción',
+    color: '',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'cff18f82-4c1c-43b6-b24b-ec847cba1896',
+    name: 'sdsdgsdg',
+    color: '',
+    logo: null,
+    owner: true
+  },
+  {
+    uuid: 'f4ec9741-cd68-41c6-b057-3b4b0021cd1a',
+    name: 'pi',
+    color: '',
+    logo: null,
+    owner: true
+  }
+])
 const getProjects = async () => {
   await projectStore.getProjects().then((response: any) => {
     projects.value = response
