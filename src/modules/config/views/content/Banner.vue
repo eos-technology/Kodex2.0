@@ -12,8 +12,8 @@
 
       <div class="banner__info">
         <div class="banner__text">
-          <h3 class="h3-bold">Nombre del proyecto</h3>
-          <p class="l-semibold">
+          <h3 class="h3-bold text-primary">Nombre del proyecto</h3>
+          <p class="l-semibold text-brand">
             <span class="dot-status dot-status--enable"></span>
             &nbsp;&nbsp;
             {{ $t('setting.verified') }}
@@ -31,11 +31,13 @@
       </div>
     </div>
   </v-card>
+
+  <!-- image proyect -->
   <v-dialog width="450" v-model="isOpen">
     <v-card rounded="lg">
       <div class="modal">
         <div class="modal__header">
-          <h5 class="h5-bold">{{ $t('setting.project-image') }}</h5>
+          <h5 class="h5-bold text-primary">{{ $t('setting.project-image') }}</h5>
           <button class="modal__close" @click="isOpen = false">
             <img :src="getFile({
               route: 'icons/form',
@@ -45,10 +47,10 @@
               " alt="" />
           </button>
         </div>
-        <div class="d-flex flex-column pa-6">
+        <div class="d-flex flex-column ">
           <div class="image-project">
             <div class="image-project__section">
-              <p class="l-regular">{{ $t('setting.message-image') }}</p>
+              <p class="l-regular text-primary">{{ $t('setting.message-image') }}</p>
             </div>
            <DropZone /> 
             <div class="image-project__section">

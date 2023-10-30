@@ -1,6 +1,6 @@
 <template>
   <div class="approved-api">
-    <v-card class="pa-6" :class="{ block: isBlocked }">
+    <div class="pa-6 card" :class="{ block: isBlocked }">
       <div class="card-body">
         <div class="approved-api__header">
           <div class="api-name">
@@ -44,7 +44,7 @@
           </div>
         </div>
       </div>
-    </v-card>
+    </div>
   </div>
 </template>
 
@@ -160,5 +160,11 @@ const visible = ref(false)
     color: #ef4444;
     cursor: pointer;
   }
+}
+
+.card{
+  border-radius: 1rem;
+  border: 1px solid #DDE4ED;
+  // background: var(--fondos-f-1, #F6F8FA);
 }
 </style>

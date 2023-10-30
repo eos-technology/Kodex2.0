@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'config' }" style="text-decoration: none" class="text-black">
       <BackDummy />
     </router-link>
-    <v-card class="card pa-6 mt-8">
+    <v-card class="card pa-6 mt-8 rounded-lg">
       <div class="card-body small-gap">
         <div class="filter">
           <v-text-field
@@ -13,6 +13,7 @@
             variant="solo-filled"
             hide-details
             density="compact"
+            clearable 
           >
             <template v-slot:prepend-inner>
               <i class="icon-search"></i>
@@ -27,7 +28,11 @@
               type="date"
               hide-details
               density="compact"
-            ></v-text-field>
+            >
+              <template v-slot:prepend-inner>
+                <i class="icon-calendar" style="color: #394357;"></i>
+              </template>
+            </v-text-field>
 
             <v-select
               variant="solo-filled"
@@ -35,9 +40,8 @@
               class="inpt"
               hide-details
               density="compact"
-              label="Select"
+              :placeholder="$t('globals.select')"
               :items="[
-                'Seleccionar tipo',
                 'California',
                 'Colorado',
                 'Florida',
@@ -56,7 +60,7 @@
               <div v-for="(item, index) in items" class="timeline__box-message" :key="index">
                 <img src="@/assets/images/chat.png" />
 
-                <v-card class="card pa-6">
+                <div class="card pa-6">
                   <div class="card-body">
                     <p class="timeline__header-message l-bold">
                       <span class="data-user">
@@ -71,14 +75,14 @@
                     </p>
 
                     <div v-if="item.comment" class="timeline__message">
-                      <v-card class="card pa-6 mt-6">
+                      <div class="card pa-6 mt-6">
                         <div class="card-body">
                           <p class="l-regular">{{ item.comment }}</p>
                         </div>
-                      </v-card>
+                      </div>
                     </div>
                   </div>
-                </v-card>
+                </div>
               </div>
             </div>
           </div>
@@ -269,6 +273,8 @@ const shortDate = (date: any) => {
     .card {
       width: 100%;
       background-color: #f6f8fa;
+      border-radius: 1rem;
+      border: 1px solid #DDE4ED;
     }
 
     @media (max-width: 767px) {
@@ -365,5 +371,24 @@ const shortDate = (date: any) => {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+:deep(.v-field__field){
+  input[type=date]{
+    flex-direction: row-reverse;
+    gap: 0.5rem;
+    margin-left: -25px;
+  }
+
+  input[type=date]::-webkit-calendar-picker-indicator{
+    color: transparent;
+    opacity: 0;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
 }
 </style>

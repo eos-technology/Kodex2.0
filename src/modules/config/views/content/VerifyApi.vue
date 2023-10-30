@@ -1,6 +1,6 @@
 <template>
   <div class="verify-api">
-    <v-card class="pa-6">
+    <div class="pa-6 card">
       <div class="card-body">
         <div class="verify-api__header">
           <div class="api-name">
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-    </v-card>
+    </div>
   </div>
 </template>
 
@@ -132,5 +132,10 @@ defineProps({
   border: 1px solid var(--border-border-input, #f4f5f8);
   background: var(--fondos-blanco, #fff);
   color: #001e62;
+}
+
+.card{
+  border-radius: 1rem;
+  border: 1px solid #DDE4ED;
 }
 </style>

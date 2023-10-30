@@ -4,9 +4,9 @@
       <div class="setting-section">
         <v-tabs class="tabs-line" v-model="tab">
           <v-tab value="1">Información de la cuenta</v-tab>
-          <v-tab value="2">Seguridad</v-tab>
-          <v-tab value="3">Api Keys</v-tab>
-          <v-tab value="4">Verificación KYC</v-tab>
+          <v-tab value="2">Seguridad </v-tab>
+          <v-tab value="3">Api Keys </v-tab>
+          <v-tab value="4">Verificación KYC </v-tab>
         </v-tabs>
 
         <v-window v-model="tab">
@@ -14,7 +14,7 @@
             <!-- Account tab -->
             <div class="account-settings">
               <div class="row-setting">
-                <h3 class="h3-semibold">{{ $t('setting.myaccount') }}</h3>
+                <h3 class="h3-semibold text-primary">{{ $t('setting.myaccount') }}</h3>
                 <p @click="isOpen = true" style="color: #3587ff; text-decoration: underline; cursor: pointer;">
                   {{ $t('setting.edit') }}
                 </p>
@@ -22,52 +22,52 @@
               <div class="account-settings__group">
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.name-account') }}</p>
-                  <p class="l-medium">nombre de cuenta</p>
+                  <p class="l-medium text-brand">nombre de cuenta</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.email') }}</p>
-                  <p class="l-medium">example@email.com</p>
+                  <p class="l-medium text-brand">example@email.com</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.tolerance') }}</p>
-                  <p class="l-medium">0.0%</p>
+                  <p class="l-medium text-brand">0.0%</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.state') }}</p>
-                  <p class="l-medium">
+                  <p class="l-medium text-brand">
                     <span class="dot-status dot-status--in-process"></span>&nbsp; Proceso de
                     verficación
                   </p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.primary-color') }}</p>
-                  <p class="l-medium">
+                  <p class="l-medium text-brand">
                     <span class="square"></span>
                     #1264A3
                   </p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.secundary-color') }}</p>
-                  <p class="l-medium">
+                  <p class="l-medium text-brand">
                     <span class="square"></span>
                     #1264A3
                   </p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.kodex-icon') }}</p>
-                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-medium text-brand"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.api-pay') }}</p>
-                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-medium text-brand"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.modal-pay') }}</p>
-                  <p class="l-medium"><span class="dot-status dot-status--disable"></span>&nbsp; Deshabilitado</p>
+                  <p class="l-medium text-brand"><span class="dot-status dot-status--disable"></span>&nbsp; Deshabilitado</p>
                 </div>
                 <div class="row-setting">
                   <p class="l-light">{{ $t('setting.link-pay') }}</p>
-                  <p class="l-medium"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
+                  <p class="l-medium text-brand"><span class="dot-status dot-status--enable"></span>&nbsp; Habilitado</p>
                 </div>
               </div>
               <hr />
@@ -89,9 +89,10 @@
               </div>
             </div>
           </v-window-item>
-          <v-window-item value="2"><!-- Security tab -->
+          <v-window-item value="2">
+            <!-- Security tab -->
             <div class="security-settings">
-              <h3 class="h3-semibold">{{ $t('setting.security') }}</h3>
+              <h3 class="h3-semibold text-primary">{{ $t('setting.security') }}</h3>
 
               <div class="security-settings__options">
                 <router-link :to="{ name: 'timeline' }" style="text-decoration: none">
@@ -113,7 +114,7 @@
             <!-- Api Keys tab -->
             <div class="api-settings">
               <div class="api-settings__header">
-                <h3 class="h3-semibold">Api Keys</h3>
+                <h3 class="h3-semibold text-primary">Api Keys</h3>
 
                 <v-btn class="btn" color="primary" @click="newApi = true">{{ $t('setting.new-api') }}</v-btn>
 
@@ -130,9 +131,10 @@
               </div>
             </div>
           </v-window-item>
-          <v-window-item value="4"><!-- verification tab -->
+          <v-window-item value="4">
+            <!-- verification tab -->
             <div class="verification-settings">
-              <h3 class="h3-semibold">{{ $t('setting.verificationkyc') }}</h3>
+              <h3 class="h3-semibold text-primary">{{ $t('setting.verificationkyc') }}</h3>
 
               <div class="verification-settings__section">
                 <p class="l-semibold">{{ $t('setting.document-legal') }}</p>
@@ -163,7 +165,7 @@
                   {{ $t('setting.account-certificate') }}
                 </p>
                 <hr />
-                <v-btn class="btn" variant="outlined" color="secondary">
+                <v-btn class="btn" variant="outlined" color="secondary" style="background-color: #FFF;">
                   <p class="text-primary">{{
                     $t('setting.validate-view-document')
                   }}</p>
@@ -176,11 +178,13 @@
       </div>
     </div>
   </v-card>
+
+  <!-- Edit info -->
   <v-dialog width="450" v-model="isOpen">
     <v-card rounded="lg">
       <div class="modal">
         <div class="modal__header">
-          <h5 class="h5-bold">{{ $t('setting.info') }}</h5>
+          <h5 class="h5-bold text-primary">{{ $t('setting.info') }}</h5>
           <button class="modal__close" @click="isOpen = false">
             <img :src="getFile({
               route: 'icons/form',
@@ -193,7 +197,7 @@
         <div class="card rounded-lg">
           <div class="card-body big-gap">
             <div class="small-gap">
-              <p class="l-regular">{{ $t('setting.info-description') }}</p>
+              <p class="l-regular text-primary">{{ $t('setting.info-description') }}</p>
             </div>
 
             <form class="big-gap mt-2">
@@ -235,14 +239,14 @@
                 <p class="l-semibold">{{ $t('setting.customize-color') }}</p>
 
                 <div class="primary-colors">
-                  <label for="primaryColor">{{ $t('setting.primary-color') }}</label>
+                  <label for="primaryColor" class="text-primary">{{ $t('setting.primary-color') }}</label>
                   <div class="input-modificate">
                     <input class="color" type="color" v-model="form.primaryColor" />
                     <input class="b-regular colors" type="text" :value="form.primaryColor" disabled />
                   </div>
                 </div>
 
-                <label class="secundary-colors" for="secundaryColor">{{ $t('setting.secundary-color') }}
+                <label class="secundary-colors text-primary" for="secundaryColor">{{ $t('setting.secundary-color') }}
 
                   <div class="input-modificate">
                     <input class="color" type="color" v-model="form.secundaryColor" />
@@ -291,6 +295,8 @@
       </div>
     </v-card>
   </v-dialog>
+
+  <!-- Nueva Api -->
   <v-dialog width="450" v-model="newApi">
     <v-card rounded="lg">
       <div class="modal">
@@ -311,8 +317,8 @@
         <!-- Step 1 -->
         <div v-if="!saved" class="big-gap">
           <div class="small-gap">
-            <h1 class="h4-bold">{{ $t('setting.create-api') }}</h1>
-            <p class="l-regular">{{ $t('setting.info-description') }}</p>
+            <h1 class="h4-bold text-primary">{{ $t('setting.create-api') }}</h1>
+            <p class="l-regular text-primary">{{ $t('setting.info-description') }}</p>
           </div>
 
           <form class="big-gap">
@@ -333,7 +339,7 @@
 
               <label>
                 <p class="b-regular mb-1">{{ $t('setting.use-type') }}</p>
-                <v-select class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" label="Select"
+                <v-select class="inpt" elevation-0 density="compact" hide-details variant="solo-filled" :placeholder="$t('globals.select')"
                   :items="options"></v-select>
               </label>
             </div>
@@ -349,12 +355,14 @@
             </div>
           </form>
         </div>
+
+
         <!-- Step 2 -->
         <div v-if="saved" class="approved-message">
           <img class="image" :src="getFile({ route: 'images', url: 'check_3d', extension: 'png' })" alt="" />
           <div class="approved-message__message">
-            <h1 class="h3-bold">{{ $t('payment-methods.all-ready') }}</h1>
-            <p class="l-regular">
+            <h1 class="h3-bold  text-primary">{{ $t('payment-methods.all-ready') }}</h1>
+            <p class="l-regular text-primary">
               {{ $t('newApi-message1') }} <span>ApiKey</span> {{ $t('newApi-message2') }}
               <span>{{ dataApi.apiMethod }}</span> {{ $t('newApi-message3') }}
               <span>{{ dataApi.projectName }}</span> {{ $t('newApi-message4') }}
@@ -824,5 +832,9 @@ const newApiKeys = [
   button {
     width: 100%;
   }
+}
+
+.l-light{
+  color: #001E62;
 }
 </style>

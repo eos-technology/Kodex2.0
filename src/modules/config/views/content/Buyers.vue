@@ -5,6 +5,7 @@
       :placeholder="$t('transactions.search')"
       variant="solo-filled"
       density="compact"
+      clearable
     >
       <template v-slot:prepend-inner>
         <i class="icon-search"></i>
@@ -13,7 +14,7 @@
     <v-btn class="btn " color="primary">{{ $t('setting.add') }}</v-btn>
   </div>
   <div class="buyers">
-    <v-card class="card pa-6" v-for="(user, index) in buyers" :key="index">
+    <div class="card pa-6" v-for="(user, index) in buyers" :key="index">
       <div class="card-body">
         <div class="buyers__info">
           <div class="info">
@@ -43,7 +44,7 @@
           </div>
         </div>
       </div>
-    </v-card>
+    </div>
   </div>
 </template>
 
@@ -172,5 +173,11 @@ const buyers = [
 .primary {
   height: 48px;
   border-radius: 16px;
+}
+
+.card{
+  border-radius: 1rem;
+  border: 1px solid rgba(14, 14, 16, 0.10);
+  background: #FFF;
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <section class="users">
     <div class="d-flex align-center justify-space-between">
-      <h3 class="h3-bold">{{ $t('users.header') }}</h3>
+      <h3 class="h3-bold text-primary">{{ $t('users.header') }}</h3>
       <v-btn color="primary" class="btn" @click="users = true">{{ $t('users.btnUser') }}</v-btn>
     </div>
     <v-card class="pa-4 pa-md-6 rounded-lg border elevation-0">
       <div class="users__content">
         <div class="users__header">
-          <v-text-field :placeholder="$t('transactions.search')" variant="solo-filled" hide-details density="compact"
+          <v-text-field :placeholder="$t('transactions.search')" variant="solo-filled" hide-details density="compact" clearable
             class="inpt inpt-search">
             <template v-slot:prepend-inner>
               <i class="icon-search"></i>
@@ -81,7 +81,7 @@
                         <v-card class="modal__card" rounded="lg">
                           <div class="modal">
                             <div class="modal__header">
-                              <h5 class="h5-bold">{{ $t('user.options') }}</h5>
+                              <h5 class="h5-bold text-primary">{{ $t('user.options') }}</h5>
                               <button class="modal__close" @click="isActive.value = false">
                                 <img :src="getFile({ route: 'icons/form', url: 'close', extension: 'svg' })
                                   " alt="" />
@@ -193,7 +193,7 @@
 
 
     <v-dialog width="450" v-model="permission">
-      <v-card rounded="lg">
+      <v-card rounded="lg" class="text-primary">
         <div class="modal">
           <div class="modal__header">
             <h5 class="h5-bold">{{ $t('user.edit-permissions') }}</h5>
@@ -238,8 +238,9 @@
         </div>
       </v-card>
     </v-dialog>
+
     <v-dialog width="450" v-model="method">
-      <v-card rounded="lg">
+      <v-card rounded="lg" class="text-primary">
         <div class="modal">
           <div class="modal__header">
             <h5 class="h5-bold">{{ $t('reports.method') }}</h5>
@@ -295,8 +296,9 @@
         </div>
       </v-card>
     </v-dialog>
+
     <v-dialog width="450" v-model="users">
-      <v-card rounded="lg">
+      <v-card rounded="lg" class="text-primary">
         <div class="modal">
           <div class="modal__header">
             <h5 class="h5-bold">{{ $t('users.btnUser') }}</h5>

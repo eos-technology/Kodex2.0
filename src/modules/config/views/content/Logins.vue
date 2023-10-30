@@ -1,6 +1,6 @@
 <template>
   <div class="sesion">
-    <v-card class="pa-6" v-for="(item, index) in data" :key="index">
+    <div class="pa-6 card" v-for="(item, index) in data" :key="index">
       <div class="d-flex align-center justify-space-between">
         <div class="d-flex align-center">
           <i :class="`icon-${item.iconCard} sesion__icon`"></i>
@@ -49,7 +49,7 @@
           <v-switch density="compact" hide-details color="primary" inset></v-switch>
         </div>
       </div>
-    </v-card>
+    </div>
   </div>
 </template>
 
@@ -79,6 +79,10 @@ const data = [
 
 .sesion {
   @include grid(3, 24px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30.75rem, 1fr));
+  gap: 24px;
+
 
   &__icon {
     font-size: 24px;
@@ -104,5 +108,11 @@ const data = [
     display: flex;
     flex-direction: column;
   }
+}
+
+.card{
+  border-radius: 1rem;
+  border: 1px solid rgba(14, 14, 16, 0.10);
+  background: #FFF;
 }
 </style>

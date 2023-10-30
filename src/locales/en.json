@@ -48,7 +48,8 @@
     "since": "Since",
     "until": "Until",
     "clear": "Clear",
-    "save": "Save"
+    "save": "Save",
+    "select":"Select"
   },
   "dashboard": {
     "panelTitle": "Dashboard",

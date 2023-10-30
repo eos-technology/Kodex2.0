@@ -49,7 +49,8 @@
     "since": "Desde",
     "until": "Hasta",
     "clear": "Limpiar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "select":"Seleccionar"
   },
   "dashboard": {
     "panelTitle": "Panel general",
