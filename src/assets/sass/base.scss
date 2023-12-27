@@ -253,3 +253,9 @@ body .rounded-lg {
     filter: brightness(90%);
   }
 }
+
+@for $i from 1 through 100 {
+  .gap-#{$i} {
+    gap: calc(1px * #{$i});
+  }
+}

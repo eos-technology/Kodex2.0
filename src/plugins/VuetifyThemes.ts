@@ -14,7 +14,8 @@ export const light: ThemeDefinition = {
     success: '#00B183',
     warning: '#F2C744',
     disable: '#040919',
-    info: '#1264A3'
+    info: '#1264A3',
+    border: '#DDE4ED'
   }
 }
 
@@ -32,6 +33,7 @@ export const dark: ThemeDefinition = {
     success: '#00B183',
     warning: '#F2C744',
     disable: '#040919',
-    info: '#1264A3'
+    info: '#1264A3',
+    border: '#DDE4ED'
   }
 }

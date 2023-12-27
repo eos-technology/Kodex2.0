@@ -1,12 +1,12 @@
 <template>
   <v-card class="pa-6 mx-auto rounded-lg" max-width="960">
     <img src="@/assets/images/logo.svg" alt="" />
-    <div class="d-flex justify-space-between align-center my-4">
-      <h3 class="h3-semibold">Información de pago</h3>
-      <h3 class="h3-semibold text-secondary-darken-1">Paso 1/2</h3>
+    <div class="d-flex flex-column flex-sm-row justify-space-between align-start align-sm-center my-4">
+      <h3 class="h3-semibold">{{ step==1?'Información de pago':'Finalizar' }}</h3>
+      <h3 class="h3-semibold text-secondary-darken-1">Paso {{ step }}/2</h3>
     </div>
-    <div class="grid">
-      <div class="grid__left">
+    <div v-if="step===1" class="d-flex flex-column-reverse flex-sm-row gap-24">
+      <div class="grid__left flex-grow-1">
         <h6 class="h6-semibold">Información de pago</h6>
         <div class="info__control">
           <label class="b-regular" for="email">Fecha de expiración</label>
@@ -29,23 +29,88 @@
             ><p class="b-regular">Acepto los términos y condiciones de KodexPay</p></template
           ></v-checkbox
         >
-        <v-btn color="primary" class="rounded-lg" height="48">Pagar</v-btn>
+        <v-btn color="primary" class="rounded-lg" height="48" @click="step++">Pagar</v-btn>
       </div>
-      <div class="grid__right">
-        <v-card class="pa-6 rounded-lg bg-grey-lighten-4">
-          <h6 class="h6-semibold text-primary">Resumen</h6>
-          <v-badge content="2" color="grey">
-            <v-avatar>
-              <v-img :src="'@/assets/images/article.png'"></v-img>
-            </v-avatar>
-          </v-badge>
+      <div class="grid__right h-100 flex-grow-1">
+        <v-card variant="outlined" color="border" class="pa-6 rounded-lg bg-grey-lighten-4">
+          <div>
+            <div class="d-flex flex-column gap-16">
+              <h6 class="h6-semibold text-primary">Resumen</h6>
+              <div class="d-flex align-center gap-16">
+                <v-badge content="1" color="grey">
+                  <v-avatar rounded>
+                    <v-img width="50" src="/src/assets/images/article.png"></v-img>
+                  </v-avatar>
+                </v-badge>
+  
+                <div>
+                  <p class="b-medium">Artículo particular</p>
+                  <p class="b-light">Artículo particular</p>
+                </div>
+  
+                <div class="flex-grow-1">
+                  <p class="l-semibold text-right">$0.0000</p>
+                </div> 
+              </div>
+  
+              <div class="d-flex align-center justify-space-between">
+                <p class="b-light">Cantidad de artículos</p>
+                <p class="b-light">1</p>
+              </div>
+              <div class="d-flex align-center justify-space-between">
+                <p class="b-light">Nombre</p>
+                <p class="b-light">Lucas Modric</p>
+              </div>
+              <div class="d-flex align-center justify-space-between">
+                <p class="b-light">Correo electrónico</p>
+                <p class="b-light">email@mail.com</p>
+              </div>
+              <div class="d-flex align-center justify-space-between">
+                <p class="b-light">Impuesto</p>
+                <p class="b-light">$0.00</p>
+              </div>
+              <div class="d-flex align-center justify-space-between">
+                <p class="b-light">Descuento</p>
+                <p class="b-light">$0.00</p>
+              </div>
+            </div>
+            <v-divider class="my-6 border-opacity-0" color="border" ></v-divider>
+            <div class="d-flex align-center justify-space-between">
+              <p class="l-semibold">Total a pagar</p>
+              <p class="l-semibold">$0.00 USD</p>
+            </div>
+          </div>
         </v-card>
+        <div class="d-flex align-end justify-end mt-8">
+          <div>
+            <v-img width="100" src="/src/assets/images/certified.png"></v-img>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="step===2" class="d-flex flex-column gap-32">
+      <div class="d-flex flex-column align-center justify-center gap-16">
+        
+        <img src="/src/assets/images/coin-aprov.png"/>
+        <p class="h3-bold">Todo listo</p>
+        <div class="text-center">
+          <p class="l-medium">Su compra de <b>NombreCompra</b> realizada con éxito.</p>
+        </div>
+      </div>
+      <div class="d-flex flex-column align-center justify-center gap-16">
+        <v-btn color="primary" class="rounded-lg" variant="flat">Nuevo Pago</v-btn>
+        <v-btn  class="rounded-lg" variant="tonal">Descargar comprobante</v-btn>
       </div>
     </div>
   </v-card>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+
+const step = ref(1)
+</script>
 
 <style lang="scss" scoped>
 .grid {
@@ -56,6 +121,7 @@
     display: grid;
     gap: 1rem;
   }
+
 }
 
 .info {
@@ -149,6 +215,7 @@
   }
 }
 
+
 .b-regular {
   color: #1f2d4d;
 }
@@ -164,4 +231,13 @@
 .b-light {
   color: #001e62;
 }
+
+.b-medium, .l-medium{
+  color: #001E62;
+}
+
+.h3-bold{
+  color: #0A1E8C;
+}
+
 </style>
