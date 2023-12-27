@@ -26,7 +26,6 @@ defineProps({
     h3 {
       font-size: 7.5vw;
     }
-
     button {
       width: 100%;
     }
