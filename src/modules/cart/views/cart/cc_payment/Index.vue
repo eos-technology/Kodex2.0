@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <v-card class="pa-6 mx-auto rounded-lg" max-width="960">
+    <v-card class="pa-6 mx-auto rounded-lg" min-width="960">
       <img src="@/assets/images/logo.svg" alt="" />
       <div
         class="d-flex flex-column flex-sm-row justify-space-between align-start align-sm-center my-4"
@@ -15,13 +15,40 @@
             <label class="b-regular" for="card">Tarjeta de crédito</label>
             <div class="inpt">
               <v-select
-                height="48"
-                hide-details
+                v-model="selectedItem"
+                density="compact"
+                :items="options"
                 variant="solo-filled"
-                flat
-                rounded="lg"
-                :items="['MasterCard', 'Visa', 'American Express']"
-              ></v-select>
+                menu-icon="mdi-chevron-down"
+                hide-details="auto"
+              >
+                <template #item="{ item }">
+                  <div
+                    class="d-flex align-center input-select"
+                    @click="selectedItem = item.value.text"
+                  >
+                    <img :src="item.value.icon" :alt="item.value.text" />
+                    <p class="b-medium">{{ item.value.text }}</p>
+                  </div>
+                </template>
+                <template v-slot:prepend-inner>
+                  <div class="d-flex align-center">
+                    <img
+                      class="img-select ml-2 mr-2"
+                      src="@/assets/images/master.svg"
+                      v-if="selectedItem === null"
+                    />
+                  </div>
+                  <div class="d-flex align-center" v-for="icon in options" :key="icon.text">
+                    <img
+                      class="img-select"
+                      :src="icon.icon"
+                      alt=""
+                      v-if="icon.text === selectedItem"
+                    />
+                  </div>
+                </template>
+              </v-select>
               <input class="b-light" type="text" placeholder="5106 9697 9059 5990" id="card" />
             </div>
           </div>
@@ -131,6 +158,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+
+const selectedItem = ref(null)
+
+const options = [{ icon: '@/assets/images/master.svg', text: 'MasterCard' }]
 
 const step = ref(1)
 </script>
